@@ -80,7 +80,7 @@ class ShitStar(object):
             "X-HS-Request-Id": str(uuid.uuid4()),
             "hotstarauth": utils.get_hs_auth(),
             "X-Hs-UserToken": ""
-        }, data=ProtoHelper.verify_otp(self.mobile_number, input("Enter OTP: ")))
+        }, data=ProtoHelper.verify_otp(input("Enter OTP: ")))
 
         if "LoginSuccessWidget" in s.text:
             logger.info("Logged in successfully! Saving token..")

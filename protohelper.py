@@ -22,7 +22,7 @@ class ProtoHelper(object):
         return otp_body.SerializeToString()
 
     @staticmethod
-    def verify_otp(self, phone: str, otp: str) -> bytes:
+    def verify_otp(phone: str, otp: str) -> bytes:
         verify = login_proto.verify_otp()
         verify_body = login_proto.verify_otp.outer_body()
 
