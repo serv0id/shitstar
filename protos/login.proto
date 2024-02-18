@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+message send_otp {
+  message outer_send_otp {
+    string identifier = 1;
+    phone phone_num = 2;
+  }
+  message phone {
+    string number = 1;
+    optional int32 get_by_call = 3;
+  }
+  outer_send_otp body = 1;
+}
+
+message verify_otp {
+  message outer_body {
+    string identifier = 1;
+    verify_phone phone_details = 2;
+
+    message verify_phone {
+      string number = 1;
+      string otp = 3;
+      device_details device = 6;
+
+      message device_details {
+        string device_type = 1;
+      }
+    }
+  }
+  outer_body body = 1;
+}
+
