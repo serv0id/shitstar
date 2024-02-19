@@ -70,6 +70,8 @@ class ShitStar(object):
             "X-Hs-UserToken": ""
         }, data=ProtoHelper.get_otp(self.mobile_number))
 
+        print(s.content)
+
         if "Enter OTP sent to" not in s.text:  # figure out a way to do proper validation
             logger.error("Some error occurred! Please debug.")
             sys.exit(0)
