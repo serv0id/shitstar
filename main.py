@@ -4,12 +4,12 @@ import uuid
 import requests
 from loguru import logger
 import click
-from typing import Union, Any
+from typing import Any
 
 import config
 import creds
-import utils
-from protohelper import ProtoHelper
+from helpers import utils
+from helpers.protohelper import ProtoHelper
 
 NoneType = type(None)
 
