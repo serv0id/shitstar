@@ -3,10 +3,13 @@ import hmac
 import json
 import secrets
 import time
+import uuid
 
+import requests
 from loguru import logger
 
 import config
+from helpers.protohelper import ProtoHelper
 
 
 def get_hs_auth() -> str:
@@ -34,7 +37,7 @@ def get_device_id() -> str:
     value. Does not seem to be linked to session.
     :return:
     """
-    return secrets.token_bytes(8).hex()
+    return str(uuid.uuid4())
 
 
 def get_creds() -> dict:
@@ -54,6 +57,17 @@ def dump_creds(creds: dict) -> None:
     """
     with open(config.CREDFILE, 'w') as f:
         json.dump(creds, f)
+
+
+def get_guest_token(session: requests.Session, device_id: str) -> str:
+    resp = session.post(url=config.GUEST_URL, params={
+        "client_capabilities": '{"package":["dash","hls"],"container":["fmp4","fmp4br","ts"],"ads":["non_ssai","ssai","sgai"],"audio_channel":["stereo"],"encryption":["plain","widevine"],"video_codec":["h264","h265","vp9"],"video_codec_non_secure":["h264","h265","vp9"],"ladder":["phone","tv"],"resolution":["sd","hd","fhd"],"true_resolution":["sd","hd","fhd"],"dynamic_range":["sdr"]}',
+        "drm_parameters": '{"widevine_security_level":["HW_SECURE_DECODE","HW_SECURE_ALL"],"hdcp_version":["HDCP_V2_3"]}',
+        "subs": "null",
+        "login": "UNKNOWN"
+    }, data=ProtoHelper.get_freshstart(device_id))
+
+    return resp.headers["x-hs-updatedusertoken"]
 
 
 if __name__ == "__main__":

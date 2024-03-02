@@ -1,7 +1,8 @@
 # import proto
 from loguru import logger
 import protos.login_pb2 as login_proto
-import blackboxprotobuf
+import protos.v2.request.start_request_pb2 as start_proto
+import blackboxprotobuf as bbpf
 
 
 class ProtoHelper(object):
@@ -40,6 +41,23 @@ class ProtoHelper(object):
         verify.body.CopyFrom(verify_body)
 
         return verify.SerializeToString()
+
+    @staticmethod
+    def get_freshstart(device_id: str) -> bytes:
+        freshstart = start_proto.StartRequest()
+        freshstart.app_launch_count = 1
+
+        devid = start_proto.StartRequest.DeviceInfo.DeviceId()
+        devid.id = device_id
+        devid.type = start_proto.StartRequest.DeviceInfo.DeviceIdType.DEVICE_ID
+
+        freshstart.device_info.device_ids.add().CopyFrom(devid)
+
+        freshstart.device_info.device_meta.network_operator = "airtel"  # Sample
+        freshstart.device_info.device_meta.os_name = "Android"
+        freshstart.device_info.device_meta.os_version = "13"
+
+        return freshstart.SerializeToString()
 
 
 if __name__ == "__main__":

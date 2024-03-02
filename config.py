@@ -1,6 +1,7 @@
 # Endpoints
 OTP_ENDPOINT = "https://apix.hotstar.com/v2/pages/1/spaces/1/widgets/8"
 OTP_VERIFY_ENDPOINT = "https://apix.hotstar.com/v2/pages/1/spaces/1/widgets/9"
+GUEST_URL = "https://apix.hotstar.com/v2/freshstart"
 
 
 # Misc

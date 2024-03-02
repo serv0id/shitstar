@@ -29,4 +29,3 @@ message verify_otp {
   }
   outer_body body = 1;
 }
-

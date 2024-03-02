@@ -17,6 +17,7 @@ NoneType = type(None)
 class ShitStar(object):
     def __init__(self, title_id, refresh):
         self.session = requests.Session()
+
         self.title_id = title_id
         self.refresh = refresh
 
@@ -67,7 +68,7 @@ class ShitStar(object):
         }, headers={
             "X-HS-Request-Id": str(uuid.uuid4()),
             "hotstarauth": utils.get_hs_auth(),
-            "X-Hs-UserToken": ""
+            "X-Hs-UserToken": utils.get_guest_token(self.session, self.device_id)
         }, data=ProtoHelper.get_otp(self.mobile_number))
 
         print(s.content)
