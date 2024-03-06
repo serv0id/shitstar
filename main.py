@@ -68,7 +68,8 @@ class ShitStar(object):
         }, headers={
             "X-HS-Request-Id": str(uuid.uuid4()),
             "hotstarauth": utils.get_hs_auth(),
-            "X-Hs-UserToken": utils.get_guest_token(self.session, self.device_id)
+            "X-Hs-UserToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijc5ZTQxNTU2LTk3MWYtNDM5ZC1hYmVlLWM3NGZhYmFiM2YwMiIsImF1ZCI6InVtX2FjY2VzcyIsImV4cCI6MTcwOTkzODc2OCwiaWF0IjoxNzA5MzMzOTY4LCJpc3MiOiJUUyIsImp0aSI6IjAzNjlmMjgzZDM2YjQxNTU5MjA0ZGM2YjNlNDY2Y2ZlIiwic3ViIjoie1wiaElkXCI6XCI4N2Q5ZDZlOWJiYjk0NTFiYTcyNDA3Mzk5YTVjNmMxMlwiLFwicElkXCI6XCJmZDdkMWUzNjM3MTA0YjU1OTUyOWFmNTdjNGIyNTFhN1wiLFwibmFtZVwiOlwiWW91XCIsXCJpcFwiOlwiMjQwMTo0OTAwOjFjMmE6OGZmZjo6MTc0OjljYmFcIixcImNvdW50cnlDb2RlXCI6XCJpblwiLFwiY3VzdG9tZXJUeXBlXCI6XCJudVwiLFwidHlwZVwiOlwiZ3Vlc3RcIixcImlzRW1haWxWZXJpZmllZFwiOmZhbHNlLFwiaXNQaG9uZVZlcmlmaWVkXCI6ZmFsc2UsXCJkZXZpY2VJZFwiOlwiZDViMmNlOGMtNzU1Mi00MzNlLTlhYWMtYWQ5NTAzYTFjNDk2XCIsXCJwcm9maWxlXCI6XCJBRFVMVFwiLFwidmVyc2lvblwiOlwidjJcIixcInN1YnNjcmlwdGlvbnNcIjp7XCJpblwiOnt9fSxcImlzc3VlZEF0XCI6MTcwOTMzMzk2ODA1NCxcImRwaWRcIjpcImZkN2QxZTM2MzcxMDRiNTU5NTI5YWY1N2M0YjI1MWE3XCIsXCJzdFwiOjEsXCJkYXRhXCI6XCJDZ1FJQUJJQUNnUUlBQ29BQ2d3SUFDSUlrQUg5Nk1EUHJ6RUtCQWdBT2dBS0JBZ0FNZ0FLTGdnQVFpb0tLRUV6WWpFMFpEUTJPRFJqTURrME1UaGlPV0kxWlRBME9EVmxObVZoTURkaFprRjNXV1pLT1dNPVwifSIsInZlcnNpb24iOiIxXzAifQ.7dMpLk4cg1zTbCKrpmDqMvbZn585xeeS7k3w9iVULEc",
+            # utils.get_guest_token(self.session, self.device_id)
         }, data=ProtoHelper.get_otp(self.mobile_number))
 
         print(s.content)
@@ -85,12 +86,11 @@ class ShitStar(object):
             "X-Hs-UserToken": ""
         }, data=ProtoHelper.verify_otp(input("Enter OTP: ")))
 
-        if "LoginSuccessWidget" in s.text:
-            logger.info("Logged in successfully! Saving token..")
-            # save token
-        else:
-            logger.error("Invalid OTP! Try again..")
-            sys.exit(0)
+        login_response = ProtoHelper.parse_success_widget(s.content)
+        #
+        # else:
+        #     logger.error("Invalid OTP! Try again..")
+        #     sys.exit(0)
 
 
 @click.command()

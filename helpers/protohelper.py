@@ -59,6 +59,10 @@ class ProtoHelper(object):
 
         return freshstart.SerializeToString()
 
+    @staticmethod
+    def parse_success_widget(content):
+        pass
+
 
 if __name__ == "__main__":
     logger.error("Please import the module rather than running it!")
