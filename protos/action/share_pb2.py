@@ -11,7 +11,7 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from feature.share import share_info_pb2 as feature_dot_share_dot_share__info__pb2
+from protos.feature.share import share_info_pb2 as feature_dot_share_dot_share__info__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12\x61\x63tion/share.proto\x12\x06\x61\x63tion\x1a\x1e\x66\x65\x61ture/share/share_info.proto\"H\n\x05Share\x12\x11\n\tshare_url\x18\x01 \x01(\t\x12,\n\nshare_info\x18\x02 \x01(\x0b\x32\x18.feature.share.ShareInfoBO\n\x1b\x63om.hotstar.ui.model.actionP\x01Z.github.com/hotstar/hs-core-ui-models-go/actionb\x06proto3')

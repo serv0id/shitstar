@@ -12,7 +12,7 @@ _sym_db = _symbol_database.Default()
 
 
 from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
-from context import form_context_pb2 as context_dot_form__context__pb2
+from protos.context import form_context_pb2 as context_dot_form__context__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x17\x61\x63tion/fetch_page.proto\x12\x06\x61\x63tion\x1a\x19google/protobuf/any.proto\x1a\x1a\x63ontext/form_context.proto\"\xf2\x02\n\x0f\x46\x65tchPageAction\x12\x0b\n\x03url\x18\x01 \x01(\t\x12<\n\x0b\x61\x63tion_type\x18\x02 \x01(\x0e\x32\'.action.FetchPageAction.FetchActionType\x12\x33\n\tpage_data\x18\x03 \x01(\x0b\x32 .action.FetchPageAction.PageData\x1au\n\x08PageData\x12$\n\x04\x62ody\x18\x01 \x01(\x0b\x32\x14.google.protobuf.AnyH\x00\x12\x37\n\nform_input\x18\x02 \x01(\x0b\x32!.action.FetchPageAction.FormInputH\x00\x42\n\n\x08pagedata\x1a\x37\n\tFormInput\x12*\n\x0c\x66orm_context\x18\x01 \x01(\x0b\x32\x14.context.FormContext\"/\n\x0f\x46\x65tchActionType\x12\x0b\n\x07\x44\x45\x46\x41ULT\x10\x00\x12\x0f\n\x0b\x46ORM_SUBMIT\x10\x01\x42O\n\x1b\x63om.hotstar.ui.model.actionP\x01Z.github.com/hotstar/hs-core-ui-models-go/actionb\x06proto3')

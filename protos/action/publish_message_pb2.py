@@ -11,7 +11,7 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from feature.communication import message_pb2 as feature_dot_communication_dot_message__pb2
+from protos.feature.communication import message_pb2 as feature_dot_communication_dot_message__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1c\x61\x63tion/publish_message.proto\x12\x06\x61\x63tion\x1a#feature/communication/message.proto\"H\n\x14PublishMessageAction\x12\x30\n\x08messages\x18\x01 \x03(\x0b\x32\x1e.feature.communication.MessageBO\n\x1b\x63om.hotstar.ui.model.actionP\x01Z.github.com/hotstar/hs-core-ui-models-go/actionb\x06proto3')

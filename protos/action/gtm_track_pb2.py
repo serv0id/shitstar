@@ -11,7 +11,7 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from feature.payment import payment_status_track_meta_pb2 as feature_dot_payment_dot_payment__status__track__meta__pb2
+from protos.feature.payment import payment_status_track_meta_pb2 as feature_dot_payment_dot_payment__status__track__meta__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16\x61\x63tion/gtm_track.proto\x12\x06\x61\x63tion\x1a/feature/payment/payment_status_track_meta.proto\"{\n\x0eGTMTrackAction\x12\x12\n\nevent_name\x18\x01 \x01(\t\x12J\n\x17payment_status_gtm_meta\x18\x02 \x01(\x0b\x32\'.feature.payment.PaymentStatusTrackMetaH\x00\x42\t\n\x07payloadBO\n\x1b\x63om.hotstar.ui.model.actionP\x01Z.github.com/hotstar/hs-core-ui-models-go/actionb\x06proto3')

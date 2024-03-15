@@ -11,7 +11,7 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from feature.request import http_request_commons_pb2 as feature_dot_request_dot_http__request__commons__pb2
+from protos.feature.request import http_request_commons_pb2 as feature_dot_request_dot_http__request__commons__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n#action/invoke_http_url_action.proto\x12\x06\x61\x63tion\x1a*feature/request/http_request_commons.proto\"S\n\x13InvokeHttpUrlAction\x12<\n\x0frequest_commons\x18\x01 \x01(\x0b\x32#.feature.request.HttpRequestCommonsBO\n\x1b\x63om.hotstar.ui.model.actionP\x01Z.github.com/hotstar/hs-core-ui-models-go/actionb\x06proto3')

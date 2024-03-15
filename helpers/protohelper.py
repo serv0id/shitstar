@@ -2,6 +2,7 @@
 from loguru import logger
 import protos.login_pb2 as login_proto
 import protos.v2.request.start_request_pb2 as start_proto
+import protos.widget.login_success_pb2 as success_proto
 import blackboxprotobuf as bbpf
 
 
@@ -61,7 +62,7 @@ class ProtoHelper(object):
 
     @staticmethod
     def parse_success_widget(content):
-        pass
+        success_otp = success_proto.LoginSuccessWidget()
 
 
 if __name__ == "__main__":

@@ -11,7 +11,7 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from feature.request import http_request_commons_pb2 as feature_dot_request_dot_http__request__commons__pb2
+from protos.feature.request import http_request_commons_pb2 as feature_dot_request_dot_http__request__commons__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1e\x62\x61se/data_bind_mechanism.proto\x12\x04\x62\x61se\x1a*feature/request/http_request_commons.proto\"\xab\x03\n\x11\x44\x61taBindMechanism\x12G\n\x0c\x63\x65ntralStore\x18\x01 \x01(\x0b\x32/.base.DataBindMechanism.SubscribeToCentralStoreH\x00\x1a\xe0\x01\n\x17SubscribeToCentralStore\x12\x0f\n\x03url\x18\x01 \x01(\tB\x02\x18\x01\x12\x34\n\tnamespace\x18\x02 \x01(\x0e\x32!.base.DataBindMechanism.NameSpace\x12\"\n\x1apolling_frequency_millisec\x18\x03 \x01(\x03\x12\x17\n\x0fmax_retry_count\x18\x04 \x01(\x05\x12\x41\n\x14http_request_commons\x18\x05 \x01(\x0b\x32#.feature.request.HttpRequestCommons\"S\n\tNameSpace\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x16\n\x12\x43RICKET_SCORE_CARD\x10\x01\x12\x0e\n\nTV_CHANNEL\x10\x02\x12\x11\n\rLOGIN_WITH_QR\x10\x03\x42\x15\n\x13\x64\x61ta_bind_mechanismB0P\x01Z,github.com/hotstar/hs-core-ui-models-go/baseb\x06proto3')

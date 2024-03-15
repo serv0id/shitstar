@@ -11,8 +11,8 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from context import form_context_pb2 as context_dot_form__context__pb2
-from feature.form import form_input_pb2 as feature_dot_form_dot_form__input__pb2
+from protos.context import form_context_pb2 as context_dot_form__context__pb2
+from protos.feature.form import form_input_pb2 as feature_dot_form_dot_form__input__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1c\x61\x63tion/form_validation.proto\x12\x06\x61\x63tion\x1a\x1a\x63ontext/form_context.proto\x1a\x1d\x66\x65\x61ture/form/form_input.proto\"p\n\x14\x46ormValidationAction\x12*\n\x0c\x66orm_context\x18\x01 \x01(\x0b\x32\x14.context.FormContext\x12,\n\x0b\x66orm_inputs\x18\x02 \x03(\x0b\x32\x17.feature.form.FormInputBO\n\x1b\x63om.hotstar.ui.model.actionP\x01Z.github.com/hotstar/hs-core-ui-models-go/actionb\x06proto3')

@@ -11,7 +11,7 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from feature.image import image_pb2 as feature_dot_image_dot_image__pb2
+from protos.feature.image import image_pb2 as feature_dot_image_dot_image__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1c\x61\x63tion/page_navigation.proto\x12\x06\x61\x63tion\x1a\x19\x66\x65\x61ture/image/image.proto\"\xfd\x03\n\x14PageNavigationAction\x12\x11\n\tpage_type\x18\x01 \x01(\t\x12\x10\n\x08page_url\x18\x02 \x01(\t\x12\x11\n\tpage_slug\x18\x03 \x01(\t\x12\x33\n\x06params\x18\x04 \x01(\x0b\x32#.action.PageNavigationAction.Params\x12\x0f\n\x07replace\x18\x05 \x01(\x08\x1aT\n\x06Params\x12@\n\x0cwatch_params\x18\x01 \x01(\x0b\x32(.action.PageNavigationAction.WatchParamsH\x00\x42\x08\n\x06params\x1a\x90\x02\n\x0bWatchParams\x12+\n\rloading_image\x18\x01 \x01(\x0b\x32\x14.feature.image.Image\x12 \n\x18is_fullscreen_by_default\x18\x02 \x01(\x08\x12J\n\x0erefresh_spaces\x18\x03 \x03(\x0e\x32\x32.action.PageNavigationAction.WatchParams.SpaceType\"f\n\tSpaceType\x12\x0b\n\x07UNKNOWN\x10\x00\x12\n\n\x06PLAYER\x10\x01\x12\x11\n\rWATCH_OVERLAY\x10\x02\x12\x11\n\rADAPTIVE_TRAY\x10\x03\x12\x1a\n\x16\x41\x44\x41PTIVE_TAB_CONTAINER\x10\x04\x42O\n\x1b\x63om.hotstar.ui.model.actionP\x01Z.github.com/hotstar/hs-core-ui-models-go/actionb\x06proto3')

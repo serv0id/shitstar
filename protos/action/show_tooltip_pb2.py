@@ -11,9 +11,9 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from feature.tooltip import arrow_alignment_pb2 as feature_dot_tooltip_dot_arrow__alignment__pb2
-from feature.tooltip import content_spread_pb2 as feature_dot_tooltip_dot_content__spread__pb2
-from feature.tooltip import arrow_position_pb2 as feature_dot_tooltip_dot_arrow__position__pb2
+from protos.feature.tooltip import arrow_alignment_pb2 as feature_dot_tooltip_dot_arrow__alignment__pb2
+from protos.feature.tooltip import content_spread_pb2 as feature_dot_tooltip_dot_content__spread__pb2
+from protos.feature.tooltip import arrow_position_pb2 as feature_dot_tooltip_dot_arrow__position__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19\x61\x63tion/show_tooltip.proto\x12\x06\x61\x63tion\x1a%feature/tooltip/arrow_alignment.proto\x1a$feature/tooltip/content_spread.proto\x1a$feature/tooltip/arrow_position.proto\"\xd8\x01\n\x11ShowTooltipAction\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x42\n\x19preferred_arrow_alignment\x18\x02 \x01(\x0e\x32\x1f.feature.tooltip.ArrowAlignment\x12\x36\n\x0e\x63ontent_spread\x18\x03 \x01(\x0e\x32\x1e.feature.tooltip.ContentSpread\x12\x36\n\x0e\x61rrow_position\x18\x04 \x01(\x0e\x32\x1e.feature.tooltip.ArrowPositionBO\n\x1b\x63om.hotstar.ui.model.actionP\x01Z.github.com/hotstar/hs-core-ui-models-go/actionb\x06proto3')

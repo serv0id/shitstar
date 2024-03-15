@@ -11,7 +11,7 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from feature.watchlist import watchlist_info_pb2 as feature_dot_watchlist_dot_watchlist__info__pb2
+from protos.feature.watchlist import watchlist_info_pb2 as feature_dot_watchlist_dot_watchlist__info__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16\x61\x63tion/watchlist.proto\x12\x06\x61\x63tion\x1a&feature/watchlist/watchlist_info.proto\"A\n\x0fWatchlistAction\x12.\n\x04info\x18\x01 \x01(\x0b\x32 .feature.watchlist.WatchlistInfoBO\n\x1b\x63om.hotstar.ui.model.actionP\x01Z.github.com/hotstar/hs-core-ui-models-go/actionb\x06proto3')

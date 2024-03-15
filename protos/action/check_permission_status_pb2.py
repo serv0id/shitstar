@@ -11,7 +11,7 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from feature.model import app_permission_pb2 as feature_dot_model_dot_app__permission__pb2
+from protos.feature.model import app_permission_pb2 as feature_dot_model_dot_app__permission__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n$action/check_permission_status.proto\x12\x06\x61\x63tion\x1a\"feature/model/app_permission.proto\"S\n\x1b\x43heckPermissionStatusAction\x12\x34\n\x0e\x61pp_permission\x18\x01 \x01(\x0e\x32\x1c.feature.model.AppPermissionBO\n\x1b\x63om.hotstar.ui.model.actionP\x01Z.github.com/hotstar/hs-core-ui-models-go/actionb\x06proto3')

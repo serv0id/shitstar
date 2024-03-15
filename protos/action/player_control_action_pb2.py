@@ -11,7 +11,7 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from feature.image import image_pb2 as feature_dot_image_dot_image__pb2
+from protos.feature.image import image_pb2 as feature_dot_image_dot_image__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\"action/player_control_action.proto\x12\x06\x61\x63tion\x1a\x19\x66\x65\x61ture/image/image.proto\"\xf2\x01\n\x13PlayerControlAction\x12\x32\n\x06params\x18\x01 \x01(\x0b\x32\".action.PlayerControlAction.Params\x1ao\n\x06Params\x12[\n\x1b\x63hange_video_quality_params\x18\x01 \x01(\x0b\x32\x34.action.PlayerControlAction.ChangeVideoQualityParamsH\x00\x42\x08\n\x06params\x1a\x36\n\x18\x43hangeVideoQualityParams\x12\x1a\n\x12video_quality_code\x18\x01 \x01(\tBO\n\x1b\x63om.hotstar.ui.model.actionP\x01Z.github.com/hotstar/hs-core-ui-models-go/actionb\x06proto3')

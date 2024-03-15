@@ -11,7 +11,7 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from feature.image import image_pb2 as feature_dot_image_dot_image__pb2
+from protos.feature.image import image_pb2 as feature_dot_image_dot_image__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14\x61\x63tion/preload.proto\x12\x06\x61\x63tion\x1a\x19\x66\x65\x61ture/image/image.proto\"\xc4\x01\n\x0bPreloadFlow\x12*\n\x03\x62\x66\x66\x18\x01 \x01(\x0b\x32\x1b.action.PreloadFlow.ApiCallH\x00\x1a\x80\x01\n\x07\x41piCall\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x39\n\nfetch_type\x18\x02 \x01(\x0e\x32%.action.PreloadFlow.ApiCall.FetchType\"-\n\tFetchType\x12\x0e\n\nFETCH_PAGE\x10\x00\x12\x10\n\x0c\x46\x45TCH_WIDGET\x10\x01\x42\x06\n\x04\x66low\"2\n\rPreloadAction\x12!\n\x04\x66low\x18\x01 \x01(\x0b\x32\x13.action.PreloadFlowBO\n\x1b\x63om.hotstar.ui.model.actionP\x01Z.github.com/hotstar/hs-core-ui-models-go/actionb\x06proto3')

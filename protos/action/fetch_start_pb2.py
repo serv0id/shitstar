@@ -12,7 +12,7 @@ _sym_db = _symbol_database.Default()
 
 
 from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
-from context import context_pb2 as context_dot_context__pb2
+from protos.context import context_pb2 as context_dot_context__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x18\x61\x63tion/fetch_start.proto\x12\x06\x61\x63tion\x1a\x19google/protobuf/any.proto\x1a\x15\x63ontext/context.proto\"\xf2\x01\n\x10\x46\x65tchStartAction\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x14\n\x0c\x64\x65\x65plink_url\x18\x02 \x01(\t\x12\"\n\x04\x62ody\x18\x03 \x01(\x0b\x32\x14.google.protobuf.Any\x12!\n\x07\x63ontext\x18\x04 \x01(\x0b\x32\x10.context.Context\x12\x14\n\x0creplace_page\x18\x05 \x01(\x08\x12\x38\n\x0brender_mode\x18\x06 \x01(\x0e\x32#.action.FetchStartAction.RenderMode\"$\n\nRenderMode\x12\x0b\n\x07\x44\x45\x46\x41ULT\x10\x00\x12\t\n\x05MODAL\x10\x01\x42O\n\x1b\x63om.hotstar.ui.model.actionP\x01Z.github.com/hotstar/hs-core-ui-models-go/actionb\x06proto3')

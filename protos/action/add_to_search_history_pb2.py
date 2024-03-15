@@ -11,7 +11,7 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-from feature.image import image_pb2 as feature_dot_image_dot_image__pb2
+from protos.feature.image import image_pb2 as feature_dot_image_dot_image__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\"action/add_to_search_history.proto\x12\x06\x61\x63tion\x1a\x19\x66\x65\x61ture/image/image.proto\"\xc7\x02\n\x18\x41\x64\x64ToSearchHistoryAction\x12\x1b\n\x13history_record_name\x18\x01 \x01(\t\x12\x10\n\x08page_url\x18\x02 \x01(\t\x12\x12\n\nis_content\x18\x03 \x01(\x08\x12#\n\x05image\x18\x04 \x01(\x0b\x32\x14.feature.image.Image\x12\x11\n\tpage_type\x18\x05 \x01(\t\x12\x1b\n\x13instrumentation_url\x18\x06 \x01(\t\x12\x1d\n\x15instrumentation_value\x18\x07 \x01(\x0c\x12\x44\n\rexpiry_config\x18\x08 \x01(\x0b\x32-.action.AddToSearchHistoryAction.ExpiryConfig\x1a.\n\x0c\x45xpiryConfig\x12\x10\n\x08\x64uration\x18\x01 \x01(\x03\x12\x0c\n\x04unit\x18\x02 \x01(\tBO\n\x1b\x63om.hotstar.ui.model.actionP\x01Z.github.com/hotstar/hs-core-ui-models-go/actionb\x06proto3')
