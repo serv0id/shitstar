@@ -1,11 +1,9 @@
-# import proto
 from loguru import logger
 import protos.login_pb2 as login_proto
 import protos.v2.request.start_request_pb2 as start_proto
 import protos.widget.login_success_pb2 as success_proto
 import protos.v2.response.widget_response_pb2 as widget_response_proto
 import protos.v2.widget_pb2 as widget_proto
-import blackboxprotobuf as bbpf
 
 
 class ProtoHelper(object):
@@ -69,11 +67,15 @@ class ProtoHelper(object):
         widget_wrapper = widget_proto.WidgetWrapper()
         widget_wrapper.CopyFrom(widget_response.success.widget_wrapper)
 
+        if widget_wrapper.template == "VerifyOtpWidget":
+            logger.error("Wrong OTP Entered!")
+            exit()
+
         login_success = success_proto.LoginSuccessWidget()
 
         widget_wrapper.widget.Unpack(login_success)
 
-        return login_success.Data.user_identity
+        return login_success.data.user_identity
 
 
 if __name__ == "__main__":

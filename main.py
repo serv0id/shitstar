@@ -52,12 +52,16 @@ class ShitStar(object):
             utils.dump_creds(self.login())
 
         logger.info("Attempting to load credentials..")
+
         credict = utils.get_creds()
+
         if not credict.get("user_token"):
             logger.error("Invalid credentials! Attempting to log in..")
-            self.login()
+            utils.dump_creds(self.login())
+        else:
+            self.user_token = credict.get("user_token")
 
-    def login(self) -> Any:
+    def login(self) -> dict:
         """
         Logs into Hotstar with phone number
         and OTP.
@@ -86,7 +90,12 @@ class ShitStar(object):
 
         login_response = ProtoHelper.parse_success_widget(s.content)
 
+        cred_dict = {
+            "user_token": login_response,
+            "mobile_number": self.mobile_number
+        }
 
+        return cred_dict
 
 
 @click.command()
