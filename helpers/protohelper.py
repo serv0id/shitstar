@@ -7,8 +7,6 @@ import blackboxprotobuf as bbpf
 
 
 class ProtoHelper(object):
-    def __init__(self):
-        pass
 
     @staticmethod
     def get_otp(phone: str) -> bytes:
@@ -61,8 +59,12 @@ class ProtoHelper(object):
         return freshstart.SerializeToString()
 
     @staticmethod
-    def parse_success_widget(content):
+    def parse_success_widget(content) -> str:
         success_otp = success_proto.LoginSuccessWidget()
+
+        success_otp.ParseFromString(content)
+
+        return success_otp.Data.user_identity
 
 
 if __name__ == "__main__":
