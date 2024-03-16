@@ -58,6 +58,7 @@ class ShitStar(object):
         if not credict.get("user_token"):
             logger.error("Invalid credentials! Attempting to log in..")
             utils.dump_creds(self.login())
+            logger.info(f"Saved token to {config.CREDFILE}")
         else:
             self.user_token = credict.get("user_token")
 

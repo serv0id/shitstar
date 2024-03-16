@@ -75,6 +75,7 @@ class ProtoHelper(object):
 
         widget_wrapper.widget.Unpack(login_success)
 
+        logger.debug("Successfully logged in!")
         return login_success.data.user_identity
 
 
