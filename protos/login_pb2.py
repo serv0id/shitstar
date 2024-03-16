@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0blogin.proto\"\xbf\x01\n\x08send_otp\x12&\n\x04\x62ody\x18\x01 \x01(\x0b\x32\x18.send_otp.outer_send_otp\x1aH\n\x0eouter_send_otp\x12\x12\n\nidentifier\x18\x01 \x01(\t\x12\"\n\tphone_num\x18\x02 \x01(\x0b\x32\x0f.send_otp.phone\x1a\x41\n\x05phone\x12\x0e\n\x06number\x18\x01 \x01(\t\x12\x18\n\x0bget_by_call\x18\x03 \x01(\x05H\x00\x88\x01\x01\x42\x0e\n\x0c_get_by_call\"\xaa\x02\n\nverify_otp\x12$\n\x04\x62ody\x18\x01 \x01(\x0b\x32\x16.verify_otp.outer_body\x1a\xf5\x01\n\nouter_body\x12\x12\n\nidentifier\x18\x01 \x01(\t\x12:\n\rphone_details\x18\x02 \x01(\x0b\x32#.verify_otp.outer_body.verify_phone\x1a\x96\x01\n\x0cverify_phone\x12\x0e\n\x06number\x18\x01 \x01(\t\x12\x0b\n\x03otp\x18\x03 \x01(\t\x12\x42\n\x06\x64\x65vice\x18\x06 \x01(\x0b\x32\x32.verify_otp.outer_body.verify_phone.device_details\x1a%\n\x0e\x64\x65vice_details\x12\x13\n\x0b\x64\x65vice_type\x18\x01 \x01(\t\"\xfa\x03\n\x0b\x66resh_start\x12\x0b\n\x03idk\x18\x02 \x01(\t\x12\x0f\n\x07version\x18\x06 \x01(\x05\x12\"\n\x01_\x18\x07 \x01(\x0b\x32\x17.fresh_start.inner_body\x1a\xa8\x03\n\ninner_body\x1al\n\tdevice_id\x12<\n\x01_\x18\x01 \x01(\x0b\x32\x31.fresh_start.inner_body.device_id.inner_device_id\x1a!\n\x0finner_device_id\x12\x0e\n\x06\x64\x65v_id\x18\x01 \x01(\t\x1a\x97\x01\n\x0f\x64\x65vice_id_other\x12H\n\x01_\x18\x02 \x01(\x0b\x32=.fresh_start.inner_body.device_id_other.inner_device_id_other\x1a:\n\x15inner_device_id_other\x12\x14\n\x0c\x64\x65v_id_other\x18\x01 \x01(\t\x12\x0b\n\x03idk\x18\x02 \x01(\x05\x1a\x91\x01\n\x0bsim_details\x12@\n\x01_\x18\x02 \x01(\x0b\x32\x35.fresh_start.inner_body.sim_details.inner_sim_details\x1a@\n\x11inner_sim_details\x12\x0b\n\x03isp\x18\x01 \x01(\t\x12\n\n\x02os\x18\x02 \x01(\t\x12\x12\n\nos_version\x18\x03 \x01(\tb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0blogin.proto\"\xbf\x01\n\x08send_otp\x12&\n\x04\x62ody\x18\x01 \x01(\x0b\x32\x18.send_otp.outer_send_otp\x1aH\n\x0eouter_send_otp\x12\x12\n\nidentifier\x18\x01 \x01(\t\x12\"\n\tphone_num\x18\x02 \x01(\x0b\x32\x0f.send_otp.phone\x1a\x41\n\x05phone\x12\x0e\n\x06number\x18\x01 \x01(\t\x12\x18\n\x0bget_by_call\x18\x03 \x01(\x05H\x00\x88\x01\x01\x42\x0e\n\x0c_get_by_call\"\xbb\x02\n\nverify_otp\x12$\n\x04\x62ody\x18\x01 \x01(\x0b\x32\x16.verify_otp.outer_body\x1a\x86\x02\n\nouter_body\x12\x12\n\nidentifier\x18\x01 \x01(\t\x12:\n\rphone_details\x18\x02 \x01(\x0b\x32#.verify_otp.outer_body.verify_phone\x1a\xa7\x01\n\x0cverify_phone\x12\x0e\n\x06number\x18\x01 \x01(\t\x12\x0b\n\x03otp\x18\x03 \x01(\t\x12\x0f\n\x07unknown\x18\x04 \x01(\x05\x12\x42\n\x06\x64\x65vice\x18\x06 \x01(\x0b\x32\x32.verify_otp.outer_body.verify_phone.device_details\x1a%\n\x0e\x64\x65vice_details\x12\x13\n\x0b\x64\x65vice_type\x18\x01 \x01(\tb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -27,27 +27,11 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_SEND_OTP_PHONE']._serialized_start=142
   _globals['_SEND_OTP_PHONE']._serialized_end=207
   _globals['_VERIFY_OTP']._serialized_start=210
-  _globals['_VERIFY_OTP']._serialized_end=508
+  _globals['_VERIFY_OTP']._serialized_end=525
   _globals['_VERIFY_OTP_OUTER_BODY']._serialized_start=263
-  _globals['_VERIFY_OTP_OUTER_BODY']._serialized_end=508
+  _globals['_VERIFY_OTP_OUTER_BODY']._serialized_end=525
   _globals['_VERIFY_OTP_OUTER_BODY_VERIFY_PHONE']._serialized_start=358
-  _globals['_VERIFY_OTP_OUTER_BODY_VERIFY_PHONE']._serialized_end=508
-  _globals['_VERIFY_OTP_OUTER_BODY_VERIFY_PHONE_DEVICE_DETAILS']._serialized_start=471
-  _globals['_VERIFY_OTP_OUTER_BODY_VERIFY_PHONE_DEVICE_DETAILS']._serialized_end=508
-  _globals['_FRESH_START']._serialized_start=511
-  _globals['_FRESH_START']._serialized_end=1017
-  _globals['_FRESH_START_INNER_BODY']._serialized_start=593
-  _globals['_FRESH_START_INNER_BODY']._serialized_end=1017
-  _globals['_FRESH_START_INNER_BODY_DEVICE_ID']._serialized_start=607
-  _globals['_FRESH_START_INNER_BODY_DEVICE_ID']._serialized_end=715
-  _globals['_FRESH_START_INNER_BODY_DEVICE_ID_INNER_DEVICE_ID']._serialized_start=682
-  _globals['_FRESH_START_INNER_BODY_DEVICE_ID_INNER_DEVICE_ID']._serialized_end=715
-  _globals['_FRESH_START_INNER_BODY_DEVICE_ID_OTHER']._serialized_start=718
-  _globals['_FRESH_START_INNER_BODY_DEVICE_ID_OTHER']._serialized_end=869
-  _globals['_FRESH_START_INNER_BODY_DEVICE_ID_OTHER_INNER_DEVICE_ID_OTHER']._serialized_start=811
-  _globals['_FRESH_START_INNER_BODY_DEVICE_ID_OTHER_INNER_DEVICE_ID_OTHER']._serialized_end=869
-  _globals['_FRESH_START_INNER_BODY_SIM_DETAILS']._serialized_start=872
-  _globals['_FRESH_START_INNER_BODY_SIM_DETAILS']._serialized_end=1017
-  _globals['_FRESH_START_INNER_BODY_SIM_DETAILS_INNER_SIM_DETAILS']._serialized_start=953
-  _globals['_FRESH_START_INNER_BODY_SIM_DETAILS_INNER_SIM_DETAILS']._serialized_end=1017
+  _globals['_VERIFY_OTP_OUTER_BODY_VERIFY_PHONE']._serialized_end=525
+  _globals['_VERIFY_OTP_OUTER_BODY_VERIFY_PHONE_DEVICE_DETAILS']._serialized_start=488
+  _globals['_VERIFY_OTP_OUTER_BODY_VERIFY_PHONE_DEVICE_DETAILS']._serialized_end=525
 # @@protoc_insertion_point(module_scope)

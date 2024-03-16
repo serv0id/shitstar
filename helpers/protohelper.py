@@ -3,6 +3,8 @@ from loguru import logger
 import protos.login_pb2 as login_proto
 import protos.v2.request.start_request_pb2 as start_proto
 import protos.widget.login_success_pb2 as success_proto
+import protos.v2.response.widget_response_pb2 as widget_response_proto
+import protos.v2.widget_pb2 as widget_proto
 import blackboxprotobuf as bbpf
 
 
@@ -32,6 +34,7 @@ class ProtoHelper(object):
         device_body.device_type = "Xiaomi Phone"
         verify_phone_body.number = phone
         verify_phone_body.otp = otp
+        verify_phone_body.unknown = 1
         verify_phone_body.device.CopyFrom(device_body)
 
         verify_body.identifier = "type.googleapis.com/feature.login.VerifyPhoneLoginRequest"
@@ -59,12 +62,18 @@ class ProtoHelper(object):
         return freshstart.SerializeToString()
 
     @staticmethod
-    def parse_success_widget(content) -> str:
-        success_otp = success_proto.LoginSuccessWidget()
+    def parse_success_widget(content: bytes) -> str:
+        widget_response = widget_response_proto.WidgetResponse()
+        widget_response.ParseFromString(content)
 
-        success_otp.ParseFromString(content)
+        widget_wrapper = widget_proto.WidgetWrapper()
+        widget_wrapper.CopyFrom(widget_response.success.widget_wrapper)
 
-        return success_otp.Data.user_identity
+        login_success = success_proto.LoginSuccessWidget()
+
+        widget_wrapper.widget.Unpack(login_success)
+
+        return login_success.Data.user_identity
 
 
 if __name__ == "__main__":

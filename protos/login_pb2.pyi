@@ -29,7 +29,7 @@ class verify_otp(_message.Message):
     class outer_body(_message.Message):
         __slots__ = ["identifier", "phone_details"]
         class verify_phone(_message.Message):
-            __slots__ = ["number", "otp", "device"]
+            __slots__ = ["number", "otp", "unknown", "device"]
             class device_details(_message.Message):
                 __slots__ = ["device_type"]
                 DEVICE_TYPE_FIELD_NUMBER: _ClassVar[int]
@@ -37,11 +37,13 @@ class verify_otp(_message.Message):
                 def __init__(self, device_type: _Optional[str] = ...) -> None: ...
             NUMBER_FIELD_NUMBER: _ClassVar[int]
             OTP_FIELD_NUMBER: _ClassVar[int]
+            UNKNOWN_FIELD_NUMBER: _ClassVar[int]
             DEVICE_FIELD_NUMBER: _ClassVar[int]
             number: str
             otp: str
+            unknown: int
             device: verify_otp.outer_body.verify_phone.device_details
-            def __init__(self, number: _Optional[str] = ..., otp: _Optional[str] = ..., device: _Optional[_Union[verify_otp.outer_body.verify_phone.device_details, _Mapping]] = ...) -> None: ...
+            def __init__(self, number: _Optional[str] = ..., otp: _Optional[str] = ..., unknown: _Optional[int] = ..., device: _Optional[_Union[verify_otp.outer_body.verify_phone.device_details, _Mapping]] = ...) -> None: ...
         IDENTIFIER_FIELD_NUMBER: _ClassVar[int]
         PHONE_DETAILS_FIELD_NUMBER: _ClassVar[int]
         identifier: str
@@ -50,52 +52,3 @@ class verify_otp(_message.Message):
     BODY_FIELD_NUMBER: _ClassVar[int]
     body: verify_otp.outer_body
     def __init__(self, body: _Optional[_Union[verify_otp.outer_body, _Mapping]] = ...) -> None: ...
-
-class fresh_start(_message.Message):
-    __slots__ = ["idk", "version", "_"]
-    class inner_body(_message.Message):
-        __slots__ = []
-        class device_id(_message.Message):
-            __slots__ = ["_"]
-            class inner_device_id(_message.Message):
-                __slots__ = ["dev_id"]
-                DEV_ID_FIELD_NUMBER: _ClassVar[int]
-                dev_id: str
-                def __init__(self, dev_id: _Optional[str] = ...) -> None: ...
-            __FIELD_NUMBER: _ClassVar[int]
-            _: fresh_start.inner_body.device_id.inner_device_id
-            def __init__(self, _: _Optional[_Union[fresh_start.inner_body.device_id.inner_device_id, _Mapping]] = ...) -> None: ...
-        class device_id_other(_message.Message):
-            __slots__ = ["_"]
-            class inner_device_id_other(_message.Message):
-                __slots__ = ["dev_id_other", "idk"]
-                DEV_ID_OTHER_FIELD_NUMBER: _ClassVar[int]
-                IDK_FIELD_NUMBER: _ClassVar[int]
-                dev_id_other: str
-                idk: int
-                def __init__(self, dev_id_other: _Optional[str] = ..., idk: _Optional[int] = ...) -> None: ...
-            __FIELD_NUMBER: _ClassVar[int]
-            _: fresh_start.inner_body.device_id_other.inner_device_id_other
-            def __init__(self, _: _Optional[_Union[fresh_start.inner_body.device_id_other.inner_device_id_other, _Mapping]] = ...) -> None: ...
-        class sim_details(_message.Message):
-            __slots__ = ["_"]
-            class inner_sim_details(_message.Message):
-                __slots__ = ["isp", "os", "os_version"]
-                ISP_FIELD_NUMBER: _ClassVar[int]
-                OS_FIELD_NUMBER: _ClassVar[int]
-                OS_VERSION_FIELD_NUMBER: _ClassVar[int]
-                isp: str
-                os: str
-                os_version: str
-                def __init__(self, isp: _Optional[str] = ..., os: _Optional[str] = ..., os_version: _Optional[str] = ...) -> None: ...
-            __FIELD_NUMBER: _ClassVar[int]
-            _: fresh_start.inner_body.sim_details.inner_sim_details
-            def __init__(self, _: _Optional[_Union[fresh_start.inner_body.sim_details.inner_sim_details, _Mapping]] = ...) -> None: ...
-        def __init__(self) -> None: ...
-    IDK_FIELD_NUMBER: _ClassVar[int]
-    VERSION_FIELD_NUMBER: _ClassVar[int]
-    __FIELD_NUMBER: _ClassVar[int]
-    idk: str
-    version: int
-    _: fresh_start.inner_body
-    def __init__(self, idk: _Optional[str] = ..., version: _Optional[int] = ..., _: _Optional[_Union[fresh_start.inner_body, _Mapping]] = ...) -> None: ...
