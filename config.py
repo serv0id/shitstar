@@ -3,14 +3,12 @@ OTP_ENDPOINT = "https://apix.hotstar.com/v2/pages/1/spaces/1/widgets/8"
 OTP_VERIFY_ENDPOINT = "https://apix.hotstar.com/v2/pages/1/spaces/1/widgets/9"
 GUEST_URL = "https://apix.hotstar.com/v2/freshstart"
 
-
 # Misc
 USER_AGENT = "User-Agent: Hotstar;in.startv.hotstar/23.09.11.19.9094 (Android/11)"
 PROTOBUF_CONTENT_TYPE = "application/x-protobuf"
 
 APP_VALUE = "9479"
 APP_VALUE_ID = "79e41556-971f-439d-abee-c74fabab3f02"
-
 
 # edit these values to match your own if needed
 HS_CLIENT = ("X-HS-Client: platform:android;app_id:in.startv.hotstar;app_version:23.09.11.19;os:Android;os_version:11"
@@ -19,10 +17,20 @@ HS_CLIENT_TARGETING = "ad_id:d5b2ce8c-7552-433e-9aac-ad9503a1c496;user_lat:false
 HS_PLATFORM = "android"
 HS_SCHEMA_VERSION = "0.0.1133"
 
+CLIENT_CAPABILITIES = {"package": ["dash", "hls"], "container": ["fmp4", "fmp4br", "ts"],
+                       "ads": ["non_ssai", "ssai", "sgai"], "audio_channel": ["stereo"],
+                       "encryption": ["plain", "widevine"], "video_codec": ["h264", "h265", "vp9"],
+                       "video_codec_non_secure": ["h264", "h265", "vp9"], "ladder": ["phone", "tv"],
+                       "resolution": ["sd", "hd", "fhd"], "true_resolution": ["sd", "hd", "fhd"],
+                       "dynamic_range": ["sdr"]}
+
+DRM_CAPABILITIES_WV = {"widevine_security_level": ["HW_SECURE_DECODE", "HW_SECURE_ALL"],
+                       "hdcp_version": ["HDCP_V2_3"]}  # Google Widevine
+DRM_CAPABILITIES_PR = {}  # Microsoft PlayReady
+DRM_CAPABILITIES_FP = {}  # Apple Fairplay
 
 # Secrets
 HSAUTH_ENCRYPTION_KEY = b"\x05\xfc\x1a\x01\xca\xc9\x4b\xc4\x12\xfc\x53\x12\x07\x75\xf9\xee"
-
 
 # Paths
 CREDFILE = "token.json"

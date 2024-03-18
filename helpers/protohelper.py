@@ -48,11 +48,11 @@ class ProtoHelper(object):
         freshstart = start_proto.StartRequest()
         freshstart.app_launch_count = 1
 
-        devid = start_proto.StartRequest.DeviceInfo.DeviceId()
-        devid.id = device_id
-        devid.type = start_proto.StartRequest.DeviceInfo.DeviceIdType.DEVICE_ID
+        dev_id = start_proto.StartRequest.DeviceInfo.DeviceId()
+        dev_id.id = device_id
+        dev_id.type = start_proto.StartRequest.DeviceInfo.DeviceIdType.DEVICE_ID
 
-        freshstart.device_info.device_ids.add().CopyFrom(devid)
+        freshstart.device_info.device_ids.add().CopyFrom(dev_id)
 
         freshstart.device_info.device_meta.network_operator = "airtel"  # Sample
         freshstart.device_info.device_meta.os_name = "Android"
@@ -82,7 +82,6 @@ class ProtoHelper(object):
     @staticmethod
     def parse_search_page(content: bytes) -> dict:
         pass
-
 
 
 if __name__ == "__main__":

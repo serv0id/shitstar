@@ -1,7 +1,6 @@
 import hashlib
 import hmac
 import json
-import secrets
 import time
 import uuid
 
@@ -61,8 +60,8 @@ def dump_creds(creds: dict) -> None:
 
 def get_guest_token(session: requests.Session, device_id: str) -> str:
     resp = session.post(url=config.GUEST_URL, params={
-        "client_capabilities": '{"package":["dash","hls"],"container":["fmp4","fmp4br","ts"],"ads":["non_ssai","ssai","sgai"],"audio_channel":["stereo"],"encryption":["plain","widevine"],"video_codec":["h264","h265","vp9"],"video_codec_non_secure":["h264","h265","vp9"],"ladder":["phone","tv"],"resolution":["sd","hd","fhd"],"true_resolution":["sd","hd","fhd"],"dynamic_range":["sdr"]}',
-        "drm_parameters": '{"widevine_security_level":["HW_SECURE_DECODE","HW_SECURE_ALL"],"hdcp_version":["HDCP_V2_3"]}',
+        "client_capabilities": config.CLIENT_CAPABILITIES,
+        "drm_parameters": config.DRM_CAPABILITIES_WV,
         "subs": "null",
         "login": "UNKNOWN"
     }, headers={
