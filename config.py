@@ -11,6 +11,7 @@ PROTOBUF_CONTENT_TYPE = "application/x-protobuf"
 APP_VALUE = "9479"
 APP_VALUE_ID = "79e41556-971f-439d-abee-c74fabab3f02"
 
+
 # edit these values to match your own if needed
 HS_CLIENT = ("X-HS-Client: platform:android;app_id:in.startv.hotstar;app_version:23.09.11.19;os:Android;os_version:11"
              ";schema_version:0.0.1017;brand:Xiaomi;model:Redmi Note 6 Pro;carrier:airtel;network_data:UNKNOWN")

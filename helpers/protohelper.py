@@ -4,6 +4,7 @@ import protos.v2.request.start_request_pb2 as start_proto
 import protos.widget.login_success_pb2 as success_proto
 import protos.v2.response.widget_response_pb2 as widget_response_proto
 import protos.v2.widget_pb2 as widget_proto
+import protos.pagedata.search_pb2 as search_proto
 
 
 class ProtoHelper(object):
@@ -77,6 +78,11 @@ class ProtoHelper(object):
 
         logger.debug("Successfully logged in!")
         return login_success.data.user_identity
+
+    @staticmethod
+    def parse_search_page(content: bytes) -> dict:
+        pass
+
 
 
 if __name__ == "__main__":

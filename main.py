@@ -98,6 +98,9 @@ class ShitStar(object):
 
         return cred_dict
 
+    def search_title(self) -> dict:
+        pass
+
 
 @click.command()
 @click.option('--refresh', is_flag=True, help='Refresh access token')
@@ -106,6 +109,7 @@ class ShitStar(object):
 def main(title_id: str, refresh: bool) -> None:
     logger.info("Welcome to 💩⭐")
     shitstar = ShitStar(title_id, refresh)
+    shitstar.search_title()
 
 
 if __name__ == "__main__":
