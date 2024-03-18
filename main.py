@@ -1,4 +1,5 @@
 import sys
+import time
 import uuid
 
 import requests
@@ -15,11 +16,24 @@ NoneType = type(None)
 
 
 class ShitStar(object):
-    def __init__(self, title_id, refresh):
+    def __init__(self, title_id, refresh, search, manifest):
+        """
+        Initialise the ShitStar class
+        :param title_id:
+        :param refresh:
+        :param search:
+        :param manifest:
+        """
         self.session = requests.Session()
 
         self.title_id = title_id
         self.refresh = refresh
+        self.search = search
+        self.manifest_type = manifest
+
+        if not ((self.title_id is not None) ^ (self.search is not None)):
+            logger.error("Please specify only either a Title ID or a search parameter!")
+            exit(0)
 
         self.device_id = utils.get_device_id()
         self.mobile_number = creds.PHONE_NUMBER
@@ -45,7 +59,7 @@ class ShitStar(object):
         """
         Sets authentication credentials. If not cached,
         logs in to the service.
-        :return:
+        :return: None
         """
         if self.refresh:
             logger.debug("Refreshing token..")
@@ -93,7 +107,8 @@ class ShitStar(object):
 
         cred_dict = {
             "user_token": login_response,
-            "mobile_number": self.mobile_number
+            "mobile_number": self.mobile_number,
+            "time": int(time.time())
         }
 
         return cred_dict
@@ -103,12 +118,14 @@ class ShitStar(object):
 
 
 @click.command()
-@click.option('--refresh', is_flag=True, help='Refresh access token')
-@click.argument("title_id")
+@click.option('-r', '--refresh', is_flag=True, help='Refresh access token')
+@click.option('-s', '--search', help='Search for a title')
+@click.option('-m', '--manifest', type=click.Choice(['DASH', 'MSS', 'HLS']), required=True, help='Retrieve manifest type')
+@click.option('-t', '--title-id', help="ID for the title")
 @logger.catch
-def main(title_id: str, refresh: bool) -> None:
+def main(title_id: str, manifest: str, refresh: bool = False, search: bool = False) -> None:
     logger.info("Welcome to 💩⭐")
-    shitstar = ShitStar(title_id, refresh)
+    shitstar = ShitStar(title_id, refresh, search, manifest)
     shitstar.search_title()
 
 
