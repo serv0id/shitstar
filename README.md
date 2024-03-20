@@ -14,10 +14,13 @@ pip install -r requirements.txt
 ```python
 PHONE_NUMBER = "PHONE NUMBER LINKED TO ACCOUNT"
 ```
-* Run main.py
+* Run main.py to log in to your account and save the access token
 ```commandline
 python main.py
 ```
+
+## Usage
+* Once your account access token has been saved successfully, you are good to go ahead and start using ShitStar for title manifest retrieval.
 
 ## ToDo
 * Implement a search API if needed
