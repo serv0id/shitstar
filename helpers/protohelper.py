@@ -4,7 +4,8 @@ import protos.v2.request.start_request_pb2 as start_proto
 import protos.widget.login_success_pb2 as success_proto
 import protos.v2.response.widget_response_pb2 as widget_response_proto
 import protos.v2.widget_pb2 as widget_proto
-import protos.pagedata.search_pb2 as search_proto
+import protos.v2.response.page_response_pb2 as page_response_proto
+import protos.v2.page_pb2 as page_proto
 
 
 class ProtoHelper(object):
@@ -81,7 +82,13 @@ class ProtoHelper(object):
 
     @staticmethod
     def parse_search_page(content: bytes) -> dict:
-        pass
+        page_response = page_response_proto.PageResponse()
+        page_response.ParseFromString(content)
+
+        page_wrapper = page_proto.Page()
+        page_wrapper.CopyFrom(page_response.success.page)
+
+        #logger.info(page_wrapper.)
 
 
 if __name__ == "__main__":

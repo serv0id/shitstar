@@ -60,6 +60,11 @@ class ShitStar(object):
             "X-HS-Usertoken": self.user_token
         })
 
+        if self.title_id is not None:
+            self.get_manifest()
+        else:
+            self.search_title()
+
     def set_auth(self) -> None:
         """
         Sets authentication credentials. If not cached,
@@ -118,20 +123,23 @@ class ShitStar(object):
     def search_title(self) -> dict:
         s = self.session.get(url=config.SEARCH_URL, params={
             "search_query": self.search,
-            # "referrer_props": ""
         })
 
-        print(s.content)
+        # print(s.content.hex())
         return {}
 
     def get_manifest(self) -> None:
         s = self.session.get(url=config.WATCH_URL, params={
-             "content_id": self.title_id,
-             "client_capabilities": config.CLIENT_CAPABILITIES,
-             "drm_parameters": config.DRM_CAPABILITIES_WV
-         })
+            "content_id": self.title_id,
+            "filters": "content_type=movie",
+            "client_capabilities": config.CLIENT_CAPABILITIES,
+            "drm_parameters": config.DRM_CAPABILITIES_WV
+         }, headers={
+            "app_name": "android",
+            "hotstarauth": utils.get_hs_auth()
+        })
 
-        print(s.content)
+        # print(s.content)
 
 
 @click.command()
@@ -143,7 +151,6 @@ class ShitStar(object):
 def main(title_id: str, manifest: str, refresh: bool = False, search: bool = False) -> None:
     logger.info("Welcome to 💩⭐")
     shitstar = ShitStar(title_id, refresh, search, manifest)
-    shitstar.search_title()
 
 
 if __name__ == "__main__":

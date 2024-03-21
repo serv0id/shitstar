@@ -13,10 +13,10 @@ APP_VALUE = "9479"
 APP_VALUE_ID = "79e41556-971f-439d-abee-c74fabab3f02"
 
 # edit these values to match your own if needed
-HS_CLIENT = ("X-HS-Client: platform:android;app_id:in.startv.hotstar;app_version:24.01.29.6;os:Android;os_version:13;"
+HS_CLIENT = ("platform:android;app_id:in.startv.hotstar;app_version:24.01.29.6;os:Android;os_version:13;"
              "schema_version:0.0.1133;brand:Xiaomi;model:Redmi Note 12 4G;carrier:airtel;network_data:NETWORK_TYPE_WIFI")
 HS_CLIENT_TARGETING = "ad_id:d5b2ce8c-7552-433e-9aac-ad9503a1c496;user_lat:false;hw_id:43fdd27a0f0eb904"
-HS_PLATFORM = "android"
+HS_PLATFORM = "androidtv"
 HS_SCHEMA_VERSION = "0.0.1133"
 FP_SAMPLE_VALUE = ('MDA3MGYyZTAtZGYxMS00ODhjLThlNmItYjczYmEwNjNhYjIz.BPicufgJ44ZZHXqTv8pNoJXgX2WYShUBEW8vws'
                    '__IjBu1VBsW5t32-Q0A8EFjVP0Wl7fvAEIDtfDMTqUQHJ5bNIRd9uO6-6mviC7-Axb9ZSwD3VCAclSrxGotyIgc'
@@ -36,16 +36,17 @@ FP_SAMPLE_VALUE = ('MDA3MGYyZTAtZGYxMS00ODhjLThlNmItYjczYmEwNjNhYjIz.BPicufgJ44Z
                    'ydcs50L2sr5FkOoLA1Gnj4hitW5LZQUJpY7YqzYllFi5z99711aAfHcLH3M7EdCo0GaM')
 
 
-CLIENT_CAPABILITIES = {"package": ["dash", "hls"], "container": ["fmp4", "fmp4br", "ts"],
-                       "ads": ["non_ssai", "ssai", "sgai"], "audio_channel": ["stereo"],
-                       "encryption": ["plain", "widevine"], "video_codec": ["h264", "h265", "vp9"],
-                       "video_codec_non_secure": ["h264", "h265", "vp9"], "ladder": ["phone", "tv"],
-                       "resolution": ["sd", "hd", "fhd"], "true_resolution": ["sd", "hd", "fhd"],
-                       "dynamic_range": ["sdr"]}
+CLIENT_CAPABILITIES = ('{"package": ["dash", "hls"], "container": ["fmp4", "fmp4br", "ts"],'
+                       '"ads": ["non_ssai", "ssai"], "audio_channel": ["stereo","dolby51","atmos"],'
+                       '"encryption": ["plain", "widevine"], "video_codec": ["h265"],'
+                       '"ladder": ["phone", "tv"],'
+                       '"resolution": ["sd","hd","fhd","4k"], "true_resolution": ["sd","hd","fhd","4k"],'
+                       '"dynamic_range": ["sdr", "hdr10"]}')
 
-DRM_CAPABILITIES_WV = {"widevine_security_level": ["HW_SECURE_DECODE", "HW_SECURE_ALL"],
-                       "hdcp_version": ["HDCP_V2_3"]}  # Google Widevine
-DRM_CAPABILITIES_PR = {}  # Microsoft PlayReady
+DRM_CAPABILITIES_WV = ('{"widevine_security_level": ["HW_SECURE_DECODE", "HW_SECURE_ALL"],'
+                       '"hdcp_version": ["HDCP_V2_3"]}')  # Google Widevine
+DRM_CAPABILITIES_PR = ('{"playready_security_level": ["HW_SECURE_DECODE", "HW_SECURE_ALL"],'
+                       '"hdcp_version": ["HDCP_V2_3"]}')  # Microsoft PlayReady
 DRM_CAPABILITIES_FP = {}  # Apple Fairplay
 
 # Secrets

@@ -23,7 +23,6 @@ python main.py
 Once your account access token has been saved successfully, you are good to go ahead and start using ShitStar for title manifest retrieval.
 
 ## ToDo
-* Implement a search API if needed
-* Implement manifest retrieval
-* Implement licensing if necessary
+* Parse search response
+* Parse manifest response
 * Tidy code
