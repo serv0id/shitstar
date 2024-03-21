@@ -54,6 +54,11 @@ class ShitStar(object):
         })
 
         self.set_auth()
+        self.user_token = utils.get_creds().get('user_token')
+
+        self.session.headers.update({
+            "X-HS-Usertoken": self.user_token
+        })
 
     def set_auth(self) -> None:
         """
@@ -73,8 +78,6 @@ class ShitStar(object):
             logger.error("Invalid credentials! Attempting to log in..")
             utils.dump_creds(self.login())
             logger.info(f"Saved token to {config.CREDFILE}")
-        else:
-            self.user_token = credict.get("user_token")
 
     def login(self) -> dict:
         """
@@ -113,7 +116,22 @@ class ShitStar(object):
         return cred_dict
 
     def search_title(self) -> dict:
-        pass
+        s = self.session.get(url=config.SEARCH_URL, params={
+            "search_query": self.search,
+            # "referrer_props": ""
+        })
+
+        print(s.content)
+        return {}
+
+    def get_manifest(self) -> None:
+        s = self.session.get(url=config.WATCH_URL, params={
+             "content_id": self.title_id,
+             "client_capabilities": config.CLIENT_CAPABILITIES,
+             "drm_parameters": config.DRM_CAPABILITIES_WV
+         })
+
+        print(s.content)
 
 
 @click.command()

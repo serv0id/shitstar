@@ -2,6 +2,8 @@
 OTP_ENDPOINT = "https://apix.hotstar.com/v2/pages/1/spaces/1/widgets/8"
 OTP_VERIFY_ENDPOINT = "https://apix.hotstar.com/v2/pages/1/spaces/1/widgets/9"
 GUEST_URL = "https://apix.hotstar.com/v2/freshstart"
+SEARCH_URL = "https://apix.hotstar.com/v2/pages/search"
+WATCH_URL = "https://apix.hotstar.com/v2/pages/watch"
 
 # Misc
 USER_AGENT = "Hotstar;in.startv.hotstar/24.01.29.6.9479 (Android/13)"

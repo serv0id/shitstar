@@ -20,7 +20,7 @@ python main.py
 ```
 
 ## Usage
-* Once your account access token has been saved successfully, you are good to go ahead and start using ShitStar for title manifest retrieval.
+Once your account access token has been saved successfully, you are good to go ahead and start using ShitStar for title manifest retrieval.
 
 ## ToDo
 * Implement a search API if needed
