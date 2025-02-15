@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message CurrentPlanWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        string subtitle = 2;
+        string description = 3;
+        string info = 4;
+        string subinfo = 5;
+    }
+}

@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package widget;
+
+import "feature/image/image.proto";
+import "feature/payment/validations.proto";
+import "feature/payment/restrictions.proto";
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "widget/payment_method_commons.proto";
+import "widget/divider.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PaymentMethodUpiWidget {
+    base.WidgetCommons widget_commons = 1;
+    string title = 11;
+    
+    Input vpa = 12;
+    message Input {
+        string title = 1;
+        string placeholder = 2;
+        repeated feature.payment.Validation validations = 3;
+        repeated feature.payment.Restriction restrictions = 4;
+        feature.image.Image image = 5;
+        repeated base.Actions.Action auto_triggered_actions = 6;
+        repeated string suggestions = 7;
+    }
+    
+    Cta cta = 13;
+    message Cta {
+        string text = 11;
+        string icon_name = 12;
+        base.Actions action = 13 [deprecated = true];
+        repeated base.Actions.Action actions = 14;
+    }
+    
+    QRMeta qr_meta = 14;
+    message QRMeta {
+        string title = 1;
+        string sub_title = 2;
+        feature.image.Image image = 3;
+        Timer timer = 4;
+        repeated Link links = 5;
+        Cta cta = 6;
+        repeated base.Actions.Action auto_triggered_actions = 7;
+    }
+    
+    AppTimer app_timer = 15;
+    message AppTimer {
+        Timer timer = 1;
+        string title = 2;
+        string sub_title = 3;
+        string warning = 4;
+        repeated base.Actions.Action auto_triggered_actions = 5;
+    }
+    
+    string divider = 16 [deprecated = true];
+    QRMeta fallback_qr_meta = 17;
+    PaymentMethodCommonsWidget payment_method_meta = 18;
+    repeated base.Actions.Action auto_triggered_actions = 19;
+    DividerWidget divider_widget = 20;
+    
+    reserved 2 to 10;
+    
+    message Link {
+        string label = 11;
+        string url = 12;
+        string key = 13;
+    }
+    
+    message Timer {
+        string text = 11;
+        string sub_text = 12;
+        int64 timeoutInMS = 13;
+        string icon = 14;
+        int64 polling_inverval_in_MS = 15;
+        base.Actions success_action = 16;
+        base.Actions timeout_action = 17;
+        string key = 18;
+    }
+}

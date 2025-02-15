@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package client.crm.model;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/crm/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.crm.model";
+
+enum PageType {
+    PAGE_TYPE_UNSPECIFIED = 0;
+    PAGE_TYPE_HOME = 1;
+    PAGE_TYPE_SEARCH = 2;
+    PAGE_TYPE_TICKET = 3;
+    PAGE_TYPE_CATEGORY_DETAIL = 4;
+    PAGE_TYPE_ARTICLE_DETAIL = 5;
+    PAGE_TYPE_LANG_PREF = 6;
+    PAGE_TYPE_UPLOAD_FILES = 7;
+    PAGE_TYPE_CANCEL_SUBS = 8;
+    PAGE_TYPE_FEEDBACK = 9;
+    PAGE_TYPE_NOT_FOUND = 10;
+    PAGE_TYPE_REFUND_OFFER = 11;
+}

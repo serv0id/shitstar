@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package api.feature.app;
+
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/feature/app";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.feature.app";
+
+message App {
+    string name = 1;
+    string version = 2;
+    int32 build = 3;
+    
+    Library library = 4;
+    message Library {
+        string name = 1;
+        string version = 2;
+    }
+    
+    string app_id = 5;
+    bool is_spoofing_enabled = 6;
+}

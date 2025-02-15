@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message HorizontalMediumContentPosterWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image image = 1;
+        base.Actions actions = 2;
+        LiveBadge live_badge = 3;
+    }
+    
+    reserved 1, 3 to 10;
+    
+    message LiveBadge {
+        feature.image.Image text_image = 1;
+    }
+}

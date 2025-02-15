@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package client;
+
+import "client/player/model/playback_mode_info.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client";
+
+message ChangeCaptionSetting {
+    string previous_language = 1;
+    string new_language = 2;
+    player.model.PlayerOrientation player_orientation = 3;
+    bool is_casting = 4;
+    string player_version = 5;
+}

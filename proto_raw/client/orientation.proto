@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package client;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client";
+
+enum Orientation {
+    ORIENTATION_UNSPECIFIED = 0;
+    ORIENTATION_PORTRAIT = 1;
+    ORIENTATION_LANDSCAPE = 2;
+}

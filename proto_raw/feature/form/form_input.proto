@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package feature.form;
+
+import "feature/form/form_data.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/form";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.form";
+
+message FormInput {
+    string form_input_id = 1;
+    FormData form_data = 2;
+}

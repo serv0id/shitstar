@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package feature.request;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/request";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.request";
+
+message HttpRequestCommons {
+    string url = 1;
+    
+    HttpRequestType request_type = 2;
+    enum HttpRequestType {
+        GET = 0;
+        POST = 1;
+        PUT = 2;
+    }
+    
+    repeated HttpHeader headers = 3;
+    message HttpHeader {
+        string key = 1;
+        string value = 2;
+    }
+    
+    bytes body = 4;
+    bool attach_default_headers = 5;
+}

@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package feature.motion_system;
+
+import "feature/motion_system/dynamic_visual_asset_name.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/motion_system";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.motion_system";
+
+message DynamicVisualAssetConfig {
+    DynamicVisualAssetName name = 1;
+    bool is_immediate = 2;
+    bool remove_when_paused = 3;
+    bool is_infinite = 4;
+    
+    DynamicVisaualAssetPriorityOrder priority_order = 5;
+    enum DynamicVisaualAssetPriorityOrder {
+        UNSPECIFIED_PRIORITY_ORDER = 0;
+        P_ONE = 1;
+        P_TWO = 2;
+        P_THREE = 3;
+        P_FOUR = 4;
+        P_FIVE = 5;
+    }
+    
+    DynamicVisualAssetCategory category = 6;
+    enum DynamicVisualAssetCategory {
+        UNSPECIFIED_CATEGORY = 0;
+        HEAVY = 1;
+        MEDIUM = 2;
+        LIGHT = 3;
+    }
+}

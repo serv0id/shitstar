@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package feature.subscription;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/subscription";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.subscription";
+
+message PaywallImpressionPayload {
+    string journey = 1 [deprecated = true];
+    string source = 2 [deprecated = true];
+    string packId = 3 [deprecated = true];
+    Params params = 4;
+    Meta meta = 5;
+}
+
+message Params {
+    string journey = 1;
+    string pack_id = 2;
+}
+
+message Meta {
+    string source = 1;
+    string use_case = 2;
+}

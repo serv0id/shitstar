@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package component.content;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/content";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message ContentCalloutTag {
+    string name = 1;
+    string category = 2;
+    string format = 3;
+    string position = 4;
+}

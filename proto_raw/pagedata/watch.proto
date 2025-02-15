@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package pagedata;
+
+import "base/page_data_commons.proto";
+import "base/actions.proto";
+import "feature/watch/watch_ab_config.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/pagedata";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.pagedata";
+
+message WatchPageData {
+    base.PageDataCommons page_data_commons = 1;
+    
+    PlayerReportMenuData report_data = 2;
+    message PlayerReportMenuData {
+        string title = 1;
+        repeated PlayerReportMenuItem report_options = 2;
+    }
+    
+    feature.watch.WatchConfig watch_config = 3;
+    map<string, base.Actions.Action> page_event_actions = 4;
+    
+    message PlayerReportMenuItem {
+        string icon_name = 1;
+        string title = 2;
+        string description = 3;
+        string result = 4;
+        PlayerReportItemType type = 5;
+    }
+    
+    enum PlayerReportItemType {
+        UNKNOWN = 0;
+        BUFFERING_CONNECTION = 1;
+        VIDEO_QUALITY = 2;
+        AUDIO_QUALITY = 3;
+        SUBTITLES_CAPTIONS = 4;
+    }
+}

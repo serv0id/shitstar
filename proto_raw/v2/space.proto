@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package v2;
+
+import "v2/widget.proto";
+import "v2/refresh_space.proto";
+import "google/protobuf/any.proto";
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2";
+
+message Space {
+    string id = 1;
+    string template = 2;
+    string version = 3;
+    repeated WidgetWrapper widget_wrappers = 4;
+    google.protobuf.Any data = 5;
+    
+    SpaceDeliveryType delivery_type = 6 [deprecated = true];
+    enum SpaceDeliveryType {
+        STATIC = 0;
+        DYNAMIC = 1;
+    }
+    
+    RefreshSpaceRequest dynamic_space_request = 7 [deprecated = true];
+    DeferredSpaceRequest deferred_space_request = 8;
+}

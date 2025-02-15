@@ -1,0 +1,110 @@
+syntax = "proto3";
+
+package client.watch;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message PreloadPlaybackProperties {
+    message PreloadFailureData {
+        option deprecated = false;
+        PreloadFailureType type = 1;
+        PreloadFailureReason reason = 2;
+    }
+    
+    message PreloadStatus {
+        option deprecated = false;
+        PreloadEligibility preload_eligibility = 1;
+        
+        oneof preload_result {
+            PreloadSuccessType preload_success_type = 2;
+            PreloadFailureData preload_failure_data = 3;
+        }
+    }
+    
+    message PreloadConfig {
+        bool multiplayer_preload_enabled = 1;
+        bool manifest_preload_enabled = 2;
+        bool proxy_server_enabled = 3;
+    }
+    
+    message PreloadPhaseChange {
+        PreloadPhase from_phase = 1;
+        PreloadPhase to_phase = 2;
+        bool is_successful = 3;
+        PreloadFailureReason failure_reason = 4;
+        string content_id = 5 [deprecated = true];
+        PreloadConfig config = 6;
+        PreloadDataType consumed_data_type = 7;
+        int64 transformed_bytes = 8 [deprecated = true];
+        int64 data_size_bytes = 9;
+    }
+    
+    enum PreloadEligibility {
+        option deprecated = false;
+        PRELOAD_ELIGIBILITY_UNSPECIFIED = 0;
+        PRELOAD_ELIGIBILITY_NOT_ELIGIBLE = 1;
+        PRELOAD_ELIGIBILITY_ONLY_BFF = 2;
+        PRELOAD_ELIGIBILITY_BFF_AND_PLAYBACK = 3;
+    }
+    
+    enum PreloadSuccessType {
+        option deprecated = false;
+        PRELOAD_SUCCESS_TYPE_UNSPECIFIED = 0;
+        PRELOAD_SUCCESS_TYPE_BFF = 1;
+        PRELOAD_SUCCESS_TYPE_PLAYBACK = 2;
+    }
+    
+    enum PreloadFailureType {
+        option deprecated = false;
+        PRELOAD_FAILURE_TYPE_UNSPECIFIED = 0;
+        PRELOAD_FAILURE_TYPE_BFF = 1;
+        PRELOAD_FAILURE_TYPE_PLAYBACK_DATA = 2;
+        PRELOAD_FAILURE_TYPE_PREEMPTIVE = 3 [deprecated = true];
+        PRELOAD_FAILURE_TYPE_EXITED = 4 [deprecated = true];
+    }
+    
+    enum PreloadPhase {
+        PRELOAD_PHASE_UNSPECIFIED = 0;
+        PRELOAD_PHASE_INITIAL = 1;
+        PRELOAD_PHASE_ELLIGIBLE = 2 [deprecated = true];
+        PRELOAD_PHASE_BFF_TRIGGERED = 3;
+        PRELOAD_PHASE_BFF_FETCHED = 4;
+        PRELOAD_PHASE_PLAYBACK_PRELOADED = 5;
+        PRELOAD_PHASE_PLAYBACK_CONSUMED = 6 [deprecated = true];
+        PRELOAD_PHASE_ELIGIBLE = 7;
+        PRELOAD_PHASE_CONSUMED = 8;
+    }
+    
+    enum PreloadFailureReason {
+        PRELOAD_FAILURE_REASON_UNSPECIFIED = 0;
+        PRELOAD_FAILURE_REASON_COMMON = 1;
+        PRELOAD_FAILURE_REASON_PREEMPTIVE = 2;
+        PRELOAD_FAILURE_REASON_EXITED = 3;
+        PRELOAD_FAILURE_REASON_BFF_REQUEST_ERROR = 4;
+        PRELOAD_FAILURE_REASON_PLAYBACK_REQUEST = 5 [deprecated = true];
+        PRELOAD_FAILURE_REASON_PLAYBACK_EXPIRED = 6;
+        PRELOAD_FAILURE_REASON_PLAYBACK_ERROR = 7;
+        PRELOAD_FAILURE_REASON_PLAYBACK_NETWORK_ERROR = 8;
+        PRELOAD_FAILURE_REASON_OFFLINE_PLAYBACK_ERROR = 9;
+        PRELOAD_FAILURE_REASON_WRONG_VIDEO_TYPE = 10;
+        PRELOAD_FAILURE_REASON_MISMATCHED_VIDEO_QUALITY = 11;
+        PRELOAD_FAILURE_REASON_MISMATCHED_AUIDO = 12 [deprecated = true];
+        PRELOAD_FAILURE_REASON_MISMATCHED_SUBTITLE = 13;
+        PRELOAD_FAILURE_REASON_APP_KILLED = 14;
+        PRELOAD_FAILURE_REASON_PAGE_REFRESHED = 15;
+        PRELOAD_FAILURE_REASON_MISMATCHED_AUDIO = 16;
+    }
+    
+    enum PreloadDataType {
+        PRELOAD_DATA_TYPE_UNSPECIFIED = 0;
+        PRELOAD_DATA_TYPE_BFF = 1;
+        PRELOAD_DATA_TYPE_PLAYBACK = 2;
+    }
+}
+
+message WatchPreloadProperties {
+    PreloadPlaybackProperties.PreloadPhaseChange preload_phase_change = 1;
+    string cid = 2;
+}

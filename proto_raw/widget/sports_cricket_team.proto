@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+import "widget/sports_cricket_player.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message CricketTeam {
+    string name = 1;
+    feature.image.Image icon = 2;
+    string score_title = 3;
+    string score_subtitle = 4;
+    
+    repeated KeyPlayerStats key_player_stats = 5;
+    message KeyPlayerStats {
+        CricketPlayer player = 1;
+        string stats = 2;
+    }
+    
+    string latest_desc = 6;
+    bool is_batting = 7;
+}

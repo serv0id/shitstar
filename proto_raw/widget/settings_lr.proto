@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/cancel_subscription.proto";
+import "base/actions.proto";
+import "widget/dialog.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message SettingsLRWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        repeated Item items = 1;
+        LogoutButton logout_button = 2;
+    }
+    
+    reserved 2 to 10;
+    
+    message Item {
+        oneof item {
+            Setting setting = 1;
+            CancelSubscriptionWidget cancel_subscription = 2;
+            Footer footer = 3;
+        }
+    }
+    
+    message LogoutButton {
+        string text = 1;
+        base.Actions actions = 2;
+        DialogWidget dialog = 3;
+    }
+    
+    message Setting {
+        string title = 1;
+        SubText sub_text = 2;
+    }
+    
+    message SubText {
+        string text = 1;
+        repeated ListItem list = 2;
+        LinkText link_text = 3;
+    }
+    
+    message LinkText {
+        string label = 1;
+        string link = 2;
+    }
+    
+    message ListItem {
+        string bullet = 1;
+        string text = 2;
+    }
+    
+    message Footer {
+        repeated LinkText text = 1;
+        string description = 2;
+        string app_version_text = 3;
+    }
+}

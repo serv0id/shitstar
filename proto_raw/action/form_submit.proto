@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package action;
+
+import "context/form_context.proto";
+import "feature/form/form_input.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message FormSubmitAction {
+    string url = 1;
+    context.FormContext form_context = 2;
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package action;
+
+import "feature/tooltip/arrow_alignment.proto";
+import "feature/tooltip/content_spread.proto";
+import "feature/tooltip/arrow_position.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message ShowTooltipAction {
+    string message = 1;
+    feature.tooltip.ArrowAlignment preferred_arrow_alignment = 2;
+    feature.tooltip.ContentSpread content_spread = 3;
+    feature.tooltip.ArrowPosition arrow_position = 4;
+}

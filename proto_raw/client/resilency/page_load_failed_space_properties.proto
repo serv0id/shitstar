@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package client.resilency;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/resilency";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.resilency";
+
+message PageLoadFailedSpaceProperties {
+    string failed_space_template = 1;
+    repeated string failed_widgets_templates = 2;
+}

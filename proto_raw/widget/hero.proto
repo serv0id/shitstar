@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/image/illustration.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message HeroWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Illustration illustration = 1;
+        string title = 2;
+        string sub_title = 3;
+        bool should_animate_content = 4;
+        string over_sheet_lottie_name = 5;
+        WidgetConfig widget_config = 6;
+        string subtitle_color = 7;
+        feature.image.Image bg_image = 8;
+    }
+    
+    reserved 3 to 10;
+    
+    message WidgetConfig {
+        WidgetAlignment widget_alignment = 1;
+    }
+    
+    enum WidgetAlignment {
+        DEFAULT = 0;
+        CENTER = 1;
+        LEFT = 2;
+    }
+}

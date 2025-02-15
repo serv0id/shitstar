@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "feature/atom/button.proto";
+import "feature/callout_tag/callout_tag.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message MediaContentInfoLargeWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image title_cutout = 1;
+        repeated feature.callout_tag.CalloutTag call_out_tags = 2;
+        repeated feature.callout_tag.CalloutTag limit_tags = 3;
+        string description = 4;
+        feature.atom.Button kebab = 5;
+    }
+    
+    reserved 2 to 10;
+}

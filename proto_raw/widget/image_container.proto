@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ImageContainerWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        Thumbnail thumbnail = 1;
+    }
+    
+    reserved 3 to 10;
+    
+    message Thumbnail {
+        feature.image.Image image = 1;
+        Shape shape = 2;
+        feature.image.Image tablet_image = 3;
+    }
+    
+    enum Shape {
+        RECTANGULAR = 0;
+        CIRCULAR = 1;
+    }
+}

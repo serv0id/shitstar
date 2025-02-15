@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package client.quiz;
+
+import "component/quiz/enum.proto";
+import "component/quiz/quiz_base_info.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/quiz";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.quiz";
+
+message ClickedInfoButtonProperties {
+    component.quiz.QuizBaseInfo base_properties = 1;
+    component.quiz.InfoType info_type = 2;
+    string engagement_id = 3;
+}

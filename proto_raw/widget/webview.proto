@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/trackers/url_trackers.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message WebviewWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        Content content = 1;
+        message Content {
+            oneof data {
+                string webview_url = 1;
+            }
+        }
+        
+        feature.trackers.UrlTrackers tracker = 2;
+        
+        repeated JsBridgeFields allowed_fields = 3;
+        enum JsBridgeFields {
+            UNKNOWN = 0;
+            PINCODE = 1;
+            NAME = 2;
+            LOGIN_STATUS = 3;
+            FORM_SUBMIT = 4;
+            EXTERNAL_NAV = 5;
+            AD_ERROR = 6;
+        }
+        
+        bool enable_javascript = 4;
+    }
+    
+    reserved 3 to 10;
+}

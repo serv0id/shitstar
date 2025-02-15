@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ContentOnboardingWidget {
+    option deprecated = true;
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        string subtitle = 2;
+        string subtitle_description = 3;
+        int32 minimum_selected = 12;
+        SubmitButton submit_button = 13;
+        SkipCTA skip_cta = 14;
+        repeated Card cards = 15;
+        string next_content_items_url = 16;
+    }
+    
+    reserved 3 to 10;
+    
+    message SkipCTA {
+        string text = 1;
+        string icon_name = 2;
+        base.Actions actions = 3;
+    }
+    
+    message SubmitButton {
+        string text = 1;
+        base.Actions actions = 2;
+    }
+    
+    message Card {
+        string content_id = 1;
+        feature.image.Image image = 2;
+        base.Actions actions = 3;
+    }
+}

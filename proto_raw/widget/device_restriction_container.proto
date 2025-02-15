@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/hero.proto";
+import "widget/device_manager.proto";
+import "widget/mini_banner.proto";
+import "widget/divider.proto";
+import "base/actions.proto";
+import "widget/dialog.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message DeviceRestrictionContainerWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        BackButton back_button = 1;
+        HeroWidget hero = 2;
+        repeated ChildWidget child_widget = 3;
+    }
+    
+    reserved 3 to 10;
+    
+    message ChildWidget {
+        oneof child_widget {
+            DeviceManagerWidget device_manager = 1;
+            DividerWidget divider = 2;
+            MiniBannerWidget mini_banner = 3;
+        }
+    }
+    
+    message BackButton {
+        string icon = 1;
+        base.Actions actions = 2;
+        DialogWidget dialog = 3;
+    }
+}

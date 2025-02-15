@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package v2;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2";
+
+message RefreshWidgetRequest {
+    option deprecated = true;
+    string widget_wrapper_id = 1 [deprecated = true];
+    string widget_url = 3;
+    
+    reserved 2, 4 to 10;
+}
+
+message DeferredWidgetRequest {
+    string widget_wrapper_id = 1;
+    string widget_url = 3;
+    
+    reserved 2, 4 to 10;
+}

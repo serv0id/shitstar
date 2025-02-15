@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package client.watch;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message PlayerManagerProperties {
+    int64 create_player_time_ms = 1;
+    int64 get_player_time_ms = 2;
+    int64 destroy_player_time_ms = 3;
+    bool wait_destroy_player_time_ms = 4 [deprecated = true];
+    int64 wait_destroy_time_ms = 5;
+}

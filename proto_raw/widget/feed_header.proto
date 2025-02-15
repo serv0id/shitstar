@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "feature/image/screen_size_image.proto";
+import "feature/trackers/url_trackers.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message FeedHeaderWidget {
+    oneof header {
+        BaseFeedHeaderWidget base_header = 1;
+        AdsFeedHeaderWidget ads_header = 2;
+    }
+}
+
+message BaseFeedHeaderWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        string description = 2;
+        base.Actions actions = 11;
+    }
+    
+    reserved 2 to 10;
+}
+
+message AdsFeedHeaderWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image image = 1 [deprecated = true];
+        int32 ad_type = 2;
+        string title = 3;
+        string description = 4;
+        
+        Button button = 5;
+        message Button {
+            string text = 1;
+            string desc = 2;
+            base.Actions actions = 11;
+        }
+        
+        Badge badge = 6;
+        feature.image.ScreenSizeImage creative_image = 7;
+        feature.trackers.UrlTrackers tracker = 8;
+        base.Actions actions = 11;
+    }
+    
+    reserved 2 to 10;
+    
+    message Badge {
+        string label = 1;
+        string desc = 2;
+    }
+}

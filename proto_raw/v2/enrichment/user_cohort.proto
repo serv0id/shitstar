@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package v2.enrichment;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/enrichment";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.enrichment";
+
+message UserCohort {
+    map<int32, CohortData> cohort_data = 1;
+    
+    message CohortData {
+        DataStatus status = 1;
+        CohortIDType id_type = 2;
+        repeated string cohort_ids = 3;
+        repeated string cohort_names = 4;
+    }
+    
+    enum DataStatus {
+        UNKNOWN_DATA_STATUS = 0;
+        UPDATED = 1;
+        STALE = 2;
+        FAILED = 3;
+        OVERSIZE = 4;
+    }
+    
+    enum CohortGroup {
+        UNKNOWN_GROUP = 0;
+        COMMON = 1;
+        COMMS = 2;
+        SUBS = 3;
+        SEGMENTS = 4 [deprecated = true];
+    }
+    
+    enum CohortIDType {
+        UNKNOWN_IDTYPE = 0;
+        IDTYPE_PID = 1;
+        IDTYPE_ADID = 2;
+        IDTYPE_HID = 3;
+    }
+}

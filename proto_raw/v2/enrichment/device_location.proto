@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package v2.enrichment;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/enrichment";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.enrichment";
+
+message DeviceLocation {
+    string city = 1 [deprecated = true];
+    string pincode = 2 [deprecated = true];
+    string state = 3 [deprecated = true];
+    string country = 4 [deprecated = true];
+    LocationSource preferred_source = 5;
+    map<int32, LocationData> data = 6;
+}
+
+message LocationData {
+    string city = 1;
+    string state = 2;
+    string country = 3;
+    string pincode = 4;
+}
+
+enum LocationSource {
+    UNKNOWN_SOURCE = 0;
+    NETACUITY = 1;
+}

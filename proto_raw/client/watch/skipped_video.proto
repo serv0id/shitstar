@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package client.watch;
+
+import "client/player/model/playback_pip_mode.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message SkippedVideoProperties {
+    uint32 action_duration_secs = 1 [deprecated = true];
+    
+    SkipDirection direction = 2;
+    enum SkipDirection {
+        SKIP_DIRECTION_UNSPECIFIED = 0;
+        SKIP_DIRECTION_FORWARD = 1;
+        SKIP_DIRECTION_BACKWARD = 2;
+    }
+    
+    string skip_type = 3 [deprecated = true];
+    uint32 start_pos_secs = 4;
+    uint32 end_pos_secs = 5;
+    uint64 action_duration_millisecs = 6;
+    
+    SkipType skip_type_v2 = 7;
+    enum SkipType {
+        SKIP_TYPE_UNSPECIFIED = 0;
+        SKIP_TYPE_SKIP_INTRO = 1;
+        SKIP_TYPE_SKIP_RECAP = 2;
+        SKIP_TYPE_SKIP_CREDITS = 3;
+        SKIP_TYPE_FAST_SEEK = 4;
+        SKIP_TYPE_SLOW_SEEK = 5;
+        SKIP_TYPE_SEEK_CANCELLED = 6;
+        SKIP_TYPE_WATCH_CREDITS = 7;
+        SKIP_TYPE_UP_NEXT = 8;
+        SKIP_TYPE_NEXT_EPISODE = 9;
+        SKIP_TYPE_NORMAL = 10;
+        SKIP_TYPE_GO_LIVE = 11;
+        SKIP_TYPE_GO_BACK = 12;
+        SKIP_TYPE_NEXT_KEY_MOMENT = 13;
+        SKIP_TYPE_WATCH_INTRO = 14;
+        SKIP_TYPE_WATCH_RECAP = 15;
+    }
+    
+    ActionType action_type = 8;
+    enum ActionType {
+        ACTION_TYPE_UNSPECIFIED = 0;
+        ACTION_TYPE_SEEK = 1;
+        ACTION_TYPE_CLICK = 2;
+        ACTION_TYPE_DOUBLE_CLICK = 3;
+        ACTION_TYPE_MILESTONE_CLICK = 4;
+        ACTION_TYPE_ARROW_KEYS = 5;
+        ACTION_TYPE_SEEKTRAY_SCROLLING = 6;
+        ACTION_TYPE_AUTO = 7;
+        ACTION_TYPE_SEEK_VOICE = 8 [deprecated = true];
+        ACTION_TYPE_VOICE = 9 [deprecated = true];
+        ACTION_TYPE_SEEK_MEDIA_ACTION = 10;
+    }
+    
+    bool is_casting = 9;
+    uint64 action_pos_sec = 10;
+    bool is_downloaded = 11;
+    player.model.PlaybackPIPMode playback_pip_mode = 12 [deprecated = true];
+    string player_version = 13;
+    player.model.PlaybackPipMode playback_pip_mode_v2 = 14;
+}

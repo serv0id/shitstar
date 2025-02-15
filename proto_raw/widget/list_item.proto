@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "feature/atom/button.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ListItemWidget {
+    option deprecated = true;
+    
+    Item default_state = 1;
+    message Item {
+        string title = 1;
+        string sub_title = 2;
+        
+        Section leading_section = 3;
+        message Section {
+            oneof SectionData {
+                string icon = 1;
+                feature.image.Image image = 2;
+                feature.atom.Button button = 3;
+            }
+        }
+        
+        Section trailing_section = 4;
+        base.Actions actions = 5;
+    }
+    
+    Item edit_state = 2;
+}

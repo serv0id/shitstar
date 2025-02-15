@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package options;
+
+import "google/protobuf/descriptor.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/options";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.options";
+
+message PropertyOptions {
+    bool is_pii = 1;
+    string description = 2;
+    bool is_traits = 3;
+    string json_path = 4;
+}
+
+message EventOptions {
+    bool is_native = 1;
+    string description = 2;
+}
+
+extend google.protobuf.FieldOptions {
+    PropertyOptions property = 500002;
+    string child_fields_prefix = 500004;
+    string data_lake_column_name = 500005;
+}
+
+extend google.protobuf.FileOptions {
+    EventOptions event = 500001;
+}
+
+extend google.protobuf.MessageOptions {
+    string json_field_prefix = 500003;
+}

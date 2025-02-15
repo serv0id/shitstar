@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package component.pay;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/pay";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message PaymentMethodsViewDetails {
+    string selected_plan = 1;
+    string offer_applied = 2;
+    repeated string payment_methods = 3;
+    repeated string payment_methods_offers = 4;
+}

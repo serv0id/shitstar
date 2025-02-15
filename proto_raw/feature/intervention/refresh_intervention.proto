@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package feature.intervention;
+
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/intervention";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.intervention";
+
+message PlaybackRefreshIntervention {
+    string url = 1;
+    map<string, string> headers = 2;
+    bool showError = 3;
+}

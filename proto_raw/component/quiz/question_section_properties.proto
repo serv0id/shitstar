@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package component.quiz;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/quiz";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component.quiz";
+
+message QuestionSectionProperties {
+    string section_type = 1;
+    string section_id = 2;
+    uint32 section_position = 3;
+}

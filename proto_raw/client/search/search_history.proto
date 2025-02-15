@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package client.search;
+
+import "client/search/search_session_info.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/search";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.search";
+
+message SearchHistoryProperties {
+    SearchSessionProperties session_info = 1;
+    uint32 tile_position = 2;
+}

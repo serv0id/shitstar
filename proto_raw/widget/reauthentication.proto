@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ReAuthenticationWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image illustration = 1;
+        string title = 2;
+        string desc = 3;
+        int32 pin_size = 4;
+        CTA resend_otp = 5;
+        CTA verify_via_call = 6;
+        string time_text = 7;
+        base.Actions submit = 8;
+        string error_message = 9;
+        int32 resend_disable_duration_sec = 10;
+        string submit_btn_label = 11;
+        bool recaptcha_enabled = 12;
+    }
+    
+    reserved 2 to 10;
+    
+    message CTA {
+        string label = 1;
+        base.Actions action = 2;
+    }
+}

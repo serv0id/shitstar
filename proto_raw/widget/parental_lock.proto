@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "widget/verify_otp.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ParentalLockSetupWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string label = 1;
+        string desc = 2;
+        bool status = 3;
+        VerifyOtpWidget verify_otp = 4 [deprecated = true];
+        LockScreen lockscreen = 5 [deprecated = true];
+        ChangeParentalLock change_lock = 6;
+        base.Actions turn_off_lock_action = 7;
+        base.Actions turn_on_lock_action = 8;
+    }
+    
+    reserved 2 to 10;
+    
+    message LockScreen {
+        string label = 1;
+        string confirm_label = 2;
+        string desc = 3;
+        string confirm_desc = 4;
+        string action_label = 5;
+        int32 pin_size = 6;
+        
+        ParentalLockSuccess success = 7 [deprecated = true];
+        message ParentalLockSuccess {
+            string title = 1;
+            string desc = 2;
+            string action_label = 3;
+            base.Actions go_home = 4;
+        }
+        
+        base.Actions save_continue = 8;
+    }
+    
+    message ChangeParentalLock {
+        string label = 1;
+        string desc = 2;
+        base.Actions change_pin_action = 3;
+    }
+}

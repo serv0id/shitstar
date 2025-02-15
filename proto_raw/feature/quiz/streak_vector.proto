@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package feature.quiz;
+
+import "feature/image/illustration.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/quiz";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.quiz";
+
+message StreakVector {
+    string title = 1;
+    repeated image.Illustration streaks = 2;
+}

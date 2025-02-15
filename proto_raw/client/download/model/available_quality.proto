@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package client.download.model;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/download/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.download.model";
+
+enum AvailableQuality {
+    AVAILABLE_QUALITY_UNSPECIFIED = 0;
+    AVAILABLE_QUALITY_SD = 1;
+    AVAILABLE_QUALITY_HD = 2;
+    AVAILABLE_QUALITY_FULL_HD = 3;
+}

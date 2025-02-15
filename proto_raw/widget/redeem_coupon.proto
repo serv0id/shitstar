@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/payment/validations.proto";
+import "feature/image/image.proto";
+import "feature/payment/restrictions.proto";
+import "base/actions.proto";
+import "widget/text_list.proto";
+import "widget/hero.proto";
+import "widget/refreshable_status.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message RedeemCouponWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 2;
+    message Data {
+        HeroWidget hero_widget = 1;
+        Input input = 2;
+        Cta cta = 3;
+        TextListWidget text_list = 4;
+        RefreshableStatusWidget success_response = 5;
+    }
+    
+    message Input {
+        string title = 1;
+        string placeholder = 2;
+        string default_value = 5;
+        repeated feature.payment.Validation validations = 3;
+        repeated feature.payment.Restriction restrictions = 4;
+    }
+    
+    message Cta {
+        string text = 1;
+        string icon_name = 2;
+        repeated base.Actions.Action actions = 3;
+    }
+}

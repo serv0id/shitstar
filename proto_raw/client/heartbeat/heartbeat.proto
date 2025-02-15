@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package client.heartbeat;
+
+import "client/heartbeat/model/payload.proto";
+import "client/player/model/client_capabilities.proto";
+import "client/player/model/player_and_device_info.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/heartbeat";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.heartbeat";
+
+message HeartbeatProperties {
+    repeated model.Payload payloads = 1;
+    player.model.PlayerAndDeviceInfo.PlayerName player_name = 2;
+    string player_version = 3;
+    player.model.ClientCapabilities client_capabilities = 4;
+    string ssai_cohort = 5;
+}

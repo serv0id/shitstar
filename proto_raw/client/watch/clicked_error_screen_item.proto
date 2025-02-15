@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package client.watch;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message ClickedErrorScreenItem {
+    string clicked_cta = 1;
+    string error_code = 2;
+    string widget_type = 3;
+    string widget_name = 4;
+    string widget_source = 5;
+    string widget_logic = 6;
+    string widget_template = 7;
+}

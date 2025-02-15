@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package action;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message ReloadAction {
+    Context context = 1;
+    message Context {
+        oneof context {
+            PageContext page_context = 1;
+            SpaceContext space_context = 2;
+            WidgetContext widget_context = 3;
+        }
+    }
+    
+    message PageContext {
+        string reload_with_url = 1;
+    }
+    
+    message SpaceContext {
+        string reload_with_url = 1;
+    }
+    
+    message WidgetContext {
+        string reload_with_url = 1;
+    }
+}

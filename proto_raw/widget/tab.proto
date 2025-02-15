@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package widget.category_tray;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message TabWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        bool is_selected = 2;
+        string selected_title = 3;
+        string tray_widget_url = 4 [deprecated = true];
+        string sub_title = 5;
+        Url url = 6;
+        feature.image.Image icon = 7;
+        repeated ScreenSize disabled_screen_size_list = 8;
+        base.Actions actions = 10;
+    }
+    
+    reserved 3 to 10;
+    
+    message Url {
+        oneof url {
+            string widget_url = 1;
+            string space_url = 2;
+        }
+    }
+    
+    enum ScreenSize {
+        UNKNOWN = 0;
+        SMALL = 1;
+        MEDIUM = 2;
+        LARGE = 3;
+    }
+}

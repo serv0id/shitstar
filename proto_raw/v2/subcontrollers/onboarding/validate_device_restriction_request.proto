@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package feature.onboarding;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/onboarding";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.onboarding";
+
+message ValidateDeviceRestrictionRequest {
+    repeated string session_ids = 1;
+}

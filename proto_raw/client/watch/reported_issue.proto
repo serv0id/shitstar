@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package client.watch;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message ReportedIssueProperties {
+    string issue_sub_type = 1 [deprecated = true];
+    
+    ReportedIssueStatus issue_status = 2;
+    enum ReportedIssueStatus {
+        REPORTED_ISSUE_STATUS_UNSPECIFIED = 0;
+        REPORTED_ISSUE_STATUS_STARTED = 1;
+        REPORTED_ISSUE_STATUS_SENT = 2;
+        REPORTED_ISSUE_STATUS_FAILED = 3;
+        REPORTED_ISSUE_STATUS_CANCELLED = 4;
+    }
+    
+    ReportedIssueType issue_sub_type_v2 = 3;
+    enum ReportedIssueType {
+        REPORTED_ISSUE_TYPE_UNSPECIFIED = 0;
+        REPORTED_ISSUE_TYPE_BUFFERING_CONNECTION = 1;
+        REPORTED_ISSUE_TYPE_VIDEO_QUALITY = 2;
+        REPORTED_ISSUE_TYPE_AUDIO_QUALITY = 3;
+        REPORTED_ISSUE_TYPE_SUBTITLES_CAPTIONS = 4;
+    }
+}

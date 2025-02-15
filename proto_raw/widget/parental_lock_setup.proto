@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "widget/verify_otp.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+
+message ParentalLockSetUpWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        ScreenLabels enter_pin = 1;
+        ScreenLabels confirm_pin = 2;
+        string error_message = 3;
+        int32 pin_size = 4;
+        base.Actions submit_pin_action = 5;
+        string title = 6;
+        string desc = 7;
+        string submit_pin_label = 8;
+    }
+    
+    reserved 2 to 10;
+    
+    message ScreenLabels {
+        string title = 1;
+        string desc = 2;
+        string action_label = 3 [deprecated = true];
+        string cancel_label = 4;
+        Button continue_btn = 5;
+    }
+    
+    message Button {
+        string label = 1;
+        base.Actions action = 2;
+    }
+}

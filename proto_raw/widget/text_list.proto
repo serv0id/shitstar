@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message TextListWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        repeated Text info = 1;
+        Toggle toggle_button = 2;
+        Button secondary_button = 3;
+    }
+    
+    reserved 3 to 10;
+    
+    message Text {
+        TextType text_type = 4;
+        repeated Link links = 5;
+        
+        oneof text {
+            InfoText info_text = 1;
+            RichText rich_text = 2;
+            IconText icon_text = 3;
+        }
+        
+        message InfoText {
+            string value = 1;
+        }
+        
+        message RichText {
+            string value = 1;
+            Asset asset = 2;
+        }
+        
+        message IconText {
+            string icon = 1;
+            string value = 2;
+        }
+        
+        message Asset {
+            oneof asset {
+                feature.image.Image image = 1;
+            }
+        }
+    }
+    
+    message Toggle {
+        Button collapsed_button = 1;
+        Button expanded_button = 2;
+    }
+    
+    message Button {
+        string label = 1;
+        string icon = 2;
+        int32 items_to_be_displayed = 3;
+        bool is_default = 4;
+        base.Actions.Action actions = 5 [deprecated = true];
+        base.Actions base_actions = 6;
+    }
+    
+    message Link {
+        string label = 11;
+        string url = 12 [deprecated = true];
+        string key = 13;
+        LinkClickAction link_action = 14;
+    }
+    
+    message LinkClickAction {
+        oneof link_action {
+            string url = 1;
+            base.Actions.Action actions = 2;
+        }
+    }
+    
+    enum TextType {
+        UNDEFINED = 0;
+        DISCLAIMER = 1;
+        OFFER = 2;
+        WARNING = 3;
+        HEADING = 4;
+    }
+}

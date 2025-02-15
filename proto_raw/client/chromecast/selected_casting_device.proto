@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package client.chromecast;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/chromecast";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.chromecast";
+
+message SelectedCastingDeviceProperties {
+    string selected_device_name = 1;
+    string selected_device_meta = 2;
+}

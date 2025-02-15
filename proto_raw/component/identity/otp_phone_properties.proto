@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package component.identity;
+
+import "component/identity/enum.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/identity";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message OtpPhoneProperties {
+    string response = 1;
+    string country_prefix = 2;
+    PageSource source = 3;
+    InputEnterMode mode = 4;
+    LoginSource login_source = 5 [deprecated = true];
+    float level = 6;
+    string source_page_content_type = 7;
+    InitiateBy initiate_by = 8;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package client.discovery;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/discovery";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.discovery";
+
+message DetailsView {
+    DetailsViewType details_view_type = 1;
+    enum DetailsViewType {
+        DETAILS_VIEW_TYPE_UNSPECIFIED = 0;
+        DETAILS_VIEW_TYPE_VERTICAL_HOVER_CARD = 1;
+        DETAILS_VIEW_TYPE_SPOTLIGHT = 2;
+    }
+}

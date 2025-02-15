@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package component.quiz;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/quiz";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component.quiz";
+
+message QuizBaseInfo {
+    string engagement_type = 1;
+    string stream_state = 2;
+    uint32 season_id = 3;
+}

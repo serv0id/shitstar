@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message TextBoxWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string id = 1;
+        string placeholder = 2;
+        
+        Size size = 3;
+        enum Size {
+            SMALL = 0;
+            MEDIUM = 1;
+            LARGE = 2;
+        }
+    }
+    
+    reserved 2 to 10;
+}

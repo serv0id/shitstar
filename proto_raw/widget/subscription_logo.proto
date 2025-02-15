@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "feature/branding/brand.proto";
+import "widget/logo.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message SubscriptionLogoWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        base.Actions actions = 1;
+        feature.branding.Brand icon_name = 2 [deprecated = true];
+        SubsNudge subs_nudge = 3;
+        LogoVariant variant = 4;
+        string image_alt = 5;
+    }
+    
+    reserved 2 to 10;
+    
+    message SubsNudge {
+        string label = 2 [deprecated = true];
+        base.Actions actions = 3 [deprecated = true];
+        string nudge_text = 4;
+        
+        reserved 1, "type";
+    }
+}

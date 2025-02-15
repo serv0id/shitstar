@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package feature.content_language_preference;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/content_language_preference";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.content_language_preference";
+
+message ContentLanguagePreference {
+    string user_language_preference_id = 1;
+    int64 timestamp = 2;
+    string lang_code = 3;
+}

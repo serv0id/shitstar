@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package client.perf;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/perf";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.perf";
+
+message FrozenFrame {
+    string page_name = 1;
+    int32 duration_ms = 2;
+    repeated MoreInfo more_infos = 3;
+}
+
+message MoreInfo {
+    MoreInfoKey key = 1;
+    string value = 2;
+}
+
+enum MoreInfoKey {
+    MORE_INFO_KEY_UNSPECIFIED = 0;
+    MORE_INFO_KEY_PAGE_URL = 1;
+    MORE_INFO_KEY_IS_SCROLLING_VERTICALLY = 2;
+    MORE_INFO_KEY_INTERACTED_PAGE = 3;
+    MORE_INFO_KEY_INTERACTED_SPACE = 4;
+    MORE_INFO_KEY_INTERACTED_WIDGET = 5;
+    MORE_INFO_KEY_SUB_TYPE = 6;
+    MORE_INFO_KEY_LAST_ACTION = 7;
+    MORE_INFO_KEY_LAST_INTERACTED_ELEMENT = 8;
+    MORE_INFO_KEY_WEB_LOAD_STATE = 9;
+}

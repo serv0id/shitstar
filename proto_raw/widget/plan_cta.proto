@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PlanCTAWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        bool is_expandable = 1;
+        map<string, PlanDetails> plan_map = 2;
+        string defaultPlanIdentifier = 3;
+        PaytmCheckbox checkbox = 4;
+        CTA secondary_cta = 5;
+    }
+    
+    reserved 2 to 10;
+    
+    message PlanDetails {
+        PriceDetails price_details = 1;
+        Callout callout = 2;
+        PriceInfo price_info = 3;
+        CTA cta = 4;
+    }
+    
+    message PriceDetails {
+        repeated PriceDescription price_description = 1;
+    }
+    
+    message PriceDescription {
+        string text = 1;
+        string value = 2;
+    }
+    
+    message PriceInfo {
+        string value = 1;
+        string strikethrough_text = 2;
+        Callout callout = 3;
+    }
+    
+    message CTA {
+        string text = 1;
+        string icon = 2;
+        base.Actions actions = 3;
+    }
+    
+    message PaytmCheckbox {
+        string icon = 1;
+        string text = 2;
+    }
+    
+    message Callout {
+        string text = 1;
+        string color = 2;
+    }
+}

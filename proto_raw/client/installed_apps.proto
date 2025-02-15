@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package client;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client";
+
+message InstalledApps {
+    string app_installs = 1 [deprecated = true];
+    string scan_timestamp = 2 [deprecated = true];
+    int64 scan_timestamp_ms = 3;
+    
+    repeated AppDetail app_details = 4;
+    message AppDetail {
+        string name = 1;
+        string package_name = 2;
+        AppType type = 3;
+    }
+    
+    enum AppType {
+        APP_TYPE_UNSPECIFIED = 0;
+        APP_TYPE_SYSTEM_INSTALLED = 1;
+        APP_TYPE_USER_INSTALLED = 2;
+    }
+}

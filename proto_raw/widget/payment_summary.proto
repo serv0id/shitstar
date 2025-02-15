@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+import "feature/branding/brand.proto";
+import "widget/text_list.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PaymentSummaryWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        repeated feature.image.Image bg_image_list = 1;
+        feature.branding.Brand logo = 2 [deprecated = true];
+        PlanTitles title_desc = 3;
+        PriceDeduction price_deduction = 4;
+        OfferDetails offer = 5;
+        repeated TextList text_list = 6 [deprecated = true];
+        repeated WidgetWrapper widget_wrapper = 7;
+    }
+    
+    reserved 2 to 10;
+    
+    message WidgetWrapper {
+        oneof widget {
+            TextListWidget text_list_elements = 1;
+        }
+    }
+    
+    message PlanTitles {
+        string title = 1;
+        string addon_title = 2;
+        string sub_title = 3;
+    }
+    
+    message PriceDeduction {
+        string new_price = 1;
+        string old_price = 2;
+        repeated DeductionDetail deduction_details = 3;
+    }
+    
+    message DeductionDetail {
+        string info = 1;
+        string price = 2;
+    }
+    
+    message OfferDetails {
+        string offer_icon = 1;
+        OfferStatus offer_status = 2;
+        string offer_text = 3;
+    }
+    
+    message TextList {
+        string icon = 1;
+        string text = 2;
+    }
+    
+    enum OfferStatus {
+        ACTIVE = 0;
+        EXPIRED = 1;
+    }
+}

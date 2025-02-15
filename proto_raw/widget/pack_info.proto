@@ -1,0 +1,136 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PackInfoWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        repeated Pack pack_list = 1;
+        PaymentModeConsent payment_mode_consent = 2;
+        repeated FilterItem filter_data = 3;
+        PartnerInfo partner_info = 4;
+        string pack_unavailable_info = 5;
+        CTA secondary_cta = 6;
+        CTA tertiary_cta = 7 [deprecated = true];
+    }
+    
+    reserved 3 to 10;
+    
+    message Pack {
+        bool is_selected = 1;
+        string title = 2;
+        string sub_title = 3;
+        string label = 4;
+        Offer offer = 5;
+        FilterMeta filter_meta = 12;
+        bool is_disabled = 13;
+        base.Actions actions = 14;
+        string savings_text = 15;
+        
+        oneof pack_details {
+            Price price = 6;
+            string pack_details_text = 7;
+        }
+        
+        oneof info {
+            SubscribeInfo subscribe = 8;
+            UpgradeInfo upgrade = 9;
+            CWInfo continue_watching = 10;
+            PurchaseDisclaimer text = 11;
+        }
+    }
+    
+    message FilterMeta {
+        string filter_key = 1;
+        string identifier = 2;
+    }
+    
+    message FilterItem {
+        bool is_selected = 1;
+        string title = 2;
+        FilterMeta filter_meta = 3;
+        base.Actions actions = 4;
+        feature.image.Image offer_lottie = 5;
+    }
+    
+    message PaymentModeConsent {
+        oneof mode {
+            PaytmMode paytm = 1;
+            IAPUpgradeMode iap_upgrade = 2;
+        }
+    }
+    
+    message PaytmMode {
+        string value = 1;
+    }
+    
+    message IAPUpgradeMode {
+        string value = 1;
+    }
+    
+    message Price {
+        string amount = 1;
+        string currency = 2;
+        string interval = 3;
+    }
+    
+    message Offer {
+        string strike_through_text = 1;
+        string info = 2;
+    }
+    
+    message SubscribeInfo {
+        string cta = 1;
+        base.Actions actions = 2;
+    }
+    
+    message UpgradeInfo {
+        string cta = 1;
+        PriceDeduction deduction = 2;
+        repeated DeductionDetail deduction_details = 3;
+        base.Actions actions = 4;
+    }
+    
+    message PriceDeduction {
+        string label = 1;
+        string currency = 2;
+        string new_price = 3;
+        string old_price = 4;
+    }
+    
+    message DeductionDetail {
+        string info = 1;
+        string price = 2;
+    }
+    
+    message CWInfo {
+        string cta = 1;
+        base.Actions actions = 2;
+    }
+    
+    message PurchaseDisclaimer {
+        string text_message = 1;
+    }
+    
+    message PartnerInfo {
+        string rich_text = 1;
+        feature.image.Image image = 2;
+    }
+    
+    message CTA {
+        string label = 1;
+        base.Actions actions = 2;
+    }
+}

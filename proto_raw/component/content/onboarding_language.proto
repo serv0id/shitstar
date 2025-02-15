@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package component.content;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/content";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component.content";
+
+message OnboardingLanguage {
+    int64 languages_count = 1;
+    repeated string selected_languages = 2;
+}

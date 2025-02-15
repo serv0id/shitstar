@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message GenericErrorWidget {
+    base.WidgetCommons widget_commons = 1;
+    feature.image.Image image = 11;
+    string title = 12;
+    string description = 13;
+    
+    Button primary_button = 14;
+    message Button {
+        string label = 1;
+        base.Actions action = 2;
+    }
+    
+    repeated base.Actions.Action on_shown_actions = 15;
+    repeated base.Actions.Action on_dismiss_actions = 16;
+    
+    reserved 2 to 10;
+}

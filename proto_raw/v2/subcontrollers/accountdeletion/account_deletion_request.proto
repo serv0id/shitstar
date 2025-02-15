@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package feature.parentallock;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/accountdeletion";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.accountdeletion";
+
+message AccountDeletionRequest {
+    string otp = 1;
+    string purpose = 2;
+}

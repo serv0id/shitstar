@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message UserLoggedOutWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image img = 1;
+        string title = 2;
+        string description = 3;
+        Button button = 4;
+        string icon_name = 5;
+        bool is_cancelable = 6;
+    }
+    
+    reserved 3 to 10;
+    
+    message Button {
+        string text = 1;
+        base.Actions actions = 2;
+    }
+}

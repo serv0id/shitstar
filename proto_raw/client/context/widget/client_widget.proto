@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package client.context.widget;
+
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/context/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.context.widget";
+
+message ClientWidget {
+    string name = 2;
+    string type = 3;
+    string source = 4;
+    string logic = 5;
+    string display_language = 6;
+    int64 position = 7;
+    string discovery_id = 8;
+}

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package feature.intervention;
+
+import "feature/intervention/ad_break_intervention_source.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/intervention";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.intervention";
+
+message InterventionSource {
+    int32 event_time_s = 1;
+    bool is_skippable = 2;
+    
+    Meta meta = 3;
+    message Meta {
+        oneof meta {
+            MidrollIntervention midroll = 1;
+            AdBreakInterventionSource ad_break = 2;
+        }
+    }
+    
+    message MidrollIntervention {
+        string url = 1;
+    }
+}

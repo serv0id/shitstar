@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message OptionsWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string id = 1;
+        
+        SelectionType type = 2;
+        enum SelectionType {
+            SINGLE = 0;
+            MULTIPLE = 1;
+        }
+        
+        Size size = 3;
+        enum Size {
+            FLUID = 0;
+            FULLWIDTH = 1;
+        }
+        
+        repeated InputOption input_options = 4;
+    }
+    
+    reserved 2 to 10;
+    
+    message InputOption {
+        string id = 1;
+        string label = 2;
+    }
+}

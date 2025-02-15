@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "feature/search/badge.proto";
+import "feature/callout_tag/callout_tag.proto";
+import "feature/cw/cw_info.proto";
+import "feature/remind_me/remind_me_info.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message SearchHeroWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        feature.image.Image image = 2;
+        repeated string content_info = 3;
+        string description = 4;
+        base.Actions actions = 5;
+        CardType card_type = 6;
+        feature.search.Badge badge = 7;
+        IconLabelButton primary_cta = 8;
+        IconLabelButton secondary_cta = 9;
+        feature.callout_tag.CalloutTag callout_tag = 10;
+        HeroBackgroundMeta background_meta = 11;
+        feature.cw.CwInfo cw_info = 12;
+    }
+    
+    reserved 3 to 10;
+    
+    message IconLabelButton {
+        string icon_name = 1;
+        string label = 2;
+        base.Actions actions = 3;
+        string secondary_label = 4;
+        bool is_coming_soon = 5;
+        feature.remind_me.ReminderInfo remind_me_info = 6;
+    }
+    
+    message HeroBackgroundMeta {
+        string gradient_start = 1;
+        string gradient_middle = 2;
+        string gradient_end = 3;
+    }
+    
+    enum CardType {
+        VERTICAL_POSTER = 0;
+        HORIZONTAL_POSTER = 1;
+    }
+}

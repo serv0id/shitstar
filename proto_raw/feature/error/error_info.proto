@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package feature.error;
+
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/error";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.error";
+
+message ErrorInfo {
+    string title = 1;
+    string message = 2;
+}

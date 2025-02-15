@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package component.identity;
+
+import "component/identity/enum.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/identity";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message PreRegProperties {
+    string page_title = 1;
+    string response = 2;
+    InputEnterMode mode = 4;
+    PreReg source = 5;
+}

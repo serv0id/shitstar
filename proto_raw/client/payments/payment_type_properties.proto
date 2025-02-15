@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package client.payments;
+
+import "component/subs/plan.proto";
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/payments";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.payments";
+
+message PaymentTypeProperties {
+    component.subs.Plan plan_properties = 1;
+    
+    PaymentType payment_type = 2;
+    enum PaymentType {
+        PAYMENT_TYPE_UNSPECIFIED = 0;
+        PAYMENT_TYPE_GOOGLE = 1;
+        PAYMENT_TYPE_ITUNES = 2;
+        PAYMENT_TYPE_WEB = 3;
+        PAYMENT_TYPE_D2C = 4;
+    }
+}

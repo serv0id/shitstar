@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package widget;
+
+import "feature/image/image.proto";
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "widget/payment_method_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PaymentMethodGiapWidget {
+    base.WidgetCommons widget_commons = 1;
+    string title = 2;
+    
+    Cta cta = 3;
+    message Cta {
+        string text = 1;
+        feature.image.Image image = 2;
+        base.Actions actions = 3;
+    }
+    
+    PaymentMethodCommonsWidget payment_method_meta = 4;
+}

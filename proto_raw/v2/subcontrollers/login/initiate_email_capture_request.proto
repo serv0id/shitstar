@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package feature.login;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/login";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.login";
+
+message InitiateEmailCaptureRequest {
+    string email_address = 1;
+    
+    ConsentStatus consent_status = 2;
+    enum ConsentStatus {
+        OPT_OUT = 0;
+        OPT_IN = 1;
+        ALREADY_OPTED_IN = 2;
+    }
+}

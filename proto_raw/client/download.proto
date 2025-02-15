@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package client;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client";
+
+message DownloadManager {
+    string download_manager_id = 1;
+    int32 download_size = 2;
+    int64 requested_bytes = 3;
+    string download_manager_version = 4;
+}

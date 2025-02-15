@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "widget/tab.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PollingData {
+    bool active = 1;
+    int32 polling_frequency = 2;
+    string polling_url = 3;
+}
+
+message PollingTabWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        category_tray.TabWidget tab = 1;
+        PollingData polling = 2;
+    }
+    
+    reserved 2 to 10;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package client.discovery;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/discovery";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.discovery";
+
+message SubscriptionAction {
+    SubscriptionActionType action_type = 1;
+    enum SubscriptionActionType {
+        SUBSCRIPTION_ACTION_TYPE_UNSPECIFIED = 0;
+        SUBSCRIPTION_ACTION_TYPE_SUBSCRIBE = 1;
+        SUBSCRIPTION_ACTION_TYPE_UNSUBSCRIBE = 2;
+    }
+}

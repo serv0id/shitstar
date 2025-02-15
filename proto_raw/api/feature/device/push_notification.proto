@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package api.feature.device;
+
+import "api/feature/device/platform.proto";
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/feature/device";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.feature.device";
+
+message PushNotification {
+    string device_token = 1;
+    
+    PermissionStatus permission_status = 2;
+    enum PermissionStatus {
+        PERMISSION_STATUS_UNSPECIFIED = 0;
+        PERMISSION_STATUS_DENIED = 1;
+        PERMISSION_STATUS_GRANTED = 2;
+        PERMISSION_STATUS_SILENCED = 3;
+    }
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package feature.atom;
+
+import "feature/image/lottie.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/atom";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.atom";
+
+message ToggleLottieButton {
+    image.Lottie lottie = 1;
+    base.Actions initial_actions = 2;
+    base.Actions final_actions = 3;
+    bool is_final_state = 4;
+    image.Lottie reverse_lottie = 5;
+}

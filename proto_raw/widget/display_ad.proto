@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message DisplayAdWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        TypeOfAd type = 1;
+        PlacementType placement = 2;
+        string refresh_url = 5 [deprecated = true];
+        RefreshInfo refresh_info = 6;
+        base.Actions actions = 7;
+        
+        oneof item_type {
+            string server_url = 3;
+            string payload = 4;
+        }
+    }
+    
+    reserved 3 to 10;
+    
+    message RefreshInfo {
+        int64 max_age_ms = 1;
+        string refresh_url = 2;
+    }
+    
+    enum TypeOfAd {
+        FirstParty = 0;
+        ThirdParty = 1;
+    }
+    
+    enum PlacementType {
+        IMAGE = 0;
+        VIDEO = 1;
+        SKINNY = 3;
+    }
+}

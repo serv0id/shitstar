@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package feature.live;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/live";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.live";
+
+message LiveInfo {
+    string live_display_text = 1;
+    string concurrency_display_text = 2;
+    
+    ConcurrencyRefreshInfo concurrency_refresh_info = 3;
+    message ConcurrencyRefreshInfo {
+        int32 ttl_in_seconds = 1;
+        string widget_url = 2 [deprecated = true];
+        string refresh_url = 3;
+    }
+}

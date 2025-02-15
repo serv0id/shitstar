@@ -1,0 +1,97 @@
+syntax = "proto3";
+
+package client.player.model;
+
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.player.model";
+
+message ClientCapabilities {
+    repeated Package packages = 1;
+    enum Package {
+        PACKAGE_UNSPECIFIED = 0;
+        PACKAGE_DASH = 1;
+        PACKAGE_HLS = 2;
+    }
+    
+    repeated Container containers = 2;
+    enum Container {
+        CONTAINER_UNSPECIFIED = 0;
+        CONTAINER_FMP4 = 1;
+        CONTAINER_FMP4_BR = 2;
+        CONTAINER_TS = 3;
+        CONTAINER_WEBM = 4;
+    }
+    
+    repeated Ads ads = 3;
+    enum Ads {
+        ADS_UNSPECIFIED = 0;
+        ADS_SSAI = 1;
+        ADS_NON_SSAI = 2;
+    }
+    
+    repeated AudioChannel audio_channels = 4;
+    enum AudioChannel {
+        AUDIO_CHANNEL_UNSPECIFIED = 0;
+        AUDIO_CHANNEL_STEREO = 1;
+        AUDIO_CHANNEL_ATMOS = 2;
+        AUDIO_CHANNEL_DOLBY_51 = 3;
+    }
+    
+    repeated Encryption encryptions = 5;
+    enum Encryption {
+        ENCRYPTION_UNSPECIFIED = 0;
+        ENCRYPTION_PLAIN = 1;
+        ENCRYPTION_WIDEVINE = 2;
+        ENCRYPTION_FAIRPLAY = 3;
+        ENCRYPTION_PLAYREADY = 4;
+    }
+    
+    repeated VideoCodec video_codecs = 6;
+    enum VideoCodec {
+        VIDEO_CODEC_UNSPECIFIED = 0;
+        VIDEO_CODEC_H264 = 1;
+        VIDEO_CODEC_H265 = 2;
+        VIDEO_CODEC_DV_H265 = 3;
+    }
+    
+    repeated Ladder ladders = 7;
+    enum Ladder {
+        LADDER_UNSPECIFIED = 0;
+        LADDER_PHONE = 1;
+        LADDER_TV = 2;
+        LADDER_LOWRES = 3;
+    }
+    
+    repeated Resolution resolutions = 8;
+    enum Resolution {
+        RESOLUTION_UNSPECIFIED = 0;
+        RESOLUTION_SD = 1;
+        RESOLUTION_HD = 2;
+        RESOLUTION_FHD = 3;
+        RESOLUTION_4K = 4;
+    }
+    
+    repeated DynamicRange dynamic_ranges = 9;
+    enum DynamicRange {
+        DYNAMIC_RANGE_UNSPECIFIED = 0;
+        DYNAMIC_RANGE_SDR = 1;
+        DYNAMIC_RANGE_HDR10 = 2;
+        DYNAMIC_RANGE_DV = 3;
+    }
+    
+    repeated Resolution true_resolutions = 10;
+    
+    repeated AudioCodec audio_codecs = 11;
+    enum AudioCodec {
+        AUDIO_CODEC_UNSPECIFIED = 0;
+        AUDIO_CODEC_AAC = 1;
+        AUDIO_CODEC_EC3 = 2;
+        AUDIO_CODEC_OPUS = 3;
+        AUDIO_CODEC_AC4 = 4;
+    }
+    
+    repeated VideoCodec video_codecs_non_secure = 12;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package client;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client";
+
+message WidgetPosition {
+    int32 widget_position = 1;
+    int32 tile_position = 2;
+}

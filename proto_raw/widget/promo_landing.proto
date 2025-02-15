@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "feature/branding/brand.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PromoLandingWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        Button login_btn = 1 [deprecated = true];
+        PromoDetail promo_detail = 2;
+        Footer footer = 3 [deprecated = true];
+    }
+    
+    reserved 3 to 10;
+    
+    message PromoDetail {
+        feature.image.Image image = 1 [deprecated = true];
+        string title = 2;
+        Button promo_btn = 3;
+        string sub_title = 4;
+        feature.branding.Brand logo = 5 [deprecated = true];
+        Button download_btn = 6;
+        feature.image.Image bg_img = 7;
+        string image_alt = 8;
+    }
+    
+    message Button {
+        string text = 1;
+        base.Actions actions = 2;
+    }
+    
+    message Footer {
+        string icon = 1;
+        string title = 2;
+        string sub_title = 3;
+    }
+}

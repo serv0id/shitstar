@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package android;
+
+option go_package = ".;android";
+option java_package = "com.hotstar.remotelogging.android";
+
+message Metadata {
+    DeviceInfo device_info = 1;
+    NetworkInfo network_info = 2;
+    ProductInfo product_info = 3;
+    UserInfo user_info = 4;
+    PlaybackInfo playback_info = 5;
+    map<string, string> error_info = 6;
+    CWLocalDbDump cw_db_dump = 7;
+    WLLocalDbDump wl_db_dump = 8;
+}
+
+message DeviceInfo {
+    string id = 1;
+    string platform = 2;
+    string device = 3;
+    string display = 4;
+    string manufacturer = 5;
+    string model = 6;
+    string board = 7;
+    string brand = 8;
+    string os_version = 9;
+    int64 os_sdk = 10;
+    string fingerprint = 11;
+    string security_path = 12;
+}
+
+message NetworkInfo {
+    string mcc = 1;
+    string type = 2;
+}
+
+message ProductInfo {
+    string build_type = 1;
+    string flavor = 2;
+    string locale = 3;
+    string version_name = 4;
+    int64 version_code = 5;
+    string installed_by = 6;
+}
+
+message UserInfo {
+    string pid = 1;
+    string name = 2;
+    string phone = 3;
+    string email = 4;
+}
+
+message PlaybackInfo {
+    string content_id = 1;
+    string current_position = 2;
+    string selected_subtitle = 3;
+    string selected_language = 4;
+    string stats_for_nerds = 5;
+}
+
+message CWLocalDbDump {
+    string content_id = 1;
+    string tag = 2;
+    string watch_ratio = 3;
+    string updated_at = 4;
+}
+
+message WLLocalDbDump {
+    string content_id = 1;
+    bool is_removed = 2;
+}

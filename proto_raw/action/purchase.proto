@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package action;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message PurchaseAction {
+    PurchaseType purchase_type = 1;
+    string commercial_pack_id = 2;
+    string payment_url = 3;
+    string payment_success_widget_url = 4;
+    bool replace_page = 5;
+}
+
+enum PurchaseType {
+    WEB = 0;
+    WEB_VIEW = 1;
+    IAP = 2;
+}

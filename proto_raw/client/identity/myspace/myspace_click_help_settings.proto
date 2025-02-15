@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package client.identity.myspace;
+
+import "client/identity/myspace/myspace_info.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/identity/myspace";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.identity.myspace";
+
+message MySpaceHelpSettingsClick {
+    MySpaceInfo info = 1 [deprecated = true];
+}

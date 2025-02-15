@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package action;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message InitiatePaymentAction {
+    string base_init_payload = 1;
+    string url = 4;
+    bool use_async = 5;
+}

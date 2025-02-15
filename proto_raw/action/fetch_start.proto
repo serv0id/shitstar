@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package action;
+
+import "google/protobuf/any.proto";
+import "context/context.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message FetchStartAction {
+    string url = 1;
+    string deeplink_url = 2;
+    google.protobuf.Any body = 3;
+    context.Context context = 4;
+    bool replace_page = 5;
+    
+    RenderMode render_mode = 6;
+    enum RenderMode {
+        DEFAULT = 0;
+        MODAL = 1;
+    }
+}

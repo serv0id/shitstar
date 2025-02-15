@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PlanCardWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        bool is_expandable = 1;
+        bool is_expanded = 2;
+        string tag = 3;
+        Header header = 4;
+        Body body = 5;
+        Color color = 6;
+    }
+    
+    message Header {
+        string title = 1;
+        string subtitle = 2;
+        InfoText info = 3;
+    }
+    
+    message Body {
+        repeated USP usps = 1;
+        repeated Selector selectors = 2;
+    }
+    
+    message InfoText {
+        string text = 1;
+        string text_placeholder = 2;
+        string sub_text = 3;
+    }
+    
+    message USP {
+        feature.image.Image expanded_image = 1;
+        feature.image.Image collapsed_image = 2;
+        string description = 3;
+        string name = 4;
+    }
+    
+    message Selector {
+        bool is_selected = 1;
+        string identifier = 2;
+        string tag = 3;
+        string title = 4;
+        InfoText subtitle = 5;
+        Subtext sub_text = 6;
+        repeated base.Actions.Action actions = 7;
+    }
+    
+    message Subtext {
+        string value = 1;
+        SubtextType type = 2;
+    }
+    
+    message Color {
+        string primary_color = 1;
+        string secondary_color = 2;
+    }
+    
+    enum SubtextType {
+        DEFAULT = 0;
+        HIGHLIGHT = 1;
+    }
+}

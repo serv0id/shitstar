@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package feature.remind_me;
+
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/remind_me";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.remind_me";
+
+message ReminderInfo {
+    string content_id = 1;
+    bool is_reminder_set = 2;
+    string release_meta = 3;
+    base.Actions actions = 4;
+}

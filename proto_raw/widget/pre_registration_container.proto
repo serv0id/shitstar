@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/branding/brand.proto";
+import "widget/logo.proto";
+import "widget/pre_registration_form.proto";
+import "widget/verify_otp.proto";
+import "widget/pre_registration_success.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PreRegistrationContainerWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.branding.Brand logo = 1 [deprecated = true];
+        repeated PreRegistrationWidgets widgets = 2;
+        LogoWidget brand_details = 3;
+    }
+    
+    reserved 2 to 10;
+    
+    message PreRegistrationWidgets {
+        oneof ChildWidgets {
+            PreRegistrationFormWidget pre_registration_form = 1;
+            VerifyOtpWidget verify_otp = 2;
+            PreRegistrationSuccessWidget pre_registration_success = 3;
+        }
+    }
+}

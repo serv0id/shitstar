@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+import "feature/payment/payment_gateway.proto";
+import "widget/text_list.proto";
+import "widget/refreshable_status.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PaymentMethodCommonsWidget {
+    base.WidgetCommons widget_commons = 1;
+    string method_name = 2;
+    feature.image.Image method_image = 3;
+    TextListWidget method_features = 4;
+    TextListWidget method_info = 5;
+    repeated feature.payment.PaymentGateway gateways = 6;
+    bool is_expanded = 7;
+    
+    SelectedMethodMeta selected_method_meta = 8;
+    message SelectedMethodMeta {
+        string title = 1;
+    }
+    
+    RefreshableStatusWidget payment_method_loading_state = 9;
+    RefreshableStatusWidget payment_method_error_state = 10;
+    repeated base.Actions.Action tab_open_actions = 11;
+}

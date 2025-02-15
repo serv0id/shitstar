@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package feature.login;
+
+import "v2/subcontrollers/login/login_device_meta.proto";
+import "v2/subcontrollers/login/login_source.proto";
+import "v2/subcontrollers/login/consent_status.proto";
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/login";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.login";
+
+message VerifySnaRequest {
+    LoginDeviceMeta login_device_meta = 1;
+    string phone_number = 2;
+    string association_key = 3 [deprecated = true];
+    string country_prefix = 4 [deprecated = true];
+    Source source = 5;
+    ConsentStatus consent_status = 6;
+}

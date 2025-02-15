@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package client.identity.properties;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/identity/properties";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.identity.properties";
+
+message ScreenSize {
+    string screen_width = 1;
+    string screen_height = 2;
+}
+
+enum NetworkType {
+    NETWORK_TYPE_UNSPECIFIED = 0;
+    NETWORK_TYPE_WIFI = 1;
+    NETWORK_TYPE_MOBILE_DATA = 2;
+}

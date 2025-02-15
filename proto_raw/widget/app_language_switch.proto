@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "widget/dialog.proto";
+import "feature/image/image.proto";
+import "feature/atom/button.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message AppLanguageSwitchWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        LanguageList language_list = 2;
+        DialogWidget dialog = 3;
+        feature.atom.Button change_language = 4;
+        feature.atom.Button close = 5;
+    }
+    
+    reserved 2 to 10;
+    
+    message LanguageList {
+        repeated ListOption options = 1;
+    }
+    
+    message ListOption {
+        string label = 1;
+        string lang_code = 2;
+        bool is_selected = 3;
+    }
+}

@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package component;
+
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message ProtoTestMinervaData {
+    string message_id = 1;
+    uint64 ts_received_ms = 2;
+    string test_str = 3;
+    uint64 test_uint64 = 4;
+    fixed32 test_fixed32 = 5;
+    sfixed64 test_sfixed64 = 6;
+    float test_float = 7;
+    double test_double = 8;
+    bool test_bool = 9;
+    
+    oneof test_oneof {
+        string test_oneof_str = 10;
+        int32 test_oneof_int32 = 11;
+    }
+}
+
+message TestMessage {
+    string msg_str = 1;
+}
+
+message ProtoTestMinervaData2 {
+    string message_id = 1;
+    uint64 ts_received_ms = 2;
+    int32 test2_int32 = 3;
+    TestEnum test2_enum = 4;
+    repeated TestEnum rep_test2_enums = 5;
+    repeated string rep_test2_strs = 6;
+    TestMessage test2_msg = 8;
+    repeated TestMessage rep_test2_msgs = 12;
+    map<string, int32> test2_map = 11;
+    
+    oneof test2_oneof {
+        string test2_oneof_str = 9;
+        int32 test2_oneof_int32 = 10;
+    }
+}
+
+enum TestEnum {
+    TEST_ENUM_UNSPECIFIED = 0;
+    TEST_ENUM_OK1 = 1;
+    TEST_ENUM_OK2 = 2;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package android;
+
+option go_package = ".;android";
+option java_package = "com.hotstar.remotelogging";
+
+message Feedback {
+    string title = 1;
+    string subtitle = 2;
+}

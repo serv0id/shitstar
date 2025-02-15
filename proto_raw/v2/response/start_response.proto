@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package v2.response;
+
+import "v2/page.proto";
+import "v2/error.proto";
+import "v2/widget.proto";
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/response";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.response";
+
+message StartResponse {
+    Success success = 1;
+    message Success {
+        WidgetWrapper menu = 1;
+        Page page = 2;
+        bool is_child = 3;
+        bool is_pre_launch = 5;
+        bool is_deeplink_resolved = 6;
+        
+        Overlay overlay_data = 10;
+        message Overlay {
+            autoDismissConfig config = 3 [deprecated = true];
+            AutoDismissConfig auto_dismiss_config = 4;
+            
+            oneof data {
+                WidgetWrapper widget_wrapper = 1;
+                Page page = 2;
+            }
+        }
+        
+        bool is_onboarding = 4 [deprecated = true];
+        
+        OverlayWidget overlay_widget = 9 [deprecated = true];
+        message OverlayWidget {
+            option deprecated = true;
+            
+            oneof data {
+                string widget_url = 1;
+                WidgetWrapper widget_wrapper = 2;
+            }
+        }
+        
+        oneof overlay {
+            string widget_url = 7 [deprecated = true];
+            WidgetWrapper widget_wrapper = 8 [deprecated = true];
+        }
+        
+        message autoDismissConfig {
+            option deprecated = true;
+            int32 dismissTimeInMillis = 1;
+        }
+        
+        message AutoDismissConfig {
+            int32 dismiss_time_in_sec = 1;
+        }
+    }
+    
+    Error error = 2;
+}

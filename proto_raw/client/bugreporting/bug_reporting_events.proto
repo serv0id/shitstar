@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package client.bugreporting;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/bugreporting";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.bugreporting";
+
+message BugReportEvent {
+    BugReportEventType brt_event_type = 1;
+    enum BugReportEventType {
+        BUG_REPORT_EVENT_TYPE_BRT_UNSPECIFIED = 0;
+        BUG_REPORT_EVENT_TYPE_BRT_INVOKED = 1;
+        BUG_REPORT_EVENT_TYPE_BRT_DB_INITIALIZATION_FAILED = 2;
+        BUG_REPORT_EVENT_TYPE_BRT_DB_INITIALIZED = 3;
+        BUG_REPORT_EVENT_TYPE_BRT_BUG_SCREEN_INVOKED = 4;
+        BUG_REPORT_EVENT_TYPE_BRT_BUG_REPORT_DROP_OFF = 5;
+        BUG_REPORT_EVENT_TYPE_BRT_BUG_REPORT_SAVED = 6;
+        BUG_REPORT_EVENT_TYPE_BRT_NO_INTERNET = 7;
+        BUG_REPORT_EVENT_TYPE_BRT_NON_REPORTED_BUGS_COUNT = 8;
+        BUG_REPORT_EVENT_TYPE_BRT_REPORT_SUCCESS = 9;
+        BUG_REPORT_EVENT_TYPE_BRT_REPORT_FAILURE = 10;
+        BUG_REPORT_EVENT_TYPE_BRT_REPORT_DELETE = 11;
+        BUG_REPORT_EVENT_TYPE_BRT_INITIALIZED = 12;
+    }
+    
+    int32 cpu_usage = 2;
+    double memory_usage = 3;
+    string brt_sdk_version = 4;
+}

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package feature.intervention;
+
+import "feature/intervention/interventions.proto";
+import "feature/intervention/action_intervention.proto";
+import "feature/intervention/refresh_intervention.proto";
+import "feature/intervention/playbackaction_intervention.proto";
+import "feature/intervention/widget_visibility_intervention.proto";
+import "feature/intervention/compose_display_intervention.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/intervention";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.intervention";
+
+message EventIntervention {
+    string event_name = 1;
+    
+    Meta meta = 2;
+    message Meta {
+        oneof meta {
+            ActionHandlerIntervention action_handler = 11;
+            ComposeDisplayIntervention compose_display = 12;
+        }
+    }
+    
+    Repeat repeat = 3;
+    message Repeat {
+        int32 max_repetition_count = 1;
+    }
+}

@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "widget/sports_cricket_summary_card.proto";
+import "widget/voting_button.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PlayerActionBarWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        string subtitle = 2 [deprecated = true];
+        AuxiliaryAction auxiliary_action = 3;
+        AuxiliaryWidget auxiliary_widget = 4;
+        repeated string subtitle_tags = 5;
+    }
+    
+    reserved 2 to 10;
+    
+    message AuxiliaryAction {
+        oneof action {
+            ConfigurableAction subscribe = 1;
+            ConfigurableAction vote = 2;
+            VideoSwitchAction video_switch = 3;
+            ConfigurableAction vlc_toggle = 4;
+        }
+    }
+    
+    message ConfigurableAction {
+        string icon = 1;
+        string cta = 2;
+        base.Actions actions = 3;
+    }
+    
+    message VideoSwitchAction {
+        string label = 1;
+        bool is_on = 2;
+    }
+    
+    message AuxiliaryWidget {
+        oneof widget {
+            CricketPollingSummaryCardWidget summary_card = 1;
+            VotingButtonWidget voting_button = 2;
+        }
+    }
+}

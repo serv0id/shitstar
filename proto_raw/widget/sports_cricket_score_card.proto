@@ -1,0 +1,162 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/sports_cricket_team.proto";
+import "widget/sports_cricket_player.proto";
+import "feature/sports/cricket_team.proto";
+import "feature/sports/cricket_player.proto";
+import "widget/sports_cricket_summary_card.proto";
+import "feature/sports/cricket_batsmen_stats.proto";
+import "feature/sports/cricket_bowler_stats.proto";
+import "feature/sports/cricket_fall_of_wickets_stats.proto";
+import "widget/no_results.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message CricketScorecardWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        CricketSummaryCardWidget summary_card = 1;
+        repeated ScoreBoard boards = 2;
+        bool is_test_cricket = 3;
+        ScoreCardPollingData poling_data = 4;
+        string refresh_url = 5;
+        NoResultsWidget no_score = 6;
+        int64 timestamp = 7;
+        bool is_match_over = 8;
+    }
+    
+    reserved 2 to 10;
+    
+    message ScoreCardPollingData {
+        bool active = 1;
+        int32 frequency = 2;
+        string polling_url = 3;
+    }
+    
+    message ScoreBoard {
+        feature.sports.CricketTeam team_v2 = 5;
+        string inning = 2;
+        ScoreBoardState score_state = 3;
+        bool is_selected = 4;
+        CricketTeam team = 1 [deprecated = true];
+    }
+    
+    message ScoreBoardState {
+        oneof state {
+            ScoreBoardZeroState zero_state = 1;
+            ScoreBoardBattingStats batting_stats = 2;
+        }
+    }
+    
+    message ScoreBoardZeroState {
+        repeated feature.sports.CricketPlayer players_v2 = 2;
+        repeated CricketPlayer players = 1 [deprecated = true];
+    }
+    
+    message ScoreBoardBattingStats {
+        repeated ScoreBoardSection sections = 1;
+    }
+    
+    message ScoreBoardSection {
+        oneof section {
+            BattingSection batting = 1;
+            BowlingSection bowling = 2;
+            FallOfWicketsSection fall_of_wickets = 3;
+        }
+    }
+    
+    message BattingSection {
+        BatsmenHeader header = 1;
+        repeated BatsmenRow rows = 2;
+        BattingTotalRow total_row = 3;
+        BatsmensYetToBat yet_to_bat = 4;
+    }
+    
+    message BatsmenHeader {
+        string title = 1;
+        feature.sports.CricketBatsmenStats stats_v2 = 3;
+        BatsmenStats stats = 2 [deprecated = true];
+    }
+    
+    message BatsmenRow {
+        feature.sports.CricketPlayer player_v2 = 3;
+        feature.sports.CricketBatsmenStats stats_v2 = 4;
+        CricketPlayer player = 1 [deprecated = true];
+        BatsmenStats stats = 2 [deprecated = true];
+    }
+    
+    message BatsmenStats {
+        string runs = 1;
+        string balls = 2;
+        string fours = 3;
+        string sixes = 4;
+        string strike_rates = 5;
+    }
+    
+    message BattingTotalRow {
+        string title = 1;
+        string score = 2;
+        string overs_and_run_rates = 3;
+    }
+    
+    message BatsmensYetToBat {
+        string title = 1;
+        string players_name_content = 2;
+    }
+    
+    message BowlingSection {
+        BowlerHeader header = 1;
+        repeated BowlerRow rows = 2;
+    }
+    
+    message BowlerHeader {
+        string title = 1;
+        feature.sports.CricketBowlerStats stats_v2 = 3;
+        BowlerStats stats = 2 [deprecated = true];
+    }
+    
+    message BowlerRow {
+        feature.sports.CricketPlayer player_v2 = 3;
+        feature.sports.CricketBowlerStats stats_v2 = 4;
+        CricketPlayer player = 1 [deprecated = true];
+        BowlerStats stats = 2 [deprecated = true];
+    }
+    
+    message BowlerStats {
+        string overs = 1;
+        string maidens = 2;
+        string runs = 3;
+        string wickets = 4;
+        string economy = 5;
+    }
+    
+    message FallOfWicketsSection {
+        FallOfWicketsHeader header = 1;
+        repeated FallOfWicketsRow rows = 2;
+    }
+    
+    message FallOfWicketsHeader {
+        string title = 1;
+        feature.sports.CricketFallOfWicketsStats stats_v2 = 3;
+        FallOfWicketsStats stats = 2 [deprecated = true];
+    }
+    
+    message FallOfWicketsRow {
+        feature.sports.CricketPlayer player_v2 = 3;
+        feature.sports.CricketFallOfWicketsStats stats_v2 = 4;
+        CricketPlayer player = 1 [deprecated = true];
+        FallOfWicketsStats stats = 2 [deprecated = true];
+    }
+    
+    message FallOfWicketsStats {
+        string score = 1;
+        string over = 2;
+    }
+}

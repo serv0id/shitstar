@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package feature;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/player";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature";
+
+enum PlayerSettingsType {
+    NONE = 0;
+    VIDEO_QUALITY = 1;
+    AUDIO_LANGUAGE = 2;
+    SUBTITLE = 3;
+    PLAYBACK_SPEED = 4;
+}

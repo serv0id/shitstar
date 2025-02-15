@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "widget/horizontal_content_card.proto";
+import "widget/vertical_content_poster.proto";
+import "widget/square_content_poster.proto";
+import "widget/search_horizontal_content_card.proto";
+import "widget/horizontal_content_poster.proto";
+import "widget/cw_card.proto";
+import "widget/image_banner.proto";
+import "widget/usp_item.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message GridWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        int32 column_number = 2;
+        string more_grid_items_url = 3;
+        TitleStyle title_style = 4;
+        repeated Item items = 11;
+    }
+    
+    reserved 3 to 10;
+    
+    message Item {
+        oneof widget {
+            HorizontalContentCardWidget horizontal_content_card = 1;
+            VerticalContentPosterWidget vertical_content_poster = 2;
+            SquareContentPosterWidget square_content_poster = 3;
+            HorizontalContentPosterWidget horizontal_content_poster = 4;
+            SearchHorizontalContentCardWidget search_horizontal_content_card = 5;
+            ImageBannerWidget image_banner = 6;
+            UspItemWidget usp_item = 7;
+            CWCardWidget cw_card = 8;
+        }
+    }
+    
+    enum TitleStyle {
+        DEFAULT = 0;
+        DESKTOP_TITLE_TITLE_1 = 1;
+        DESKTOP_TITLE_TITLE_3 = 2;
+    }
+}

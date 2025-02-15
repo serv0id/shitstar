@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package action;
+
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message PlayerControlAction {
+    Params params = 1;
+    message Params {
+        oneof params {
+            ChangeVideoQualityParams change_video_quality_params = 1;
+        }
+    }
+    
+    message ChangeVideoQualityParams {
+        string video_quality_code = 1;
+    }
+}

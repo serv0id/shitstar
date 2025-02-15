@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package feature.communication;
+
+import "feature/communication/data/kids_profile_toggle.proto";
+import "feature/communication/data/form_event.proto";
+import "feature/communication/data/search_zero_filter_data.proto";
+import "feature/share/share_info.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/communication";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.communication";
+
+message Message {
+    MessageName message_name = 1;
+    enum MessageName {
+        KIDS_PROFILE_TOGGLE_MESSAGE = 0;
+        FORM_EVENT_MESSAGE = 1;
+        SEARCH_ZERO_FILTERS_MESSAGE = 2;
+        SHARE_SCREENSHOT_MESSAGE = 3;
+    }
+    
+    Data data = 2;
+    message Data {
+        bool disableMessageCaching = 4;
+        
+        oneof MessageData {
+            data.KidsProfileToggle kids_profile_toggle = 1;
+            data.FormEvent form_event = 2;
+            data.SearchZeroFilterData search_zero_filter_data = 3;
+            share.ShareInfo share_info = 5;
+        }
+    }
+}

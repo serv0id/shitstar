@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "widget/hero_gec.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message BrowseSheetHeaderWidget {
+    base.WidgetCommons widget_commons = 1;
+    string title = 11;
+    feature.image.Image title_cutout = 12;
+    
+    repeated Tag superscript_tags = 13;
+    message Tag {
+        string type = 1;
+        string value = 2;
+        base.Actions actions = 3;
+    }
+    
+    reserved 2 to 10;
+}

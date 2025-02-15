@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package component.subs;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/subs";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message PlanDuration {
+    int32 plan_frequency = 1;
+    
+    DurationType plan_duration_type = 2;
+    enum DurationType {
+        DURATION_TYPE_UNSPECIFIED = 0;
+        DURATION_TYPE_DAY = 1;
+        DURATION_TYPE_WEEK = 2;
+        DURATION_TYPE_MONTH = 3;
+        DURATION_TYPE_YEAR = 4;
+    }
+}

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/media_content_info.proto";
+import "widget/feed_content.proto";
+import "widget/feed_cta.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message MediaContentCardWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        FeedContentWidget content = 1;
+        MediaContentInfoWidget content_info = 2;
+        FeedCTAWidget cta = 3;
+    }
+    
+    reserved 2 to 10;
+}

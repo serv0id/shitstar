@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package android;
+
+import "feedback.proto";
+import "metadata.proto";
+import "log.proto";
+
+option go_package = ".;android";
+option java_package = "com.hotstar.remotelogging";
+
+message LoggingPayload {
+    Feedback feedback = 1;
+    Metadata metadata = 2;
+    Log log = 3;
+}

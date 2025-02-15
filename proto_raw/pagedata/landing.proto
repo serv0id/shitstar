@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package pagedata;
+
+import "base/page_data_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/pagedata";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.pagedata";
+
+message LandingPageData {
+    base.PageDataCommons page_data_commons = 1;
+    bool IsCompactMasthead = 2;
+}

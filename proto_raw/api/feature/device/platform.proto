@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package api.feature.device;
+
+import "google/protobuf/descriptor.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/feature/device";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.feature.device";
+
+enum Platform {
+    option allow_alias = true;
+    PLATFORM_UNSPECIFIED = 0;
+    PLATFORM_ANDROID = 1;
+    PLATFORM_IOS = 2;
+    PLATFORM_WEB = 3;
+    PLATFORM_APPLETV = 4;
+    PLATFORM_TVOS = 4 [deprecated = true];
+    PLATFORM_ANDROIDTV = 5;
+    PLATFORM_ANDROID_TV = 5 [deprecated = true];
+    PLATFORM_FIRETV = 6;
+    PLATFORM_FIRE_TV = 6 [deprecated = true];
+    PLATFORM_MCA = 7 [deprecated = true];
+    PLATFORM_PLAYSTATION = 8;
+    PLATFORM_TIZENTV = 9;
+    PLATFORM_TIZEN_TV = 9 [deprecated = true];
+    PLATFORM_WEBOS = 10;
+    PLATFORM_XBOX = 11;
+    PLATFORM_MWEB = 12;
+    PLATFORM_CHROMECAST = 13;
+}

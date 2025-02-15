@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package client;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client";
+
+message Translation {
+    string string_identifier = 1;
+    bool is_bundled = 2;
+    
+    ApiCallStatus string_store_api_call_status = 3;
+    enum ApiCallStatus {
+        API_CALL_STATUS_UNSPECIFIED = 0;
+        API_CALL_STATUS_STARTED = 1;
+        API_CALL_STATUS_COMPLETED = 2;
+        API_CALL_STATUS_FAILED = 3;
+    }
+    
+    string display_language = 4;
+}

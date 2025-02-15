@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package feature.sports;
+
+import "feature/image/image.proto";
+import "feature/sports/game_media_info.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/sports";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.sports";
+
+message Game {
+    string name = 1;
+    GameState state = 2;
+    string meta_desc = 3;
+    GameMediaInfo media_info = 4;
+}
+
+enum GameState {
+    UNKNOWN = 0;
+    NOT_START = 1;
+    LIVE = 2;
+    FINISHED = 3;
+}

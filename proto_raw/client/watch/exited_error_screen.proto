@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package client.watch;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message ExitedErrorScreen {
+    ExitAction exit_action = 1;
+    string error_code = 2;
+}
+
+enum ExitAction {
+    EXIT_ACTION_UNSPECIFIED = 0;
+    EXIT_ACTION_GO_BACK = 1;
+    EXIT_ACTION_DEFAULT = 2;
+}

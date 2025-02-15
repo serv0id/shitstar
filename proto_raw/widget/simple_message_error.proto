@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message SimpleMessageErrorWidget {
+    base.WidgetCommons widget_commons = 1;
+    string message = 11;
+    
+    Duration visibility_duration = 12;
+    enum Duration {
+        LONG = 0;
+        SHORT = 1;
+    }
+    
+    repeated base.Actions.Action before_actions = 13;
+    repeated base.Actions.Action after_actions = 14;
+    
+    reserved 2 to 10;
+}

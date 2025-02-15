@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package client.search;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/search";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.search";
+
+message SearchEraseProperties {
+    string search_session_id = 1;
+    string last_search_id = 2;
+    string last_query_text = 3;
+}

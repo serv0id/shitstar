@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package feature.intervention;
+
+import "feature/intervention/preroll_intervention.proto";
+import "feature/intervention/action_intervention.proto";
+import "feature/intervention/refresh_intervention.proto";
+import "feature/intervention/playbackaction_intervention.proto";
+import "feature/intervention/widget_visibility_intervention.proto";
+import "feature/intervention/compose_display_intervention.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/intervention";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.intervention";
+
+message Intervention {
+    int32 event_time_s = 1;
+    bool is_skippable = 2;
+    
+    Meta meta = 3;
+    message Meta {
+        oneof meta {
+            PrerollIntervention preroll = 1;
+            ActionHandlerIntervention action_handler = 2;
+            PlaybackRefreshIntervention refresh = 3;
+            PlaybackActionIntervention playback_action = 4;
+            WidgetVisibilityIntervention widget_visibility = 5;
+            ComposeDisplayIntervention compose_display = 6;
+        }
+    }
+    
+    Repeat repeat = 4;
+    message Repeat {
+        int32 duration_time_s = 1;
+    }
+}

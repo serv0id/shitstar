@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package client.ads;
+
+import "client/ads/info.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/ads";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.ads";
+
+message AdResolutionInfo {
+    Info info = 1;
+    int64 resolution_time_ms = 2;
+    bool is_resolved = 3;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package client.voting;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/voting";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.voting";
+
+message VotingButtonProperties {
+    CtaType cta_type = 1;
+    enum CtaType {
+        CTA_TYPE_UNSPECIFIED = 0;
+        CTA_TYPE_PRIMARY = 1;
+        CTA_TYPE_SECONDARY = 2;
+    }
+}

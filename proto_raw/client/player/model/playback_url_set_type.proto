@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package client.player.model;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.player.model";
+
+enum PlaybackUrlSetType {
+    PLAYBACK_URL_SET_TYPE_UNSPECIFIED = 0;
+    PLAYBACK_URL_SET_TYPE_PRIMARY = 1;
+    PLAYBACK_URL_SET_TYPE_FALLBACK = 2;
+}

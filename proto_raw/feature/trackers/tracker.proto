@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package feature.trackers;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/trackers";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.trackers";
+
+message Tracker {
+    repeated string urls = 1;
+}

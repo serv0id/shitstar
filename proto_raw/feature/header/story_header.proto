@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package feature.header;
+
+import "feature/atom/button.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/header";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.header";
+
+message StoryHeaderConfig {
+    int32 number_of_stories = 1;
+    repeated int64 duration_of_stories_in_ms = 2;
+    atom.Button mute_button = 3;
+    atom.Button trailing_button = 4;
+    bool switch_on_tap = 5;
+    bool switch_on_swipe = 6;
+    bool automatic_switch = 7;
+}

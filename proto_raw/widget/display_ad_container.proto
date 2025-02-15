@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/image_display_ad.proto";
+import "widget/video_display_ad.proto";
+import "widget/no_fill_ad.proto";
+import "widget/carousel_display_ad.proto";
+import "widget/lottie_banner.proto";
+import "feature/refresh/refresh_info.proto";
+import "feature/image/aspect_ratio.proto";
+import "widget/video_quality_comparator.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message DisplayAdContainerWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.refresh.RefreshInfo refresh_info = 1;
+        bool auto_invoke = 8;
+        
+        oneof display_ad {
+            ImageDisplayAdWidget image_ad = 2;
+            NoFillAdWidget no_fill_ad = 3;
+            LottieBannerWidget skinny_ad = 4;
+            CarouselDisplayAdWidget carousel_ad = 5;
+            DisplayAdPlaceholder display_ad_placeholder = 6;
+            VideoDisplayAdWidget video_ad = 7;
+            VideoQualityComparatorWidget video_quality_comparator = 9 [deprecated = true];
+        }
+    }
+    
+    reserved 2 to 10;
+    
+    message DisplayAdPlaceholder {
+        string widget_url = 1;
+        feature.image.AspectRatio aspect_ratio = 2;
+    }
+}

@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package v2.enrichment;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/enrichment";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.enrichment";
+
+message UserSegment {
+    string ssai = 1;
+    
+    Location location = 2;
+    message Location {
+        string country = 1;
+        int32 pin_code = 2;
+        string state = 3;
+        string city = 4;
+    }
+    
+    string user_segment = 3;
+    
+    DataStatus status = 4;
+    enum DataStatus {
+        UNKNOWN_DATA_STATUS = 0;
+        UPDATED = 1;
+        STALE = 2;
+        OVERSIZE = 3;
+        FAILED = 4;
+    }
+}

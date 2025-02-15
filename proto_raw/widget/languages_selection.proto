@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message LanguagesSelectionWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Meta meta = 11 [deprecated = true];
+    message Meta {
+        option deprecated = true;
+        string text = 1;
+        string title = 2;
+        string sub_title = 3;
+    }
+    
+    Icons icons = 12;
+    message Icons {
+        string unselected = 1;
+        string selected = 2;
+    }
+    
+    repeated Language languages = 13;
+    message Language {
+        string language = 1;
+        string text = 2;
+        bool is_selected = 3;
+        feature.image.Image thumbnail = 4;
+    }
+    
+    Submit submit = 14;
+    message Submit {
+        string label = 1;
+        string icon = 2;
+        base.Actions actions = 3;
+    }
+    
+    PageHeader page_header = 15;
+    message PageHeader {
+        string text = 1;
+        string title = 2;
+        string sub_title = 3;
+    }
+    
+    reserved 1, 3 to 10;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package component.search;
+
+import "component/search/search_response.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/search";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message SearchZeroResponseProperties {
+    ResponseType response_type = 1 [deprecated = true];
+    uint32 total_results_count = 5 [deprecated = true];
+}

@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/payment_method_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PaymentMethodQuickPayWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    repeated QuickPay quick_pay_arr = 11;
+    message QuickPay {
+        oneof quick_pay {
+            PaytmQuickPay paytm_quick_pay = 1;
+        }
+    }
+    
+    PaymentMethodCommonsWidget payment_method_meta = 12;
+    
+    reserved 2 to 10;
+    
+    message PaytmQuickPay {
+        string vendorName = 1;
+        string phoneNumber = 2;
+        string walletBalance = 3;
+        string cta = 4;
+        bool isBalanceSufficiecnt = 5;
+    }
+}

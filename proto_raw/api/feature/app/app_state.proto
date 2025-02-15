@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package api.feature.app;
+
+import "api/feature/device/battery.proto";
+import "api/feature/device/display.proto";
+import "api/feature/device/memory.proto";
+import "api/feature/device/network.proto";
+import "api/feature/device/ospermission.proto";
+import "api/feature/device/pip.proto";
+import "api/feature/device/processor.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/feature/app";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.feature.app";
+
+message AppState {
+    device.NetworkInfo network_state = 1;
+    string app_language = 2;
+    device.BatteryInfo battery_state = 3;
+    device.DisplayInfo display_state = 4;
+    device.MemoryInfo memory_state = 5;
+    device.ProcessorInfo processor_state = 6;
+    device.OsPermission os_permission_state = 7;
+    device.PipInfoV2 pip_info = 8;
+}

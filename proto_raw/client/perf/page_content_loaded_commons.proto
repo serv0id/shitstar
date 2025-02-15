@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package client.perf;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/perf";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.perf";
+
+message PageContentLoadedCommons {
+    int32 total_image_loads = 1;
+    int32 slow_image_loads = 2;
+}

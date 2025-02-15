@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "widget/maturity_selection.proto";
+import "widget/parental_lock.proto";
+import "base/widget_commons.proto";
+import "widget/dialog.proto";
+import "widget/notify_widget_lr.proto";
+import "feature/profile/gender.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message AddProfileWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        string sub_title = 2;
+        string name_input_label = 3;
+        KidsOption kids_option = 4;
+        MaturityOptionWidget maturity = 5;
+        string updates_subscription = 6;
+        feature.image.Image kids_profile_image = 7 [deprecated = true];
+        CreateProfileCTA create_action_options = 8;
+        string logout_label = 9;
+        string name_input_regex = 10;
+        LogoutButton logout_button = 11;
+        Button cancel_btn = 12;
+        ParentalLockToggle parental_lock = 13;
+        string invalid_user_name_message = 14;
+        string name_max_length = 15;
+        string edit_name_label = 16;
+        string name_input_next_screen_label = 17;
+        base.Actions continue_btn_action = 18;
+        NotifyWidgetLR parental_lock_notify_data = 19;
+        Age age = 20;
+        GenderOptions gender_options = 21;
+        bool consent_optin_status = 22;
+    }
+    
+    reserved 2 to 10;
+    
+    message LogoutButton {
+        string text = 1;
+        base.Actions actions = 2;
+        DialogWidget dialog = 3;
+        string icon = 4;
+    }
+    
+    message GenderOptions {
+        string gender_title = 1;
+        repeated GenderMap gender_map = 2;
+        string disclosure = 3;
+    }
+    
+    message GenderMap {
+        string key = 1 [deprecated = true];
+        string value = 2;
+        feature.profile.Gender gender_key = 3;
+    }
+    
+    message Age {
+        string title = 1;
+        int32 minimum_age = 2;
+        int32 maximum_age = 3;
+        string min_age_error_message = 4;
+        string max_age_error_message = 5;
+        string disclosure = 6;
+    }
+    
+    message KidsOption {
+        string label = 1;
+        string desc = 2;
+        ParentalLockSetupWidget parental_lock = 3;
+    }
+    
+    message MaturityOptionWidget {
+        string label = 1;
+        string desc = 2;
+        string selected_ratings_text = 3;
+        MaturitySelectionWidget maturity = 4;
+    }
+    
+    message CreateProfileCTA {
+        string label_create_profile = 1;
+        string label_create_kids_profile = 2;
+        base.Actions create_profile_action = 3;
+    }
+    
+    message Button {
+        string label = 1;
+        base.Actions action = 2;
+    }
+    
+    message ParentalLockToggle {
+        string label = 1;
+        string desc = 2;
+        bool is_selected = 3;
+        base.Actions turn_off_action = 4;
+        base.Actions turn_on_action = 5;
+        string status_label = 6;
+        string enabled_label = 7;
+        string disabled_label = 8;
+        bool recaptcha_enabled = 9;
+    }
+}

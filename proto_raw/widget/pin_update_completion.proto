@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PinUpdateCompletionWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        bool pin_status = 1;
+        PinUpdateStatus successStateView = 2;
+        PinUpdateStatus failureStateView = 3;
+    }
+    
+    reserved 2 to 10;
+    
+    message PinUpdateStatus {
+        string title = 1;
+        string desc = 2;
+        feature.image.Image illustration = 3;
+        Button primary_btn = 4;
+        Button secondary_btn = 5;
+        bool recaptcha_enabled = 6;
+    }
+    
+    message Button {
+        string label = 1;
+        base.Actions action = 2;
+    }
+}

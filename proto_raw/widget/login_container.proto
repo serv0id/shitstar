@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "widget/previous_logins.proto";
+import "widget/login_with_phone.proto";
+import "widget/login_with_qr.proto";
+import "widget/hero.proto";
+import "widget/divider.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message LoginContainerWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        string sub_title = 2;
+        repeated LoginContainerWidgets widgets = 3;
+        string help_rich_text = 4;
+        ContentAlignment content_alignment = 5;
+        bool recaptcha_enabled = 6;
+        bool recaptcha_v2_enabled = 7 [deprecated = true];
+    }
+    
+    reserved 3 to 10;
+    
+    message LoginContainerWidgets {
+        oneof ChildWidgets {
+            PreviousLoginsWidget previous_logins = 1;
+            LoginWithPhoneWidget login_with_phone = 2;
+            LoginWithQrWidget login_with_qr = 3 [deprecated = true];
+            HeroWidget hero_widget = 4;
+            DividerWidget divider = 5;
+        }
+    }
+    
+    enum ContentAlignment {
+        DEFAULT = 0;
+        RIGHT = 1;
+    }
+}

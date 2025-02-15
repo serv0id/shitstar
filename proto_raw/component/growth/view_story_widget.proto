@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package component.growth;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/growth";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message StoryWidgetProperties {
+    int64 total_cards_available = 1;
+    int64 story_id = 2;
+}

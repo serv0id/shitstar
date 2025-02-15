@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "feature/image/lottie.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message InfoPillWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        PillSummary pill_summary = 1;
+        PinSummary pin_summary = 2;
+        base.Actions actions = 3;
+    }
+    
+    reserved 2 to 10;
+    
+    message PillSummary {
+        Item primary_item = 1;
+        Item secondary_item = 2;
+        string start_time = 3;
+    }
+    
+    message Item {
+        string title = 1;
+        feature.image.Image active_icon = 2;
+        string primary_sub_title = 3;
+        string secondary_sub_title = 4;
+        bool is_active = 5;
+        string active_soul_icon_name = 6;
+    }
+    
+    message PinSummary {
+        PinState pin_state = 1;
+        feature.image.Image pin_icon_active = 2 [deprecated = true];
+        feature.image.Image pin_icon_inactive = 3 [deprecated = true];
+        bool force_pin_state = 4;
+        string pill_persistence_key = 5;
+        feature.image.Lottie active_pin_lottie = 6;
+        feature.image.Lottie inactive_pin_lottie = 7;
+    }
+    
+    enum PinState {
+        UNSPECIFIED = 0;
+        HIDDEN = 1;
+        PINNED = 2;
+        UNPINNED = 3;
+    }
+}

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package feature.language_selector;
+
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/language_selector";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.language_selector";
+
+message LanguageSelector {
+    option deprecated = true;
+    
+    repeated Language languages = 1;
+    message Language {
+        string id = 1;
+        string name = 2;
+        string display_name = 3;
+        string description = 4;
+        bool is_selected = 5;
+        string iso2code = 6;
+        string iso3code = 7;
+        bool is_default = 8;
+        base.Actions actions = 9;
+    }
+}

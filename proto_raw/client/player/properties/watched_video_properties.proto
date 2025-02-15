@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package client.player.properties;
+
+import "client/player/model/buffer_stats.proto";
+import "client/player/model/playback_feed_info.proto";
+import "client/player/model/playback_mode_info.proto";
+import "client/player/model/playback_pip_mode.proto";
+import "client/player/model/playback_session_info.proto";
+import "client/player/model/playback_state_info.proto";
+import "client/player/model/player_and_device_info.proto";
+import "client/player/model/watch_session_properties.proto";
+import "client/watch/preload_playback_properties.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/properties";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.player.properties";
+
+message WatchedVideoProperties {
+    model.PlayerAndDeviceInfo player_and_device_info = 1;
+    model.PlaybackSessionInfo playback_session_info = 2;
+    model.PlaybackStateInfo playback_state_info = 3;
+    model.WatchSessionProperties watch_session_properties = 4;
+    model.BufferStats buffer_stats = 5;
+    model.PlaybackModeInfo playback_mode_info = 6;
+    bool is_casting = 7;
+    TriggerType trigger_type = 8;
+    string active_tab = 9;
+    model.PlaybackPIPMode playback_pip_mode = 10 [deprecated = true];
+    ActionType action_type = 11;
+    model.PlaybackPipMode playback_pip_mode_v2 = 12;
+    bool is_preload = 13;
+    watch.PreloadPlaybackProperties.PreloadStatus preload_status = 14;
+    model.PlaybackFeedInfo playback_feed_info = 15;
+}
+
+enum TriggerType {
+    TRIGGER_TYPE_UNSPECIFIED = 0;
+    TRIGGER_TYPE_VIDEO_QUALITY_CHANGE = 1;
+    TRIGGER_TYPE_AUDIO_CHANGE = 2;
+    TRIGGER_TYPE_CAPTION_CHANGE = 3;
+    TRIGGER_TYPE_ORIENTATION_CHANGE = 4;
+    TRIGGER_TYPE_PIP_ENTERED = 5;
+    TRIGGER_TYPE_PIP_EXIT = 6;
+    TRIGGER_TYPE_ERROR = 7;
+    TRIGGER_TYPE_CASTING_STARTED = 8;
+    TRIGGER_TYPE_VIDEO_PAUSED = 9;
+    TRIGGER_TYPE_PLAYER_EXIT = 10;
+    TRIGGER_TYPE_VIDEO_END_REACHED = 11;
+    TRIGGER_TYPE_TAB_CHANGED = 12;
+    TRIGGER_TYPE_IN_PIP_ENTERED = 13;
+    TRIGGER_TYPE_IN_PIP_EXIT = 14;
+    TRIGGER_TYPE_PLAYBACK_SPEED_CHANGE = 15;
+}
+
+enum ActionType {
+    ACTION_TYPE_UNSPECIFIED = 0;
+    ACTION_TYPE_SCREEN_INTERACTION = 1;
+    ACTION_TYPE_OTHERS = 2;
+}

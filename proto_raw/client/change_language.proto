@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package client;
+
+import "client/player/model/playback_mode_info.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client";
+
+message ChangeLanguageProperties {
+    ChangeMethod change_method = 1;
+    enum ChangeMethod {
+        CHANGE_METHOD_UNSPECIFIED = 0;
+        CHANGE_METHOD_PLAYER_SETTING = 1;
+        CHANGE_METHOD_PLAYER_OVERLAY = 2;
+        CHANGE_METHOD_PLAYER_DETAILS_AUDIO_SELECTION = 3;
+    }
+    
+    string previous_language = 2;
+    string new_language = 3;
+    
+    LanguageLogic previous_language_logic = 4;
+    enum LanguageLogic {
+        LANGUAGE_LOGIC_UNSPECIFIED = 0;
+        LANGUAGE_LOGIC_LPV = 1;
+        LANGUAGE_LOGIC_LAST_WATCHED_LANGUAGE = 2 [deprecated = true];
+        LANGUAGE_LOGIC_USER_SELECTION_PREVIOUS_CONTENT = 3;
+        LANGUAGE_LOGIC_USER_SELECTION_CURRENT_CONTENT = 4;
+    }
+    
+    player.model.PlayerOrientation player_orientation = 5;
+    bool is_casting = 6;
+    string player_version = 7;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package client.heartbeat.model;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/heartbeat/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.heartbeat.model";
+
+enum Viewport {
+    VIEWPORT_UNSPECIFIED = 0;
+    VIEWPORT_PORTRAIT = 1;
+    VIEWPORT_LANDSCAPE = 2;
+    VIEWPORT_PIP = 3;
+}

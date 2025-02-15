@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package feature.image;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/image";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.image";
+
+message AspectRatio {
+    int32 width = 1;
+    int32 height = 2;
+}

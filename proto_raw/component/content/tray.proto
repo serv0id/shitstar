@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package component.content;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/content";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message Tray {
+    option deprecated = true;
+    string tray_id = 1;
+    string tray_name = 2;
+    int64 tray_position = 3;
+    string localised_tray_name = 4;
+    TraySource source = 5;
+    string logic = 6;
+    string display_language = 7;
+}
+
+enum TraySource {
+    TRAY_SOURCE_UNSPECIFIED = 0;
+    TRAY_SOURCE_PERSONA = 1;
+    TRAY_SOURCE_CMS = 2;
+}

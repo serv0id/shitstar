@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/widget_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message EditProfileSuccessWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string message = 1;
+        repeated base.Actions.Action on_complete_actions = 2;
+    }
+    
+    reserved 2 to 10;
+}

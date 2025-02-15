@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package feature.sports;
+
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/sports";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.sports";
+
+message Player {
+    string name = 1;
+    image.Image icon = 2;
+    string short_desc = 3;
+    string detail_desc = 4;
+}

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package client.player.model;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.player.model";
+
+message WatchSessionProperties {
+    uint32 watch_time_seconds = 1;
+    uint32 buffer_time_ms = 2;
+    uint32 seek_time_ms = 3;
+    uint32 buffer_count = 4;
+    uint32 total_seek_count = 5;
+    uint32 rewind_count = 6;
+    uint32 skip_forward_count = 7;
+    uint32 stall_count = 8;
+    uint32 bytes_downloaded = 9 [deprecated = true];
+    uint32 dropped_video_frames = 10;
+    uint32 msq_error_count = 11;
+    uint32 missing_discontinuity_tag_count = 12;
+    uint32 audio_sink_error_count = 13;
+    uint64 bytes_downloaded_v2 = 14;
+    uint32 ssai_failover_count = 15;
+    uint32 ssai_recovery_count = 16;
+    float playback_speed = 17;
+    uint32 content_playback_time_seconds = 18;
+    uint32 video_up_shift_count = 19;
+    uint32 video_down_shift_count = 20;
+    uint32 induced_buffer_time_ms = 21;
+    uint32 induced_buffer_count = 22;
+}

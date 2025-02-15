@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/email_capture.proto";
+import "widget/verify_otp.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message EmailCaptureContainerWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        repeated EmailCaptureContainerWidgets widgets = 1;
+        string help_rich_text = 2;
+        SkipCTA skip_cta = 3;
+        bool is_back_enabled = 4;
+    }
+    
+    reserved 2 to 10;
+    
+    message SkipCTA {
+        string text = 1;
+        string icon_name = 2;
+        base.Actions actions = 3;
+    }
+    
+    message EmailCaptureContainerWidgets {
+        oneof ChildWidgets {
+            EmailCaptureWidget email_capture = 1;
+            VerifyOtpWidget verify_otp = 2;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package action;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message DeleteListItemAction {
+    string url = 1;
+    string id = 2;
+}

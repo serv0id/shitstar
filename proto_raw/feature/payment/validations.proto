@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package feature.payment;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/payment";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.payment";
+
+message Validation {
+    string regex = 1;
+    string message = 2;
+}

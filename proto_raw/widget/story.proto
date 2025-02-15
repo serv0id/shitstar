@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/media_container.proto";
+import "widget/hero_gec.proto";
+import "widget/media_callout.proto";
+import "widget/media_collection.proto";
+import "widget/top3_template.proto";
+import "widget/text_prompt.proto";
+import "widget/hero.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message StoryWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        CommonElements common_elements = 1;
+        message CommonElements {
+            int32 number_of_templates = 1;
+            int64 intro_lottie_duration_in_ms = 2;
+            repeated int64 story_templates_duration_in_ms = 3;
+        }
+        
+        BackgroundElements background_elements = 2;
+        message BackgroundElements {
+            MediaContainerWidget background_element = 1;
+            MediaContainerWidget static_background_fallback_image = 2;
+        }
+        
+        ForegroundElements foreground_elements = 3;
+        message ForegroundElements {
+            repeated Templates templates = 1;
+        }
+        
+        message Templates {
+            oneof widget {
+                HeroGECWidget prompt_template = 1 [deprecated = true];
+                MediaCalloutWidget callout_template = 2;
+                MediaCollectionWidget collection_template = 3;
+                Top3TemplateWidget top3_template = 4;
+                TextPromptWidget text_prompt_template = 5;
+                HeroWidget hero_template = 6;
+            }
+        }
+    }
+    
+    reserved 2 to 10;
+}

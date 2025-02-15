@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package api.feature.identity;
+
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/feature/identity";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.feature.identity";
+
+message Location {
+    string country = 1;
+    string region_code = 2;
+    string city = 3;
+    float lat = 4;
+    float long = 5;
+    string ip_address = 6;
+    uint32 asn_number = 7;
+}

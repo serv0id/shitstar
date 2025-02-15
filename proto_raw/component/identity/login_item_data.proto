@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package component.identity;
+
+import "component/identity/enum.proto";
+import "component/identity/user_action.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/identity";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message LoginItemData {
+    UserAction user_action = 1;
+    string country_prefix = 2;
+    bool is_previous_login_enabled = 3;
+    LoginMode login_mode = 4;
+    PageReferrer page_referrer = 5;
+    LoginTemplate login_template = 6;
+}

@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "feature/branding/brand.proto";
+import "feature/image/image.proto";
+import "feature/subscription/paywall_impression.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ConsumptionPaywallWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.branding.Brand logo = 1 [deprecated = true];
+        string title = 2;
+        Description description = 3;
+        Cta cta = 4;
+        string help_rich_text = 5 [deprecated = true];
+        HelpInfo help_info = 6;
+        feature.image.Image bg_image = 7;
+        feature.subscription.PaywallImpressionPayload paywall_impression = 8;
+    }
+    
+    reserved 2 to 10;
+    
+    message Description {
+        string text = 1;
+        string pay_link = 2;
+    }
+    
+    message Cta {
+        string text = 1;
+        base.Actions actions = 2;
+    }
+    
+    message HelpInfo {
+        string text = 1;
+        base.Actions actions = 2;
+    }
+}

@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.modal.widget";
+
+message MobileDetailWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string header = 1;
+        string mobile_number = 2;
+        EditPhoneNumberButton edit_button = 3;
+    }
+    
+    reserved 2 to 10;
+    
+    message EditPhoneNumberButton {
+        string text = 1;
+        base.Actions actions = 2;
+    }
+}

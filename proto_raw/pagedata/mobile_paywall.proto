@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package pagedata;
+
+import "base/page_data_commons.proto";
+import "action/purchase.proto";
+import "action/go_back.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/pagedata";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.pagedata";
+
+message MobilePaywallPageData {
+    base.PageDataCommons page_data_commons = 1;
+    
+    AutoTriggerActions auto_trigger_action = 14;
+    message AutoTriggerActions {
+        oneof auto_trigger_action {
+            action.PurchaseAction purchase_action = 1;
+            action.GoBackAction page_back = 2;
+        }
+    }
+    
+    map<string, base.Actions.Action> page_event_actions = 15;
+}

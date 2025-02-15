@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "widget/cast_icon.proto";
+import "widget/logo.proto";
+import "widget/subscription_logo.proto";
+import "widget/help_settings_button.proto";
+import "widget/subscription_nudge.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message BrandedLogoHeaderWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        LogoWidget logo = 1 [deprecated = true];
+        repeated Widget widgets = 2;
+        SubscriptionLogoWidget subscription_logo = 3;
+    }
+    
+    reserved 3 to 10;
+    
+    message Widget {
+        oneof widget {
+            CastIconButtonWidget cast_icon = 1;
+            HelpSettingsButtonWidget help_settings_button = 2;
+            SubscriptionNudgeWidget subscription_nudge = 3;
+        }
+    }
+}

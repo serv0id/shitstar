@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package client.player.model;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.player.model";
+
+message PlaybackFeedInfo {
+    uint32 position = 1;
+}

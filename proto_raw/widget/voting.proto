@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "feature/voting/voting_button_config.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message VotingWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        Title banner_title = 1;
+        Title pre_state_title = 2;
+        Title active_state_title = 3;
+        Title post_state_title = 4;
+        Title event_time_elapsed_title = 5;
+        Title submit_screen_title = 6;
+        string submit_button_title = 7;
+        repeated VotingLine voting_lines = 8;
+        string sponsor_title = 9;
+        repeated SponsorItem sponsor_litems = 10;
+        feature.voting.VotingButtonConfig voting_button_config = 11;
+    }
+    
+    reserved 2 to 10;
+    
+    message VotingLine {
+        string voting_id = 1;
+        repeated VotingOption voting_options = 2;
+        string voting_submit_url = 3;
+        int64 max_selectable_option = 4;
+        int64 max_vote_per_option = 5;
+    }
+    
+    message VotingOption {
+        feature.image.Image profile_photo = 1;
+        string name = 2;
+        string id = 3;
+    }
+    
+    message SponsorItem {
+        feature.image.Image sponsor_logo = 1;
+        string sponsor_link = 2 [deprecated = true];
+        base.Actions actions = 3;
+    }
+    
+    message Title {
+        string title = 1;
+        string sub_title = 2;
+        string plural_title = 3;
+    }
+}

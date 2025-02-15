@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package client.search;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/search";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.search";
+
+message SearchAppliedFilterProperties {
+    string search_session_id = 1;
+    string search_id = 2;
+    string query_text = 3;
+    PageType page_type = 4 [deprecated = true];
+    map<string, StringList> search_filter = 5;
+    bool is_explicit = 6;
+}
+
+message StringList {
+    repeated string values = 1;
+}
+
+enum PageType {
+    PAGE_TYPE_UNSPECIFIED = 0;
+    PAGE_TYPE_SEARCH = 1;
+    PAGE_TYPE_SEARCH_ZERO = 2;
+    PAGE_TYPE_EXPLORE = 3;
+}

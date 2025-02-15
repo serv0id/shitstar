@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package action;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message CancelSubscriptionAction {
+    oneof data {
+        CancelApi cancel_api = 1;
+        SdkNavigation sdk_navigation = 2;
+    }
+    
+    message CancelApi {
+        string commercial_pack_id = 1;
+        MessageOnCancel message = 2;
+    }
+    
+    message MessageOnCancel {
+        string success_msg = 1;
+        string failure_msg = 2 [deprecated = true];
+    }
+    
+    message SdkNavigation {
+        string commercial_pack_id = 1;
+    }
+}

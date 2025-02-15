@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package component.playback;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/playback";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component.playback";
+
+enum PlayType {
+    option allow_alias = true;
+    PLAY_TYPE_UNSPECIFIED = 0;
+    PLAY_TYPE_MASTHEAD_AUTOPLAY = 1;
+    PLAY_TYPE_MASTHEAD = 1 [deprecated = true];
+    PLAY_TYPE_WATCH_PAGE = 2;
+    PLAY_TYPE_DETAIL_PAGE_AUTOPLAY = 3;
+    PLAY_TYPE_DETAIL_PAGE = 3 [deprecated = true];
+    PLAY_TYPE_BROWSESHEET_AUTOPLAY = 4;
+    PLAY_TYPE_BROWSESHEET = 4 [deprecated = true];
+    PLAY_TYPE_UGC = 5;
+    PLAY_TYPE_HOVER_DETAILS_AUTOPLAY = 6;
+    PLAY_TYPE_LR_SPOTLIGHT_AUTOPLAY = 7;
+    PLAY_TYPE_FEED_PAGE_AUTOPLAY = 8;
+}

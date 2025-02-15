@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "feature/player/player_settings_type.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PlayerSettingsWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        map<string, PlayerSettingsOptionList> option_list_map = 1;
+        repeated PlayerSettingsOptionListGroup landscape_option_list_groups = 11;
+        repeated PlayerSettingsOptionListGroup portrait_option_list_groups = 12;
+    }
+    
+    reserved 3 to 10;
+    
+    message PlayerSettingsOptionListGroup {
+        string title = 1;
+        repeated string option_list_keys = 2;
+    }
+    
+    message PlayerSettingsOptionList {
+        string title = 1;
+        feature.PlayerSettingsType type = 2;
+        repeated SettingsOption options = 3;
+    }
+    
+    message SettingsOption {
+        oneof options {
+            PlayerSettingsVideoQualityOption video_quality_option = 1;
+            PlayerSettingsAudioOption audio_option = 2;
+            PlayerSettingsSubtitleOption subtitle_option = 3;
+        }
+    }
+    
+    message PlayerSettingsVideoQualityOption {
+        string title = 1;
+        string subtitle = 2;
+        string description = 3;
+        
+        BadgeType badge_type = 4;
+        enum BadgeType {
+            UNKNOWN = 0;
+            NEED_UPGRADE = 1;
+        }
+        
+        bool is_selected = 5;
+        int32 bitrate = 6;
+        int32 width = 7;
+        int32 height = 8;
+        int32 min_height = 9;
+        int32 max_height = 10;
+        int32 min_bandwidth = 11;
+        int32 max_bandwidth = 12;
+    }
+    
+    message PlayerSettingsAudioOption {
+        string title = 1;
+        bool is_selected = 3;
+        string iso2code = 4;
+        string iso3code = 5;
+        string name_in_english = 6;
+        string language_tag = 7;
+        int32 channel_count = 8;
+        
+        reserved 2, "code";
+    }
+    
+    message PlayerSettingsSubtitleOption {
+        string title = 1;
+        bool is_selected = 3;
+        string iso2code = 4;
+        string iso3code = 5;
+        string name_in_english = 6;
+        string language_tag = 7;
+        
+        reserved 2, "code";
+    }
+}

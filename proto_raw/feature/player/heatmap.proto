@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package feature.player;
+
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/player";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.player";
+
+message Heatmap {
+    string heatmap_image_url = 1;
+    repeated SceneItem scene_items = 2;
+}
+
+message SceneItem {
+    string timestamp = 1;
+    string emoji = 2;
+    image.Image image = 3;
+    string description = 4;
+}

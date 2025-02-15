@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "base/widget_commons.proto";
+import "feature/trackers/tracker.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+
+message SpotlightNudgeWidget {
+    base.WidgetCommons widget_commons = 1 [deprecated = true];
+    
+    Data data = 11 [deprecated = true];
+    message Data {
+        ImageSourceType image_source_type = 1;
+        string title = 5;
+        string sub_title = 6;
+        PrimaryCTA primary_cta = 7;
+        DismissIcon dismiss_icon = 8;
+        feature.trackers.Tracker impression_tracker = 9;
+        
+        oneof ImageSource {
+            feature.image.Image nudge_img = 2;
+            string nudge_lottie = 3;
+            string nudge_icon_name = 4;
+        }
+    }
+    
+    message PrimaryCTA {
+        string text = 1;
+        base.Actions actions = 2;
+        feature.trackers.Tracker click_tracker = 3;
+    }
+    
+    message DismissIcon {
+        string icon_name = 1;
+        feature.trackers.Tracker click_tracker = 2;
+    }
+    
+    enum ImageSourceType {
+        IMAGE = 0;
+        ICON = 1;
+        LOTTIE = 2;
+    }
+}

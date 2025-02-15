@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package client.heartbeat.model;
+
+import "client/heartbeat/model/ad_event.proto";
+import "client/heartbeat/model/payload_trigger.proto";
+import "client/heartbeat/model/qos_event.proto";
+import "client/heartbeat/model/viewport.proto";
+import "client/player/model/playback_session_info.proto";
+import "client/player/model/playback_state_info.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/heartbeat/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.heartbeat.model";
+
+message Payload {
+    uint32 payload_counter = 1;
+    uint64 ts_created_ms = 2;
+    PayloadTrigger sending_trigger = 3;
+    string playback_session_id = 4;
+    repeated AdEvent ad_events = 5;
+    repeated QosEvent qos_events = 6;
+    Viewport viewport = 7;
+    string video_stream_codec = 8;
+    string audio_stream_codec = 9;
+    string playback_url = 10;
+    string playback_tag = 11;
+    string media_host = 12;
+    string stream_host = 13;
+    player.model.PlaybackSessionInfo.DrmProvider stream_drm_provider = 14;
+    player.model.PlaybackSessionInfo.StreamType stream_type = 15;
+    player.model.PlaybackSessionInfo.StreamFormat stream_format = 16;
+    uint32 stream_duration_ms = 17;
+    bool has_preroll = 18;
+    
+    PlaybackStatus playback_status = 19;
+    enum PlaybackStatus {
+        PLAYBACK_STATUS_UNSPECIFIED = 0;
+        PLAYBACK_STATUS_PLAYING = 1;
+        PLAYBACK_STATUS_PAUSED = 2;
+        PLAYBACK_STATUS_STOPPED = 3;
+    }
+    
+    string audio_decoder = 20;
+    string video_decoder = 21;
+    player.model.VideoQuality video_quality_level = 22;
+    int64 video_position_ms = 23;
+    bool is_downloaded = 24;
+    bool is_fallback = 25;
+    string ab_id = 26;
+    string audio_lang_code = 27;
+    string audio_language = 28;
+    string client_playback_session_id = 29;
+}

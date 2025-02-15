@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/player.proto";
+import "widget/player_settings_v2.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message OfflineWatchWidget {
+    base.WidgetCommons widget_commons = 1;
+    PlayerWidget player_widget = 11;
+    PlayerSettingsWidgetV2 player_settings_widget_v2 = 12;
+    
+    reserved 2 to 10;
+}

@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/lottie.proto";
+import "feature/quiz/title_icon_combo.proto";
+import "feature/quiz/title.proto";
+import "feature/quiz/streak_vector.proto";
+import "widget/hero.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message QuizFinalResultWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        HeroWidget score = 1;
+        string win_title = 2;
+        feature.quiz.Title win_points = 3;
+        feature.quiz.TitleIconCombo bonus = 4;
+        feature.quiz.TitleIconCombo streak = 5;
+        ShareCTA share_cta = 6;
+        TextCtaWidget view_prizes_winners = 7;
+        string background_color_hex = 8;
+        feature.quiz.TitleIconCombo share_brand_date = 9;
+        string share_bonus_request_url = 10;
+        bool show_happy_lottie = 11;
+        Points weekly_points = 12;
+        Points season_points = 13;
+        feature.quiz.StreakVector streak_vector = 14;
+        bool show_season_points = 15;
+        int32 transition_season_duration_in_ms = 16;
+        bool enable_streak_layout = 17;
+    }
+    
+    reserved 2 to 10;
+    
+    message ShareCTA {
+        string title = 1;
+        string subtitle = 2;
+        base.Actions action = 11;
+    }
+    
+    message TextCtaWidget {
+        string title = 1;
+        base.Actions action = 2;
+    }
+    
+    message Points {
+        HeroWidget detail = 1;
+        feature.quiz.Title points = 2;
+    }
+}

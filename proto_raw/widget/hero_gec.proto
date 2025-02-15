@@ -1,0 +1,164 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/download/download_info.proto";
+import "feature/image/image.proto";
+import "feature/cw/cw_info.proto";
+import "feature/watchlist/watchlist_info.proto";
+import "feature/remind_me/remind_me_info.proto";
+import "feature/community/community_info.proto";
+import "feature/language_selector/language_selector.proto";
+import "widget/spotlight_info.proto";
+import "feature/autoplay/autoplay_info.proto";
+import "feature/content_language_preference/content_language_preference.proto";
+import "feature/language/language.proto";
+import "feature/callout_tag/callout_tag.proto";
+import "widget/lottie_banner.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message HeroGECWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image hero_img = 1;
+        HeroGECContentInfo content_info = 2;
+        feature.cw.CwInfo cw_info = 3;
+        Trailer trailer = 4;
+        CTAButton primary_cta = 5 [deprecated = true];
+        CTAButton secondary_cta = 6 [deprecated = true];
+        ContentActionsRow content_actions_row = 7;
+        SpotlightInfoWidget spotlight_info = 8;
+        feature.autoplay.AutoplayInfo autoplay_info = 9;
+        ContentCTAButton primary_button = 10;
+        ContentCTAButton secondary_button = 11;
+        feature.image.Image animating_vertical_img = 12;
+        LottieBannerWidget lottie_banner = 13;
+    }
+    
+    reserved 3 to 10;
+    
+    message HeroGECContentInfo {
+        string title = 1;
+        feature.image.Image title_cutout = 2;
+        string description = 3;
+        string callout_text = 4;
+        
+        repeated Tag subscript_tags = 5 [deprecated = true];
+        message Tag {
+            string type = 1 [deprecated = true];
+            string value = 2 [deprecated = true];
+            base.Actions actions = 3 [deprecated = true];
+            
+            oneof tag {
+                TextTag text_tag = 4;
+                BadgeTag badge_tag = 5;
+                ImageTag image_tag = 6;
+                feature.callout_tag.CalloutTag callout_tag = 7;
+            }
+        }
+        
+        repeated Tag superscript_tags = 6 [deprecated = true];
+        feature.language_selector.LanguageSelector language_selector = 7 [deprecated = true];
+        repeated Tag core_meta_tags = 8;
+        repeated Tag enriched_meta_tags = 9;
+        feature.content_language_preference.ContentLanguagePreference language_preference_info = 10;
+        string starcast = 11;
+        ContentLanguageSelector content_language_selector = 12;
+        repeated Tag callout_meta_tags = 13;
+        repeated Tag secondary_meta_tags = 14;
+        
+        message TextTag {
+            string value = 1;
+            base.Actions actions = 2;
+        }
+        
+        message BadgeTag {
+            string value = 1;
+            base.Actions actions = 2;
+        }
+        
+        message ImageTag {
+            feature.image.Image value = 1;
+            base.Actions actions = 2;
+        }
+    }
+    
+    message Trailer {
+        
+    }
+    
+    message ContentActionsRow {
+        repeated ContentActionButton content_action_buttons = 1;
+        message ContentActionButton {
+            oneof button {
+                IconLabelContentActionButton icon_label_content_action_button = 1;
+                WatchlistContentActionButton watchlist_content_action_button = 2;
+                DownloadContentActionButton download_content_action_button = 3;
+                CommunityJoinActionButton community_content_action_button = 4;
+            }
+        }
+    }
+    
+    message CTAButton {
+        string label = 1;
+        string sublabel = 2;
+        base.Actions actions = 3;
+        string icon_name = 4;
+    }
+    
+    message IconLabelContentActionButton {
+        string icon_name = 1;
+        string label = 2;
+        base.Actions actions = 3;
+    }
+    
+    message WatchlistContentActionButton {
+        feature.watchlist.WatchlistInfo info = 1;
+        base.Actions actions = 2;
+    }
+    
+    message CommunityJoinActionButton {
+        feature.community.CommunityInfo community_info = 1;
+        bool is_enabled = 2;
+        string callback_url = 3;
+        base.Actions actions = 4;
+    }
+    
+    message DownloadContentActionButton {
+        string label = 1;
+        feature.download.DownloadInfo download_info = 2;
+        base.Actions actions = 3;
+    }
+    
+    message ContentLanguageSelector {
+        repeated ContentLanguageItem languages = 1;
+    }
+    
+    message ContentLanguageItem {
+        feature.language.Language language = 1;
+        string description = 2;
+        bool is_default = 3;
+        bool is_selected = 4;
+        base.Actions actions = 5;
+    }
+    
+    message ContentCTAButton {
+        oneof cta {
+            CTAButton cta_button = 1;
+            RemindMeCTAButton remind_me_cta_button = 2;
+        }
+    }
+    
+    message RemindMeCTAButton {
+        feature.remind_me.ReminderInfo remind_me_info = 1;
+    }
+}

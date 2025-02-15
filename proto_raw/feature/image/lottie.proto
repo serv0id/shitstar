@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package feature.image;
+
+import "feature/image/aspect_ratio.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/image";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.image";
+
+message Lottie {
+    AspectRatio aspect_ratio = 1;
+    string url = 2;
+    string name = 3;
+}

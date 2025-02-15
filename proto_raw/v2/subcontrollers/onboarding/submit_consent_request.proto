@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package feature.onboarding;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/onboarding";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.onboarding";
+
+message SubmitConsentRequest {
+    ConsentDetails consent_details = 1;
+    message ConsentDetails {
+        string consent_id = 1;
+        ConsentType consent_type = 2;
+        ConsentStatus status = 3;
+        int64 consent_version = 4;
+    }
+    
+    repeated DeviceId device_ids = 2;
+    message DeviceId {
+        string id = 1;
+        DeviceIdType type = 2;
+    }
+    
+    DeviceMeta device_meta = 3;
+    message DeviceMeta {
+        string network_operator = 1;
+        string os_name = 2;
+        string os_version = 3;
+    }
+    
+    enum ConsentStatus {
+        OPT_IN = 0;
+        OPT_OUT = 1;
+    }
+    
+    enum DeviceIdType {
+        AD_ID = 0;
+        ANDROID_ID = 1;
+        UUID = 2;
+        DEVICE_ID = 3;
+    }
+    
+    enum ConsentType {
+        UNKNOWN = 0;
+        PPTOU = 1;
+        NOTIFICATION = 2;
+        SMS = 3;
+        WHATSAPP = 4;
+        EMAIL = 5;
+        DIRECT_MARKETING = 6;
+    }
+}

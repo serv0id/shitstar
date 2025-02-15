@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package feature.playback;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/playback";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.playback";
+
+enum Resolution {
+    RESOLUTION_UNSPECIFIED = 0;
+    RESOLUTION_480P = 1;
+    RESOLUTION_720P = 2;
+    RESOLUTION_1080P = 3;
+    RESOLUTION_4K = 4;
+}

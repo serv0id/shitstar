@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package client.watch;
+
+import "component/content/cta.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message SettingsOptionNudge {
+    string cta_name = 1;
+    string cta_type = 2;
+    
+    NudgeDesiredQuality desired_quality = 3;
+    enum NudgeDesiredQuality {
+        NUDGE_DESIRED_QUALITY_UNSPECIFIED = 0;
+        NUDGE_DESIRED_QUALITY_4K = 1;
+        NUDGE_DESIRED_QUALITY_FHD = 2;
+        NUDGE_DESIRED_QUALITY_HD = 3;
+        NUDGE_DESIRED_QUALITY_DOLBY_ATMOS = 11;
+        NUDGE_DESIRED_QUALITY_DOLBY_51 = 12;
+    }
+}

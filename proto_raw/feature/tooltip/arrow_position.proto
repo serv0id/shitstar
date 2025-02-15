@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package feature.tooltip;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/tooltip";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.tooltip";
+
+enum ArrowPosition {
+    POSITION_UNSPECIFIED = 0;
+    POSITION_START = 1;
+    POSITION_END = 2;
+    POSITION_CENTER = 3;
+}

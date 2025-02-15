@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package v2.enrichment.cachemetadata;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/enrichment/cachemetadata";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.enrichment.cachemetadata";
+
+message UnifiedCacheMetadata {
+    string user_primary_language = 1;
+    string user_default_sports_language = 2;
+    bool is_logged_in = 3;
+    repeated string ab_group_ids = 4;
+    int32 cdn_distribution_key = 5;
+    bool is_free = 6;
+    map<int32, ListOfCohortIDs> cohort_ids = 7;
+    ClientCapabilities client_capabilities = 8;
+    string maturity_level = 9;
+    bool is_profile_kids = 10;
+    bool is_upgradable = 11;
+}
+
+message ClientCapabilities {
+    repeated string video_codec = 1;
+    repeated string resolution = 2;
+    repeated string ads = 3;
+    repeated string container = 4;
+}
+
+message ListOfCohortIDs {
+    repeated string cohortIDs = 1;
+}
+
+enum CohortGroup {
+    UNKNOWN_GROUP = 0;
+    COMMON = 1;
+    COMMS = 2;
+    SUBS = 3;
+    SEGMENTS = 4;
+}

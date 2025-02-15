@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package client.chromecast;
+
+import "client/chromecast/casting_connection_state.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/chromecast";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.chromecast";
+
+message ReceivedCastingConnectionStatusProperties {
+    CastingConnectionState casting_connection_state = 1;
+    string additional_details = 2;
+}

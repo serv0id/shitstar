@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package client.growth;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/growth";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.growth";
+
+message PinProperties {
+    PinType pin_type = 1;
+    enum PinType {
+        PIN_TYPE_UNSPECIFIED = 0;
+        PIN_TYPE_HIDDEN = 1;
+        PIN_TYPE_PINNED = 2;
+        PIN_TYPE_UNPINNED = 3;
+    }
+}

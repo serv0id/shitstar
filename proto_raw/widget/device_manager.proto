@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "widget/dialog.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message DeviceManagerWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        repeated DeviceList device_lists = 1;
+        string message = 2;
+    }
+    
+    reserved 3 to 10;
+    
+    message DeviceList {
+        string title = 1;
+        repeated DeviceInfoItems devices_info = 2;
+        DialogWidget dialog = 3;
+    }
+    
+    message DeviceInfoItems {
+        string device_name = 1;
+        string device_location = 2;
+        bool is_active = 3;
+        string device_status = 4;
+        DeviceType device_type = 5;
+        LogoutButton logout_button = 6;
+        string session_id = 7;
+        string device_id = 8;
+    }
+    
+    message LogoutButton {
+        string text = 1;
+        base.Actions actions = 2;
+        DialogWidget dialog = 3 [deprecated = true];
+    }
+    
+    enum DeviceType {
+        UNRECOGNZED = 0;
+        TV = 1;
+        WEB = 2;
+        MOBILE = 3;
+    }
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package pagedata;
+
+import "base/page_data_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/pagedata";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.pagedata";
+
+message OverlayDraggableSheetData {
+    base.PageDataCommons page_data_commons = 1;
+    OverlayDraggableSheetConfig overlay_draggable_sheet_config = 2;
+}
+
+message OverlayDraggableSheetConfig {
+    bool show_bottom_nav_on_scroll = 1;
+    double bottom_nav_visibility_scroll_ratio = 2;
+    bool is_overlay_dismissible = 3;
+    double height_ratio = 4;
+    double snap_dismissal_ratio = 5;
+}

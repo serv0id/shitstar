@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/trackers/url_trackers.proto";
+import "feature/ad/display_image.proto";
+import "feature/image/screen_size_image.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message CarouselDisplayAdWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image logo = 1;
+        
+        Badge badge = 2;
+        message Badge {
+            string label = 1;
+            string desc = 2;
+        }
+        
+        string title = 3;
+        string subTitle = 4;
+        
+        Cta cta = 5;
+        message Cta {
+            string label = 1;
+            string bg_color = 2;
+            string desc = 3;
+            base.Actions action = 4;
+        }
+        
+        feature.trackers.UrlTrackers tracker = 6;
+        repeated Item item = 7;
+    }
+    
+    reserved 2 to 10;
+    
+    message Item {
+        feature.image.ScreenSizeImage image = 1;
+        string label = 2;
+        base.Actions action = 3;
+        feature.trackers.UrlTrackers tracker = 4;
+    }
+}

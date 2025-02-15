@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message DetailedDialogWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        string subtitle = 2;
+        feature.image.Image left_image = 3;
+        string info_text = 4;
+        Button primary_btn = 5;
+        feature.image.Image right_image = 6;
+    }
+    
+    reserved 1, 3 to 10;
+    
+    message Button {
+        string text = 1;
+        base.Actions actions = 2;
+    }
+}

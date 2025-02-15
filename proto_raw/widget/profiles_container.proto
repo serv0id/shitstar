@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/profile_add.proto";
+import "widget/profile_edit.proto";
+import "widget/profile_selection.proto";
+import "feature/image/image.proto";
+import "widget/parental_lock_request.proto";
+import "widget/lottie_banner.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ProfilesContainerWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        ProfileSelectionWidget profile_selection = 1;
+        AddProfileWidget profile_create = 2;
+        EditProfileWidget profile_edit = 3;
+        AvatarOptions avatar_options = 4;
+        ParentalLockRequestWidget parental_lock = 5;
+        LottieBannerWidget profile_education = 6;
+    }
+    
+    reserved 2 to 10;
+    
+    message AvatarOptions {
+        repeated Avatar available_avatars = 1;
+        message Avatar {
+            feature.image.Image image = 1;
+            string id = 2;
+        }
+        
+        string default_selected_avatar_id = 2;
+    }
+}

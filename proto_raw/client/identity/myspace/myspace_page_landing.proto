@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package client.identity.myspace;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/identity/myspace";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.identity.myspace";
+
+message ViewedMySpacePage {
+    string display_text = 1;
+}

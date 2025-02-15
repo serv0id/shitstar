@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "widget/avatar.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message FeedCaptionWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        CaptionData caption = 1;
+    }
+    
+    reserved 2 to 10;
+}
+
+message CaptionData {
+    oneof caption {
+        FeedProfile profile = 1 [deprecated = true];
+        FeedCricketStatistics cricket_stat = 2;
+        AvatarWidget avatar = 3;
+    }
+}
+
+message FeedProfile {
+    feature.image.Image image = 1;
+    base.Actions actions = 11;
+}
+
+message FeedCricketStatistics {
+    string over_ball = 1;
+    feature.image.Image score_image = 2;
+    string score_text = 3;
+    base.Actions actions = 11;
+}

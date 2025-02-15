@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package widget;
+
+import "feature/image/image.proto";
+import "feature/refresh/refresh_info.proto";
+import "base/actions.proto";
+import "base/widget_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message RefreshableStatusWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 2;
+    message Data {
+        feature.refresh.RefreshInfo refresh_info = 1;
+        Title title = 4;
+        repeated Detail details = 5;
+        Cta primary_cta = 6;
+        Cta secondary_cta = 7;
+        bool is_closable = 8;
+        repeated base.Actions.Action on_load_actions = 9;
+        bool use_force_refresh = 10;
+        
+        oneof media_item {
+            feature.image.Image img = 2;
+            Animation animation = 3;
+        }
+    }
+    
+    message Animation {
+        string type = 1 [deprecated = true];
+        
+        AnimationType animation_type = 3;
+        enum AnimationType {
+            UNSPECIFIED = 0;
+            LOADING = 1;
+            SUCCESS = 2;
+            TRANSFORM = 3;
+        }
+        
+        string url = 2;
+        AnimatationMeta animatation_meta = 4;
+    }
+    
+    message AnimatationMeta {
+        feature.image.Image from_img = 1;
+        feature.image.Image to_img = 2;
+        int64 animation_duration_ms = 3;
+    }
+    
+    message Detail {
+        string description = 1;
+        repeated Link links = 2;
+    }
+    
+    message Link {
+        string key = 1;
+        string label = 2;
+        string url = 3;
+    }
+    
+    message Cta {
+        string text = 1;
+        string icon_name = 2;
+        base.Actions actions = 3;
+    }
+    
+    message Title {
+        string text = 1;
+        
+        TitleType type = 2;
+        enum TitleType {
+            UNSPECIFIED = 0;
+            DEFAULT = 1;
+            ERROR = 2;
+        }
+    }
+}

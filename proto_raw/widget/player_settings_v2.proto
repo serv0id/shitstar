@@ -1,0 +1,108 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "feature/player/player_settings_type.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PlayerSettingsWidgetV2 {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        map<string, PlayerSettingsList> option_list_map = 2;
+        repeated PlayerSettingsOptionListGroup landscape_option_list_groups = 11;
+        repeated PlayerSettingsOptionListGroup portrait_option_list_groups = 12;
+    }
+    
+    reserved 3 to 10;
+    
+    message PlayerSettingsOptionListGroup {
+        string title = 1;
+        repeated string option_list_keys = 2;
+    }
+    
+    message PlayerSettingsVideoQualityList {
+        string title = 1;
+        feature.PlayerSettingsType type = 2;
+        repeated PlayerSettingsVideoQualityOption video_quality_option = 3;
+    }
+    
+    message PlayerSettingsAudioLanguageList {
+        string title = 1;
+        feature.PlayerSettingsType type = 2;
+        map<string, SettingsOptionAccessory> audio_nudge = 3;
+    }
+    
+    message PlayerSettingsSubtitleList {
+        string title = 1;
+        feature.PlayerSettingsType type = 2;
+    }
+    
+    message PlayerSettingsPlaybackSpeedList {
+        string title = 1;
+        feature.PlayerSettingsType type = 2;
+        repeated PlayerPlaybackSpeedOption playback_speed_option = 3;
+    }
+    
+    message PlayerSettingsList {
+        oneof options {
+            PlayerSettingsVideoQualityList video_quality_list = 1;
+            PlayerSettingsAudioLanguageList audio_language_list = 2;
+            PlayerSettingsSubtitleList subtitle_list = 3;
+            PlayerSettingsPlaybackSpeedList playback_speed_list = 4;
+        }
+    }
+    
+    message PlayerSettingsVideoQualityOption {
+        string title = 1;
+        string subtitle = 2;
+        string description = 3;
+        
+        BadgeType badge_type = 4 [deprecated = true];
+        enum BadgeType {
+            UNKNOWN = 0;
+            NEED_UPGRADE = 1;
+        }
+        
+        bool is_selected = 5;
+        int32 bitrate = 6;
+        int32 width = 7;
+        int32 height = 8;
+        int32 min_height = 9;
+        int32 max_height = 10;
+        int32 min_bandwidth = 11;
+        int32 max_bandwidth = 12;
+        string code = 13;
+        uint32 analytics_index = 14;
+        string analytics_code = 15;
+        SettingsOptionAccessory accessory = 16;
+    }
+    
+    message SettingsOptionAccessory {
+        SettingsOptionAccessoryTag tag = 1;
+        base.Actions action = 10;
+    }
+    
+    message SettingsOptionAccessoryTag {
+        oneof tag {
+            string text = 1;
+            feature.image.Image icon = 2;
+        }
+    }
+    
+    message PlayerPlaybackSpeedOption {
+        string title = 1;
+        string subtitle = 2;
+        bool is_selected = 3;
+        float speed = 4;
+    }
+}

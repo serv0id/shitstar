@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package client.watch;
+
+import "client/player/model/stream_mode.proto";
+import "client/watch/preload_playback_properties.proto";
+import "component/content/content.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message WatchAttemptProperties {
+    component.content.Content content = 1;
+    string page_url = 2 [deprecated = true];
+    repeated string available_languages = 3 [deprecated = true];
+    string original_language = 4 [deprecated = true];
+    bool is_casting = 5;
+    bool is_downloaded = 6;
+    string client_page_id = 7;
+    string play_type = 8;
+    bool is_preload = 9;
+    PreloadPlaybackProperties.PreloadStatus preload_status = 10;
+    string player_version = 11;
+    player.model.StreamMode mode = 12;
+    bool is_other_content_in_pip = 13;
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package client.ads.sgai;
+
+import "client/player/model/client_capabilities.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/ads/sgai";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.ads.sgai";
+
+message ContentMeta {
+    string content_id = 1;
+    string si_match_id = 2;
+    player.model.ClientCapabilities.AudioCodec audio_codec = 3;
+    player.model.ClientCapabilities.VideoCodec media_codec = 4;
+    string language_tag = 5;
+    string resolution = 6;
+    uint64 bandwidth = 7;
+}

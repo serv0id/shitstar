@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+import "feature/animation/video_animation.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message HeroBackdropWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image backdrop_img = 1;
+        feature.image.Image title_cutout = 2;
+        feature.animation.VideoAnimation hero_video = 3;
+        feature.image.Image fallback_backdrop_img = 4;
+    }
+    
+    reserved 1, 3 to 10;
+}

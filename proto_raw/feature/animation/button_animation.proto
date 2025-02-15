@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package feature.animation;
+
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/animation";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.animation";
+
+message ButtonAnimation {
+    ButtonAnimationType type = 1;
+    enum ButtonAnimationType {
+        ANIMATION_NONE = 0;
+        ANIMATION_WATCH_FREE = 1;
+    }
+    
+    AnimationData animation_data = 2;
+    message AnimationData {
+        oneof animation_data {
+            AnimationWatchFreeData animation_watch_free_data = 1;
+        }
+    }
+    
+    message AnimationWatchFreeData {
+        image.Image free_text_image = 1;
+    }
+}

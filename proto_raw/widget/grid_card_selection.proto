@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package widget;
+
+import "widget/selectable_horizontal_content_card.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message GridCardSelectionWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        SkipCTA skip_cta = 1;
+        Header header = 2;
+        repeated SelectableItem selectable_items = 3;
+        CTA primary_cta = 4;
+        int32 min_selected_items = 5;
+        string footer_info = 6;
+        string disclaimer_info = 7;
+        string next_items_url = 8;
+        bool show_entry_animation = 9;
+        ScrollDirection list_scroll_direction = 10;
+        int32 non_scrolling_direction_item_count = 11;
+    }
+    
+    reserved 3 to 10;
+    
+    message SelectableItem {
+        oneof widget {
+            SelectableHorizontalContentCardWidget selectable_horizontal_content_card = 1;
+        }
+    }
+    
+    message SkipCTA {
+        string text = 1;
+        string icon_name = 2;
+        base.Actions actions = 3;
+    }
+    
+    message Header {
+        string title = 1;
+        string sub_title = 2;
+        string icon_name = 3;
+        string description = 4;
+    }
+    
+    message CTA {
+        string final_text = 1;
+        base.Actions actions = 2;
+        string icon_name = 3;
+    }
+    
+    enum ScrollDirection {
+        VERTICAL = 0;
+        HORIZONTAL = 1;
+    }
+}

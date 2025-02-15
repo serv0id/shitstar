@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package client.player.model;
+
+import "client/player/model/playback_url_set_type.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.player.model";
+
+message PlaybackSessionInfo {
+    string playback_session_id = 1;
+    string playback_tag = 2;
+    string playback_url = 3;
+    string playback_url_host = 4;
+    PlaybackUrlSetType playback_url_set_type = 5;
+    bool is_downloaded = 6;
+    bool is_drm_protected = 7;
+    
+    DrmProvider drm_provider = 8;
+    enum DrmProvider {
+        DRM_PROVIDER_UNSPECIFIED = 0;
+        DRM_PROVIDER_WIDEVINE = 1;
+        DRM_PROVIDER_FAIRPLAY = 2;
+        DRM_PROVIDER_PLAYREADY = 3;
+    }
+    
+    StreamType stream_type = 9;
+    enum StreamType {
+        STREAM_TYPE_UNSPECIFIED = 0;
+        STREAM_TYPE_VOD = 1;
+        STREAM_TYPE_LIVE = 2;
+        STREAM_TYPE_SIMULCAST = 3;
+    }
+    
+    StreamFormat stream_format = 10;
+    enum StreamFormat {
+        STREAM_FORMAT_UNSPECIFIED = 0;
+        STREAM_FORMAT_DASH = 1;
+        STREAM_FORMAT_HLS = 2;
+    }
+    
+    uint32 video_length_ms = 11;
+    uint32 downloaded_on_db_version = 14;
+    string fallback_playback_tag = 15;
+    string fallback_playback_url = 16;
+    bool is_migrated_from_rocky = 17;
+    bool rewrite_segment_domain_enabled = 18;
+    string child_manifest_url_host = 19;
+    string ssai_cohort = 20;
+    string playback_url_cdn_name = 21;
+    int64 bookmark_position_ms = 22;
+    
+    reserved 12, 13;
+}

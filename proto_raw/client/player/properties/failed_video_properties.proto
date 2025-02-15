@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package client.player.properties;
+
+import "client/player/model/buffer_stats.proto";
+import "client/player/model/playback_error_info.proto";
+import "client/player/model/playback_mode_info.proto";
+import "client/player/model/playback_pip_mode.proto";
+import "client/player/model/playback_session_info.proto";
+import "client/player/model/playback_state_info.proto";
+import "client/player/model/player_and_device_info.proto";
+import "client/watch/preload_playback_properties.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/properties";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.player.properties";
+
+message FailedVideoProperties {
+    model.PlayerAndDeviceInfo player_and_device_info = 1;
+    model.PlaybackSessionInfo playback_session_info = 2;
+    model.PlaybackStateInfo playback_state_info = 3;
+    model.PlaybackErrorInfo playback_error_info = 4;
+    model.BufferStats buffer_stats = 5;
+    model.PlaybackModeInfo playback_mode_info = 6;
+    bool is_casting = 7;
+    model.PlaybackPIPMode playback_pip_mode = 8 [deprecated = true];
+    bool is_preload = 9;
+    watch.PreloadPlaybackProperties.PreloadStatus preload_status = 10;
+    model.PlaybackPipMode playback_pip_mode_v2 = 11;
+}

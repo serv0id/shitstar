@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package client.heartbeat.model;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/heartbeat/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.heartbeat.model";
+
+enum PayloadTrigger {
+    PAYLOAD_TRIGGER_UNSPECIFIED = 0;
+    PAYLOAD_TRIGGER_PERIODIC = 1;
+    PAYLOAD_TRIGGER_PAUSE = 2;
+    PAYLOAD_TRIGGER_END = 3;
+    PAYLOAD_TRIGGER_ERROR = 4;
+}

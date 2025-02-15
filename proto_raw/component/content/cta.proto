@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package component.cta;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/content";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message Cta {
+    string cta_name = 1;
+    CtaType cta_type = 2;
+}
+
+enum CtaType {
+    CTA_TYPE_UNSPECIFIED = 0;
+    CTA_TYPE_PRIMARY = 1;
+    CTA_TYPE_SECONDARY = 2;
+}

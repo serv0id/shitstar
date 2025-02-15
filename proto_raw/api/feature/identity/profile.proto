@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package api.feature.identity;
+
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/feature/identity";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.feature.identity";
+
+message Profile {
+    ProfileIdentifier p_id = 1;
+    message ProfileIdentifier {
+        string id = 1;
+    }
+    
+    ProfileType type = 2;
+    enum ProfileType {
+        PROFILE_TYPE_UNSPECIFIED = 0;
+        PROFILE_TYPE_ADULT = 1;
+        PROFILE_TYPE_KIDS = 2;
+    }
+    
+    string maturity_rating = 3;
+}

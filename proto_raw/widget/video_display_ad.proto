@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "feature/ad/display_video.proto";
+import "feature/ad/display_image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message VideoDisplayAdWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        feature.ad.DisplayVideo video_ad = 1;
+        feature.ad.DisplayImage image_ad = 2;
+        base.Actions action = 3;
+    }
+    
+    reserved 3 to 10;
+}

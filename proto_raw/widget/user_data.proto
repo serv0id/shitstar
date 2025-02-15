@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message UserDataWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        int64 subscription_expiry_time = 1;
+    }
+    
+    reserved 2 to 10;
+}

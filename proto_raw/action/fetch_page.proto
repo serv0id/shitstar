@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package action;
+
+import "google/protobuf/any.proto";
+import "context/form_context.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message FetchPageAction {
+    string url = 1;
+    
+    FetchActionType action_type = 2;
+    enum FetchActionType {
+        DEFAULT = 0;
+        FORM_SUBMIT = 1;
+    }
+    
+    PageData page_data = 3;
+    message PageData {
+        oneof pagedata {
+            google.protobuf.Any body = 1;
+            FormInput form_input = 2;
+        }
+    }
+    
+    message FormInput {
+        context.FormContext form_context = 1;
+    }
+}

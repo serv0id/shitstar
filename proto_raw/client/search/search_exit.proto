@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package client.search;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/search";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.search";
+
+message SearchExitProperties {
+    string search_session_id = 1;
+    string last_search_id = 2;
+    ExitAction exit_action = 3;
+}
+
+enum ExitAction {
+    EXIT_ACTION_UNSPECIFIED = 0;
+    EXIT_ACTION_CLICKED_RESULT = 1;
+    EXIT_ACTION_CLICKED_BACK_BUTTON = 2;
+    EXIT_ACTION_MINIMIZED_APP = 3;
+    EXIT_ACTION_CLICKED_HOME_ICON = 4;
+    EXIT_ACTION_CLICKED_SPORTS_ICON = 5;
+    EXIT_ACTION_CLICKED_MY_SPACE_ICON = 6;
+}

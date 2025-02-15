@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package client.watch;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message PreloadedArtwork {
+    PreloadedArtworkStatus artwork_status = 1;
+    enum PreloadedArtworkStatus {
+        PRELOADED_ARTWORK_STATUS_UNSPECIFIED = 0;
+        PRELOADED_ARTWORK_STATUS_SUCCESS = 1;
+        PRELOADED_ARTWORK_STATUS_FAILED = 2;
+        PRELOADED_ARTWORK_STATUS_SKIPPED = 3;
+        PRELOADED_ARTWORK_STATUS_VIDEO_FAILED = 4;
+    }
+    
+    PreloadedArtworkSource artwork_source = 2;
+    enum PreloadedArtworkSource {
+        PRELOADED_ARTWORK_SOURCE_UNSPECIFIED = 0;
+        PRELOADED_ARTWORK_SOURCE_PRELOADED = 1;
+        PRELOADED_ARTWORK_SOURCE_DOWNLOADED = 2;
+    }
+    
+    float display_lag_ms = 3;
+    string video_failure_reason = 4;
+    string artwork_failure_reason = 5;
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package component.content;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/content";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message ShowAdditionalAttributes {
+    bool is_btv = 1;
+    ShowType show_type = 2;
+    bool is_archived = 3;
+}
+
+enum ShowType {
+    SHOW_TYPE_UNSPECIFIED = 0;
+    SHOW_TYPE_SEASONAL = 1;
+    SHOW_TYPE_SEQUENTIAL = 2;
+}

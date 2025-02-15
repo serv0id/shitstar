@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package api.base;
+
+import "api/feature/app/app.proto";
+import "api/feature/device/device.proto";
+import "api/feature/identity/account.proto";
+import "api/feature/identity/info.proto";
+import "api/feature/identity/location.proto";
+import "api/feature/identity/profile.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/base";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.base";
+
+message User {
+    feature.identity.Account account = 1;
+    feature.identity.Profile profile = 2;
+    feature.identity.UserInfo user_info = 3;
+    feature.identity.Location location = 4;
+}
+
+message Device {
+    feature.device.Device device = 1;
+    feature.app.App app = 2;
+}

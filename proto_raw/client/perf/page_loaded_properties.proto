@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package client.perf;
+
+import "client/perf/page_loaded_commons.proto";
+import "google/protobuf/any.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/perf";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.perf";
+
+message PageLoadedProperties {
+    PageLoadedCommons common_properties = 1;
+    google.protobuf.Any custom_page_properties = 2;
+}

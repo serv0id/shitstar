@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package feature.sports;
+
+import "feature/sports/player.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/sports";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.sports";
+
+message PlayerOneLineStats {
+    Player player = 1;
+    string one_line_stats = 2;
+}

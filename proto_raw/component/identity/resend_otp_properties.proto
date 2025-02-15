@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package component.identity;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/identity";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message ResendOtpProperties {
+    VerificationType verification_type = 1;
+    enum VerificationType {
+        VERIFICATION_TYPE_UNSPECIFIED = 0;
+        VERIFICATION_TYPE_SMS = 1;
+        VERIFICATION_TYPE_CALL = 2;
+        VERIFICATION_TYPE_EMAIL = 3;
+    }
+    
+    ResendOtpSource source = 2;
+    enum ResendOtpSource {
+        RESEND_OTP_SOURCE_UNSPECIFIED = 0;
+        RESEND_OTP_SOURCE_ONBOARDING = 1;
+        RESEND_OTP_SOURCE_PARENTAL_LOCK = 2;
+        RESEND_OTP_SOURCE_LOG_OUT_ALL_DEVICES = 3;
+        RESEND_OTP_SOURCE_EMAIL_CAPTURE = 4;
+        RESEND_OTP_SOURCE_PREREG = 5;
+        RESEND_OTP_SOURCE_DELETE_ACCOUNT = 6;
+        RESEND_OTP_SOURCE_LOGIN_EXP_WATCH = 7;
+        RESEND_OTP_SOURCE_EMAIL_OTP_LOGIN = 8;
+    }
+}

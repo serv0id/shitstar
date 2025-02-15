@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package api.base;
+
+import "api/base/context.proto";
+import "api/feature/app/app_state.proto";
+import "google/protobuf/any.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/base";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.base";
+
+message Properties {
+    Context event_context = 3;
+    Context referrer_context = 4;
+    google.protobuf.Any other_properties = 5;
+    feature.app.AppState app_state = 6;
+}

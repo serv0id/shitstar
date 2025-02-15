@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package action;
+
+import "google/protobuf/any.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message OpenWidgetOverlayAction {
+    autoDismissConfig config = 4 [deprecated = true];
+    message autoDismissConfig {
+        option deprecated = true;
+        int32 dismissTimeInMillis = 1;
+    }
+    
+    AutoDismissConfig auto_dismiss_config = 5;
+    message AutoDismissConfig {
+        int32 dismiss_time_in_sec = 1;
+    }
+    
+    string url = 1 [deprecated = true];
+    
+    oneof data {
+        string widget_url = 2;
+        WidgetWrapper widget_wrapper = 3;
+    }
+    
+    message WidgetWrapper {
+        string template = 1;
+        google.protobuf.Any widget = 2;
+    }
+}

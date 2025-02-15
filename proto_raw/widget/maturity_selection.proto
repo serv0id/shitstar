@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message MaturitySelectionWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string desc = 1;
+        string first_profile_label = 2;
+        repeated Rating ratings = 3;
+        string selected_rating_id = 4;
+        string highest_kids_rating = 5;
+        string non_kids_rating_selection_message = 6;
+        string kids_mode_auto_toggle_message = 7;
+    }
+    
+    reserved 2 to 10;
+    
+    message Rating {
+        string id = 1;
+        string title = 2;
+        string desc = 3;
+        string display_text = 4;
+        string title_text = 5;
+    }
+}

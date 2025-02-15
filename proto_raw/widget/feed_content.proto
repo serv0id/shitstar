@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "widget/sports_cricket_team.proto";
+import "feature/sports/cricket_team.proto";
+import "widget/autoplay.proto";
+import "widget/media_container.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget.feed";
+
+message FeedContentWidget {
+    oneof content {
+        TransientContentWidget transient = 1;
+        ImageContentWidget image = 2;
+        KeyMomentContentWidget key_moment = 3;
+        CricketOverSummaryWidget over_summary = 4;
+        AutoplayWidget auto_player = 5;
+        MediaContainerWidget media_place_holder = 6;
+    }
+}
+
+message TransientContentWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image image = 1;
+        base.Actions actions = 11;
+    }
+    
+    reserved 2 to 10;
+}
+
+message ImageContentWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image image = 1;
+        base.Actions actions = 11;
+    }
+    
+    reserved 2 to 10;
+}
+
+message KeyMomentContentWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image poster = 1;
+        string title = 2;
+        string subTitle = 3;
+        string description = 4;
+        string duration = 5;
+        string content_id = 6;
+        bool is_focused = 7;
+        base.Actions actions = 11;
+    }
+    
+    reserved 2 to 10;
+}
+
+message CricketOverSummaryWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        int32 over_number = 2;
+        string runs_and_wickets = 3;
+        string over_stats = 4;
+        feature.sports.CricketTeam batting_team_v2 = 7;
+        feature.sports.CricketTeam bowling_team_v2 = 8;
+        base.Actions actions = 11;
+        CricketTeam batting_team = 5 [deprecated = true];
+        CricketTeam bowling_team = 6 [deprecated = true];
+    }
+    
+    reserved 2 to 10;
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package component.identity;
+
+import "component/identity/enum.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/identity";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message EmailOtpProperties {
+    string country_prefix = 1 [deprecated = true];
+    InputEnterMode mode = 2;
+    string response = 3;
+    PageSource source = 4;
+    string source_page_content_type = 5;
+    bool is_previous_login_enabled = 6;
+    LoginMode login_mode = 7;
+    InitiateBy login_method = 8;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package v2.request;
+
+import "google/protobuf/any.proto";
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/request";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.request";
+
+message FetchWidgetRequest {
+    google.protobuf.Any body = 1;
+}

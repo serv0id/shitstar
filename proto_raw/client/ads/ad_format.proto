@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package client.ads;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/ads";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.ads";
+
+enum AdFormat {
+    AD_FORMAT_UNSPECIFIED = 0;
+    AD_FORMAT_VIDEO_CTA = 1;
+    AD_FORMAT_VIDEO_TAKEOVER = 2;
+    AD_FORMAT_VIDEO_CAROUSAL = 3;
+    AD_FORMAT_VIDEO_WEBVIEW = 4;
+    AD_FORMAT_VIDEO_NO_COMPANION = 5;
+    AD_FORMAT_VIDEO_CLICK_TO_ENGAGE = 6;
+    AD_FORMAT_VIDEO_VERTICAL = 7;
+    AD_FORMAT_VIDEO_WATCHLIST_CTA = 8;
+    AD_FORMAT_SPORT_SCORECARD = 9;
+    AD_FORMAT_SPORT_BRAND_TAB = 10;
+    AD_FORMAT_DISPLAY_VIDEO_BB = 11;
+    AD_FORMAT_DISPLAY_IMAGE_BB = 12;
+    AD_FORMAT_DISPLAY_NATIVE_FRAME = 13;
+    AD_FORMAT_DISPLAY_SKINNY = 14;
+    AD_FORMAT_DISPLAY_NO_FILL = 15;
+    AD_FORMAT_DISPLAY_CAROUSAL = 16;
+    AD_FORMAT_COMMN_BANNER = 17;
+    AD_FORMAT_COMMS_HEADLINE = 18;
+    AD_FORMAT_SHORT_HEADLINE = 19;
+}

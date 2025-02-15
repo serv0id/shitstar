@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package base;
+
+import "feature/request/http_request_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/base";
+option java_multiple_files = true;
+
+message DataBindMechanism {
+    oneof data_bind_mechanism {
+        SubscribeToCentralStore centralStore = 1;
+    }
+    
+    message SubscribeToCentralStore {
+        string url = 1 [deprecated = true];
+        NameSpace namespace = 2;
+        int64 polling_frequency_millisec = 3;
+        int32 max_retry_count = 4;
+        feature.request.HttpRequestCommons http_request_commons = 5;
+    }
+    
+    enum NameSpace {
+        UNKNOWN = 0;
+        CRICKET_SCORE_CARD = 1;
+        TV_CHANNEL = 2;
+        LOGIN_WITH_QR = 3;
+    }
+}

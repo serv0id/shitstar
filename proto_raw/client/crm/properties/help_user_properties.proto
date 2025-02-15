@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package client.crm.properties;
+
+import "client/crm/model/crm_user_info.proto";
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/crm/properties";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.crm.properties";
+
+message HelpUserProperties {
+    repeated model.AbExperimentFlag ab_experiment_flags = 1;
+    string subscription_type = 2;
+    string app_version = 3;
+}

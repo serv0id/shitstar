@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package v2.enrichment.cachemetadata;
+
+import "v2/enrichment/cachemetadata/unified_cache_meta.proto";
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/enrichment/cachemetadata";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.enrichment";
+
+message WatchPageCacheMeta {
+    bool is_logged_in = 1;
+    bool is_free = 2;
+    ClientCapabilities client_capabilities = 3;
+    repeated string ab_group_ids = 4;
+    int32 cdn_distribution_key = 5;
+}

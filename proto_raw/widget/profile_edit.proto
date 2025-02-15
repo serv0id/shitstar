@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/widget_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message EditProfileWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        string name_edit_label = 2;
+        string delete_label = 3 [deprecated = true];
+        string maturity_text = 4 [deprecated = true];
+        CTA save_action = 5;
+        DeleteOption delete_option = 6;
+        string name_input_regex = 7;
+        CTA delete_btn = 8;
+        string invalid_name_user_message = 9;
+        string name_max_length = 10;
+    }
+    
+    reserved 2 to 10;
+    
+    message DeleteOption {
+        string title = 1;
+        string desc = 2;
+        CTA cancel = 3;
+        CTA delete = 4;
+    }
+    
+    message CTA {
+        string label = 1;
+        base.Actions actions = 2;
+    }
+}

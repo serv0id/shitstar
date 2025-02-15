@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package feature.form;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/form";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.form";
+
+message FormData {
+    bool is_valid = 1;
+    
+    FormValue form_value = 2;
+    message FormValue {
+        oneof value {
+            TextValue text_value = 1;
+            OptionValue option_value = 2;
+        }
+    }
+    
+    message TextValue {
+        string value = 1;
+    }
+    
+    message OptionValue {
+        repeated string options = 1;
+    }
+}

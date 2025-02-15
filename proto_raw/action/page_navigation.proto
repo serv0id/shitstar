@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package action;
+
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message PageNavigationAction {
+    string page_type = 1;
+    string page_url = 2;
+    string page_slug = 3;
+    
+    Params params = 4;
+    message Params {
+        oneof params {
+            WatchParams watch_params = 1;
+        }
+    }
+    
+    bool replace = 5;
+    
+    message WatchParams {
+        feature.image.Image loading_image = 1;
+        bool is_fullscreen_by_default = 2;
+        
+        repeated SpaceType refresh_spaces = 3;
+        enum SpaceType {
+            UNKNOWN = 0;
+            PLAYER = 1;
+            WATCH_OVERLAY = 2;
+            ADAPTIVE_TRAY = 3;
+            ADAPTIVE_TAB_CONTAINER = 4;
+        }
+    }
+}

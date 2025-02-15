@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package v2;
+
+import "v2/refresh_space.proto";
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2";
+
+message RefreshPageRequest {
+    option deprecated = true;
+    string page_url = 3;
+    repeated RefreshSpaceRequest space_requests = 11;
+    
+    reserved 1 to 2, 5 to 10;
+}
+
+message DeferredPageRequest {
+    string page_url = 3;
+    string page_slug = 4;
+    repeated DeferredSpaceRequest space_requests = 11;
+    
+    reserved 1 to 2, 5 to 10;
+}

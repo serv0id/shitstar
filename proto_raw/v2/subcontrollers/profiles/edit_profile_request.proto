@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package feature.login;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/profiles";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.profiles";
+
+message EditProfileRequest {
+    string profile_id = 1;
+    string new_name = 2;
+    string new_avatar_id = 3;
+}

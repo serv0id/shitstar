@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package feature.share;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/share";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.share";
+
+message ShareInfo {
+    ImageType image_type = 1;
+    enum ImageType {
+        UNSPECIFIED = 0;
+        SCREENCAP = 1;
+        IMAGE_URL = 2;
+    }
+    
+    string text_type = 2;
+    
+    ShareUsingAppPackage share_params = 3;
+    message ShareUsingAppPackage {
+        string data = 1;
+        string title = 2;
+        string package_name = 3;
+    }
+}

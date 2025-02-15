@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message WebFooterWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        repeated Paragraph paragraphs = 1;
+        message Paragraph {
+            string title = 1;
+            string content = 2;
+        }
+        
+        repeated Column columns = 2;
+        message Column {
+            string header = 1;
+            repeated Link links = 2;
+            string column_type = 3 [deprecated = true];
+            ColumnType column_type_v2 = 4;
+        }
+        
+        SocialHandles social_handles = 3;
+        message SocialHandles {
+            string header = 1;
+            
+            repeated Handle handles = 2;
+            message Handle {
+                string handle = 1;
+                string icon = 2;
+                base.Actions actions = 3;
+            }
+        }
+        
+        Legal legal = 4;
+        message Legal {
+            string paragraph = 1;
+            repeated Link links = 2;
+        }
+        
+        repeated AppLink app_links = 5;
+        message AppLink {
+            feature.image.Image image = 1;
+            base.Actions actions = 2;
+        }
+        
+        message Link {
+            string text = 1;
+            base.Actions actions = 2;
+        }
+        
+        enum ColumnType {
+            DEFAULT = 0;
+            LINK = 1;
+            LANGUAGE_SELECTOR = 2;
+        }
+    }
+    
+    reserved 3 to 10;
+}

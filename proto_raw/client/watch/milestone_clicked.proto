@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package client.watch;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message MilestoneClickedProperties {
+    MilestoneButtonType button_type = 1;
+    enum MilestoneButtonType {
+        MILESTONE_BUTTON_TYPE_UNSPECIFIED = 0;
+        MILESTONE_BUTTON_TYPE_SKIP_INTRO = 1;
+        MILESTONE_BUTTON_TYPE_SKIP_RECAP = 2;
+        MILESTONE_BUTTON_TYPE_WATCH_CREDITS = 3;
+        MILESTONE_BUTTON_TYPE_NEXT_CONTENT = 4;
+        MILESTONE_BUTTON_TYPE_GO_LIVE = 5;
+        MILESTONE_BUTTON_TYPE_GO_BACK = 6;
+        MILESTONE_BUTTON_TYPE_NEXT_KEY_MOMENT = 7;
+        MILESTONE_BUTTON_TYPE_WATCH_INTRO = 8;
+        MILESTONE_BUTTON_TYPE_WATCH_RECAP = 9;
+    }
+    
+    uint32 milestone_appeared_secs = 2;
+    bool is_casting = 3;
+    uint64 milestone_length_ms = 4;
+    uint64 start_pos_sec = 5;
+    uint64 clicked_pos_sec = 6;
+    
+    ClickType click_type = 7;
+    enum ClickType {
+        CLICK_TYPE_UNSPECIFIED = 0;
+        CLICK_TYPE_MANUAL = 1;
+        CLICK_TYPE_AUTO = 2;
+    }
+    
+    bool is_download = 8 [deprecated = true];
+    bool is_downloaded = 9;
+    string player_version = 10;
+}

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+import "feature/cw/cw_info.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message SpotlightInfoCwWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        feature.image.Image title_cutout = 2;
+        string label = 3;
+        feature.cw.CwInfo cw_info = 4;
+    }
+    
+    reserved 1, 3 to 10;
+}

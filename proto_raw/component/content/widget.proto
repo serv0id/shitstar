@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package component.content;
+
+import "component/content/tray_callout_tag.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/content";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component.content";
+
+message Widget {
+    string id = 1;
+    string name = 2;
+    string type = 3;
+    WidgetSource source = 4;
+    string logic = 5;
+    string display_language = 6;
+    int64 position = 7;
+    repeated TrayCalloutTag tray_callout_tags = 8;
+    int64 time_remaining_in_hrs = 9 [deprecated = true];
+    bool is_timer_visible = 10 [deprecated = true];
+}
+
+enum WidgetSource {
+    WIDGET_SOURCE_UNSPECIFIED = 0;
+    WIDGET_SOURCE_PERSONA = 1;
+    WIDGET_SOURCE_CMS = 2;
+    WIDGET_SOURCE_SEARCH = 3;
+    WIDGET_SOURCE_WATCH = 4;
+}

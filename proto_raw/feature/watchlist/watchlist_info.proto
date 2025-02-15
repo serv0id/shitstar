@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package feature.watchlist;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/watchlist";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.watchlist";
+
+message WatchlistInfo {
+    string content_id = 1;
+    bool is_watchlisted = 2;
+    int64 timestamp = 3;
+}

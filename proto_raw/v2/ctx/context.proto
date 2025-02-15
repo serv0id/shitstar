@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package v2.ctx;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/ctx";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.ctx";
+
+message Context {
+    string url = 1;
+    bytes value = 2;
+}

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "feature/consent/consent_type.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ConsentSuccessWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string message = 1;
+        repeated base.Actions.Action on_complete_actions = 2;
+        feature.consent.ConsentType consent_type = 3;
+    }
+    
+    reserved 2 to 10;
+}

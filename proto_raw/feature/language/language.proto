@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package feature.language;
+
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/language";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.language";
+
+message Language {
+    string id = 1;
+    string name = 2;
+    string display_name = 3;
+    string iso2code = 4;
+    string iso3code = 5;
+}

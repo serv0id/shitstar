@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package feature.onboarding;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/onboarding";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.onboarding";
+
+message PreRegistrationVerifyOtpRequest {
+    string phone_number = 1;
+    string verification_code = 2;
+    string email = 3;
+    string full_name = 4;
+    repeated int32 consent_ids = 5 [deprecated = true];
+    bool is_consent_given = 6;
+}

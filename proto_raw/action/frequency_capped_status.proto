@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package action;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message FrequencyCappedStatusAction {
+    string id = 1;
+    int64 version = 2;
+    repeated CappingRules capping_rules = 3;
+}
+
+message CappingRules {
+    oneof capping_rule {
+        Rule every_n_app_launch = 1;
+        Rule per_n_hour = 2;
+        Rule per_n_day = 3;
+        Rule per_n_month = 4;
+        Rule per_n_year = 5;
+        Rule per_lifetime = 6;
+    }
+}
+
+message Rule {
+    int64 n = 1 [deprecated = true];
+    int64 maxCap = 2 [deprecated = true];
+    int32 frequency = 3;
+    int32 maxCapCount = 4;
+}

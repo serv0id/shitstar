@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package context;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/context";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.context";
+
+message Context {
+    string url = 1;
+    bytes value = 2;
+}

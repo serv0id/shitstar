@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package v2.response;
+
+import "v2/widget.proto";
+import "v2/error.proto";
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/response";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.response";
+
+message MoreWidgetsResponse {
+    option deprecated = true;
+    
+    Success success = 1;
+    message Success {
+        repeated WidgetWrapper widget_wrappers = 1;
+        string more_widgets_url = 2;
+    }
+    
+    Error error = 2;
+}

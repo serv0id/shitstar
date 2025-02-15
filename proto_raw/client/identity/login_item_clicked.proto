@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package client.identity;
+
+import "component/identity/login_item_data.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/identity";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.identity";
+
+message LoginItemClicked {
+    component.identity.LoginItemData login_item_data = 1;
+}

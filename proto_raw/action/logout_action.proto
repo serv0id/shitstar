@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package action;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message LogoutAction {
+    string user_token = 1;
+    string hid = 2;
+    string pid = 3;
+    
+    LoginStatus login_status = 4;
+    enum LoginStatus {
+        UNKNOWN = 0;
+        LOGGED_IN = 1 [deprecated = true];
+        GUEST = 2;
+        LOGGEDIN = 3;
+    }
+    
+    Plan highest_active_plan = 5;
+}
+
+message Plan {
+    string family = 1;
+}

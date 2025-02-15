@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "feature/branding/brand.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PreviousLoginsWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        feature.branding.Brand logo = 1 [deprecated = true];
+        string title = 2;
+        string manage_text = 3;
+        LoginWithAnotherAccount login_with_another_account = 4;
+        repeated PreviousLoginItems previous_login_items = 5;
+        string help_rich_text = 6;
+    }
+    
+    reserved 3 to 10;
+    
+    message LoginWithAnotherAccount {
+        string text = 1;
+        base.Actions actions = 2;
+    }
+    
+    message PreviousLoginItems {
+        string title = 1;
+        string description = 2;
+        string encrypted_identifier = 3;
+        SubscriptionBadge subscription_badge = 4;
+        
+        ForgetLogin forget_login = 5;
+        message ForgetLogin {
+            string title = 1;
+            string forget_login_url = 2;
+        }
+        
+        base.Actions actions = 6;
+    }
+    
+    enum SubscriptionBadge {
+        NONE = 0;
+        SUBSCRIBER = 1;
+    }
+}

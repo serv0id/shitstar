@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/feed.proto";
+import "widget/feed_v2.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PaginationWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        repeated Item items = 1;
+        string prev_widget_url = 2;
+        string next_widget_url = 3;
+        Config config = 4;
+    }
+    
+    reserved 2 to 10;
+    
+    message Config {
+        Direction direction = 1;
+    }
+    
+    message Item {
+        oneof widget {
+            FeedWidget feed = 2 [deprecated = true];
+            FeedWidgetV2 feed_v2 = 3;
+        }
+    }
+    
+    enum Direction {
+        UPDATE_FROM_START = 0;
+        UPDATE_FROM_END = 1;
+    }
+}

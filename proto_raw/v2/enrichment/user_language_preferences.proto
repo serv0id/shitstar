@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package v2.enrichment;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/enrichment";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.enrichment";
+
+message UserLanguagePreferencesV2 {
+    DataStatus status = 1;
+    enum DataStatus {
+        UNKNOWN_DATA_STATUS = 0;
+        UPDATED = 1;
+        STALE = 2;
+        FAILED = 3;
+        OVERSIZE = 4;
+    }
+    
+    UserLanguagePreferences data = 2;
+    message UserLanguagePreferences {
+        repeated UserLanguagePreference userLangPreferences = 1;
+    }
+    
+    message UserLanguagePreference {
+        PreferenceType prefType = 1;
+        message PreferenceType {
+            PreferenceTypeValue value = 1;
+            enum PreferenceTypeValue {
+                USR_SEL_AUDIO_LANG = 0;
+                LPV = 1;
+                ONBOARDED_LANG = 2;
+                PRIMARY_LANG = 3;
+                SPORTS_LANG = 4;
+            }
+            
+            float version = 2;
+        }
+        
+        repeated PreferenceData prefDataList = 2;
+        uint64 updatedAt = 3;
+    }
+    
+    message PreferenceData {
+        string audio_lang = 1;
+        string subtitle_lang = 2;
+        
+        repeated PreferenceContext prefCtxt = 3;
+        message PreferenceContext {
+            ContextKey key = 1;
+            enum ContextKey {
+                SHOW_ID = 0;
+                SPORTS = 1;
+                STUDIO = 2;
+                CONTENT_ID = 3;
+                PRIMARY_LANG = 4;
+                CONTENT_TYPE = 5;
+            }
+            
+            string value = 2;
+            uint64 updatedAt = 3;
+        }
+        
+        float weight = 4;
+    }
+}

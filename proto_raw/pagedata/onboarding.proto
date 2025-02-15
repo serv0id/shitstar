@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package pagedata;
+
+import "base/page_data_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/pagedata";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.pagedata";
+
+message OnboardingPageData {
+    base.PageDataCommons page_data_commons = 1;
+    
+    HeroBackdrop hero_backdrop = 2;
+    message HeroBackdrop {
+        feature.image.Image backdrop_img = 1;
+        feature.image.Image backdrop_video = 2;
+        bool onboarding_video_enabled = 3;
+        repeated feature.image.Image bg_image_list = 4;
+    }
+    
+    map<string, base.Actions.Action> page_event_actions = 3;
+    bool should_replace_page_url = 4;
+}

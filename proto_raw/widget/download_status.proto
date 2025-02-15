@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package widget;
+
+import "feature/download/download_content_state.proto";
+import "base/actions.proto";
+import "base/widget_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message DownloadStatusWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    UserFacingAction user_facing_action = 11;
+    message UserFacingAction {
+        UserFacingActionType type = 1;
+        UserFacingActionValue value = 2;
+    }
+    
+    feature.download.DownloadContentState contentState = 12;
+    
+    reserved 2 to 10;
+    
+    message UserFacingActionValue {
+        oneof value {
+            base.Actions actions = 1;
+            ShowToast toast = 2;
+            ShowActionSheet alert = 3;
+        }
+    }
+    
+    message ShowToast {
+        string text = 1;
+    }
+    
+    message ShowActionSheet {
+        string text = 1;
+        string desc = 2;
+        CTA primary_cta = 3;
+        CTA secondary_cta = 4;
+    }
+    
+    message CTA {
+        string title = 1;
+        CTAType type = 2;
+        base.Actions actions = 3;
+    }
+    
+    enum UserFacingActionType {
+        BFF_ACTION = 0;
+        SHOW_TOAST = 1;
+        SHOW_SHEET = 2;
+    }
+    
+    enum CTAType {
+        DISMISS = 0;
+        DELETE = 1;
+    }
+}

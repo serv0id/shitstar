@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package client;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client";
+
+message NotificationPermission {
+    string source = 1;
+    
+    PermissionStatus changed_to = 2;
+    enum PermissionStatus {
+        PERMISSION_STATUS_UNSPECIFIED = 0;
+        PERMISSION_STATUS_DENIED = 1;
+        PERMISSION_STATUS_GRANTED = 2;
+        PERMISSION_STATUS_SILENCED = 3;
+    }
+    
+    CategoryType category_type = 3;
+    enum CategoryType {
+        CATEGORY_TYPE_UNSPECIFIED = 0;
+        CATEGORY_TYPE_APP = 1;
+        CATEGORY_TYPE_CHANNEL = 2;
+    }
+    
+    string category_id = 4;
+    PermissionStatus changed_from = 5;
+}

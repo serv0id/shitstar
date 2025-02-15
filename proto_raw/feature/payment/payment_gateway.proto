@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package feature.payment;
+
+import "feature/payment/init_payment_payload.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/payment";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.payment";
+
+message PaymentGateway {
+    repeated PaymentProcessor processors = 1;
+    message PaymentProcessor {
+        PaymentProcessorMeta meta = 1;
+        InitPaymentPayload init_payload = 2;
+        InitPaymentPayload update_instrument_payload = 3;
+    }
+    
+    message PaymentProcessorMeta {
+        string flow = 1;
+        string imageUrl = 2 [deprecated = true];
+        string applicationPackageName = 3;
+        string number = 4;
+        string balance = 5;
+        image.Image image = 6;
+        string label = 7;
+        string stringified_app_click_action = 9;
+        string stringified_app_on_load_action = 10;
+        bool use_async_init = 11;
+        
+        reserved 8;
+        reserved "actions";
+    }
+}

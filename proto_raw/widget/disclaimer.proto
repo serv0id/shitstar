@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "widget/dialog.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message DisclaimerWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        Button header_primary_btn = 1;
+        feature.image.Image illustration = 2;
+        string title = 3;
+        string phone_number = 4;
+        repeated ListItem list_item = 5;
+        Footer footer = 6;
+        string consent_text = 7;
+        bool recaptcha_enabled = 8;
+        string email_address = 9;
+    }
+    
+    reserved 3 to 10;
+    
+    message Button {
+        string icon = 1;
+        string text = 2;
+        base.Actions actions = 3;
+    }
+    
+    message Footer {
+        Button primary_btn = 1;
+        Button secondary_btn = 2;
+    }
+    
+    message ListItem {
+        string title = 1;
+        repeated string description = 2;
+    }
+}

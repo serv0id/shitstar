@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package client.search;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/search";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.search";
+
+message SearchQueriedProperties {
+    string search_session_id = 1;
+    string search_id = 2;
+    QueryInput query_input = 3;
+    string query_text = 4;
+    ReferrerInterface referrer_interface = 5;
+}
+
+enum QueryInput {
+    QUERY_INPUT_UNSPECIFIED = 0;
+    QUERY_INPUT_TYPE = 1;
+    QUERY_INPUT_VOICE = 2;
+    QUERY_INPUT_FILTER = 3;
+    QUERY_INPUT_TEXT = 4;
+    QUERY_INPUT_TAB_CHANGE = 5;
+    QUERY_INPUT_GLOBAL = 6;
+    QUERY_INPUT_VOICE_REMOTE = 7;
+}
+
+enum ReferrerInterface {
+    REFERRER_INTERFACE_UNSPECIFIED = 0;
+    REFERRER_INTERFACE_HISTORY = 1;
+    REFERRER_INTERFACE_TRENDING = 2;
+    REFERRER_INTERFACE_USER_INPUT = 3;
+    REFERRER_INTERFACE_TV_SHOWS = 4;
+    REFERRER_INTERFACE_MOVIES = 5;
+    REFERRER_INTERFACE_RELATED_SEARCH = 6;
+    REFERRER_INTERFACE_TYPEAHEAD = 7;
+    REFERRER_INTERFACE_FILTER = 8;
+    REFERRER_INTERFACE_USER_INPUT_GLOBAL = 9;
+    REFERRER_INTERFACE_AUTO_SUGGEST = 10;
+}

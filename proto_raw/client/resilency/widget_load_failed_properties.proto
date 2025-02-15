@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package client.resilency;
+
+import "client/resilency/widget_load_failed_commons.proto";
+import "google/protobuf/any.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/resilency";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.resilency";
+
+message WidgetLoadFailedProperties {
+    WidgetLoadFailedCommons common_properties = 1;
+    google.protobuf.Any custom_failure_properties = 3;
+}

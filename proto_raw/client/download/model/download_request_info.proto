@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package client.download.model;
+
+import "client/download/model/available_quality.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/download/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.download.model";
+
+message DownloadRequestInfo {
+    uint32 available_sizes = 1;
+    AvailableQuality highest_available_quality = 2;
+    
+    DownloadManagerName download_manager_name = 3;
+    enum DownloadManagerName {
+        DOWNLOAD_MANAGER_NAME_UNSPECIFIED = 0;
+        DOWNLOAD_MANAGER_NAME_HS_ANDROID = 1;
+        DOWNLOAD_MANAGER_NAME_HS_IOS = 2;
+    }
+    
+    string download_manager_version = 4 [deprecated = true];
+    AvailableQuality requested_quality = 5;
+    bool is_bilingual_ui_opted_in = 6;
+    repeated AvailableQuality available_qualities = 7;
+}

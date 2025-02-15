@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message TimerWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        int64 timer_end_timestamp = 1;
+        TimerEndBehaviour end_behaviour = 2;
+        Timer timer = 3;
+    }
+    
+    reserved 2 to 10;
+    
+    message Timer {
+        oneof timer {
+            TopFlipTimer top_flip_timer = 1;
+            MastheadTimer masthead_timer = 2 [deprecated = true];
+            HorizontalTimer horizontal_timer = 3;
+        }
+    }
+    
+    message TopFlipTimer {
+        string hour_placeholder_text = 1;
+        string min_placeholder_text = 2;
+        string sec_placeholder_text = 3;
+    }
+    
+    message MastheadTimer {
+        option deprecated = true;
+        feature.image.Image image = 1;
+    }
+    
+    message HorizontalTimer {
+        feature.image.Image image = 1;
+        string hour_placeholder_text = 2;
+        string min_placeholder_text = 3;
+        string sec_placeholder_text = 4;
+    }
+    
+    enum TimerEndBehaviour {
+        NONE = 0;
+        STOP = 1;
+        HIDE = 2;
+    }
+}

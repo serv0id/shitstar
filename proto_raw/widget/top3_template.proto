@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/media_ranking.proto";
+import "widget/text_prompt.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message Top3TemplateWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        TextPromptWidget titles = 1;
+        MediaRankingWidget items = 2;
+    }
+    
+    reserved 2 to 10;
+}

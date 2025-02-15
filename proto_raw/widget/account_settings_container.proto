@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "widget/device_manager.proto";
+import "widget/membership_actions.proto";
+import "widget/mobile_detail.proto";
+import "widget/payment_instrument.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message AccountSettingsContainerWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        repeated WidgetContent widget_content = 1;
+        base.Actions actions = 2;
+    }
+    
+    reserved 2 to 10;
+    
+    message WidgetContent {
+        oneof widget {
+            MembershipActionsWidget membership_actions = 1;
+            MobileDetailWidget mobile_detail = 2;
+            DeviceManagerWidget device_manager = 3;
+            PaymentInstrumentWidget payment_instrument = 4;
+        }
+    }
+}

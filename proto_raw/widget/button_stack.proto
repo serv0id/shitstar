@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/atom/button.proto";
+import "feature/watchlist/watchlist_info.proto";
+import "feature/atom/toggle_button.proto";
+import "feature/atom/toggle_lottie_button.proto";
+import "feature/atom/event_observer_button.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ButtonStackWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.atom.Button primary_button = 1 [deprecated = true];
+        feature.atom.Button secondary_button = 2 [deprecated = true];
+        StackAlignment aligment = 3;
+        ButtonPadding padding = 4;
+        bool shows_loading = 5;
+        CTA primary = 9;
+        CTA secondary = 10;
+        HorizontalAlignmentRatio ratio = 11;
+        
+        oneof primary_cta {
+            feature.atom.Button primary_cta_button = 6 [deprecated = true];
+        }
+        
+        oneof secondary_cta {
+            feature.atom.Button secondary_cta_button = 7 [deprecated = true];
+            WatchlistButton secondary_cta_watchlist_button = 8 [deprecated = true];
+        }
+    }
+    
+    reserved 2 to 10;
+    
+    message CTA {
+        oneof cta {
+            feature.atom.Button button = 1;
+            WatchlistButton watchlist_button = 2 [deprecated = true];
+            feature.atom.ToggleButton toggle_button = 3;
+            feature.atom.ToggleLottieButton toggle_lottie_button = 4;
+            feature.atom.EventObserverButton event_observer_button = 5;
+        }
+    }
+    
+    message WatchlistButton {
+        feature.watchlist.WatchlistInfo info = 1;
+    }
+    
+    enum StackAlignment {
+        VERTICAL = 0;
+        HORIZONTAL = 1;
+    }
+    
+    enum ButtonPadding {
+        REGULAR = 0;
+        LARGE = 1;
+    }
+    
+    enum HorizontalAlignmentRatio {
+        STANDARD = 0;
+        RIGHT_CONSTRAINED = 1;
+        LEFT_CONSTRAINED = 2;
+    }
+}

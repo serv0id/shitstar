@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package client.watch;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+enum CardType {
+    CARD_TYPE_UNSPECIFIED = 0;
+    CARD_TYPE_COMMENTARY = 1;
+    CARD_TYPE_OVER_SUMMARY = 2;
+    CARD_TYPE_KEY_MOMENT = 3;
+    CARD_TYPE_EDITORIAL = 4;
+    CARD_TYPE_TEXT_DIVIDER = 5;
+    CARD_TYPE_ADVERTISEMENT = 6;
+}

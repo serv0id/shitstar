@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package client.payments;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/payments";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.payments";
+
+message FailureProperties {
+    FailureType failure_type = 2;
+    enum FailureType {
+        FAILURE_TYPE_UNSPECIFIED = 0;
+        FAILURE_TYPE_SDK = 1;
+        FAILURE_TYPE_INIT = 2;
+        FAILURE_TYPE_NOTIFY = 3;
+    }
+    
+    string failure_reason = 3;
+}

@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "feature/branding/brand.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message AppUpgradeWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.branding.Brand logo = 1 [deprecated = true];
+        string title = 2;
+        string description = 3;
+        UpgradeCTA upgrade_cta = 4;
+        SkipCTA skip_cta = 5;
+    }
+    
+    message UpgradeCTA {
+        string text = 1;
+        repeated base.Actions.Action upgrade_action = 2;
+    }
+    
+    message SkipCTA {
+        string text = 1;
+        string icon_name = 2;
+        repeated base.Actions.Action skip_action = 3;
+    }
+}

@@ -1,0 +1,150 @@
+syntax = "proto3";
+
+package base;
+
+import "action/page_navigation.proto";
+import "action/share.proto";
+import "action/widget_navigation.proto";
+import "action/fetch_widget.proto";
+import "action/purchase.proto";
+import "action/web_view_navigation.proto";
+import "action/external_navigation.proto";
+import "action/login_action.proto";
+import "action/subscribe_action.proto";
+import "action/mail_to.proto";
+import "action/go_back.proto";
+import "action/hs_track.proto";
+import "action/appsflyer_track.proto";
+import "action/logout_action.proto";
+import "action/page_event.proto";
+import "action/cancel_subscription.proto";
+import "action/open_widget_overlay.proto";
+import "action/open_page_overlay.proto";
+import "action/add_to_search_history.proto";
+import "action/change_language.proto";
+import "action/fetch_start.proto";
+import "action/change_privacy_preferences.proto";
+import "action/close_overlay.proto";
+import "action/reinitiate_last_payment.proto";
+import "action/gtm_track.proto";
+import "action/rate_app.proto";
+import "action/load_pg_form.proto";
+import "action/post_payment_navigation.proto";
+import "action/show_toast.proto";
+import "action/bridge_event.proto";
+import "action/generate_recaptcha_token.proto";
+import "action/reload.proto";
+import "action/dismiss_notification.proto";
+import "action/deeplink.proto";
+import "action/form_input.proto";
+import "action/form_validation.proto";
+import "action/fetch_page.proto";
+import "action/invoke_http_url_action.proto";
+import "action/invoke_sna_url_action.proto";
+import "action/invalidate_proxy_state.proto";
+import "action/upsert_routing_table_query_param.proto";
+import "action/verify_sna.proto";
+import "action/delete_list_item.proto";
+import "action/login_via_encrypted_id.proto";
+import "action/app_restart.proto";
+import "action/watchlist.proto";
+import "action/subscribe_message.proto";
+import "action/publish_message.proto";
+import "action/form_input_reset.proto";
+import "action/form_reset.proto";
+import "action/show_tooltip.proto";
+import "action/frequency_capped_status.proto";
+import "action/frequency_capped_update.proto";
+import "action/check_permission_status.proto";
+import "action/redirect_to_device_settings.proto";
+import "action/player_control_action.proto";
+import "action/initiate_payment.proto";
+import "action/form_submit.proto";
+import "action/remind_me.proto";
+import "action/preload.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/base";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.base";
+
+message Actions {
+    repeated Action on_click = 11;
+    message Action {
+        oneof Data {
+            action.PageNavigationAction page_navigation = 11;
+            action.Share share = 12;
+            action.WidgetNavigationAction widget_navigation = 13;
+            action.FetchWidgetAction fetch_widget = 14;
+            action.PurchaseAction purchase_action = 15;
+            action.WebViewNavigationAction web_view_navigation = 16;
+            action.ExternalNavigationAction external_navigation = 17;
+            action.MailtoAction mail_to = 18;
+            action.LoginAction init_login = 19;
+            action.SubscribeAction init_subscribe = 20;
+            action.GoBackAction page_back = 21;
+            action.HSTrackAction hs_track = 22;
+            action.AppsflyerTrackAction appsflyer_track = 23;
+            action.LogoutAction logout = 24;
+            action.CancelSubscriptionAction cancel_subscription = 25;
+            action.PageEventAction page_event = 26;
+            action.OpenWidgetOverlayAction open_widget_overlay = 27;
+            action.AddToSearchHistoryAction add_to_search_history = 28;
+            action.ChangeLanguageAction change_language = 29;
+            action.FetchStartAction fetch_start = 30;
+            action.ChangePrivacyPreferencesAction change_privacy_preferences = 31;
+            action.OpenPageOverlayAction open_page_overlay = 32;
+            action.CloseOverlayAction close_overlay = 33;
+            action.ReinitiateLastPaymentAction reinitiate_last_payment = 34;
+            action.GTMTrackAction gtm_track = 35;
+            action.RateAppAction rate_app = 36;
+            action.LoadPgForm load_pg_form = 37;
+            action.PostPaymentNavigationAction post_payment_navigation = 38;
+            action.ShowToastAction show_toast_action = 39;
+            action.BridgeEventAction bridge_event = 40;
+            action.GenerateRecaptchaTokenAction generate_recaptcha_token_action = 41;
+            action.ReloadAction reload_action = 42;
+            action.DismissNotificationAction dismiss_notification_action = 43;
+            action.DeeplinkAction deeplink_action = 44;
+            action.InvokeHttpUrlAction invoke_url_action = 45;
+            action.FormValidationAction form_validation_action = 46;
+            WrapperAction wrapper_action = 47;
+            action.FormInputAction form_input_action = 48;
+            action.FetchPageAction fetch_page = 49;
+            action.InvokeSnaUrlAction invoke_sna_url_action = 50;
+            action.UpdateProxyStateTTLAction update_proxy_state_action = 51;
+            action.UpsertRoutingTableQueryParamAction upsert_routing_table_query_param_action = 52;
+            action.VerifySnaAction verify_sna = 53;
+            action.DeleteListItemAction delete_list_item_action = 54;
+            action.LoginViaEncryptedIdAction login_via_encrypted_id_action = 55;
+            action.AppRestartAction app_restart_action = 56;
+            action.WatchlistAction watchlist_action = 57;
+            action.SubscribeToMessageAction subscribe_to_message_action = 58;
+            action.PublishMessageAction publish_message_action = 59;
+            action.FormInputResetAction form_input_reset_action = 60;
+            action.FormResetAction form_reset_action = 61;
+            action.ShowTooltipAction show_tooltip_action = 62;
+            action.FrequencyCappedStatusAction frequency_capped_status_action = 63;
+            action.FrequencyCappedUpdateAction frequency_capped_update_action = 64;
+            action.CheckPermissionStatusAction check_permission_status_action = 65;
+            action.RedirectToDeviceSettingsAction redirect_to_device_settings_action = 66;
+            action.PlayerControlAction player_control_action = 67;
+            action.InitiatePaymentAction initiate_payment_action = 68;
+            action.FormSubmitAction form_submit_action = 69;
+            action.RemindMeAction remind_me_action = 70;
+            action.PreloadAction preload_action = 71;
+        }
+    }
+    
+    repeated Action on_long_click = 12;
+    repeated Action on_re_focus = 13;
+    repeated Action on_dismiss = 14;
+    repeated Action on_load = 15;
+    repeated Action on_reset = 16;
+    repeated Action on_appear = 17;
+}
+
+message WrapperAction {
+    Actions.Action action = 1;
+    repeated Actions.Action on_success = 2;
+    repeated Actions.Action on_failure = 3;
+}

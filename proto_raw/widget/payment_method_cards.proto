@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package widget;
+
+import "feature/payment/validations.proto";
+import "feature/payment/restrictions.proto";
+import "feature/image/image.proto";
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "widget/payment_method_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PaymentMethodCardsWidget {
+    base.WidgetCommons widget_commons = 1;
+    string title = 11;
+    
+    Input card_number = 12;
+    message Input {
+        string title = 1;
+        string placeholder = 2;
+        repeated feature.payment.Validation validations = 3;
+        repeated feature.payment.Restriction restrictions = 4;
+        feature.image.Image image = 5;
+    }
+    
+    Input validity = 13;
+    Input cvv = 14;
+    
+    Cta cta = 15;
+    message Cta {
+        string text = 11;
+        string icon_name = 12;
+        base.Actions action = 13 [deprecated = true];
+        repeated base.Actions.Action actions = 14;
+    }
+    
+    PaymentMethodCommonsWidget payment_method_meta = 16;
+    repeated base.Actions.Action auto_triggered_actions = 17;
+    
+    repeated CardType card_type = 18;
+    message CardType {
+        string card = 1;
+        repeated int32 spaces = 2;
+        string regexExp = 3;
+        int32 max_length = 4;
+        int32 min_length = 5;
+        int32 cvv_length = 6;
+        feature.image.Image image = 7;
+    }
+    
+    base.Actions actions = 19;
+    
+    reserved 2 to 10;
+}

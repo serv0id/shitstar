@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package feature.profile;
+
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/profile";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.profile";
+
+message ProfileInfo {
+    string profile_id = 1;
+    image.Image avatar = 2;
+}

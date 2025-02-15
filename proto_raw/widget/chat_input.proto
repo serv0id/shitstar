@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "widget/text_area.proto";
+import "feature/atom/button.proto";
+import "widget/avatar.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ChatInputWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        AvatarWidget avatar = 1;
+        TextAreaWidget input = 2;
+        feature.atom.Button send = 3;
+    }
+    
+    reserved 2 to 10;
+}

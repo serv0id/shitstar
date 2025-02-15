@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "widget/header.proto";
+import "widget/vertical_content_poster.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message WatchlistWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        Header header = 1 [deprecated = true];
+        repeated Item items = 3;
+        string next_watchlist_url = 4;
+        RefreshInfo refresh_info = 5;
+        HeaderWidget tray_header = 6;
+        
+        reserved 2, "more_widgets_url";
+    }
+    
+    reserved 3 to 10;
+    
+    message RefreshInfo {
+        int64 max_age_ms = 1;
+        string refresh_url = 2;
+    }
+    
+    message Header {
+        string title = 1;
+        base.Actions actions = 2;
+        IconLabelCTA cta = 3;
+    }
+    
+    message Item {
+        oneof widget {
+            VerticalContentPosterWidget vertical_content_poster = 1;
+        }
+    }
+    
+    message IconLabelCTA {
+        string label = 1;
+        string icon_name = 2;
+        base.Actions actions = 3;
+    }
+}

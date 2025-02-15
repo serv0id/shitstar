@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/promo_landing.proto";
+import "widget/promo_landing_container.proto";
+import "widget/login_with_phone.proto";
+import "widget/login_container.proto";
+import "widget/faq.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message UserRegistrationContainerWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        PromoLandingWidget promo_landing = 1 [deprecated = true];
+        LoginWithPhoneWidget login_with_phone = 2 [deprecated = true];
+        PromoLandingContainerWidget promo_landing_container = 3;
+        LoginContainerWidget login_container = 4;
+        FAQWidget faq = 5 [deprecated = true];
+    }
+    
+    reserved 3 to 10;
+}

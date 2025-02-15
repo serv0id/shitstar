@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package feature.trackers;
+
+import "feature/trackers/tracker.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/trackers";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.trackers";
+
+message UrlTrackers {
+    Tracker click = 1;
+    Tracker impressions = 2;
+    Tracker interaction = 3;
+}

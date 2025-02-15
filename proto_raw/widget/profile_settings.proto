@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "widget/dialog.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ProfileSettingsWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        ClickableSetting app_language = 1;
+        ClickableSetting edit_profile = 2 [deprecated = true];
+        string title = 3;
+        LanguageList languages = 4;
+        DialogWidget dialog = 5;
+        base.Actions actions = 6;
+    }
+    
+    reserved 2 to 10;
+    
+    message LanguageList {
+        string title = 1 [deprecated = true];
+        repeated ListOption options = 2;
+        feature.image.Image profile_img = 3;
+        repeated base.Actions.Action on_click = 10;
+    }
+    
+    message ListOption {
+        string label = 1;
+        string localised_label = 2 [deprecated = true];
+        string lang_code = 3;
+        bool is_selected = 4;
+        string language_header = 5;
+        string language_sub_header = 6 [deprecated = true];
+        bool coming_soon = 7;
+        Button submit_button = 8 [deprecated = true];
+        Button cancel_button = 9 [deprecated = true];
+    }
+    
+    message ClickableSetting {
+        string title = 2;
+        string description = 3 [deprecated = true];
+        string selected_language = 5;
+        base.Actions actions = 4;
+    }
+    
+    message Button {
+        string text = 1;
+        base.Actions actions = 2;
+    }
+}

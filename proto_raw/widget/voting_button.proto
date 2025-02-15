@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/voting/voting_button_config.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message VotingButtonWidget {
+    base.WidgetCommons widget_commons = 1;
+    feature.voting.VotingButtonConfig voting_button_config = 11;
+    base.Actions actions = 12;
+    
+    reserved 2 to 10;
+}

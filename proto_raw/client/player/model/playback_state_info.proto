@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package client.player.model;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.player.model";
+
+message PlaybackStateInfo {
+    string audio_lang_code = 1;
+    string captions_lang_code = 2;
+    bool captions_enabled = 3;
+    string audio_language = 4;
+    string captions_language = 5;
+    uint32 current_video_position_ms = 6;
+    uint32 volume_percent = 7;
+    uint32 current_resolution_px = 8;
+    uint32 current_video_bitrate_bps = 9;
+    bool is_buffering = 10;
+    string audio_decoder = 11;
+    string video_decoder = 12;
+    VideoQuality selected_video_quality = 13;
+}
+
+enum VideoQuality {
+    VIDEO_QUALITY_UNSPECIFIED = 0;
+    VIDEO_QUALITY_AUTO = 1;
+    VIDEO_QUALITY_LOW = 2;
+    VIDEO_QUALITY_MEDIUM = 3;
+    VIDEO_QUALITY_HIGH = 4;
+    VIDEO_QUALITY_ULTRA = 5;
+    VIDEO_QUALITY_SD = 6;
+    VIDEO_QUALITY_HD = 7;
+    VIDEO_QUALITY_FHD = 8;
+    VIDEO_QUALITY_4K = 9;
+}

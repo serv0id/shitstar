@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package v2.request;
+
+import "google/protobuf/any.proto";
+import "v2/ctx/context.proto";
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/request";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.request";
+
+message StartRequest {
+    string deeplink_url = 1;
+    google.protobuf.Any body = 2;
+    
+    StartMode mode = 3;
+    enum StartMode {
+        HARD = 0;
+        SOFT = 1;
+    }
+    
+    bool is_upgrade_shown = 4;
+    ctx.Context context = 5;
+    uint64 app_launch_count = 6;
+    
+    DeviceInfo device_info = 7;
+    message DeviceInfo {
+        repeated DeviceId device_ids = 1;
+        message DeviceId {
+            string id = 1;
+            DeviceIdType type = 2;
+        }
+        
+        DeviceMeta device_meta = 2;
+        message DeviceMeta {
+            string network_operator = 1;
+            string os_name = 2;
+            string os_version = 3;
+        }
+        
+        enum DeviceIdType {
+            AD_ID = 0;
+            ANDROID_ID = 1;
+            UUID = 2;
+            DEVICE_ID = 3;
+        }
+    }
+    
+    string client_capabilities = 8 [deprecated = true];
+}

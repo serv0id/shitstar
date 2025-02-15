@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package client.ads;
+
+import "client/ads/ad_slot.proto";
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/ads";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.ads";
+
+message Received {
+    int64 response_time = 1 [deprecated = true];
+    int64 received_count = 2;
+    string received_type_list = 3 [deprecated = true];
+    int64 response_time_ms = 4;
+    repeated AdSlot received_ad_slots = 5;
+}

@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package client.watch;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message ChangeBrightnessProperties {
+    int32 previous_brightness_pct = 1;
+    int32 new_brightness_pct = 2;
+    
+    BrightnessSource change_source = 3;
+    enum BrightnessSource {
+        BRIGHTNESS_SOURCE_UNSPECIFIED = 0;
+        BRIGHTNESS_SOURCE_GESTURE = 1;
+        BRIGHTNESS_SOURCE_VOLUME_BAR = 2 [deprecated = true];
+        BRIGHTNESS_SOURCE_PHONE = 3;
+        BRIGHTNESS_SOURCE_BRIGHTNESS_BAR = 4;
+    }
+}

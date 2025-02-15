@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package component.search;
+
+import "client/search/search_session_info.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/search";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message SearchInfoProperties {
+    InterfaceType interface_type = 1;
+    string query_text = 2;
+    PageType page_type = 3 [deprecated = true];
+    string primary_language = 4 [deprecated = true];
+    string widget_filter = 5;
+}
+
+enum InterfaceType {
+    INTERFACE_TYPE_UNSPECIFIED = 0;
+    INTERFACE_TYPE_HISTORY = 1;
+    INTERFACE_TYPE_TRENDING = 2;
+    INTERFACE_TYPE_TOP_RESULT = 3;
+    INTERFACE_TYPE_HERO_RESULT = 4;
+    INTERFACE_TYPE_MORE_RESULT = 5;
+    INTERFACE_TYPE_RELATED_SEARCH = 6;
+    INTERFACE_TYPE_TYPEAHEAD = 7;
+    INTERFACE_TYPE_EXPLORE = 8;
+    INTERFACE_TYPE_SCOREBOARD = 9;
+    INTERFACE_TYPE_FILTER = 10;
+    INTERFACE_TYPE_SIMILAR_RESULT = 11;
+    INTERFACE_TYPE_MORE_LIKE_THIS = 12;
+    INTERFACE_TYPE_YOU_MAY_ALSO_LIKE = 13;
+    INTERFACE_TYPE_POPULAR_CLIPS = 14;
+}
+
+enum PageType {
+    PAGE_TYPE_UNSPECIFIED = 0;
+    PAGE_TYPE_EXPLORE = 1;
+    PAGE_TYPE_SEARCH = 2;
+    PAGE_TYPE_SEARCH_ZERO = 3;
+}

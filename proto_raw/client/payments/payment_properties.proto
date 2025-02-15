@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package client.payments;
+
+import "client/payments/failure_properties.proto";
+import "client/payments/payment_type_properties.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/payments";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.payments";
+
+message PaymentProperties {
+    string plan_id = 1 [deprecated = true];
+    
+    PaymentType payment_type = 2 [deprecated = true];
+    enum PaymentType {
+        PAYMENT_TYPE_UNSPECIFIED = 0;
+        PAYMENT_TYPE_GOOGLE = 1;
+        PAYMENT_TYPE_ITUNES = 2;
+    }
+    
+    PaymentTypeProperties payment_type_properties = 3;
+    FailureProperties failure_properties = 4;
+    repeated string payment_instrument_offers = 5;
+    string partner = 6;
+    string offer = 7;
+    
+    OfferStatus offer_status = 8;
+    enum OfferStatus {
+        OFFER_STATUS_UNSPECIFIED = 0;
+        OFFER_STATUS_APPLIED = 1;
+        OFFER_STATUS_INVALID = 2;
+    }
+}

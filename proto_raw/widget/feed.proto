@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "widget/feed_header.proto";
+import "widget/commentary.proto";
+import "widget/feed_content.proto";
+import "widget/feed_caption.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message FeedWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string id = 1;
+        int64 timestamp = 2;
+        FeedHeaderWidget header = 3;
+        CommentaryWidget commentary = 4;
+        FeedContentWidget content = 5;
+        FeedCaptionWidget caption = 6;
+        base.Actions actions = 11;
+    }
+    
+    reserved 2 to 10;
+}

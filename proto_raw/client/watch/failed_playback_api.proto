@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package client.watch;
+
+import "client/player/model/client_capabilities.proto";
+import "client/player/model/playback_mode_info.proto";
+import "client/player/model/playback_pip_mode.proto";
+import "client/player/model/stream_mode.proto";
+import "client/watch/preload_playback_properties.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message FailedPlaybackApi {
+    string error_code = 1;
+    int32 error_http_status_code = 2;
+    string failed_url = 3;
+    bool is_casting = 4;
+    bool is_downloaded = 5;
+    string client_page_id = 6;
+    string play_type = 7;
+    player.model.PlayerOrientation player_orientation = 8;
+    player.model.PlaybackPIPMode playback_pip_mode = 9 [deprecated = true];
+    bool is_preload = 10;
+    PreloadPlaybackProperties.PreloadStatus preload_status = 11;
+    string player_version = 12;
+    string exception_message = 13;
+    player.model.StreamMode mode = 14;
+    player.model.PlaybackPipMode playback_pip_mode_v2 = 15;
+    player.model.ClientCapabilities client_capabilities = 16;
+    bool is_retry_attempt = 17;
+    uint32 total_time_to_failure_ms = 18;
+}

@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message UspItemWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image usp_image = 1;
+        TextInfo label = 2;
+        Item item = 3;
+    }
+    
+    reserved 2 to 10;
+    
+    message TextInfo {
+        string text = 1;
+        TypographyType typographyType = 2;
+    }
+    
+    message Item {
+        oneof Item {
+            TextInfo description = 1;
+            DescTextList desc_list = 2;
+        }
+    }
+    
+    message DescTextList {
+        repeated string desc_text_list = 1;
+    }
+    
+    enum TypographyType {
+        H5 = 0;
+        H1 = 1;
+        TITLE1 = 2;
+        TITLE2 = 3;
+        BODY1_MEDIUM = 4;
+        BODY2_REGULAR = 5;
+        BODY3_REGULAR = 6;
+        BODY2_MEDIUM = 7;
+    }
+}

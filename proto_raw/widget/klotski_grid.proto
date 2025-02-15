@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/search/badge.proto";
+import "widget/horizontal_content_card.proto";
+import "widget/vertical_content_poster.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message KlotskiGridWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        BlockType type = 1;
+        uint32 parallel_unit_number = 2;
+        repeated BlockWidget blocks = 3;
+    }
+    
+    reserved 2 to 10;
+    
+    message BlockWidget {
+        uint32 vertical_unit_number = 1;
+        repeated SingleItemWidget single_items = 2;
+        WidgetAlignment alignment = 3;
+    }
+    
+    message SingleItemWidget {
+        uint32 width_unit = 1;
+        uint32 height_unit = 2;
+        uint32 x_position_unit = 3;
+        uint32 y_position_unit = 4;
+        Item item = 5;
+        feature.search.Badge badge = 6;
+    }
+    
+    message Item {
+        oneof widget {
+            HorizontalContentCardWidget horizontal_content_card = 1;
+            VerticalContentPosterWidget vertical_content_poster = 2;
+        }
+    }
+    
+    enum BlockType {
+        DEFAULT_TYPE = 0;
+        VERTICAL = 1;
+        HORIZONTAL = 2;
+    }
+    
+    enum WidgetAlignment {
+        DEFAULT = 0;
+        LEFT = 1;
+        RIGHT = 2;
+    }
+}

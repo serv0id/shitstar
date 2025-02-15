@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package feature.branding;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/branding";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.branding";
+
+enum Brand {
+    option deprecated = true;
+    NONE = 0;
+    DISNEY_PLUS_HOTSTAR = 1;
+    DISNEY_PLUS = 2;
+}

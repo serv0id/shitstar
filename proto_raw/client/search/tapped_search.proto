@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package client.search;
+
+import "client/search/search_applied_filter.proto";
+import "client/search/search_session_info.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/search";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.search";
+
+message TappedSearchProperties {
+    string search_session_id = 1;
+    string search_id = 2;
+    string query_text = 3;
+    PageType page_type = 4 [deprecated = true];
+    SearchInterface search_interface = 5;
+    SearchAction search_action = 6;
+    string display_text = 7;
+    int32 position = 8;
+    string extra_info = 9;
+}
+
+enum SearchInterface {
+    SEARCH_INTERFACE_UNSPECIFIED = 0;
+    SEARCH_INTERFACE_HISTORY = 1;
+    SEARCH_INTERFACE_TRENDING = 2;
+    SEARCH_INTERFACE_RELATED_SEARCH = 3;
+    SEARCH_INTERFACE_TYPEAHEAD = 4;
+    SEARCH_INTERFACE_AUTO_SUGGEST = 5;
+}

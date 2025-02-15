@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package feature.login;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/login";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.login";
+
+enum ConsentStatus {
+    ALREADY_OPTED = 0;
+    OPT_OUT = 1;
+    OPT_IN = 2;
+}

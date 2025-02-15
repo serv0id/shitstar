@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/subscription/restore.proto";
+import "feature/image/image.proto";
+import "feature/atom/button.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message MembershipActionsWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        repeated Membership membership = 1;
+        string refresh_url = 2;
+        Theme theme = 3;
+    }
+    
+    reserved 3 to 10;
+    
+    message Membership {
+        Title title = 1;
+        Cta cta = 2;
+        repeated MembershipOperation operations = 3;
+        feature.atom.Button icon = 4;
+    }
+    
+    message Title {
+        string value = 1;
+        TitleType type = 2;
+        string sub_title = 3 [deprecated = true];
+        Subtext subtext = 4;
+    }
+    
+    message Subtext {
+        string value = 1;
+        SubtextType type = 2;
+    }
+    
+    message Cta {
+        string value = 1;
+        base.Actions action = 2;
+        CtaType type = 3;
+    }
+    
+    message MembershipOperation {
+        string label = 1;
+        string icon_name = 2;
+        string badge_value = 3;
+        base.Actions action = 4 [deprecated = true];
+        base.Actions actions = 5;
+        CtaType type = 7;
+        feature.image.Image img = 8;
+        
+        oneof operation {
+            RestoreOperation restore = 6;
+        }
+    }
+    
+    message RestoreOperation {
+        feature.subscription.Restore info = 1;
+        repeated base.Actions.Action on_success_actions = 2;
+        repeated base.Actions.Action on_failure_actions = 3;
+    }
+    
+    enum TitleType {
+        DEFAULT = 0;
+        HIGHLIGHTED = 1;
+    }
+    
+    enum SubtextType {
+        UNKNOWN = 0;
+        HIGHLIGHTED_SUBTEXT = 1;
+        ERROR_SUBTEXT = 2;
+    }
+    
+    enum CtaType {
+        UNKNOWN_CTA = 0;
+        DEFAULT_CTA = 1;
+        SUBTLE_CTA = 2;
+    }
+    
+    enum Theme {
+        DARK = 0;
+        LIGHT = 1;
+    }
+}

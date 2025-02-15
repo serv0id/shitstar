@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package component.identity;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/identity";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message IdentityActionInfo {
+    string page = 1;
+    string widget_name = 2;
+    string display_text = 3;
+}

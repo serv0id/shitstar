@@ -1,0 +1,205 @@
+syntax = "proto3";
+
+package client.heartbeat.model;
+
+import "options/opts.proto";
+import "client/heartbeat/model/http_connection_stats.proto";
+import "client/player/model/playback_state_info.proto";
+import "component/playback/resolution.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/heartbeat/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.heartbeat.model";
+
+message QosEventMetadata {
+    int64 video_position_ms = 1;
+    int64 buffer_length_ms = 2;
+    int64 offset_play_attempt_ms = 3;
+    string error_code = 4;
+    string error_message = 5;
+    int64 shift_reason = 6;
+    int64 seek_to_ms = 7;
+    int64 download_manifest_bitrate_kbps = 8;
+    component.playback.Resolution download_resolution = 9;
+    int64 estimated_bandwidth_kbps = 10;
+    int64 rtt_ms = 11;
+    int64 render_manifest_bitrate_kbps = 12;
+    component.playback.Resolution stream_resolution = 13;
+    int64 stream_width_pixel = 14 [deprecated = true];
+    int64 duration_in_current_state_ms = 15;
+    int64 decoded_frames = 16;
+    int64 available_duration_ms = 17;
+    int64 download_duration_ms = 18;
+    int64 download_bytes = 19;
+    string url = 20;
+    string reason = 21;
+    bool is_first_rebuffer = 22;
+    int64 init_bandwidth_kbps = 23;
+    component.playback.Resolution resolution = 24;
+    string action_type = 25;
+    int64 detail_sent_offset_ms = 26;
+    int64 url_sent_offset_ms = 27;
+    int64 drm_sent_offset_ms = 28;
+    int64 master_manifest_sent_offset_ms = 29;
+    int64 child_manifest_sent_offset_ms = 30;
+    int64 init_segment_sent_offset_ms = 31;
+    int64 first_video_sent_offset_ms = 32;
+    int64 detail_received_offset_ms = 33;
+    int64 drm_received_offset_ms = 34;
+    int64 master_manifest_received_offset_ms = 35;
+    int64 child_manifest_received_offset_ms = 36;
+    int64 init_segment_received_offset_ms = 37;
+    int64 first_video_received_offset_ms = 38;
+    int64 url_received_offset_ms = 39;
+    int32 decoder_init_count = 40;
+    int32 decoder_release_count = 41;
+    int32 dropped_buffer_count = 42;
+    int32 dropped_to_keyframe_count = 43;
+    int32 input_buffer_count = 44;
+    int32 max_consecutive_dropped_buffer_count = 45;
+    int32 rendered_output_buffer_count = 46;
+    int32 skipped_input_buffer_count = 47;
+    int32 skipped_output_buffer_count = 48;
+    int64 total_video_frame_processing_offset_us = 49;
+    int32 video_frame_processing_offset_count = 50;
+    int64 min_positive_vfpo = 51;
+    int64 max_positive_vfpo = 52;
+    int64 min_negative_vfpo = 53;
+    int64 max_negative_vfpo = 54;
+    string last_segment = 55;
+    int64 live_edge_position_ms = 56;
+    int64 disc_old_position_ms = 57;
+    int64 disc_new_position_ms = 58;
+    string disc_reason = 59;
+    int64 max_memory_bytes = 60;
+    int64 total_memory_bytes = 61;
+    int64 used_memory_bytes = 62;
+    int64 free_memory_bytes = 63;
+    
+    ExitType exit_type = 64;
+    enum ExitType {
+        EXIT_TYPE_UNSPECIFIED = 0;
+        EXIT_TYPE_USER_LEAVE = 1;
+        EXIT_TYPE_NEW_VIDEO = 2;
+        EXIT_TYPE_ENTITLEMENT_FAIL = 3;
+        EXIT_TYPE_OUT_OF_FREE_WATCH = 4;
+        EXIT_TYPE_OTHER = 5;
+    }
+    
+    CurrentState current_state = 65;
+    enum CurrentState {
+        CURRENT_STATE_UNSPECIFIED = 0;
+        CURRENT_STATE_STARTUP = 1;
+        CURRENT_STATE_PLAYING = 2;
+        CURRENT_STATE_PAUSED = 3;
+        CURRENT_STATE_SEEKING = 4;
+        CURRENT_STATE_REBUFFERING = 5;
+        CURRENT_STATE_OTHER = 6;
+    }
+    
+    player.model.VideoQuality previous_selected_quality_level = 66;
+    
+    DataType data_type = 67;
+    enum DataType {
+        DATA_TYPE_UNSPECIFIED = 0;
+        DATA_TYPE_VIDEO = 1;
+        DATA_TYPE_AUDIO = 2;
+        DATA_TYPE_MANIFEST = 3;
+        DATA_TYPE_SUBTITLE = 4;
+        DATA_TYPE_DRM = 5;
+        DATA_TYPE_OTHER = 6;
+        DATA_TYPE_INIT = 7;
+        DATA_TYPE_CERTIFICATE = 8;
+        DATA_TYPE_BFF = 9;
+        DATA_TYPE_PC = 10;
+    }
+    
+    PlayingAd playing_ad = 68;
+    enum PlayingAd {
+        PLAYING_AD_UNSPECIFIED = 0;
+        PLAYING_AD_YES = 1;
+        PLAYING_AD_NO = 2;
+        PLAYING_AD_UNKNOWN = 3;
+    }
+    
+    MemoryLevel memory_level = 69;
+    enum MemoryLevel {
+        MEMORY_LEVEL_UNSPECIFIED = 0;
+        MEMORY_LEVEL_TRIM_MEMORY_DEFAULT = 1;
+        MEMORY_LEVEL_TRIM_MEMORY_COMPLETE = 2;
+        MEMORY_LEVEL_TRIM_MEMORY_MODERATE = 3;
+        MEMORY_LEVEL_TRIM_MEMORY_BACKGROUND = 4;
+        MEMORY_LEVEL_TRIM_MEMORY_UI_HIDDEN = 5;
+        MEMORY_LEVEL_TRIM_MEMORY_RUNNING_CRITICAL = 6;
+        MEMORY_LEVEL_TRIM_MEMORY_RUNNING_LOW = 7;
+        MEMORY_LEVEL_TRIM_MEMORY_RUNNING_MODERATE = 8;
+    }
+    
+    HttpConnectionStats master_manifest_info = 70;
+    HttpConnectionStats drm_license_info = 71;
+    HttpConnectionStats video_metadata_info = 72;
+    HttpConnectionStats first_init_segment_info = 73;
+    HttpConnectionStats first_video_segment_info = 74;
+    HttpConnectionStats first_audio_segment_info = 75;
+    HttpConnectionStats first_subtitle_file_info = 76;
+    HttpConnectionStats http_connection_stats = 77;
+    string byte_range = 78;
+    int64 bytes_downloaded = 79;
+    Tracks tracks = 80;
+    int64 bitrate_lowerbound_bps = 81;
+    int64 bitrate_upperbound_bps = 82;
+    int32 width_lowerbound_px = 83;
+    int32 width_upperbound_px = 84;
+    int64 buffer_goal_ms = 85;
+    int64 bitrate_bps = 86;
+    string abr_algorithm = 87;
+    string abr_parameters = 88;
+    string abr_context = 89;
+    int64 certificate_sent_offset_ms = 90;
+    int64 certificate_received_offset_ms = 91;
+    string drm_license_url = 92;
+    int64 resume_at = 93;
+    int64 last_updated_msq = 94;
+    int64 ts_last_manifest_refresh_ms = 95;
+    int64 manifest_msq = 96;
+    int64 msq_mismatch_count = 97;
+    int64 current_presentation_timestamp_us = 98;
+    int64 expected_presentation_timestamp_us = 99;
+    bool did_auto_seek = 100;
+    SpeedTestType speed_test_type = 101;
+    repeated SpeedTestInfo speed_test_infos = 102;
+    repeated Buffered buffereds = 103;
+    bool is_resume_from_seek = 104;
+}
+
+message Tracks {
+    repeated TrackInfo audio_tracks = 1;
+    repeated TrackInfo video_tracks = 2;
+}
+
+message TrackInfo {
+    int64 bitrate_bps = 1;
+    string resolution_px = 2;
+}
+
+message SpeedTestInfo {
+    string request_url = 1;
+    int64 download_bytes = 2;
+    int64 download_start_time_ms = 3;
+    int64 download_end_time_ms = 4;
+    HttpConnectionStats cdn_connection_stats = 5;
+    string http_error_code = 6;
+    string error_message = 7;
+}
+
+message Buffered {
+    int64 start = 1;
+    int64 end = 2;
+}
+
+enum SpeedTestType {
+    SPEED_TEST_TYPE_UNSPECIFIED = 0;
+    SPEED_TEST_TYPE_LONG_REQUEST = 1;
+    SPEED_TEST_TYPE_MULTI_BUFFERS = 2;
+    SPEED_TEST_TYPE_MANUALLY = 3;
+}

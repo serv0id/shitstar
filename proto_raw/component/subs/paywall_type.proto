@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package component.subs;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/subs";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+enum PaywallType {
+    PAYWALL_TYPE_UNSPECIFIED = 0;
+    PAYWALL_TYPE_CONTENT = 1;
+    PAYWALL_TYPE_DOWNLOAD = 2;
+    PAYWALL_TYPE_SPORTS_LIVE = 3;
+    PAYWALL_TYPE_BTV_CONTENT = 4;
+    PAYWALL_TYPE_DEVICE_LIMIT = 5;
+    PAYWALL_TYPE_VIDEO_QUALITY = 6;
+    PAYWALL_TYPE_DEFAULT = 7;
+    PAYWALL_TYPE_CONSUMPTION = 8;
+    PAYWALL_TYPE_SUBS_DISCLAIMER_COBRANDED = 9;
+    PAYWALL_TYPE_SUBS_DISCLAIMER_DEFAULT = 10;
+}

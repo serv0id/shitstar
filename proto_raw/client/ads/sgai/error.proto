@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package client.ads.sgai;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/ads/sgai";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.ads.sgai";
+
+message Error {
+    int32 sgai_error_code = 1;
+    string sgai_error_message = 2;
+}

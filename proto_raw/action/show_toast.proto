@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package action;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message ShowToastAction {
+    string message = 1;
+    DurationType duration_type = 2;
+    string cta_label = 5;
+    
+    oneof toast_drawable {
+        string icon = 3;
+        ToastType toast_type = 4;
+    }
+}
+
+enum DurationType {
+    SHORT = 0;
+    MEDIUM = 1;
+    LONG = 2;
+}
+
+enum ToastType {
+    UNSPECIFIED = 0;
+    SUCCESS = 1;
+    ERROR = 2;
+    WARNING = 3;
+}

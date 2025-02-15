@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package client.watch;
+
+import "client/orientation.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message ChangePlaybackSpeedProperties {
+    float previous_speed = 1;
+    float new_speed = 2;
+    Orientation player_orientation = 3;
+    string player_version = 4;
+}

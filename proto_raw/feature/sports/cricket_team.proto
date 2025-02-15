@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package feature.sports;
+
+import "feature/sports/team.proto";
+import "feature/sports/player_one_line_stats.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/sports";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.sports";
+
+message CricketTeam {
+    Team basic_team = 1;
+    string score_title = 2;
+    string score_subtitle = 3;
+    repeated PlayerOneLineStats key_player_stats = 4;
+    string latest_desc = 5;
+    bool is_batting = 6;
+}

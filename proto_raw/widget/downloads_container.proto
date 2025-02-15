@@ -1,0 +1,121 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+import "feature/playback/resolution.proto";
+import "feature/player/playback_params.proto";
+import "widget/offline_watch.proto";
+import "feature/download/download_info.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message DownloadsContainerWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.player.PlaybackParams playback_params = 1;
+        LanguageSelectionInfo language_selection_info = 2;
+        QualitySelectionSheet quality_selection_sheet = 3;
+        DownloadPersistableMeta download_persistable_meta = 4;
+    }
+    
+    reserved 2 to 10;
+    
+    message DownloadPersistableMeta {
+        OfflineWatchWidget offline_watch_widget = 1;
+        ContentInfo content_info = 2;
+        feature.download.DownloadInfo download_info = 3;
+    }
+    
+    message ContentInfo {
+        oneof info {
+            EpisodeContentInfo episode_content_info = 1;
+            GenericContentInfo generic_content_info = 2;
+        }
+    }
+    
+    message EpisodeContentInfo {
+        string content_id = 1;
+        string widget_url = 2;
+        string show_content_id = 3;
+        string content_title = 4;
+        string show_content_title = 5;
+        double content_duration = 6;
+        string formatted_content_subtitle = 7;
+        feature.image.Image show_poster_image = 8;
+        feature.image.Image show_thumbnail_image = 9;
+        feature.image.Image episode_thumbnail_image = 10;
+        int32 episode_no = 13;
+        bool is_btv = 14;
+        SeasonInfo season_info = 15;
+        ShowEpisodeImageData show_image_data = 16;
+        string broadcast_date = 17;
+    }
+    
+    message GenericContentInfo {
+        string content_id = 1;
+        string widget_url = 2;
+        string content_title = 3;
+        double content_duration = 4;
+        feature.image.Image content_poster_image = 5;
+        feature.image.Image content_thumbnail_image = 6;
+    }
+    
+    message LanguageSelectionInfo {
+        int32 max_number_of_languages_to_download = 1;
+        repeated Language user_preferred_languages = 2;
+    }
+    
+    message Language {
+        string language_iso_code = 1;
+        string language_label = 2;
+    }
+    
+    message QualitySelectionSheet {
+        repeated DownloadQualityOption download_quality_options = 11;
+        base.Actions start_download_actions = 12 [deprecated = true];
+        bool force_show_quality_sheet = 13;
+        QualitySheetCTA quality_sheet_cta = 14;
+    }
+    
+    message DownloadQualityOption {
+        string quality_title = 1;
+        repeated QualityOptionTag tags = 2;
+        feature.playback.Resolution resolution = 3;
+        bool is_enabled = 4;
+        base.Actions actions = 5;
+    }
+    
+    message QualityOptionTag {
+        QualityOptionTagType type = 1;
+        string value = 2;
+    }
+    
+    message QualitySheetCTA {
+        string cta_title = 1;
+        base.Actions cta_action = 2;
+    }
+    
+    message SeasonInfo {
+        string season_name = 11;
+        string season_id = 12;
+        int32 season_no = 13;
+    }
+    
+    message ShowEpisodeImageData {
+        feature.image.Image show_horizontal_image = 1;
+        feature.image.Image episode_vertical_image = 2;
+        feature.image.Image episode_horizontal_image = 3;
+    }
+    
+    enum QualityOptionTagType {
+        TEXT = 0;
+        BADGE = 1;
+    }
+}

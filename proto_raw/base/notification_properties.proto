@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package base;
+
+import "base/referrer_properties.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/base";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.base";
+
+message PushNotificationDialogProperties {
+    CtaType cta_type = 1;
+    enum CtaType {
+        CTA_UNSPECIFIED = 0;
+        CTA_POSITIVE_CTA = 1;
+        CTA_NEGATIVE_CTA = 2;
+    }
+    
+    PushType push_type = 2;
+    enum PushType {
+        PUSH_UNSPECIFIED = 0;
+        PUSH_NOTIFICATION = 1;
+        PUSH_SMS = 2;
+        PUSH_WHATSAPP = 3;
+    }
+    
+    ReferrerProperties referrer_properties = 3;
+}

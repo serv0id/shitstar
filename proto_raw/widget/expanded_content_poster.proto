@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "feature/autoplay/autoplay_info.proto";
+import "feature/content_language_preference/content_language_preference.proto";
+import "feature/language/language.proto";
+import "feature/remind_me/remind_me_info.proto";
+import "feature/watchlist/watchlist_info.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ExpandedContentPosterWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image image = 1;
+        ContentInfo content_info = 2;
+        repeated base.Actions.Action on_visible_actions = 3;
+    }
+    
+    reserved 2 to 10;
+    
+    message ContentInfo {
+        string title = 1;
+        feature.image.Image title_cutout = 2;
+        string description = 3;
+        repeated Tag tags = 4;
+        int32 progress = 5;
+        WatchlistButton watchlist_cta = 6;
+        IconLabelButton see_more_cta = 7;
+        feature.autoplay.AutoplayInfo autoplay_info = 8;
+        feature.content_language_preference.ContentLanguagePreference language_preference_info = 9;
+        ContentLanguageSelector content_language_selector = 10;
+        ContentCTAButton primary_button = 11;
+    }
+    
+    message IconLabelButton {
+        string icon_name = 1;
+        string label = 2;
+        base.Actions actions = 3;
+    }
+    
+    message WatchlistButton {
+        feature.watchlist.WatchlistInfo info = 1;
+    }
+    
+    message Tag {
+        string value = 1;
+        base.Actions actions = 2;
+    }
+    
+    message ContentLanguageSelector {
+        repeated ContentLanguageItem languages = 1;
+    }
+    
+    message ContentLanguageItem {
+        feature.language.Language language = 1;
+        string description = 2;
+        bool is_default = 3;
+        bool is_selected = 4;
+        base.Actions actions = 5;
+    }
+    
+    message ContentCTAButton {
+        oneof cta {
+            IconLabelButton cta_button = 1;
+            RemindMeCTAButton remind_me_cta_button = 2;
+        }
+    }
+    
+    message RemindMeCTAButton {
+        feature.remind_me.ReminderInfo remind_me_info = 1;
+    }
+}

@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package client.perf;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/perf";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.perf";
+
+message AppStart {
+    int64 total_load_time_ms = 1;
+    
+    StartType start_type = 2;
+    enum StartType {
+        START_TYPE_UNSPECIFIED = 0;
+        START_TYPE_COLD = 1;
+        START_TYPE_WARM = 2;
+    }
+    
+    int64 splash_screen_time_ms = 3;
+    int64 first_frame_time_ms = 4;
+    
+    RenderingMode rendering_mode = 5;
+    enum RenderingMode {
+        RENDERING_MODE_UNSPECIFIED = 0;
+        RENDERING_MODE_SSR = 1;
+        RENDERING_MODE_CSR = 2;
+        RENDERING_MODE_DW = 3;
+    }
+    
+    int64 app_startup_time_ms = 6;
+    int64 data_processing_time_ms = 7;
+    int64 api_response_time_ms = 8;
+    int64 fetch_fp_key_time_ms = 9;
+    int64 page_rendering_time_ms = 10;
+    int64 app_init_time_ms = 11;
+    int64 activity_init_time_ms = 12;
+    int64 splash_init_time_ms = 13;
+    int64 startup_init_time_ms = 14;
+    int64 start_api_init_time_ms = 15;
+    int64 proto_parsing_time_ms = 16;
+    int64 splash_page_time_ms = 17;
+    int64 start_api_domain_connection_time_ms = 18;
+    int64 start_api_connection_time_ms = 19;
+    int64 start_api_secure_connection_time_ms = 20;
+    int64 start_api_response_time_ms = 21;
+    int64 start_api_response_body_size_kb = 22;
+    int64 start_api_response_time_event_listener_ms = 23;
+    int64 processing_time_before_start_api_call_ms = 24;
+    int64 processing_time_after_start_api_response_ms = 25;
+    int64 mandatory_task_time_for_start_operation_ms = 26;
+    int64 firebase_configuration_time_ms = 27;
+    int64 config_lib_init_time_ms = 28;
+    bool is_pre_warm_launch = 29;
+}

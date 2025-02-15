@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package client.search;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/search";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.search";
+
+message SearchEntryProperties {
+    string search_session_id = 1;
+    EntryMode entry_mode = 2;
+}
+
+enum EntryMode {
+    ENTRY_MODE_UNSPECIFIED = 0;
+    ENTRY_MODE_TRAY = 1;
+    ENTRY_MODE_ICON = 2;
+    ENTRY_MODE_MIC = 3;
+    ENTRY_MODE_CONTINUED = 4;
+}

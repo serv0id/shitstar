@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "widget/player_settings.proto";
+import "widget/player_settings_v2.proto";
+import "widget/player_report_menu.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message WatchOverlayWidget {
+    base.Template template = 1;
+    
+    Data data = 2;
+    message Data {
+        PlayerSettingsWidget settings = 1 [deprecated = true];
+        PlayerReportMenuWidget report_menu = 2 [deprecated = true];
+        PlayerSettingsWidgetV2 settings_v2 = 3;
+    }
+}

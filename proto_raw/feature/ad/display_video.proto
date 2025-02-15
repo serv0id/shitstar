@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package feature.ad;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/ad";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.ad";
+
+message DisplayVideo {
+    VideoPlaybackType playback_type = 1;
+    string payload = 2;
+}
+
+enum VideoPlaybackType {
+    VIDEO_PLAYBACK_UNSPECIFIED = 0;
+    VIDEO_PLAYBACK_AUTOPLAY = 1;
+    VIDEO_PLAYBACK_NORMAL = 2;
+}

@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package v2.enrichment;
+
+import "google/protobuf/any.proto";
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/enrichment";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.enrichment";
+
+message RoutingTable {
+    map<string, Operations> routing_table = 1;
+    map<string, google.protobuf.Any> cache_metadata = 2;
+    
+    message Operations {
+        Replace replace = 1;
+        message Replace {
+            string to_replace = 1;
+            string replace_with = 2;
+        }
+        
+        repeated QueryParam query_params = 2;
+        message QueryParam {
+            string key = 1;
+            string value = 2;
+        }
+        
+        string domain = 3;
+    }
+}

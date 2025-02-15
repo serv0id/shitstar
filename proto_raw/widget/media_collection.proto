@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/media_container.proto";
+import "widget/auto_scroll_gallery.proto";
+import "widget/hero_gec.proto";
+import "widget/hero.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message MediaCollectionWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        HeroGECWidget titles = 1 [deprecated = true];
+        
+        CollectionType collection_type = 2;
+        enum CollectionType {
+            UNSPECIFIED = 0;
+            CAROUSEL = 1;
+            HORIZONTAL_CARD = 2;
+            VERTICAL_CARD = 3;
+        }
+        
+        repeated AutoScrollGalleryWidget tray_items = 3;
+        HeroWidget texts = 4;
+    }
+    
+    reserved 2 to 10;
+}

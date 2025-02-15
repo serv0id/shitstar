@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/quiz/title.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message QuizInterimResultWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        bool is_right_anwser = 1;
+        string background_color_hex = 2;
+        feature.quiz.Title results = 3;
+        feature.quiz.Title extra_reminder = 4;
+        int32 duration_in_seconds = 5;
+    }
+    
+    reserved 2 to 10;
+}

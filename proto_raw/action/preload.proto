@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package action;
+
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message PreloadFlow {
+    oneof flow {
+        ApiCall bff = 1;
+    }
+    
+    message ApiCall {
+        string url = 1;
+        
+        FetchType fetch_type = 2;
+        enum FetchType {
+            FETCH_PAGE = 0;
+            FETCH_WIDGET = 1;
+        }
+    }
+}
+
+message PreloadAction {
+    PreloadFlow flow = 1;
+}

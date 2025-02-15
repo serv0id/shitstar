@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package api.feature.device;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/feature/device";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.feature.device";
+
+message PipInfo {
+    PlayerType player_type = 1;
+    PlayerStatus player_status = 2;
+}
+
+message PipInfoV2 {
+    PlayerType player_type_v2 = 1;
+    PlayerStatus player_status_v2 = 2;
+}
+
+enum PlayerType {
+    PLAYER_TYPE_UNSPECIFIED = 0;
+    PLAYER_TYPE_IN_APP_PIP = 1;
+    PLAYER_TYPE_NORMAL = 2;
+    PLAYER_TYPE_NOT_ACTIVE = 3;
+}
+
+enum PlayerStatus {
+    PLAYER_STATUS_UNSPECIFIED = 0;
+    PLAYER_STATUS_STREAMING = 1;
+    PLAYER_STATUS_PAUSED = 2;
+    PLAYER_STATUS_LOADING = 3;
+}

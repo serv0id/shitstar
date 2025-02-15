@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package client.perf;
+
+import "client/watch/player_manager_properties.proto";
+import "client/watch/preload_playback_properties.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/perf";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.perf";
+
+message WatchPageLoadedProperties {
+    int64 bff_preparation_time_ms = 1;
+    int64 time_between_bff_and_player_ms = 2;
+    int64 player_load_time_ms = 3;
+    bool is_player_already_loaded = 4;
+    bool is_cast = 5;
+    int64 player_setup_time_ms = 6;
+    int64 player_load_content_time_ms = 7;
+    int64 player_after_load_content_time_ms = 8;
+    watch.PlayerManagerProperties player_manager_properties = 9;
+    watch.PreloadPlaybackProperties.PreloadStatus preload_status = 10;
+    bool triggered_by_up_next_ios_only = 11;
+    bool preload_in_watch = 12;
+    string player_version = 13;
+}

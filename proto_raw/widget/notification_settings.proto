@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/consent/consent_type.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message NotificationSettingsWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        ToggleSetting app_notification = 1;
+        ToggleSetting sms_notification = 2;
+        ToggleSetting whatsapp_notification = 3;
+        ToggleSetting email_notification = 4;
+    }
+    
+    reserved 2 to 10;
+    
+    message ToggleSetting {
+        string icon_name = 2;
+        string title = 3;
+        string description = 4;
+        bool is_selected = 5;
+        base.Actions actions = 6;
+        feature.consent.ConsentType preference_type = 7;
+        int64 preference_version = 8;
+        string preference_id = 9;
+    }
+}

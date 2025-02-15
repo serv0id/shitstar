@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package component.subs;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/subs";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+enum EventType {
+    EVENT_TYPE_UNSPECIFIED = 0;
+    EVENT_TYPE_VIEWED = 1;
+    EVENT_TYPE_CLICKED = 2;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package component.growth;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/growth";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message SaveBannerViewProperties {
+    bool is_visible = 1;
+}

@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package component.subs;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/subs";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message PurchaseNudgeDetails {
+    NudgeType nudge_type = 1;
+    enum NudgeType {
+        NUDGE_TYPE_UNSPECIFIED = 0;
+        NUDGE_TYPE_SUBSCRIBE = 1;
+        NUDGE_TYPE_UPGRADE = 2;
+        NUDGE_TYPE_RENEW = 3;
+        NUDGE_TYPE_DR = 4;
+        NUDGE_TYPE_PLAYER = 5;
+        NUDGE_TYPE_FREE_TRIAL = 6;
+    }
+    
+    NudgeLayout nudge_layout = 2;
+    enum NudgeLayout {
+        NUDGE_LAYOUT_UNSPECIFIED = 0;
+        NUDGE_LAYOUT_DECOUPLED = 1;
+        NUDGE_LAYOUT_NESTED = 2;
+    }
+    
+    int32 device_count = 3;
+}

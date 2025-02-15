@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package api.feature.device;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/feature/device";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.feature.device";
+
+message Resolution {
+    uint32 width_px = 1;
+    uint32 height_px = 2;
+    ScreenResolutionType screen_resolution_type = 3;
+}
+
+enum ScreenResolutionType {
+    SCREEN_RESOLUTION_TYPE_UNSPECIFIED = 0;
+    SCREEN_RESOLUTION_TYPE_LDPI = 1;
+    SCREEN_RESOLUTION_TYPE_MDPI = 2;
+    SCREEN_RESOLUTION_TYPE_HDPI = 3;
+    SCREEN_RESOLUTION_TYPE_XHDPI = 4;
+    SCREEN_RESOLUTION_TYPE_XXHDPI = 5;
+    SCREEN_RESOLUTION_TYPE_XXXHDPI = 6;
+}

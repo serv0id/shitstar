@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package client.chromecast;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/chromecast";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.chromecast";
+
+enum CastingConnectionState {
+    CASTING_CONNECTION_STATE_UNSPECIFIED = 0;
+    CASTING_CONNECTION_STATE_NOT_CONNECTED = 1;
+    CASTING_CONNECTION_STATE_STARTED = 2;
+    CASTING_CONNECTION_STATE_START_FAILED = 3;
+    CASTING_CONNECTION_STATE_RESUMED = 4;
+    CASTING_CONNECTION_STATE_RESUME_FAILED = 5;
+    CASTING_CONNECTION_STATE_ENDED = 6;
+    CASTING_CONNECTION_STATE_SUSPENDED = 7;
+}

@@ -1,0 +1,117 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message SEOWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        MetaTags meta_tags = 1;
+        UrlTags url_tags = 2;
+        JsonLdData json_ld_data = 3;
+        repeated HeaderTag header_tags = 4;
+        FacebookTags facebook_tags = 5 [deprecated = true];
+        TwitterTags twitter_tags = 6 [deprecated = true];
+        FAQ faq = 7;
+        repeated SocialTag social_tags = 8;
+    }
+    
+    reserved 2 to 10;
+    
+    message MetaTags {
+        string title = 1;
+        string description = 2;
+        string keywords = 3;
+        string contact = 4;
+        string area_served = 5;
+        string website_url = 6;
+        string brand = 7;
+    }
+    
+    message UrlTags {
+        string canonical_url = 1;
+        repeated AlternateUrl alternate_urls = 2;
+    }
+    
+    message AlternateUrl {
+        string url = 1;
+        string lang_code = 2;
+    }
+    
+    message JsonLdData {
+        repeated string schemas = 1;
+    }
+    
+    message HeaderTag {
+        string type = 1 [deprecated = true];
+        string content = 2;
+        HeaderType header_type = 3 [deprecated = true];
+        HeaderTagType header_tag_type = 4;
+    }
+    
+    message FacebookTags {
+        string ogLocale = 1;
+        string ogType = 2;
+        string ogTitle = 3;
+        string ogDescription = 4;
+        string ogUrl = 5;
+        string ogSiteName = 6;
+        string ogImage = 7;
+        string ogImageWidth = 8;
+        string ogImageHeight = 9;
+        string ogImageAlt = 10;
+        string ogImageType = 11;
+        string ogVideoWidth = 12;
+        string ogVideoHeight = 13;
+        string ogContentType = 14;
+    }
+    
+    message TwitterTags {
+        string card = 1;
+        string title = 2;
+        string description = 3;
+        string site = 4;
+        string image = 5;
+    }
+    
+    message FAQ {
+        string title = 1;
+        repeated QuestionAnswerPair question_answer_pairs = 2;
+    }
+    
+    message QuestionAnswerPair {
+        string question = 1;
+        string answer = 2;
+    }
+    
+    message SocialTag {
+        string property = 1;
+        string content = 2;
+    }
+    
+    enum HeaderType {
+        h1 = 0;
+        h2 = 1;
+        h3 = 2;
+        h4 = 3;
+        h5 = 4;
+        h6 = 5;
+    }
+    
+    enum HeaderTagType {
+        DEFAULT = 0;
+        H1 = 1;
+        H2 = 2;
+        H3 = 3;
+        H4 = 4;
+        H5 = 5;
+        H6 = 6;
+    }
+}

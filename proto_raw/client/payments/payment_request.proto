@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package client.payments;
+
+import "client/payments/payment_common_properties.proto";
+import "client/payments/payment_gateway_properties.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/payments";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.payments";
+
+message PaymentRequest {
+    PaymentCommonProperties payment_common_properties = 1;
+    PaymentGatewayProperties payment_gateway_properties = 2;
+}

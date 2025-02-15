@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package component.subs;
+
+import "component/subs/paywall_type.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/subs";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message SubsDisclaimerViewProperties {
+    string page_language = 1;
+    string pay_link_displayed = 2;
+    PaywallType paywall_type = 3;
+    string pack_id = 4;
+    string journey = 5;
+    string source = 6;
+}

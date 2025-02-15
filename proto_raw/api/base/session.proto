@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package api.base;
+
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/base";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.base";
+
+message Session {
+    SessionIdentifier session_id = 1;
+    message SessionIdentifier {
+        string id = 1;
+    }
+    
+    Campaign campaign = 2;
+    message Campaign {
+        string name = 1;
+        string source = 2;
+        string medium = 3;
+        string term = 4;
+        string content = 5;
+    }
+    
+    uint64 ts_session_start_ms = 3;
+    string appsuite_id = 4;
+    string appsuite_type = 5;
+}

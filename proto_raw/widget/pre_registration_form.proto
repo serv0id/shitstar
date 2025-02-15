@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/widget_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PreRegistrationFormWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        Field full_name = 2;
+        FieldPhoneNumber phone_number = 3;
+        Field email = 4;
+        FieldConsent consent = 5;
+        Button continue = 6;
+        DisclaimerRichText disclaimer_rich_text = 7;
+        string help_rich_text = 8;
+        string loading_text = 9;
+    }
+    
+    reserved 2 to 10;
+    
+    message Field {
+        string label = 1;
+        string placeholder = 2;
+        string value = 3;
+        string regex = 5;
+        string regex_error_message = 6;
+        string error_message = 7;
+        int32 max_length = 8;
+    }
+    
+    message FieldConsent {
+        string label = 1;
+        repeated int32 consent_ids = 2;
+    }
+    
+    message FieldPhoneNumber {
+        string label = 1;
+        string placeholder = 2;
+        string value = 3;
+        string country_prefix = 4;
+        string regex = 5;
+        string regex_error_message = 6;
+        int32 max_length = 7;
+        int32 min_length = 8;
+        string error_message = 9;
+    }
+    
+    message Button {
+        string title = 1;
+        string suffix_icon = 2;
+        base.Actions actions = 3;
+    }
+    
+    message DisclaimerRichText {
+        string text = 1;
+        repeated DisclaimerRichTextLink links = 2;
+    }
+    
+    message DisclaimerRichTextLink {
+        string text = 1;
+        base.Actions actions = 2;
+    }
+}

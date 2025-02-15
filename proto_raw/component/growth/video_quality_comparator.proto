@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package component.growth;
+
+import "component/playback/video_quality.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/growth";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message VideoQualityComparatorProperties {
+    playback.VideoQuality lower_video_quality = 1;
+    playback.VideoQuality higher_video_quality = 2;
+}

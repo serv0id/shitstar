@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package feature.animation;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/animation";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.animation";
+
+message VideoAnimation {
+    string type = 1;
+    string src = 2;
+    int64 duration_in_ms = 3;
+}

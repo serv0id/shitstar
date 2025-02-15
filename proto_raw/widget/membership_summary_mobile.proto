@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/quiz/title_icon_combo.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message MembershipSummaryMobileWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        Title title = 1;
+        string primary_sub_title = 2;
+        string secondary_sub_title = 3;
+        Cta cta = 4;
+        Subtext subtext = 5;
+        bool showDivider = 6;
+        repeated feature.quiz.TitleIconCombo animatableList = 7;
+    }
+    
+    reserved 3 to 10;
+    
+    message Title {
+        string value = 1;
+        TitleType type = 2;
+        base.Actions action = 3;
+    }
+    
+    message Cta {
+        string value = 1;
+        base.Actions action = 2;
+        string strikethrough_text = 3;
+    }
+    
+    message Subtext {
+        string value = 1;
+        SubtextType type = 2;
+    }
+    
+    enum SubtextType {
+        BASE = 0;
+        ERROR_SUBTEXT = 1;
+    }
+    
+    enum TitleType {
+        DEFAULT = 0;
+        HIGHLIGHTED_TITLE = 1;
+    }
+}

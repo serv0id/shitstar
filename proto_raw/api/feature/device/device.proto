@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package api.feature.device;
+
+import "api/feature/device/network.proto";
+import "api/feature/device/ospermission.proto";
+import "api/feature/device/pip.proto";
+import "api/feature/device/platform.proto";
+import "api/feature/device/push_notification.proto";
+import "api/feature/device/resolution.proto";
+import "api/feature/device/sdk.proto";
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/feature/device";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.feature.device";
+
+message Device {
+    DeviceIdentifier id = 1;
+    message DeviceIdentifier {
+        string device_id = 1;
+        string advertising_id = 2;
+    }
+    
+    Platform platform = 2;
+    
+    DeviceInfo device_info = 3;
+    message DeviceInfo {
+        string name = 2;
+        string model = 3;
+        string manufacturer = 4;
+        string os_version = 5;
+        bool is_ad_tracking_enabled = 6;
+        uint32 ram_capacity_mb = 7;
+        Resolution screen_resolution = 8;
+        string browser_name = 9;
+        string browser_version = 10;
+        double total_disk_space_gb = 11;
+        uint32 max_ram_floored_value = 12;
+        uint32 max_fps = 13;
+        string processor_family_name = 14;
+        uint32 total_processor_count = 15;
+    }
+    
+    PushNotification push_notification = 4;
+    Sdk sdk = 5;
+    NetworkInfo network_info = 6 [deprecated = true];
+    PipInfo pip_info = 7;
+}

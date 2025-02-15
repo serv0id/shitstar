@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "feature/watchlist/watchlist_info.proto";
+import "feature/autoplay/autoplay_info.proto";
+import "feature/live/live_info.proto";
+import "feature/content_language_preference/content_language_preference.proto";
+import "feature/callout_tag/callout_tag.proto";
+import "feature/animation/button_animation.proto";
+import "widget/timer.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message GECMastheadWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image hero_img = 1;
+        feature.image.Image thumbnail = 2;
+        ContentInfo content_info = 3;
+        feature.autoplay.AutoplayInfo autoplay_info = 4;
+        feature.image.Image animating_vertical_img = 5;
+    }
+    
+    reserved 3 to 10;
+    
+    message ContentInfo {
+        string title = 1;
+        feature.image.Image title_cutout = 2;
+        string description = 3;
+        repeated Tag tags = 4 [deprecated = true];
+        IconLabelButton primary_cta = 5;
+        WatchlistButton watchlist_cta = 6;
+        base.Actions actions = 7;
+        repeated Tag core_meta_tags = 8;
+        repeated Tag enriched_meta_tags = 9;
+        
+        HeroImageType hero_image_type = 10;
+        enum HeroImageType {
+            UNKNOWN = 0;
+            STANDARD = 1;
+            FALLBACK = 2;
+        }
+        
+        feature.live.LiveInfo live_info = 11;
+        feature.content_language_preference.ContentLanguagePreference language_preference_info = 12;
+        repeated Tag callout_meta_tags = 13;
+        TimerWidget timer = 14;
+        repeated Tag secondary_meta_tags = 15;
+    }
+    
+    message IconLabelButton {
+        string icon_name = 1;
+        string label = 2;
+        base.Actions actions = 3;
+        feature.animation.ButtonAnimation animation = 4;
+    }
+    
+    message WatchlistButton {
+        feature.watchlist.WatchlistInfo info = 1;
+    }
+    
+    message Tag {
+        string value = 1 [deprecated = true];
+        base.Actions actions = 2 [deprecated = true];
+        string type = 3 [deprecated = true];
+        
+        oneof tag {
+            TextTag text_tag = 4;
+            BadgeTag badge_tag = 5;
+            ImageTag image_tag = 6;
+            feature.callout_tag.CalloutTag callout_tag = 7;
+        }
+    }
+    
+    message TextTag {
+        string value = 1;
+        base.Actions actions = 2;
+    }
+    
+    message BadgeTag {
+        string value = 1;
+        base.Actions actions = 2;
+    }
+    
+    message ImageTag {
+        feature.image.Image value = 1;
+        base.Actions actions = 2;
+    }
+}

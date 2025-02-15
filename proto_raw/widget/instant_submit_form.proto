@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/form/option.proto";
+import "feature/form/question.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message InstantSubmitFormWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.form.FormQuestion question = 1;
+        repeated feature.form.Option options = 2;
+        base.Actions submit = 3;
+    }
+    
+    reserved 2 to 10;
+}

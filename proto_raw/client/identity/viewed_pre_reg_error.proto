@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package client.identity;
+
+import "component/identity/pre_reg_properties.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/identity";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.identity";
+
+message ViewedPreRegError {
+    component.identity.PreRegProperties pre_reg_properties = 1;
+}

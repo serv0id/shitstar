@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message HelpAndSupportSettingsWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        ClickableSetting contact_us = 1;
+        ClickableSetting help_center = 2;
+        string title = 3;
+        base.Actions actions = 4;
+    }
+    
+    reserved 2 to 10;
+    
+    message ClickableSetting {
+        string title = 2;
+        string description = 3;
+        base.Actions actions = 4;
+    }
+}

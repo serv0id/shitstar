@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package feature.login;
+
+import "v2/subcontrollers/onboarding/submit_consent_request.proto";
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/login";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.login";
+
+message InitiatePhoneLoginRequest {
+    InitiateBy initiate_by = 3;
+    enum InitiateBy {
+        PHONE_OTP = 0;
+        PHONE_IVR = 1;
+        PHONE_SNA = 2;
+        EMAIL_OTP = 3;
+    }
+    
+    Source source = 4;
+    enum Source {
+        LOGIN = 0;
+        PRE_LAUNCH = 1;
+        SKIPPABLE_LOGIN = 2;
+    }
+    
+    feature.onboarding.SubmitConsentRequest submit_consent_request = 9 [deprecated = true];
+    
+    Mode mode = 5;
+    enum Mode {
+        MANUAL = 0;
+        AUTO = 1;
+    }
+    
+    bool is_consent_given = 6;
+    string recaptcha_token = 7;
+    
+    oneof PhoneLoginMethod {
+        string phone_number = 1;
+        string encrypted_identifier = 2;
+        string email_address = 8;
+    }
+}

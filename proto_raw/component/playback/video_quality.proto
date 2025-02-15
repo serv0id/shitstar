@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package component.playback;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/playback";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component.playback";
+
+enum VideoQuality {
+    VIDEO_QUALITY_UNSPECIFIED = 0;
+    VIDEO_QUALITY_SD = 1;
+    VIDEO_QUALITY_HD = 2;
+    VIDEO_QUALITY_FHD = 3;
+    VIDEO_QUALITY_4K = 4;
+}

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message AccountDeleteWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        Button account_delete_button = 1;
+    }
+    
+    reserved 2 to 10;
+    
+    message Button {
+        string text = 1;
+        base.Actions actions = 2;
+    }
+}

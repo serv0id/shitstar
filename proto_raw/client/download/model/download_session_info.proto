@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package client.download.model;
+
+import "client/download/model/available_quality.proto";
+import "client/player/model/player_and_device_info.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/download/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.download.model";
+
+message DownloadSessionInfo {
+    string id = 1;
+    string playback_tag = 2;
+    bool is_drm_protected = 3;
+    AvailableQuality downloaded_quality = 4;
+    player.model.PlayerAndDeviceInfo player_and_device_info = 5;
+    string playback_url = 6;
+    string playback_url_host = 7;
+    string download_manager_version = 8;
+}

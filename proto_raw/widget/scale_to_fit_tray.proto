@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "widget/header.proto";
+import "base/widget_commons.proto";
+import "widget/rectangle_studio_card.proto";
+import "widget/square_studio_card.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ScaleToFitTrayWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        string item_template_name = 1;
+        int32 items_per_row = 2;
+        repeated Item items = 3;
+        HeaderWidget header = 4;
+    }
+    
+    reserved 3 to 10;
+    
+    message Item {
+        oneof widget {
+            RectangleStudioCardWidget rectangle_studio_card = 1;
+            SquareStudioCardWidget square_studio_card = 2;
+        }
+    }
+}

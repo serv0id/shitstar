@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package spacedata;
+
+import "base/space_data_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/spacedata";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.spacedata";
+
+message TraySpaceData {
+    base.SpaceDataCommons space_data_commons = 1;
+    string next_space_url = 3;
+    
+    repeated Tab tabs = 4;
+    message Tab {
+        string title = 1;
+        string id = 2;
+    }
+    
+    TabsLayout tab_layout = 5;
+    enum TabsLayout {
+        DEFAULT = 0;
+        VERTICAL = 1;
+        HORIZONTAL = 2;
+    }
+    
+    reserved 2, "more_widgets_url";
+}

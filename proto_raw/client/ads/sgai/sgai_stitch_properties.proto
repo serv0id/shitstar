@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package client.ads.sgai;
+
+import "client/ads/sgai/ad_break.proto";
+import "client/ads/sgai/content_meta.proto";
+import "client/ads/sgai/stitch_attributes.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/ads/sgai";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.ads.sgai";
+
+message SgaiStitchProperties {
+    ContentMeta content_meta = 1;
+    StitchAttributes stitch_attributes = 2;
+    repeated AdBreak ad_breaks = 3;
+}

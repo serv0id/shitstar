@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package component.growth;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/growth";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message InfoPillProperties {
+    PillType pill_type = 1;
+    enum PillType {
+        PILL_TYPE_UNSPECIFIED = 0;
+        PILL_TYPE_CRICKET = 1;
+    }
+    
+    string content_id = 2 [deprecated = true];
+    string match_content_id = 3;
+}

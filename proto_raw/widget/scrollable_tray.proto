@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "widget/horizontal_content_card.proto";
+import "widget/vertical_content_poster.proto";
+import "widget/square_content_poster.proto";
+import "widget/playable_content.proto";
+import "widget/vertical_large_content_poster.proto";
+import "widget/horizontal_content_poster.proto";
+import "widget/horizontal_medium_content_poster.proto";
+import "widget/countdown_content.proto";
+import "widget/image_overlay_vertical_content_poster.proto";
+import "widget/image_overlay_vertical_large_content_poster.proto";
+import "widget/button_stack.proto";
+import "widget/header.proto";
+import "feature/image/image.proto";
+import "feature/refresh/refresh_info.proto";
+import "feature/callout_tag/callout_tag.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ScrollableTrayWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        string item_template_name = 1;
+        int32 num_rows = 2;
+        Header header = 3 [deprecated = true];
+        repeated Item items = 5;
+        string next_tray_url = 6;
+        feature.refresh.RefreshInfo refresh_info = 7;
+        HeaderWidget tray_header = 8;
+        
+        reserved 4, "more_widgets_url";
+    }
+    
+    reserved 3 to 10;
+    
+    message Header {
+        oneof header {
+            RegularTrayHeader regular_tray_header = 1;
+            AnchoredTrayHeader anchored_tray_header = 2;
+            BrandedTrayHeader branded_tray_header = 3;
+            DecoratedTrayHeader decorated_tray_header = 4;
+        }
+    }
+    
+    message DecoratedTrayHeader {
+        repeated feature.callout_tag.CalloutTag elements = 1;
+        base.Actions actions = 2;
+        IconLabelCTA cta = 3;
+    }
+    
+    message RegularTrayHeader {
+        string title = 1;
+        base.Actions actions = 2;
+        IconLabelCTA cta = 3;
+    }
+    
+    message AnchoredTrayHeader {
+        string title = 1;
+        string sub_title = 2;
+        feature.image.Image image = 3;
+        base.Actions actions = 4;
+        IconLabelCTA cta = 5;
+    }
+    
+    message BrandedTrayHeader {
+        feature.image.Image image = 1;
+        base.Actions actions = 2;
+        IconLabelCTA cta = 3;
+    }
+    
+    message Item {
+        oneof widget {
+            HorizontalContentCardWidget horizontal_content_card = 1;
+            VerticalContentPosterWidget vertical_content_poster = 2;
+            VerticalLargeContentPosterWidget vertical_large_content_poster = 3;
+            SquareContentPosterWidget square_content_poster = 4;
+            PlayableContentWidget playable_content = 5;
+            HorizontalContentPosterWidget horizontal_content_poster = 6;
+            CountdownContentWidget countdown_content = 7;
+            HorizontalMediumContentPosterWidget horizontal_medium_content_poster = 8;
+            ImageOverlayVerticalContentPosterWidget image_overlay_vertical_content_poster = 9;
+            ImageOverlayVerticalLargeContentPosterWidget image_overlay_vertical_large_content_poster = 10;
+            ButtonStackWidget button_stack = 11;
+        }
+    }
+    
+    message IconLabelCTA {
+        string label = 1;
+        string icon_name = 2;
+        base.Actions actions = 3;
+    }
+}

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message CricketPlayer {
+    string name = 1;
+    string short_desc = 2;
+    string detail_desc = 3;
+    
+    PlayState play_state = 4;
+    enum PlayState {
+        UNKNOWN = 0;
+        YET_TO_BAT = 1;
+        NOT_OUT = 2;
+        OUT = 3;
+    }
+    
+    string play_state_desc = 5;
+}

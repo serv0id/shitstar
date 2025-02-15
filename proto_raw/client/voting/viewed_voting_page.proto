@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package client.voting;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/voting";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.voting";
+
+message ViewedVotingPageProperties {
+    VotingStatus voting_status = 1;
+    enum VotingStatus {
+        VOTING_STATUS_UNSPECIFIED = 0;
+        VOTING_STATUS_ACTIVE = 1;
+        VOTING_STATUS_CLOSED = 2;
+        VOTING_STATUS_YET_TO_START = 3;
+    }
+    
+    VoteStatus vote_status = 2;
+    enum VoteStatus {
+        VOTE_STATUS_UNSPECIFIED = 0;
+        VOTE_STATUS_NOT_VOTED = 1;
+        VOTE_STATUS_OPTIONS_SELECTED = 2;
+        VOTE_STATUS_SUBMITTED = 3;
+    }
+    
+    int64 page_load_time_ms = 3;
+    int64 total_load_time_ms = 4;
+}

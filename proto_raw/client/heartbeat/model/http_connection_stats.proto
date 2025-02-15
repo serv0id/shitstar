@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package client.heartbeat.model;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/heartbeat/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.heartbeat.model";
+
+message HttpConnectionStats {
+    uint64 call_start_time_ms = 1;
+    repeated uint64 dns_start_times_ms = 2;
+    repeated uint64 dns_end_times_ms = 3;
+    repeated uint64 connection_start_times_ms = 4;
+    repeated uint64 connection_end_times_ms = 5;
+    repeated uint64 secure_connection_start_times_ms = 6;
+    repeated uint64 secure_connection_end_times_ms = 7;
+    uint64 connection_acquire_time_ms = 8;
+    uint64 connection_release_time_ms = 9;
+    repeated uint64 request_header_start_times_ms = 10;
+    repeated uint64 request_header_end_times_ms = 11;
+    repeated uint64 request_body_start_times_ms = 12;
+    repeated uint64 request_body_end_times_ms = 13;
+    repeated uint64 response_header_start_times_ms = 14;
+    repeated uint64 response_header_end_times_ms = 15;
+    repeated uint64 response_body_start_times_ms = 16;
+    repeated uint64 response_body_end_times_ms = 17;
+    uint64 call_end_time_ms = 18;
+}

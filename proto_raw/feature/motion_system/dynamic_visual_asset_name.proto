@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package feature.motion_system;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/motion_system";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.motion_system";
+
+enum DynamicVisualAssetName {
+    UNSPECIFIED_NAME = 0;
+    SUBSSCRIBE_BUTTON_ANIMATION = 1 [deprecated = true];
+    SKINNY_ANIMATION = 2;
+    BILLBOARD_VIDEO_WITH_BREAKOUT_ANIMATION = 3 [deprecated = true];
+    LIVE_BADGE_ANIMATION = 4;
+    FREE_CTA_ANIMATION = 5;
+    CATEGORIES_ONBOARDING_ANIMATION = 6;
+    BILLBOARD_VIDEO = 7;
+    SUBSCRIBE_BUTTON_ANIMATION = 8;
+}

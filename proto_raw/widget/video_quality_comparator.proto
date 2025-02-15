@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/video_display_ad.proto";
+import "widget/header.proto";
+import "feature/atom/button.proto";
+import "feature/ad/media_clarity_comparator_overlay.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message VideoQualityComparatorWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        HeaderWidget header_widget = 1;
+        VideoDisplayAdWidget video_widget = 2;
+        feature.ad.MediaClarityComparatorOverlay media_clarity_comparator_overlay = 3;
+        feature.atom.Button button = 4;
+    }
+    
+    reserved 3 to 10;
+}

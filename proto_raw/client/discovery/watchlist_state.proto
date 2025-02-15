@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package client.discovery;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/discovery";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.discovery";
+
+message WatchlistState {
+    bool is_watchlisted = 1;
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package client.identity.properties;
+
+import "client/identity/properties/video_bg_info.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/identity/properties";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.identity.properties";
+
+message BufferedOnboardingVideo {
+    int32 video_buffered_count = 1;
+    NetworkType network_type = 2 [deprecated = true];
+    uint32 network_speed = 3 [deprecated = true];
+    ScreenSize screen_size = 4;
+    float network_speed_in_mb = 5;
+}

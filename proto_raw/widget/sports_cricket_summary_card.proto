@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/polling.proto";
+import "feature/image/image.proto";
+import "widget/sports_cricket_team.proto";
+import "feature/sports/game.proto";
+import "feature/sports/cricket_team.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message CricketPollingSummaryCardWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        CricketSummaryCardWidget card = 1;
+        PollingData polling = 2;
+    }
+    
+    reserved 2 to 10;
+}
+
+message CricketSummaryCardWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.sports.Game game_info = 11;
+        feature.sports.CricketTeam first_team_v2 = 12;
+        feature.sports.CricketTeam second_team_v2 = 13;
+        string latest_summary = 7;
+        bool is_test_cricket = 8;
+        repeated LastFewBallItem last_few_balls = 9;
+        repeated string innings = 10;
+        string current_batting_team_name = 14;
+        string name = 1 [deprecated = true];
+        
+        GameState state = 2 [deprecated = true];
+        enum GameState {
+            UNKNOWN = 0;
+            NOT_START = 1;
+            LIVE = 2;
+            FINISHED = 3;
+        }
+        
+        string meta_desc = 3 [deprecated = true];
+        MediaInfo media_info = 4 [deprecated = true];
+        CricketTeam first_team = 5 [deprecated = true];
+        CricketTeam second_team = 6 [deprecated = true];
+    }
+    
+    reserved 2 to 10;
+    
+    message MediaInfo {
+        feature.image.Image thumb_image = 1;
+        string clip_duration = 2;
+    }
+    
+    message LastFewBallItem {
+        BallType ball_type = 1;
+        enum BallType {
+            UNKNOWN = 0;
+            OVER_NUM = 1;
+            NORMAL_SCORE = 2;
+            FOUR = 3;
+            SIX = 4;
+            WICKET = 5;
+        }
+        
+        string ball_score = 2;
+    }
+}

@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/player/player_settings_type.proto";
+import "widget/playable_content.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PlayerControlMenuWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        repeated PlayerControlMenuItem items = 1 [deprecated = true];
+        repeated PlayerControlMenuItem landscape_items = 2;
+        repeated PlayerControlMenuItem portrait_items = 3;
+    }
+    
+    reserved 3 to 10;
+    
+    message OpenPlayerSettingsActionItem {
+        string title = 1;
+        string subtitle = 2;
+        string icon = 3;
+        repeated feature.PlayerSettingsType types = 4;
+        base.Actions actions = 5;
+    }
+    
+    message GeneralActionItem {
+        string title = 1;
+        string subtitle = 2;
+        string icon = 3;
+        string type = 4;
+        base.Actions actions = 10;
+        PlayableContentWidget playable_content = 11;
+    }
+    
+    message FanModeActionItem {
+        string title = 1;
+        string icon = 2;
+        base.Actions actions = 11;
+    }
+    
+    message OpenPlaybackSpeedActionItem {
+        string icon = 1;
+        string title = 2;
+        string subtitle = 3;
+        int32 overlay_duration_in_seconds = 4;
+    }
+    
+    message PlayerControlMenuItem {
+        oneof item {
+            OpenPlayerSettingsActionItem open_settings_item = 1;
+            GeneralActionItem general_action_item = 2;
+            FanModeActionItem fan_mode_action_item = 3;
+            OpenPlaybackSpeedActionItem playback_speed_item = 4;
+        }
+    }
+}

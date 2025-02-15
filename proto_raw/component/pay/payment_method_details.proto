@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package component.pay;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/pay";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message PaymentMethodDetails {
+    string event_name = 1;
+    
+    EventType event_type = 2;
+    enum EventType {
+        EVENT_TYPE_UNSPECIFIED = 0;
+        EVENT_TYPE_CLICKED = 1;
+        EVENT_TYPE_VIEWED = 2;
+    }
+    
+    string pack_id = 3;
+    string payment_method = 4;
+    string payment_provider = 5;
+    string payment_processor = 6;
+    
+    OtherParams other_params = 7;
+    message OtherParams {
+        oneof params {
+            UPIParams upi_params = 1;
+        }
+    }
+    
+    message UPIParams {
+        string upi_application_name = 1;
+    }
+}

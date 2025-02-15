@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package feature.atom;
+
+import "feature/atom/toggle_button.proto";
+import "feature/atom/toggle_lottie_button.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/atom";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.atom";
+
+message EventObserverButton {
+    FeatureEvent event = 1;
+    CTA button = 2;
+}
+
+message FeatureEvent {
+    string event_name = 1;
+    string identifier = 2;
+    EventData data = 3;
+}
+
+message CTA {
+    oneof cta {
+        ToggleButton toggle_button = 1;
+        ToggleLottieButton toggle_lottie_button = 2;
+    }
+}
+
+message EventData {
+    oneof event_data {
+        ToggleEventData toggle_event_data = 1;
+    }
+}
+
+message ToggleEventData {
+    bool is_selected = 1;
+}

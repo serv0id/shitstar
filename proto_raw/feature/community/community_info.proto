@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package feature.community;
+
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/community";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.community";
+
+message CommunityInfo {
+    string id = 1;
+    
+    UserStatus user_status = 2;
+    enum UserStatus {
+        DEFAULT = 0;
+        JOINED = 1;
+        NOT_JOINED = 2;
+        BLOCKED = 3;
+        RESTRICTED = 4;
+    }
+    
+    int64 timestamp = 3;
+}

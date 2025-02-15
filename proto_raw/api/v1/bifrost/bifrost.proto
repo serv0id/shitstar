@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package api.v1.bifrost;
+
+import "api/base/batch_metadata.proto";
+import "api/base/context.proto";
+import "api/base/metadata.proto";
+import "api/base/properties.proto";
+import "api/base/session.proto";
+import "api/base/traits.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/v1/bifrost";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.v1.bifrost";
+
+message BifrostEvent {
+    base.User user_traits = 1;
+    base.Session session = 2;
+    base.Device device_traits = 3;
+    uint64 ts_sent_ms = 4;
+    string event_name = 5;
+    base.EventMetadata metadata = 6;
+    base.Properties properties = 7;
+    base.InstrumentationContext common_properties = 8;
+    string canonical_event_name = 9;
+    uint64 ts_received_ms = 10;
+    base.BatchMetadata batch_metadata = 11;
+}

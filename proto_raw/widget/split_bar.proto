@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message SplitBarWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        repeated SplitBarItem left_stack = 1;
+        repeated SplitBarItem right_stack = 2;
+    }
+    
+    reserved 2 to 10;
+    
+    message SplitBarItem {
+        oneof item {
+            WatchHintCTA watch_hint = 1;
+            PageIndicator indicator = 2;
+        }
+    }
+    
+    message WatchHintCTA {
+        string title = 1;
+        string subtitle = 2;
+        string icon_name = 3;
+        string content_id = 4;
+        base.Actions action = 11;
+    }
+    
+    message PageIndicator {
+        int32 current_page_pos = 1;
+        int32 total_page_count = 2;
+    }
+}

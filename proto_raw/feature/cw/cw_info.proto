@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package feature.cw;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/cw";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.cw";
+
+message CwInfo {
+    string content_id = 1;
+    int64 resume_at = 2;
+    int64 duration = 3;
+    int64 timestamp = 4;
+    WatchState watch_state = 5 [deprecated = true];
+    bool overwrite_client_info = 6;
+    double watch_ratio = 7;
+}
+
+enum WatchState {
+    NOT_STARTED = 0;
+    WATCHING = 1;
+    WATCHED = 2;
+}

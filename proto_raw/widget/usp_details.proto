@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/image_banner.proto";
+import "feature/branding/brand.proto";
+import "widget/grid.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message USPDetailsWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        string subtitle = 2;
+        string background = 3;
+        Item item = 4;
+    }
+    
+    reserved 1, 3 to 10;
+    
+    message Item {
+        oneof widget {
+            ImageBannerWidget image_banner = 1;
+            GridWidget grid = 2;
+        }
+    }
+}

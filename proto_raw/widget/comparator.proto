@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PlanComparatorWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        repeated PlanHeading heading = 1;
+        repeated ComparatorRow item_list = 2;
+    }
+    
+    reserved 3 to 10;
+    
+    message PlanHeading {
+        string heading = 1;
+        string sub_heading = 2;
+        bool is_selected = 3;
+        repeated string identifier = 4;
+    }
+    
+    message ComparatorRow {
+        TextItem usp = 1;
+        repeated ComparatorCol item_value = 2;
+    }
+    
+    message ComparatorCol {
+        bool is_selected = 3;
+        repeated string identifier = 4;
+        
+        oneof item_type {
+            string icon_name = 1;
+            TextItem text = 2;
+        }
+    }
+    
+    message TextItem {
+        string title = 1;
+        Subtitle sub_title = 2;
+    }
+    
+    message Subtitle {
+        string text = 1;
+        bool is_highlighted = 2;
+    }
+}

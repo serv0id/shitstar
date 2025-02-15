@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package component.content;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/content";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message ImageAttributes {
+    string script_language = 1;
+    string callout_languages = 2;
+    string image_variant = 3;
+    string artwork_logic = 4;
+    string theme = 5;
+}

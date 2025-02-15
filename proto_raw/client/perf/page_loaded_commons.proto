@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package client.perf;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/perf";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.perf";
+
+message PageLoadedCommons {
+    int64 time_to_first_render_ms = 1;
+    int64 response_fetch_time_ms = 2;
+    string request_id = 3;
+    
+    RenderingMode rendering_mode = 4;
+    enum RenderingMode {
+        RENDERING_MODE_UNSPECIFIED = 0;
+        RENDERING_MODE_CSR = 1;
+        RENDERING_MODE_DW = 2;
+    }
+}

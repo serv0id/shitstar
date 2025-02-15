@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package client.resilency;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/resilency";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.resilency";
+
+message PageLoadFailedCommons {
+    string error_code = 1;
+    string error_message = 2;
+    string failed_page_tempalte = 3 [deprecated = true];
+    string request_id = 4;
+    string url = 5;
+    int64 retry_count = 6;
+}

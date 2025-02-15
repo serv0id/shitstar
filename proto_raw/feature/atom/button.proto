@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package feature.atom;
+
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/atom";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.atom";
+
+message Button {
+    ButtonType button_type = 1;
+    enum ButtonType {
+        DEFAULT = 0;
+        INVERSE = 1;
+        SUBTLE = 2;
+        GHOST = 3;
+        ICON = 4;
+        CHIP = 5;
+    }
+    
+    Data data = 2;
+    message Data {
+        string text = 1;
+        string sub_text = 2;
+        string leading_icon = 3;
+        string trailing_icon = 4;
+    }
+    
+    base.Actions actions = 3;
+    Data selected_state_data = 4 [deprecated = true];
+    base.Actions selected_state_actions = 5 [deprecated = true];
+    bool is_selected = 6 [deprecated = true];
+}

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package action;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message BridgeEventAction {
+    Event event = 1;
+    message Event {
+        oneof event {
+            ActionHandler action_handler = 1;
+            CloseScreen close_screen = 2;
+        }
+    }
+    
+    message ActionHandler {
+        string url = 1;
+        bytes value = 2;
+    }
+    
+    message CloseScreen {
+        bool is_cancelled = 1;
+    }
+}

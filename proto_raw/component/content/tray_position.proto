@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package component.content;
+
+import "component/content/tray.proto";
+import "component/content/widget.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/content";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message TrayPosition {
+    Tray tray = 1 [deprecated = true];
+    int32 position = 2;
+    Widget widget = 3;
+}

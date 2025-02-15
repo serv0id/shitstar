@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package feature.subscription;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/subscription";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.subscription";
+
+message Restore {
+    oneof data {
+        string commercial_pack_id = 1;
+        MessageOnRestore message = 2;
+    }
+    
+    message MessageOnRestore {
+        string success_msg = 1;
+        string invalid_msg = 2;
+        string loading_msg = 3;
+    }
+}

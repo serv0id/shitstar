@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package component.quiz;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/quiz";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component.quiz";
+
+enum CurrentState {
+    CURRENT_STATE_UNSPECIFIED = 0;
+    CURRENT_STATE_TO_BE_STARTED = 1;
+    CURRENT_STATE_RESUMED = 2;
+    CURRENT_STATE_COMPLETED = 3;
+}
+
+enum EventTrigger {
+    EVENT_TRIGGER_UNSPECIFIED = 0;
+    EVENT_TRIGGER_MANUAL = 1;
+    EVENT_TRIGGER_AUTO = 2;
+}
+
+enum Result {
+    RESULT_UNSPECIFIED = 0;
+    RESULT_CORRECT = 1;
+    RESULT_WRONG = 2;
+}
+
+enum InfoType {
+    INFO_TYPE_UNSPECIFIED = 0;
+    INFO_TYPE_FAQ = 1;
+    INFO_TYPE_T_N_C = 2;
+    INFO_TYPE_CLAIM_NOW = 3;
+}

@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package feature.ad;
+
+import "feature/image/image.proto";
+import "feature/image/lottie.proto";
+import "feature/image/screen_size_image.proto";
+import "feature/trackers/url_trackers.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/ad";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.ad";
+
+message DisplayImage {
+    string title = 1;
+    string subTitle = 2;
+    string desc = 3;
+    string badge_label = 4 [deprecated = true];
+    image.Image logo = 5;
+    image.Image image = 6 [deprecated = true];
+    
+    Cta cta = 7;
+    message Cta {
+        string label = 1;
+        string bg_color = 2;
+        string desc = 3;
+    }
+    
+    trackers.UrlTrackers tracker = 8;
+    
+    Badge badge = 9;
+    message Badge {
+        string label = 1;
+        string desc = 2;
+    }
+    
+    image.ScreenSizeImage creative_image = 10;
+    
+    DisplayImageType display_image_type = 11;
+    enum DisplayImageType {
+        UNKNOWN = 0;
+        NATIVE_FRAME = 1;
+        BILLBOARD = 2;
+        TALL_VERTICAL = 3;
+        SHORT_SQUARE = 4;
+    }
+    
+    image.Lottie lottie = 12;
+}

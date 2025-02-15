@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package base;
+
+import "base/analytics.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/base";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.base";
+
+message SpaceDataCommons {
+    Instrumentation instrumentation = 1;
+}

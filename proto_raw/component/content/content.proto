@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package component.content;
+
+import "component/content/artwork_tag.proto";
+import "component/content/content_callout_tag.proto";
+import "component/content/episode_additional_attributes.proto";
+import "component/content/image_attributes.proto";
+import "component/content/show_additional_attributes.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/content";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message Content {
+    string id = 1;
+    string title = 2;
+    string sub_title = 3;
+    string type = 4;
+    string genre = 5;
+    int64 sub_title_id = 6;
+    string content_provider = 7;
+    string channel_name = 8;
+    bool is_paid = 9;
+    string sub_genre = 12;
+    repeated string available_languages = 13;
+    string original_language = 14;
+    string match_id = 15;
+    string clip_type = 16;
+    string studio_id = 17;
+    string tv_show_id = 18;
+    string tv_season_id = 19;
+    string tv_episode_id = 20;
+    string sports_game_id = 21;
+    string sports_match_id = 22;
+    string sports_season_id = 23;
+    string sports_tournament_id = 24;
+    bool is_monetizable = 25;
+    bool is_coming_soon = 26;
+    string trailer_id = 27;
+    repeated ContentCalloutTag callout_tags = 28 [deprecated = true];
+    repeated ContentCalloutTag content_callout_tags = 29;
+    int64 promotion_time_left_mins = 30;
+    bool is_promotion_timer_visible = 31;
+    ArtworkTag artwork_tag = 32 [deprecated = true];
+    ImageAttributes image_attributes = 33 [deprecated = true];
+    string artwork_attributes = 34;
+    
+    oneof additional_attributes {
+        EpisodeAdditionalAttributes episode_attributes = 10;
+        ShowAdditionalAttributes show_attributes = 11;
+    }
+}

@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/text_list.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PaymentHistoryTableWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        repeated Row rows = 1;
+        repeated Column columns = 2;
+        Disclaimer disclaimer = 3;
+    }
+    
+    message Row {
+        repeated string title = 1;
+        repeated string desc = 2;
+        Link link = 3;
+        TextListWidget status = 4;
+        Button button = 5;
+    }
+    
+    message Column {
+        string name = 1;
+        CellType type = 2;
+    }
+    
+    message Button {
+        string icon = 1;
+        string label = 3;
+        base.Actions action = 4;
+    }
+    
+    message Link {
+        string label = 1;
+        string url = 2;
+        string key = 3;
+    }
+    
+    message Disclaimer {
+        string message = 1;
+        repeated Link links = 2;
+    }
+    
+    enum CellType {
+        UNSPECIFIED = 0;
+        DETAILS = 1;
+        ACTION = 2;
+    }
+}

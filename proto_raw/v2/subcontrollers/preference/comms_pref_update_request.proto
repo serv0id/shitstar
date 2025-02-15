@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package feature.preference;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/preference";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.preference";
+
+message CommsPrefUpdateRequest {
+    string preference_id = 1;
+    
+    PreferenceType preference_type = 2;
+    enum PreferenceType {
+        UNKNOWN = 0;
+        PPTOU = 1;
+        NOTIFICATION = 2;
+        SMS = 3;
+        WHATSAPP = 4;
+        EMAIL = 5;
+    }
+    
+    PreferenceStatus status = 3;
+    enum PreferenceStatus {
+        OPT_IN = 0;
+        OPT_OUT = 1;
+    }
+    
+    int64 preference_version = 4;
+}

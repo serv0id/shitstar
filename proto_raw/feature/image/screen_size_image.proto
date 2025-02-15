@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package feature.image;
+
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/image";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.image";
+
+message ScreenSizeImage {
+    Image small_image = 1;
+    Image medium_image = 2;
+    Image large_image = 3;
+    Image extra_large_image = 4;
+}

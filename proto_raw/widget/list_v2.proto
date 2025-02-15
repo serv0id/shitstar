@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "feature/atom/button.proto";
+import "widget/list_item_v2.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ListV2Widget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        ListHeader list_header = 11;
+        repeated ListItem list_item = 12;
+        ListViewType list_view_type = 13;
+    }
+    
+    reserved 2 to 10;
+    
+    message ListItem {
+        oneof ListItem {
+            ListItemV2Widget list_item_widget = 1;
+        }
+    }
+    
+    message ListHeader {
+        oneof listHeader {
+            ToggleStateHeader toggle_state_header = 1;
+            TitleBarHeader title_bar_header = 3;
+        }
+        
+        message ToggleStateHeader {
+            string title = 1;
+            feature.atom.Button primary_button = 2;
+            feature.atom.Button secondary_button = 3;
+        }
+        
+        message TitleBarHeader {
+            string title = 1;
+            feature.atom.Button button = 2;
+        }
+    }
+    
+    enum ListViewType {
+        Default = 0;
+        Card = 1;
+    }
+}

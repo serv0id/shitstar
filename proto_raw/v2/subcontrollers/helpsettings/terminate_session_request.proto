@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package feature.language;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/helpsettings";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.helpsettings";
+
+message TerminateSessionRequest {
+    repeated string session_ids = 1 [deprecated = true];
+    
+    repeated SessionDetail session_details = 2;
+    message SessionDetail {
+        string session_id = 1;
+        string device_id = 2;
+    }
+}

@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/branding/brand.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PrelaunchFooterWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        feature.branding.Brand logo = 1 [deprecated = true];
+        repeated Link links = 2;
+        repeated string info_msgs = 3;
+    }
+    
+    reserved 1, 3 to 10;
+    
+    message Link {
+        string text = 1;
+        base.Actions actions = 2;
+    }
+}

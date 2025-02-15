@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package client.player.model;
+
+import "client/player/model/client_capabilities.proto";
+import "client/player/model/drm_parameters.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.player.model";
+
+message PlayerAndDeviceInfo {
+    ClientCapabilities client_capabilities = 1;
+    DrmParameters drm_parameters = 2;
+    
+    PlayerName player_name = 3;
+    enum PlayerName {
+        PLAYER_NAME_UNSPECIFIED = 0;
+        PLAYER_NAME_HSPLAYER_EXOPLAYER = 1;
+        PLAYER_NAME_HSPLAYER_AVPLAYER = 2;
+        PLAYER_NAME_HSPLAYER_SHAKA = 3;
+    }
+    
+    string player_version = 4;
+    string widevine_system_id = 5;
+    WidevineLevel widevine_security_level = 6;
+    repeated string decoders = 7;
+}
+
+enum WidevineLevel {
+    WIDEVINE_LEVEL_UNSPECIFIED = 0;
+    WIDEVINE_LEVEL_L1 = 1;
+    WIDEVINE_LEVEL_L2 = 2;
+    WIDEVINE_LEVEL_L3 = 3;
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package feature.voting;
+
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/voting";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.voting";
+
+message VotingButtonConfig {
+    string icon = 1;
+    string title = 2;
+    int64 start_time = 3;
+    int64 end_time = 4;
+    int64 server_return_time = 5;
+    string voting_widget_url = 6;
+    string voting_domain_query_url = 7;
+    string voting_id = 8;
+    base.Actions error_handle_action = 9 [deprecated = true];
+    string content_title = 10;
+}

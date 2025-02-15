@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/spotlight_info_gec.proto";
+import "widget/spotlight_info_cw.proto";
+import "feature/image/image.proto";
+import "feature/animation/video_animation.proto";
+import "feature/autoplay/autoplay_info.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message SpotlightInfoWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image hero_img = 1;
+        feature.animation.VideoAnimation hero_video = 3;
+        feature.autoplay.AutoplayInfo autoplay_info = 4;
+        
+        oneof spotlight_info {
+            SpotlightInfoGecWidget spotlight_info_gec = 2;
+            SpotlightInfoCwWidget spotlight_info_cw = 5;
+        }
+    }
+    
+    reserved 1, 3 to 10;
+}

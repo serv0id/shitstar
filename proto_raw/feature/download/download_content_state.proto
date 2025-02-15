@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package feature.download;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/download";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.download";
+
+message DownloadContentState {
+    Status status = 1;
+    enum Status {
+        ALLOW = 0;
+        DELETE = 1;
+        RESTRICT_WATCH = 2;
+    }
+    
+    State stateMeta = 2;
+    enum State {
+        SUBS_EXPIRY = 0;
+        TIME_BASED_EXPIRY = 1;
+        CONTENT_UNPUBLISHED = 2;
+        CONTENT_DELETED = 3;
+        TRAVELLING_USER = 4;
+    }
+    
+    double accessibilityTime = 3;
+    
+    SubStateMeta subStateMeta = 4;
+    message SubStateMeta {
+        SubState subState = 1;
+        enum SubState {
+            WATCH_BASED_EXPIRY = 0;
+        }
+        
+        double accessibilityTime = 2;
+    }
+}

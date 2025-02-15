@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package feature.model;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.model";
+
+enum AppPermission {
+    NONE = 0;
+    PUSH_NOTIFICATION = 1;
+}

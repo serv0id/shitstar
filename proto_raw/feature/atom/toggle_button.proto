@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package feature.atom;
+
+import "feature/atom/button.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/atom";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.atom";
+
+message ToggleButton {
+    Button toggle_off_button = 1;
+    Button toggle_on_button = 2;
+    bool is_toggled_on = 3;
+}

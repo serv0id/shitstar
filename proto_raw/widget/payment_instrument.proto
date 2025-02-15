@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PaymentInstrumentWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        Instrument instrument = 2;
+        Button button = 3;
+    }
+    
+    reserved 3 to 10;
+    
+    message Instrument {
+        string name = 1;
+        string icon_name = 2 [deprecated = true];
+        
+        oneof data {
+            string icon = 3;
+            feature.image.Image image = 4;
+        }
+    }
+    
+    message Button {
+        string name = 1;
+        string icon_name = 2;
+        base.Actions actions = 3;
+    }
+}

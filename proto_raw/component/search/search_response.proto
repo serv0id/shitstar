@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package component.search;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/search";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message SearchResponseProperties {
+    ResponseType response_type = 1;
+    string query_text = 2;
+    ContentTypeIntent content_type_intent = 4;
+    uint32 total_results_count = 5;
+    string channel = 6;
+    PageName page_name = 7;
+    string query_language = 8;
+    string search_algo_flags = 9;
+    QueryIntent query_intent = 10;
+    BestResultMatch best_result_match = 11;
+    bool rules_enabled = 12;
+}
+
+enum BestResultMatch {
+    BEST_RESULT_MATCH_UNSPECIFIED = 0;
+    BEST_RESULT_MATCH_HERO = 1;
+    BEST_RESULT_MATCH_TOP = 2;
+    BEST_RESULT_MATCH_MORE = 3;
+    BEST_RESULT_MATCH_SIMILAR = 4;
+    BEST_RESULT_MATCH_NO_RESULT = 5;
+}
+
+enum ResponseType {
+    RESPONSE_TYPE_UNSPECIFIED = 0;
+    RESPONSE_TYPE_SEARCH = 1;
+    RESPONSE_TYPE_SEARCH_ZERO = 2;
+    RESPONSE_TYPE_EXPLORE = 3;
+    RESPONSE_TYPE_SEARCH_GLOBAL = 4;
+}
+
+enum QueryIntent {
+    QUERY_INTENT_UNSPECIFIED = 0;
+    QUERY_INTENT_NAV = 1;
+    QUERY_INTENT_BROAD = 2;
+}
+
+enum ContentTypeIntent {
+    CONTENT_TYPE_INTENT_UNSPECIFIED = 0;
+    CONTENT_TYPE_INTENT_MOVIE = 1;
+    CONTENT_TYPE_INTENT_TV_SHOW = 2;
+    CONTENT_TYPE_INTENT_CHANNEL = 3;
+    CONTENT_TYPE_INTENT_SPORTS = 4;
+    CONTENT_TYPE_INTENT_NEWS = 5;
+    CONTENT_TYPE_INTENT_CELEBRITY = 6;
+    CONTENT_TYPE_INTENT_CLIP = 7;
+    CONTENT_TYPE_INTENT_GENERAL = 8;
+    CONTENT_TYPE_INTENT_ENTERTAINMENT = 9;
+}
+
+enum PageName {
+    PAGE_NAME_UNSPECIFIED = 0;
+    PAGE_NAME_SEARCH = 1;
+    PAGE_NAME_SEARCH_ZERO = 2;
+}

@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/quiz/title_icon_combo.proto";
+import "widget/no_results.proto";
+import "widget/lottie_banner.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message QuizLeaderBoardWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        repeated LeaderBoard boards = 1;
+        bool hide_single_board_tab = 2;
+    }
+    
+    reserved 2 to 10;
+    
+    message LeaderBoard {
+        string title = 1;
+        LeaderBoardState state = 2;
+    }
+    
+    message LeaderBoardState {
+        oneof state {
+            NoResultsWidget no_results = 1;
+            LeaderBoardWidget leader_board = 2;
+        }
+    }
+    
+    message LeaderBoardWidget {
+        base.WidgetCommons widget_commons = 1;
+        
+        Data data = 11;
+        message Data {
+            LeaderBoardReminder top_reminder = 1 [deprecated = true];
+            LeaderBoardHeader header = 2;
+            repeated LeaderBoardRow rows = 3;
+            LeaderBoardPrizeReminder prize_reminder = 4;
+        }
+        
+        reserved 2 to 10;
+    }
+    
+    message LeaderBoardReminder {
+        oneof reminder {
+            LeaderBoardNudge nudge_reminder = 1;
+            feature.quiz.TitleIconCombo prize_reminder = 2;
+        }
+    }
+    
+    message LeaderBoardPrizeReminder {
+        LottieBannerWidget normal_banner = 1;
+        LottieBannerWidget clicked_banner = 2;
+        string claim_domain_url = 3;
+    }
+    
+    message LeaderBoardNudge {
+        string title = 1;
+        string subtitle = 2;
+        NudgeCTA nudge = 3;
+    }
+    
+    message NudgeCTA {
+        string title = 1;
+        base.Actions action = 11;
+    }
+    
+    message LeaderBoardHeader {
+        string rank_title = 1;
+        string prize_title = 2;
+        LeaderBoardPointsColumn points = 3;
+    }
+    
+    message LeaderBoardPointsColumn {
+        oneof points {
+            string points_title = 1;
+            feature.quiz.TitleIconCombo points_bonus = 2;
+        }
+    }
+    
+    message LeaderBoardRow {
+        string rank = 1;
+        feature.quiz.TitleIconCombo prize = 2;
+        string points = 3;
+        bool is_current_user = 4;
+        base.Actions actions = 11;
+    }
+}

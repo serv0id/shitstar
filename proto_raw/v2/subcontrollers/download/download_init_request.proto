@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package feature.download;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/download";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.download";
+
+message DownloadInitRequest {
+    string content_id = 1;
+    string content_provider = 2;
+    bool is_premium = 3;
+    string studio_id = 4;
+    string studio_name = 5;
+    string title_name = 6;
+    string client_capabilities = 8;
+    string drm_parameter = 9;
+    string advertising_id = 10;
+    string client_request_id = 11;
+    string user_lat = 12;
+    string device_brand = 13;
+    string device_model = 14;
+    string device_carrier = 15;
+    string device_os_version = 16;
+    string device_network_data = 17;
+    string device_platform = 18;
+    string device_app_version = 19;
+    string content_language = 20;
+    string custom_tags = 21;
+    repeated string download_ids = 22;
+}

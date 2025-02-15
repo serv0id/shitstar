@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package client.download.properties;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/download/properties";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.download.properties";
+
+message DownloadsMigratedProperties {
+    uint32 from_downloads_db_version = 1;
+    uint32 to_downloads_db_version = 2;
+    uint32 number_of_total_contents = 3;
+    uint32 number_of_successful_contents = 4;
+    uint32 number_of_failed_contents = 5;
+    uint32 number_of_skipped_contents = 6;
+}

@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "feature/error/error_info.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message DownloadErrorWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.error.ErrorInfo error_info = 1;
+        CTAButton primary = 2;
+        CTAButton secondary = 3;
+    }
+    
+    reserved 2 to 10;
+    
+    message CTAButton {
+        string label = 1;
+        base.Actions actions = 2;
+        ActionType type = 3;
+    }
+    
+    enum ActionType {
+        RETRY = 0;
+        CANCEL = 1;
+    }
+}

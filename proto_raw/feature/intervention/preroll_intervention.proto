@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package feature.intervention;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/intervention";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.intervention";
+
+message PrerollIntervention {
+    bytes payload = 1 [deprecated = true];
+    string vast_payload = 2 [deprecated = true];
+    
+    oneof data {
+        string vast = 3;
+        string url = 4;
+    }
+}

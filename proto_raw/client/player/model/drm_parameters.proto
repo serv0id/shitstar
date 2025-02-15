@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package client.player.model;
+
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.player.model";
+
+message DrmParameters {
+    repeated WidevineSecurityLevel widevine_security_levels = 1;
+    enum WidevineSecurityLevel {
+        WIDEVINE_SECURITY_LEVEL_UNSPECIFIED = 0;
+        WIDEVINE_SECURITY_LEVEL_SW_SECURE_CRYPTO = 1;
+        WIDEVINE_SECURITY_LEVEL_SW_SECURE_DECODE = 2;
+        WIDEVINE_SECURITY_LEVEL_HW_SECURE_CRYPTO = 3;
+        WIDEVINE_SECURITY_LEVEL_HW_SECURE_DECODE = 4;
+        WIDEVINE_SECURITY_LEVEL_HW_SECURE_ALL = 5;
+    }
+    
+    repeated HdcpVersion hdcp_versions = 2;
+    enum HdcpVersion {
+        HDCP_VERSION_UNSPECIFIED = 0;
+        HDCP_VERSION_HDCP_NONE = 1;
+        HDCP_VERSION_HDCP_V1 = 2;
+        HDCP_VERSION_HDCP_V2 = 3;
+        HDCP_VERSION_HDCP_V2_1 = 4;
+        HDCP_VERSION_HDCP_V2_2 = 5;
+        HDCP_VERSION_HDCP_NO_DIGITAL_OUTPUT = 6;
+    }
+}

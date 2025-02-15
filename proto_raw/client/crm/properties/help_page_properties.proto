@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package client.crm.properties;
+
+import "client/crm/model/crm_page_info.proto";
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/crm/properties";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.crm.properties";
+
+message HelpPageProperties {
+    model.PageType type = 1;
+    string language = 2;
+    string title = 3;
+    string referrer = 4;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package component.stickynotification;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/stickynotification";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message StickyNotificationProperties {
+    string campaign_id = 1 [deprecated = true];
+    string text = 2;
+    string action_type = 3;
+    string utm_campaign_id = 4;
+}

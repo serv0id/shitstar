@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ParentalControlSettingsWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        ToggleSetting parental_lock = 1;
+        ClickableSetting viewing_restrictions = 2;
+        ClickableSetting change_parental_lock_pin = 3;
+        string title = 4;
+        base.Actions actions = 5;
+        bool recaptcha_enabled = 6;
+    }
+    
+    reserved 2 to 10;
+    
+    message ToggleSetting {
+        string icon_name = 2;
+        string title = 3;
+        string description = 4;
+        bool is_selected = 5;
+        base.Actions actions = 6 [deprecated = true];
+        string status_label = 7;
+        string enabled_label = 8;
+        string disabled_label = 9;
+        base.Actions turn_off_action = 10;
+        base.Actions turn_on_action = 11;
+    }
+    
+    message ClickableSetting {
+        string title = 2;
+        string description = 3;
+        base.Actions actions = 4;
+    }
+}

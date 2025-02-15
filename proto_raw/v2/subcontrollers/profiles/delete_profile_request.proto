@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package feature.login;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/profiles";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.profiles";
+
+message DeleteProfileRequest {
+    string deleting_profile_id = 1;
+}

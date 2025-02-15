@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package client.ads;
+
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/ads";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.ads";
+
+message Info {
+    string campaign_id = 1;
+    string goal_id = 2;
+    string id = 3 [deprecated = true];
+    repeated string ids = 4;
+}

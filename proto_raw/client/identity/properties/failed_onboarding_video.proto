@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package client.identity.properties;
+
+import "client/identity/properties/video_bg_info.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/identity/properties";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.identity.properties";
+
+message FailedOnboardingVideo {
+    NetworkType network_type = 1 [deprecated = true];
+    uint32 network_speed = 2 [deprecated = true];
+    ScreenSize screen_size = 3;
+    float network_speed_in_mb = 4;
+}

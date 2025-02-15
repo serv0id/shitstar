@@ -1,0 +1,111 @@
+syntax = "proto3";
+
+package widget;
+
+import "feature/payment/validations.proto";
+import "feature/payment/restrictions.proto";
+import "feature/image/image.proto";
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "widget/payment_method_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PaymentMethodWalletsWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    repeated Wallet wallet_arr = 11;
+    message Wallet {
+        oneof wallet {
+            Paytm paytm = 1;
+            OtherWallet other_wallet = 2;
+        }
+        
+        message Paytm {
+            VerifyPhoneNumer verify_phone_number = 1;
+            message VerifyPhoneNumer {
+                string title = 1;
+                Input input_phone = 2;
+                Cta cta = 3;
+                repeated base.Actions.Action auto_triggered_actions = 4;
+            }
+            
+            VerifyOtp verify_otp = 2;
+            message VerifyOtp {
+                string title = 1;
+                int32 otp_length = 2;
+                Cta edit_btn = 3;
+                Cta resend_btn = 4;
+                Cta verify_via_call = 5;
+                Timer timer = 6;
+                Cta submit = 7;
+                repeated base.Actions.Action auto_triggered_actions = 8;
+            }
+            
+            PaytmError payment_failed = 3;
+            message PaytmError {
+                string title = 1;
+                Cta primary_cta = 3;
+                Cta secondary_cta = 4;
+                Cta edit_btn = 5;
+                Titles title_desc = 6;
+                repeated base.Actions.Action auto_triggered_actions = 7 [deprecated = true];
+                repeated base.Actions.Action on_load_actions = 8;
+            }
+            
+            PaymentMethodCommonsWidget payment_method_meta = 4;
+            
+            PaytmSuccess sufficient_balance = 5;
+            message PaytmSuccess {
+                string title = 1;
+                Cta edit_btn = 2;
+                Cta primary_cta = 3;
+                Titles title_desc = 4;
+                repeated base.Actions.Action auto_triggered_actions = 5;
+            }
+            
+            base.Actions actions = 6;
+            string prefixNode = 7;
+        }
+        
+        message OtherWallet {
+            string name = 1;
+            feature.image.Image img = 2;
+            base.Actions actions = 3;
+        }
+    }
+    
+    PaymentMethodCommonsWidget payment_method_meta = 12;
+    
+    reserved 2 to 10;
+    
+    message Titles {
+        string title = 1;
+        string sub_title = 2;
+    }
+    
+    message Cta {
+        string text = 11;
+        string icon_name = 12;
+        base.Actions action = 13 [deprecated = true];
+        repeated base.Actions.Action actions = 14;
+    }
+    
+    message Timer {
+        string text = 11;
+        string sub_text = 12;
+        int64 timeoutInMS = 13;
+        string icon = 14;
+    }
+    
+    message Input {
+        string title = 1;
+        string placeholder = 2;
+        repeated feature.payment.Validation validations = 3;
+        repeated feature.payment.Restriction restrictions = 4;
+        feature.image.Image image = 5;
+        string default_value = 6;
+    }
+}

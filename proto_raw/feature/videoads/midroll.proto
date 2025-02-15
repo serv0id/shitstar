@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package feature.videoads;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/videoads";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.videoads";
+
+message Midroll {
+    string server_url = 1;
+    
+    oneof data {
+        string ssai_tag = 2;
+        string cue_points_url = 3;
+        string cue_points = 4;
+    }
+}

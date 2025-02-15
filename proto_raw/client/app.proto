@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package client;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client";
+
+message AppState {
+    bool battery_is_charging = 1 [deprecated = true];
+    bool is_device_rooted = 2;
+    bool permission_os = 3;
+    string step = 4;
+    string step_status = 5;
+    
+    StartType start_type = 7;
+    enum StartType {
+        START_TYPE_UNSPECIFIED = 0;
+        START_TYPE_COLD = 1;
+        START_TYPE_WARM = 2;
+        START_TYPE_HOT = 3;
+    }
+}

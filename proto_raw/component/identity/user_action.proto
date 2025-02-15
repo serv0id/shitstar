@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package component.identity;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/identity";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message UserAction {
+    string display_name = 1;
+    
+    ItemType item_type = 2;
+    enum ItemType {
+        ITEM_TYPE_UNSPECIFIED = 0;
+        ITEM_TYPE_BUTTON = 1;
+        ITEM_TYPE_TEXT_BOX = 2;
+        ITEM_TYPE_HYPER_LINK = 3;
+    }
+    
+    string page_title = 3;
+}

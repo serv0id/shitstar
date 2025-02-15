@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package client.context.base;
+
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/context/base";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.context.base.page";
+
+message Page {
+    PageType type = 1;
+    enum PageType {
+        PAGE_TYPE_UNSPECIFIED = 0;
+        PAGE_TYPE_MY_SPACE = 1;
+        PAGE_TYPE_DOWNLOAD = 2;
+        PAGE_TYPE_WATCH = 3;
+        PAGE_TYPE_SPLASH = 4;
+        PAGE_TYPE_ERROR = 5;
+    }
+    
+    string title = 2;
+    string sub_title = 3;
+    string id = 4;
+    string template = 5;
+}

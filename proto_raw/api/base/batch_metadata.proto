@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package api.base;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/base";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.base";
+
+message BatchMetadata {
+    string batch_id = 1;
+    uint32 batch_size_bytes = 2;
+    uint32 common_size_bytes = 3;
+    uint32 event_size_bytes = 4;
+    uint32 batch_num_events = 5;
+}

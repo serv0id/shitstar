@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package client.ads;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/ads";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.ads";
+
+enum AdType {
+    AD_TYPE_UNSPECIFIED = 0;
+    AD_TYPE_SKINNY = 1;
+    AD_TYPE_DISPLAY_IMAGE = 2;
+    AD_TYPE_DISPLAY_VIDEO = 3;
+    AD_TYPE_DISPLAY_CAROUSEL = 4;
+    AD_TYPE_PREROLL = 5;
+    AD_TYPE_MIDROLL = 6;
+}

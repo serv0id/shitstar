@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package feature.watch;
+
+import "feature/player/preload.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.watch";
+
+message WatchConfig {
+    bool picture_in_picture_enabled = 1;
+    bool starting_lag_artifact_enabled = 2;
+    bool live_logo_enabled = 3;
+    bool simulcast_start_point_enabled = 4;
+    bool fan_mode_enabled = 5;
+    bool player_gesture_control_enabled = 6;
+    player.PreloadConfig preload_config = 7 [deprecated = true];
+    bool in_app_pip_enabled = 8;
+    bool watch_page_animation_ios = 9;
+    repeated string sports_whitelist_cards = 10;
+    bool retry_pc_delay_player_enabled = 11;
+    bool automatic_speed_test_enabled = 12;
+    bool mux_integration_enabled = 13;
+}

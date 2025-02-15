@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package client.ads;
+
+import "client/ads/common.proto";
+import "client/ads/error.proto";
+import "client/ads/play_error.proto";
+import "client/ads/received.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/ads";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.ads";
+
+message AdsProperties {
+    repeated string user_segments = 1 [deprecated = true];
+    string pid = 2 [deprecated = true];
+    string aaid = 3 [deprecated = true];
+    string aaid_lat = 4 [deprecated = true];
+    string idfa = 5 [deprecated = true];
+    string idfa_lat = 6 [deprecated = true];
+    Common common_properties = 7;
+    Received received_properties = 8 [deprecated = true];
+    Error error_properties = 9;
+    PlayError play_error_properties = 10 [deprecated = true];
+}

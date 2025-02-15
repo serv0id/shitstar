@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package client.player.model;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.player.model";
+
+enum PlaybackPIPMode {
+    PLAYBACK_PIPMODE_UNSPECIFIED = 0;
+    PLAYBACK_PIPMODE_NOT_APPLICABLE = 1;
+    PLAYBACK_PIPMODE_IN_APP = 2;
+    PLAYBACK_PIPMODE_OUT_APP = 3;
+}
+
+enum PlaybackPipMode {
+    PLAYBACK_PIP_MODE_UNSPECIFIED = 0;
+    PLAYBACK_PIP_MODE_NOT_APPLICABLE = 1;
+    PLAYBACK_PIP_MODE_IN_APP = 2;
+    PLAYBACK_PIP_MODE_OUT_APP = 3;
+}

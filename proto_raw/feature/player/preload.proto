@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package feature.player;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/player";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.player";
+
+message PreloadConfig {
+    uint32 trigger_position_ms = 1 [deprecated = true];
+    
+    repeated ConfigItem preload_items = 2;
+    message ConfigItem {
+        bool multiplayer_preload_enabled = 1;
+        bool manifest_preload_enabled = 2;
+        bool proxy_server_enabled = 3;
+        PreloadApiParams api_params = 4;
+        PreloadMultiPlayerParams multiplayer_params = 5;
+        PreloadManifestParams manifest_params = 6;
+        ProxyServerConfig proxy_server_config = 7;
+    }
+    
+    uint32 milisecs_remaining = 3;
+    bool wifi_only = 4;
+    uint32 expiration_duration_ms = 5;
+}
+
+message PreloadApiParams {
+    string endpoint = 1;
+    
+    ApiType type = 2;
+    enum ApiType {
+        page_bff = 0;
+        PC = 1;
+    }
+}
+
+message PreloadMultiPlayerParams {
+    uint32 preload_duration_ms = 1;
+}
+
+message PreloadManifestParams {
+    
+}
+
+message ProxyServerConfig {
+    
+}

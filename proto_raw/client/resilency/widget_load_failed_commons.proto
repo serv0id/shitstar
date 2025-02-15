@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package client.resilency;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/resilency";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.resilency";
+
+message WidgetLoadFailedCommons {
+    string error_code = 1;
+    string error_message = 2;
+    
+    ErrorViewType failure_view_type = 3;
+    enum ErrorViewType {
+        ERROR_VIEW_TYPE_UNSPECIFIED = 0;
+        ERROR_VIEW_TYPE_OVERLAY = 1;
+        ERROR_VIEW_TYPE_FULL_SCREEN = 2;
+        ERROR_VIEW_TYPE_IGNORED = 3;
+    }
+    
+    string request_id = 4;
+    string url = 5;
+    int64 retry_count = 6;
+}

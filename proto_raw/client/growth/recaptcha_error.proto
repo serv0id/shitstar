@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package client.growth;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/growth";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.growth";
+
+message RecaptchaErrorProperties {
+    Source error_source = 1;
+    enum Source {
+        SOURCE_UNSPECIFIED = 0;
+        SOURCE_SDK_INIT = 1;
+        SOURCE_TOKEN_GENERATION = 2;
+        SOURCE_TOKEN_RETRY = 3;
+    }
+    
+    string error_reason = 2;
+}

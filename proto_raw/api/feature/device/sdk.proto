@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package api.feature.device;
+
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/feature/device";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.feature.device";
+
+message Sdk {
+    AppsFlyer appsflyer = 1;
+    message AppsFlyer {
+        string id = 1;
+        
+        ConversionType conversion_type = 2;
+        enum ConversionType {
+            CONVERSION_TYPE_UNSPECIFIED = 0;
+            CONVERSION_TYPE_ORGANIC = 1;
+            CONVERSION_TYPE_NON_ORGANIC = 2;
+        }
+    }
+}

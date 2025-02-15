@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package feature.consent;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/consent";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.consent";
+
+message ConsentInfo {
+    string consent_id = 1;
+    string identifier_type = 2;
+    string consent_type = 3;
+    int32 consent_version = 4;
+    string status = 5;
+    string identifier = 6;
+    repeated string consent_for = 7;
+}

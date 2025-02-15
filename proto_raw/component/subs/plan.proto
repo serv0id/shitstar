@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package component.subs;
+
+import "component/subs/plan_duration.proto";
+import "component/subs/plan_price.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/subs";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message Plan {
+    string plan_id = 1;
+    string plan_family = 2;
+    PlanDuration plan_duration = 3;
+    PlanPrice plan_price = 4;
+}

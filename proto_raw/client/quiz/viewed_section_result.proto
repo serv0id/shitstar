@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package client.quiz;
+
+import "component/quiz/enum.proto";
+import "component/quiz/option_action_properties.proto";
+import "component/quiz/question_section_properties.proto";
+import "component/quiz/quiz_base_info.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/quiz";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.quiz";
+
+message ViewedSectionResultProperties {
+    component.quiz.QuizBaseInfo base_properties = 1;
+    string engagement_id = 2;
+    component.quiz.QuestionSectionProperties section_properties = 3;
+    component.quiz.OptionActionProperties action_properties = 4;
+    component.quiz.Result result = 5;
+    uint32 section_score = 6;
+}

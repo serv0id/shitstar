@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package api.feature.device;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/feature/device";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.feature.device";
+
+message DisplayInfo {
+    uint32 brightness_level_percent = 1;
+    bool is_hdr_enabled = 2;
+}

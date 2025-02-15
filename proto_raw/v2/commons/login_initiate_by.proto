@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package v2.commons.login_initiate_by;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/commons";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.commons";
+
+enum LoginInitiateBy {
+    PHONE_OTP = 0;
+    PHONE_IVR = 1;
+    PHONE_SNA = 2;
+}

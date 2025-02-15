@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package component.playback;
+
+import "options/opts.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/playback";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message Resolution {
+    uint32 width_px = 1;
+    uint32 height_px = 2;
+}

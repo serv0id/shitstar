@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package spacedata;
+
+import "base/space_data_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/spacedata";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.spacedata";
+
+message AdaptiveTraySpaceData {
+    base.SpaceDataCommons space_data_commons = 1;
+    
+    LandscapePortraitData data = 2;
+    message LandscapePortraitData {
+        repeated TrayIndex landscape_trays = 1;
+        repeated TrayIndex portrait_trays = 2;
+        repeated TrayIndex portrait_header_trays = 3;
+        repeated TrayIndex side_sheet_trays = 4;
+        repeated TrayIndex portrait_footer_trays = 5;
+    }
+    
+    message TrayIndex {
+        string id = 1;
+    }
+}

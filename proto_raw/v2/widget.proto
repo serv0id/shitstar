@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package v2;
+
+import "google/protobuf/any.proto";
+import "v2/refresh_widget.proto";
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2";
+
+message WidgetWrapper {
+    string template = 1;
+    google.protobuf.Any widget = 2;
+    string id = 3;
+    WidgetDeliveryType delivery_type = 4;
+    RefreshWidgetRequest dynamic_widget_request = 5 [deprecated = true];
+    DeferredWidgetRequest deferred_widget_request = 6;
+    string defer_id = 7;
+}
+
+enum WidgetDeliveryType {
+    STATIC = 0;
+    DYNAMIC = 1 [deprecated = true];
+    DEFERRED = 2;
+}

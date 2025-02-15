@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package widget;
+
+import "feature/image/image.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "widget/languages_selection.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PromoLandingHeaderWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        Button login_btn = 1;
+        LanguagesSelectionWidget language_selection = 2 [deprecated = true];
+        LanguageSelector language_selector = 3;
+    }
+    
+    reserved 3 to 10;
+    
+    message Button {
+        string text = 1;
+        base.Actions actions = 2;
+        string icon = 3;
+    }
+    
+    message LanguageSelector {
+        string choose_language_text = 1;
+        repeated LanguageOption languages = 2;
+    }
+    
+    message LanguageOption {
+        string iso = 1;
+        feature.image.Image flag = 2;
+        string label = 3;
+        bool is_selected = 4;
+        base.Actions change_lang_action = 5;
+    }
+}

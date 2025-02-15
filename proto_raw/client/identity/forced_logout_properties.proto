@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package client.identity;
+
+import "component/identity/enum.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/identity";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.identity";
+
+message ForcedLoggedOutProperties {
+    component.identity.LogoutTrigger reason_for_logout = 1;
+    string trigger_url = 2;
+    component.identity.LogoutMode mode = 3;
+}

@@ -1,0 +1,128 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+import "feature/payment/payment_gateway.proto";
+import "widget/payment_method_cards.proto";
+import "widget/payment_method_net_banking.proto";
+import "widget/payment_method_wallets.proto";
+import "widget/payment_method_quick_pay.proto";
+import "widget/payment_method_upi.proto";
+import "widget/text_list.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PaymentMethodsWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        repeated PaymentMethod payment_methods = 1;
+        message PaymentMethod {
+            string method_name = 1;
+            feature.image.Image method_image = 7;
+            TextListWidget method_features = 8;
+            TextListWidget method_info = 9;
+            repeated feature.payment.PaymentGateway gateways = 10;
+            bool is_expanded = 11;
+            
+            oneof payment_method {
+                PaymentMethodCardsWidget cards = 2;
+                PaymentMethodWalletsWidget wallets = 3;
+                PaymentMethodUpiWidget upi = 4;
+                PaymentMethodNetBankingWidget net_banking = 5;
+                PaymentMethodQuickPayWidget quick_pay = 6;
+            }
+        }
+        
+        SelectedMethodMeta selected_method_meta = 2;
+        message SelectedMethodMeta {
+            string title = 1;
+        }
+        
+        Footer footer = 3;
+        message Footer {
+            string icon = 1;
+            string text = 2;
+            string sub_text = 3;
+            repeated Detail details = 4;
+        }
+        
+        PaymentSuccessMeta on_success = 4;
+        message PaymentSuccessMeta {
+            string fetch_url = 1;
+            feature.image.Image image = 2;
+            string title = 3;
+            string sub_title = 4;
+            Cta cta = 5;
+        }
+        
+        PaymentErrorMeta on_error = 5 [deprecated = true];
+        message PaymentErrorMeta {
+            oneof error_types {
+                TimerExpiry timer_expired = 1;
+                DefaultError default_error = 2;
+            }
+            
+            message TimerExpiry {
+                feature.image.Image image = 1;
+                string title = 2;
+                string sub_title = 3;
+                Cta primary_cta = 4;
+                Cta secondary_cta = 5;
+            }
+            
+            message DefaultError {
+                feature.image.Image image = 1;
+                string title = 2;
+                repeated string sub_titles = 3;
+                Cta primary_cta = 4;
+                Cta secondary_cta = 5;
+            }
+        }
+        
+        repeated OfferSuccesMeta offer_success_meta = 6;
+        message OfferSuccesMeta {
+            string type = 1;
+            string text = 2;
+            string icon = 3;
+        }
+        
+        repeated PaymentErrorMeta error_metas = 7;
+        
+        PaymentCancelMeta cancel_payment = 8;
+        message PaymentCancelMeta {
+            feature.image.Image img = 1;
+            string title = 2;
+            repeated Detail details = 3;
+            Cta primary_cta = 4;
+            Cta secondary_cta = 5;
+            bool is_closable = 6;
+        }
+        
+        message Cta {
+            string text = 11;
+            string icon_name = 12;
+            base.Actions action = 13;
+        }
+        
+        message Detail {
+            string description = 1;
+            repeated Link links = 2;
+        }
+        
+        message Link {
+            string key = 1;
+            string label = 2;
+            string url = 3;
+        }
+    }
+    
+    reserved 2 to 10;
+}

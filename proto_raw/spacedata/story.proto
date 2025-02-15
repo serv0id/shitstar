@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package spacedata;
+
+import "base/space_data_commons.proto";
+import "feature/header/story_header.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/spacedata";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.spacedata";
+
+message StorySpaceData {
+    base.SpaceDataCommons space_data_commons = 1;
+    
+    HeaderType header_type = 2;
+    enum HeaderType {
+        UNSPECIFIED = 0;
+        SLIDER = 1;
+    }
+    
+    oneof config {
+        feature.header.StoryHeaderConfig stories_config = 3;
+    }
+}

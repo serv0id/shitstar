@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "widget/text_list.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message DialogWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image img = 1 [deprecated = true];
+        string title = 2;
+        string description = 3;
+        Button primary_button = 4;
+        Button secondary_button = 5;
+        string icon_name = 6 [deprecated = true];
+        string over_sheet_lottie_name = 7;
+        bool should_animate_content = 8;
+        bool hide_close_icon = 12;
+        Align widget_alignment = 13;
+        TextListWidget text_list = 14;
+        
+        oneof center_drawable {
+            feature.image.Image image = 9;
+            string icon = 10;
+            string lottie = 11;
+        }
+    }
+    
+    reserved 3 to 10;
+    
+    message Button {
+        string text = 1;
+        base.Actions actions = 2;
+    }
+    
+    enum Align {
+        UNDEFINED = 0;
+        LEFT = 1;
+        RIGHT = 2;
+        CENTER = 3;
+    }
+}

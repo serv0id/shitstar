@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+import "feature/refresh/refresh_info.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message NotificationWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        int64 timestamp = 1;
+        feature.refresh.RefreshInfo refresh_info = 2;
+        
+        oneof action {
+            ShowNotificationAction show_notification_action = 3;
+            HideNotificationAction hide_notification_action = 4;
+        }
+    }
+    
+    reserved 2 to 10;
+    
+    message ShowNotificationAction {
+        Property property = 1;
+        UiWidget ui_widget = 2;
+    }
+    
+    message HideNotificationAction {
+        Property property = 1;
+    }
+    
+    message Property {
+        string channel = 1;
+        int64 notification_id = 2;
+        bool is_sticky = 3;
+        string channel_name = 4;
+    }
+    
+    message UiWidget {
+        NotificationStyle notification_style = 1;
+        string headline = 2;
+        string title = 3;
+        string summary = 4;
+        string description = 5;
+        ImageCTA image = 6;
+        repeated CTA cta = 7;
+    }
+    
+    message ImageCTA {
+        string url = 1;
+        base.Actions actions = 2;
+    }
+    
+    message CTA {
+        string text = 1;
+        base.Actions actions = 2;
+    }
+    
+    enum NotificationStyle {
+        NOTIFICATION_STYLE_UNKNOWN = 0;
+        NOTIFICATION_STYLE_DEFAULT = 1;
+    }
+}

@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+import "feature/branding/brand.proto";
+import "widget/logo.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PrelaunchHeroWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image hero_img = 1;
+        HeroInfo hero_info = 2;
+        string tnc = 3;
+        LanguageSelector language_selector = 4;
+    }
+    
+    reserved 1, 3 to 10;
+    
+    message HeroInfo {
+        feature.branding.Brand logo = 1 [deprecated = true];
+        RichTextTitle title = 2;
+        string subtitle = 3;
+        string info_msg = 4;
+        RegisterBtn register_btn = 5;
+        Countdown launch_time = 6;
+        LogoWidget brand_details = 7;
+    }
+    
+    message RichTextTitle {
+        string highlighted_text = 1;
+        string text = 2;
+        string highlight_color = 3;
+    }
+    
+    message RegisterBtn {
+        string icon_name = 1;
+        string label = 2;
+        base.Actions actions = 3;
+    }
+    
+    message Countdown {
+        int64 launch_date = 1;
+        Intervals count_down = 2;
+        int64 current_server_time = 3;
+    }
+    
+    message Intervals {
+        string day = 1;
+        string hrs = 2;
+        string mins = 3;
+        string seconds = 4;
+    }
+    
+    message LanguageSelector {
+        string choose_language_text = 1;
+        repeated LanguageOption languages = 2;
+    }
+    
+    message LanguageOption {
+        string iso = 1;
+        feature.image.Image flag = 2;
+        string label = 3;
+        bool is_selected = 4;
+        base.Actions change_lang_action = 5;
+    }
+}

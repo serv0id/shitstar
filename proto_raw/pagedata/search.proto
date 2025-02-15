@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package pagedata;
+
+import "base/page_data_commons.proto";
+import "google/protobuf/any.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/pagedata";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.pagedata";
+
+message SearchPageData {
+    base.PageDataCommons page_data_commons = 1;
+    string query = 2;
+    google.protobuf.Any instrumentation_context = 3;
+    string tab_name = 4;
+    
+    repeated Filter filters = 5;
+    message Filter {
+        string name = 1;
+        repeated string values = 2;
+    }
+    
+    repeated SuggestedQueries suggested_queries = 6;
+    message SuggestedQueries {
+        string display_name = 1;
+        string suggested_query = 2;
+    }
+    
+    string result_one_liner = 7;
+}

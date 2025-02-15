@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/download/download_info.proto";
+import "feature/image/image.proto";
+import "feature/cw/cw_info.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PlayableContentWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image poster = 1;
+        string title = 2;
+        repeated Tag tags = 3;
+        string description = 4;
+        DownloadOption download_option = 5;
+        feature.cw.CwInfo cw_info = 6;
+        string live_tag = 7;
+        string content_id = 8;
+        base.Actions actions = 11;
+        bool is_focused = 12;
+    }
+    
+    reserved 3 to 10;
+    
+    message DownloadOption {
+        string title = 1;
+        repeated DownloadOptionItem items = 2 [deprecated = true];
+        string selected_id = 3 [deprecated = true];
+        Footer footer = 4 [deprecated = true];
+        feature.download.DownloadInfo download_info = 5;
+        base.Actions actions = 10;
+    }
+    
+    message DownloadOptionItem {
+        string id = 1;
+        string resolution = 2;
+        string size = 3;
+    }
+    
+    message Footer {
+        string description = 1;
+        string button_text = 2;
+        base.Actions actions = 10;
+    }
+    
+    message Tag {
+        string value = 1;
+        base.Actions actions = 2;
+    }
+}

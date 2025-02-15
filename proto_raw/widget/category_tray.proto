@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "widget/category_picker.proto";
+import "widget/scrollable_tray.proto";
+import "widget/category_tray_items.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message CategoryTrayWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        bool start_collapsed = 2 [deprecated = true];
+        CategoryPickerWidget category_picker = 10;
+        ScrollableTrayWidget episodes = 11 [deprecated = true];
+        CategoryTrayItemsWidget tray_items = 12;
+        string tray_action_collapse_label = 13;
+        string tray_action_expand_label = 14;
+        bool isFocussed = 15;
+    }
+    
+    reserved 3 to 10;
+}

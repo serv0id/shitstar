@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/media_container.proto";
+import "widget/text_prompt.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message MediaCalloutWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        TextPromptWidget primary_texts = 1;
+        MediaContainerWidget media = 2;
+        TextPromptWidget secondary_texts = 3;
+        
+        ImageOrientation image_orientation = 4;
+        enum ImageOrientation {
+            UNSPECIFIED = 0;
+            VERTICAL = 1;
+            HORIZONTAL = 2;
+        }
+    }
+    
+    reserved 2 to 10;
+}

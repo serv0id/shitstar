@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "widget/video_settings.proto";
+import "widget/notification_settings.proto";
+import "widget/downloads_settings.proto";
+import "widget/help_and_support_settings.proto";
+import "widget/profile_settings.proto";
+import "widget/parental_control_settings.proto";
+import "widget/account_settings.proto";
+import "widget/account_settings_container.proto";
+import "widget/membership_actions.proto";
+import "widget/generic_settings.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message SettingsTabWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string before_icon_name = 1;
+        string after_icon_name = 2;
+        string tab_header = 3;
+        string tab_sub_header = 4;
+        TabContent tab_content = 5;
+        bool has_divider = 6;
+        bool is_preselected = 7;
+        string before_icon_url = 8;
+    }
+    
+    reserved 2 to 10;
+    
+    message TabContent {
+        oneof TabContent {
+            DownloadsSettingsWidget download_settings = 1;
+            VideoSettingsWidget video_settings = 2;
+            NotificationSettingsWidget notification_settings = 3;
+            ProfileSettingsWidget profile_settings = 4;
+            ParentalControlSettingsWidget parental_settings = 5;
+            AccountSettingsWidget account_settings = 6;
+            HelpAndSupportSettingsWidget help_and_support_info = 7;
+            MembershipActionsWidget membership_actions = 8 [deprecated = true];
+            GenericSettingsWidget generic_settings = 9;
+            AccountSettingsContainerWidget account_settings_container = 10;
+            base.Actions actions = 20 [deprecated = true];
+        }
+    }
+}

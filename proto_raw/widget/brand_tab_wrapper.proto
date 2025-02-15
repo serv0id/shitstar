@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/feed_commentable.proto";
+import "widget/webview.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message BrandTabWrapperWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        oneof data {
+            FeedCommentableWidget commentable = 1;
+            WebviewWidget web_view = 2;
+        }
+    }
+    
+    reserved 3 to 10;
+}

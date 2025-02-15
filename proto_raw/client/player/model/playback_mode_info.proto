@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package client.player.model;
+
+import "client/player/model/stream_mode.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.player.model";
+
+message PlaybackModeInfo {
+    PlayerOrientation screen_mode = 1 [deprecated = true];
+    bool is_fullscreen = 2;
+    bool is_picture_in_picture = 3;
+    bool airplay_enabled = 4;
+    bool has_exited = 5;
+    PlayType play_type = 6 [deprecated = true];
+    bool auto_played = 7;
+    PlayerOrientation player_orientation = 8;
+    string referrer_autoplay_language = 9;
+    bool dh_logo_shown = 10;
+    string dh_logo_text = 11;
+    string appsuite_base = 12;
+    int64 retry_count = 13;
+    StreamMode mode = 14;
+}
+
+enum PlayerOrientation {
+    PLAYER_ORIENTATION_UNSPECIFIED = 0;
+    PLAYER_ORIENTATION_PORTRAIT = 1;
+    PLAYER_ORIENTATION_LANDSCAPE = 2;
+    PLAYER_ORIENTATION_MINIMISED_LANDSCAPE = 3;
+}
+
+enum PlayType {
+    PLAY_TYPE_UNSPECIFIED = 0;
+    PLAY_TYPE_MASTHEAD = 1;
+    PLAY_TYPE_WATCH_PAGE = 2;
+}

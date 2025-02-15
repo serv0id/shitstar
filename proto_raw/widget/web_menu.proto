@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message WebMenuWidget {
+    option deprecated = true;
+    base.WidgetCommons widget_commons = 2;
+    
+    repeated SideNavItem side_nav = 11;
+    message SideNavItem {
+        string default_icon = 1;
+        string active_icon = 2;
+        string image_url = 3;
+        string title = 4;
+        bool is_active = 5;
+        base.Actions actions = 6;
+    }
+    
+    FooterNav footer_nav = 12;
+    message FooterNav {
+        repeated Paragraph paragraphs = 1;
+        message Paragraph {
+            string title = 1;
+            string content = 2;
+        }
+        
+        repeated Column columns = 2;
+        message Column {
+            string header = 1;
+            repeated Link links = 2;
+        }
+        
+        SocialHandles social_handles = 3;
+        message SocialHandles {
+            string header = 1;
+            
+            repeated Handle handles = 2;
+            message Handle {
+                string handle = 1;
+                string icon = 2;
+                base.Actions actions = 3;
+            }
+        }
+        
+        Legal legal = 4;
+        message Legal {
+            string paragraph = 1;
+            repeated Link links = 2;
+        }
+        
+        repeated AppLink app_links = 5;
+        message AppLink {
+            feature.image.Image image = 1;
+            base.Actions actions = 2;
+        }
+        
+        message Link {
+            string text = 1;
+            base.Actions actions = 2;
+        }
+    }
+    
+    reserved 1, 3 to 10;
+}

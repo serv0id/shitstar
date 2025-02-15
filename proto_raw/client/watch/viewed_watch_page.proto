@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package client.watch;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message ViewedWatchPage {
+    ScreenMode screen_mode = 1;
+    enum ScreenMode {
+        SCREEN_MODE_UNSPECIFIED = 0;
+        SCREEN_MODE_PORTRAIT = 1;
+        SCREEN_MODE_LANDSCAPE = 2;
+    }
+}

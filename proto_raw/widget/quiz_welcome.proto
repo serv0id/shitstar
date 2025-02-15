@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "widget/hero.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message QuizWelcomeWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        HeroWidget quiz_info = 1;
+        QuizWelcomeState state = 2;
+        bool first_launch = 3;
+    }
+    
+    reserved 2 to 10;
+    
+    message QuizWelcomeState {
+        oneof state {
+            QuizPlayNowWidget play_now = 1;
+            QuizEndWidget end = 2;
+        }
+    }
+    
+    message QuizPlayNowWidget {
+        base.WidgetCommons widget_commons = 1;
+        
+        Data data = 11;
+        message Data {
+            AutoPlayingCTA cta = 1;
+            message AutoPlayingCTA {
+                string title = 1;
+                int32 auto_playing_duration_in_seconds = 2;
+                base.Actions action = 11;
+            }
+            
+            string disclaimer_rich_text = 2;
+        }
+        
+        reserved 2 to 10;
+    }
+    
+    message QuizEndWidget {
+        base.WidgetCommons widget_commons = 1;
+        
+        Data data = 11;
+        message Data {
+            string reminder = 1;
+        }
+        
+        reserved 2 to 10;
+    }
+}

@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+import "feature/live/live_info.proto";
+import "feature/callout_tag/callout_tag.proto";
+import "widget/timer.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message SpotlightInfoGecWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        string title = 1;
+        feature.image.Image title_cutout = 2;
+        string description = 3;
+        string callout_text = 4;
+        repeated Tag superscript_tags = 5 [deprecated = true];
+        repeated Tag subscript_tags = 6 [deprecated = true];
+        Tag subscript_usp = 7;
+        repeated Tag core_meta_tags = 8;
+        repeated Tag enriched_meta_tags = 9;
+        feature.live.LiveInfo live_info = 10;
+        repeated Tag callout_meta_tags = 11;
+        TimerWidget timer = 12;
+        repeated Tag secondary_meta_tags = 13;
+    }
+    
+    reserved 3 to 10;
+    
+    message Tag {
+        TagType type = 1 [deprecated = true];
+        string value = 2 [deprecated = true];
+        string fallback_value = 3 [deprecated = true];
+        
+        oneof tag {
+            TextTag text_tag = 4;
+            BadgeTag badge_tag = 5;
+            ImageTag image_tag = 6;
+            feature.callout_tag.CalloutTag callout_tag = 7;
+        }
+    }
+    
+    message TextTag {
+        string value = 1;
+    }
+    
+    message BadgeTag {
+        string value = 1;
+    }
+    
+    message ImageTag {
+        feature.image.Image value = 1;
+    }
+    
+    enum TagType {
+        TEXT = 0 [deprecated = true];
+        BADGE = 1 [deprecated = true];
+        IMAGE = 2 [deprecated = true];
+    }
+}

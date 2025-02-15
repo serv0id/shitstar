@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package pagedata;
+
+import "base/page_data_commons.proto";
+import "google/protobuf/any.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/pagedata";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.pagedata";
+
+message ExplorePageData {
+    base.PageDataCommons page_data_commons = 1;
+    string placeholder = 2;
+    string search_suggestions_url = 3;
+    string search_results_url = 4;
+    bool voice_search_enabled = 5;
+    
+    repeated SearchTab search_tabs = 6;
+    message SearchTab {
+        string display_name = 1;
+        string filter_name = 2;
+        string filter_value = 3;
+    }
+    
+    google.protobuf.Any instrumentation_context = 7;
+    bool keypad_activated = 8;
+    uint32 history_show_limit = 9;
+    bool tap_to_history = 10;
+    base.Actions searchbar_actions = 11;
+}

@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "feature/image/image.proto";
+import "feature/image/screen_size_image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message AppStoryWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        VideoMeta video_meta = 1;
+        repeated Story story = 2;
+    }
+    
+    message VideoMeta {
+        string url = 1;
+        uint64 duration_sec = 2;
+        string url_medium_size = 3;
+    }
+    
+    message Story {
+        CTA cta = 1;
+        uint64 duration_sec = 2;
+        uint64 start_time = 3;
+        feature.image.Image fallback_image = 4 [deprecated = true];
+        feature.image.ScreenSizeImage fallback_images = 5;
+        repeated base.Actions.Action on_story_finish_actions = 6;
+    }
+    
+    message CTA {
+        string text = 1;
+        repeated base.Actions.Action action = 2;
+    }
+}

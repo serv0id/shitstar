@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package client.ads.sgai;
+
+import "client/heartbeat/model/http_connection_stats.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/ads/sgai";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.ads.sgai";
+
+message AdBreak {
+    string break_id = 1;
+    uint64 api_latency = 2;
+    uint64 stitch_latency = 3;
+    bool is_ad_crashed = 4;
+    heartbeat.model.HttpConnectionStats api_metrics = 5;
+}

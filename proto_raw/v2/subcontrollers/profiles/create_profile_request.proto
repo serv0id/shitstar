@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package feature.login;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/profiles";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.profiles";
+
+message CreateProfileRequest {
+    string name = 1;
+    string avatar_id = 2;
+    string maturity_rating_id = 3;
+    string subscribed_to_updates = 4 [deprecated = true];
+    string parental_lock_pin = 5;
+    bool subscribe_to_updates = 6;
+    int32 age = 7;
+    string gender_key = 8 [deprecated = true];
+    
+    Gender gender_id = 9;
+    enum Gender {
+        UNKNOWN = 0;
+        MALE = 1;
+        FEMALE = 2;
+        OTHER = 3;
+        PREFER_NOT_TO_SAY = 4;
+    }
+}

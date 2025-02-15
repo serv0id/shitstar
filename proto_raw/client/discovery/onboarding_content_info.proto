@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package client.discovery;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/discovery";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.discovery";
+
+message OnboardingContentInfo {
+    int64 selected_items_count = 1;
+    repeated string selected_items = 2;
+}

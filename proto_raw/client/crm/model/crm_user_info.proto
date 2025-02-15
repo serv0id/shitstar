@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package client.crm.model;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/crm/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.crm.model";
+
+message AbExperimentFlag {
+    string name = 2;
+    string value = 1;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package client.download.model;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/download/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.download.model";
+
+enum JourneyType {
+    JOURNEY_TYPE_UNSPECIFIED = 0;
+    JOURNEY_TYPE_NORMAL = 1;
+    JOURNEY_TYPE_RETRY_MANUAL = 2;
+    JOURNEY_TYPE_RETRY_AUTO = 3;
+}

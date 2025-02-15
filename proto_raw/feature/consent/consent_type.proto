@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package feature.consent;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/consent";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.consent";
+
+enum ConsentType {
+    UNKNOWN = 0;
+    PPTOU = 1;
+    NOTIFICATION = 2;
+    SMS = 3;
+    WHATSAPP = 4;
+    EMAIL = 5;
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package feature.quiz;
+
+import "feature/image/illustration.proto";
+import "feature/quiz/title.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/quiz";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.quiz";
+
+message TitleIconCombo {
+    Title title = 1;
+    image.Illustration illustration = 2;
+}

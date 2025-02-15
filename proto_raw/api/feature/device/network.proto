@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package api.feature.device;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/feature/device";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.feature.device";
+
+message NetworkInfo {
+    bool is_wifi_on = 1;
+    string wifi_ssid = 2;
+    bool is_cellular_on = 3;
+    string cellular_mcc_mnc = 4;
+    uint32 asn = 5 [deprecated = true];
+    NetworkType network_type = 6;
+    bool is_bluetooth_on = 7;
+    uint32 network_speed_kbps = 8;
+    string carrier = 9;
+}
+
+enum NetworkType {
+    NETWORK_TYPE_UNSPECIFIED = 0;
+    NETWORK_TYPE_OFFLINE = 1;
+    NETWORK_TYPE_2G = 2;
+    NETWORK_TYPE_3G = 3;
+    NETWORK_TYPE_4G = 4;
+    NETWORK_TYPE_5G = 5;
+    NETWORK_TYPE_WIFI = 6;
+}

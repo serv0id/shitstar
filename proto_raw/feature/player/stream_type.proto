@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package feature.player;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/player";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.player";
+
+enum StreamType {
+    UNKNOWN = 0;
+    STREAM_VOD = 1;
+    STREAM_LIVE = 2;
+    STREAM_SIMULCAST = 3;
+}

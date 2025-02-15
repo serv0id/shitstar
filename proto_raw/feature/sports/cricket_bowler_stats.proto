@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package feature.sports;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/sports";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.sports";
+
+message CricketBowlerStats {
+    string overs = 1;
+    string maidens = 2;
+    string runs = 3;
+    string wickets = 4;
+    string economy = 5;
+}

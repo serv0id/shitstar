@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package feature.intervention;
+
+import "base/actions.proto";
+import "feature/commons/widget_wrapper.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/intervention";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.intervention";
+
+message ComposeDisplayIntervention {
+    Operation operation = 2;
+    message Operation {
+        base.WrapperAction should_perform_operation_action = 10;
+        
+        oneof operation {
+            AddWidget add_widget = 1;
+            RemoveWidget remove_widget = 2;
+        }
+    }
+    
+    message AddWidget {
+        Widget widget = 1;
+        FetchSource fetch_source = 2;
+    }
+    
+    message RemoveWidget {
+        Widget widget = 1;
+    }
+    
+    message Widget {
+        oneof payload {
+            string widget_url = 1;
+            commons.WidgetWrapper widget_data = 2;
+        }
+    }
+    
+    enum FetchSource {
+        DEFAULT = 0;
+        CACHE_ONLY = 1;
+        EMBEDDED = 2;
+    }
+}

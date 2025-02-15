@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package client.search;
+
+import "client/search/search_queried.proto";
+import "google/protobuf/any.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/search";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.search";
+
+message SearchSessionProperties {
+    string search_session_id = 1;
+    string search_id = 2;
+    SearchAction search_action = 5;
+    QueryInput query_input = 7;
+    uint32 search_latency = 10;
+    google.protobuf.Any other_properties = 11;
+    uint32 impression_count = 12;
+    uint32 history_tile_position = 13;
+}
+
+enum SearchAction {
+    SEARCH_ACTION_UNSPECIFIED = 0;
+    SEARCH_ACTION_RESULTS = 1;
+    SEARCH_ACTION_WATCHLIST = 2;
+    SEARCH_ACTION_CW = 3;
+    SEARCH_ACTION_DOWNLOAD = 4;
+    SEARCH_ACTION_PLAY = 5;
+    SEARCH_ACTION_PLAY_TRAILER = 6;
+    SEARCH_ACTION_SEARCH = 7;
+    SEARCH_ACTION_FILTER = 8;
+}
+
+enum QueryIntent {
+    QUERY_INTENT_UNSPECIFIED = 0;
+    QUERY_INTENT_NAV = 1;
+    QUERY_INTENT_BROAD = 2;
+}

@@ -1,0 +1,102 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/branding/brand.proto";
+import "feature/atom/button.proto";
+import "feature/login_method/login_method.proto";
+import "widget/divider.proto";
+import "widget/list.proto";
+import "widget/list_v2.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message LoginWithPhoneWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        feature.branding.Brand logo = 1 [deprecated = true];
+        string title = 2;
+        string input_label = 3;
+        string placeholder = 4;
+        SendOtpButton send_otp_button = 5;
+        string disclaimer_rich_text = 6;
+        string country_prefix = 7;
+        string phone_regex = 8;
+        string regex_error_message = 9;
+        string help_rich_text = 10;
+        int32 min_input_length = 11;
+        int32 max_input_length = 12;
+        bool is_error = 13;
+        string error_message = 14;
+        map<string, PhoneValidationRules> serviceable_countries = 15;
+        string prefix_error_message = 16;
+        string country_prefix_max_length = 17 [deprecated = true];
+        string regex_error_placeholder_message = 18;
+        int32 country_prefix_maximum_length = 19;
+        string country_selector_title = 20;
+        bool is_input_field_auto_selected = 21;
+        string sms_confirmation_text = 22 [deprecated = true];
+        BackButton back_button = 23;
+        SkipCTA skip_button = 24;
+        feature.atom.Button login_button = 25;
+        LoginData login_data = 26;
+        repeated ListSubWidget subwidget = 27;
+        bool recaptcha_v2_enabled = 28;
+        string recaptcha_v2_error_message = 29;
+    }
+    
+    reserved 3 to 10;
+    
+    message ListSubWidget {
+        oneof widget {
+            ListWidget list_widget = 1 [deprecated = true];
+            DividerWidget divider_widget = 2;
+            ListV2Widget list_widget_v2 = 3;
+        }
+    }
+    
+    message SendOtpButton {
+        string text = 1;
+        base.Actions actions = 2;
+    }
+    
+    message BackButton {
+        string icon = 1;
+        base.Actions actions = 2;
+    }
+    
+    message SkipCTA {
+        string text = 1;
+        string icon_name = 2;
+        base.Actions actions = 3;
+    }
+    
+    message PhoneValidationRules {
+        string phone_regex = 1;
+        string min_input_length = 2 [deprecated = true];
+        string max_input_length = 3 [deprecated = true];
+        string country_name = 4;
+        int32 minimum_input_length = 5;
+        int32 maximum_input_length = 6;
+        string country_code = 7;
+    }
+    
+    message LoginData {
+        feature.login_method.LoginMethod login_method = 1;
+        AnimationData animation_data = 2;
+    }
+    
+    message AnimationData {
+        string login_initiation_message = 1;
+        string login_verification_message = 2;
+        string login_completion_message = 3;
+    }
+}

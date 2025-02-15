@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package client.heartbeat.model;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/heartbeat/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.heartbeat.model";
+
+message AdEvent {
+    AdEventType event_type = 1;
+    string ca_id = 2;
+    uint64 ts_occurred_ms = 3;
+}
+
+enum AdEventType {
+    AD_EVENT_TYPE_UNSPECIFIED = 0;
+    AD_EVENT_TYPE_IMPRESSION = 1;
+    AD_EVENT_TYPE_Q25 = 2;
+    AD_EVENT_TYPE_Q50 = 3;
+    AD_EVENT_TYPE_Q75 = 5;
+    AD_EVENT_TYPE_Q100 = 6;
+    AD_EVENT_TYPE_CLICK = 7;
+}

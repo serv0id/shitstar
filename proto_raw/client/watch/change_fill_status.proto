@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package client.watch;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message ChangeFillStatusProperties {
+    Status previous_fill_type = 1;
+    enum Status {
+        STATUS_UNSPECIFIED = 0;
+        STATUS_FILL = 1;
+        STATUS_FIT = 2;
+    }
+    
+    Status new_fill_type = 2;
+}

@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/promo_landing.proto";
+import "widget/grid.proto";
+import "widget/usp_item.proto";
+import "widget/usp_details.proto";
+import "widget/divider.proto";
+import "widget/promo_landing_header.proto";
+import "widget/faq.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PromoLandingContainerWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        repeated Item items = 4;
+    }
+    
+    reserved 3 to 10;
+    
+    message Item {
+        oneof widget {
+            PromoLandingHeaderWidget header = 1;
+            PromoLandingWidget promo_landing = 2;
+            USPDetailsWidget usp_detail = 3;
+            GridWidget grid = 4;
+            DividerWidget divider = 5;
+            FAQWidget faq = 6;
+        }
+    }
+}

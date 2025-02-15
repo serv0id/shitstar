@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package client.download.model;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/download/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.download.model";
+
+message DownloadErrorInfo {
+    string error_code = 1;
+    uint32 http_error_code = 2;
+    string error_message = 3;
+    string failed_url = 4;
+    string error_logs = 5;
+    string native_error_code = 6;
+}

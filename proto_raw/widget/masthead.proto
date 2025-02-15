@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "widget/gec_masthead.proto";
+import "widget/sports_masthead.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message MastheadWidget {
+    base.Template template = 1 [deprecated = true];
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        bool auto_scroll = 1;
+        uint32 interval_in_ms = 2;
+        repeated Item items = 3;
+        RefreshInfo refresh_info = 4;
+        SlideIndicatorType slide_indicator_type = 5;
+    }
+    
+    reserved 3 to 10;
+    
+    message RefreshInfo {
+        int64 max_age_ms = 1;
+        string refresh_url = 2;
+    }
+    
+    message Item {
+        oneof widget {
+            GECMastheadWidget gec_masthead = 1;
+            SportsMastheadWidget sports_masthead = 2;
+        }
+    }
+    
+    enum SlideIndicatorType {
+        DEFAULT = 0;
+        CAROUSEL_SLIDE_INDICATOR = 1;
+        NUMBER_SLIDE_INDICATOR = 2;
+    }
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package spacedata;
+
+import "base/space_data_commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/spacedata";
+option java_multiple_files = true;
+option java_package = "com.hotstar.proto.bff.spacedata";
+
+message GridSpaceData {
+    base.SpaceDataCommons space_data_commons = 1;
+    string grid_title = 2;
+    int32 column_number = 3;
+    string more_grid_items_url = 4;
+}
