@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package composable;
+
+import "feature/accessibility/accessibility.proto";
+import "composable/base/commons.proto";
+import "composable/elements/composable.proto";
+import "base/actions.proto";
+import "composable/base/layout_traits.proto";
+import "composable/base/corner_radius.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message Width {
+    oneof value {
+        int32 fixed = 1;
+        Trait trait = 2;
+    }
+    
+    enum Trait {
+        FILL = 0;
+    }
+}
+
+message Height {
+    oneof value {
+        int32 fixed = 1;
+        Trait trait = 2;
+    }
+    
+    enum Trait {
+        HUG = 0;
+    }
+}
+
+message Image {
+    Source source = 1;
+    message Source {
+        string src = 1;
+        AspectRatio aspect_ratio = 2;
+        string src_prefix = 3;
+    }
+    
+    feature.accessibility.Accessibility accessibility = 2;
+    ComposableCommons composable_commons = 3;
+    Layout image_height = 4;
+    LayoutFillFixed image_width = 5;
+    Height height = 6 [deprecated = true];
+    Width width = 7 [deprecated = true];
+    Composable placeholder = 8;
+    CornerRadius corner_radius = 9;
+    .base.Actions actions = 10;
+}
+
+enum AspectRatio {
+    ASPECT_RATIO_UNSPECIFIED = 0;
+    ASPECT_RATIO_3_4 = 1;
+    ASPECT_RATIO_16_9 = 2;
+    ASPECT_RATIO_4_3 = 3;
+    ASPECT_RATIO_1_1 = 4;
+}

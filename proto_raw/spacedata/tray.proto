@@ -25,5 +25,7 @@ message TraySpaceData {
         HORIZONTAL = 2;
     }
     
-    reserved 2, "more_widgets_url";
+    reserved 2;
+    
+    reserved "more_widgets_url";
 }

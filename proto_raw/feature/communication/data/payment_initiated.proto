@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package feature.communication.data;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/communication/data";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.communication.data";
+
+message PaymentInitiated {
+    bool is_initiated = 1 [deprecated = true];
+    InitStatus init_status = 2;
+}
+
+enum InitStatus {
+    UNSPECIFIED = 0;
+    LOADING = 1;
+    SUCCESS = 2;
+    FAILURE = 3;
+}

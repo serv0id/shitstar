@@ -21,6 +21,8 @@ message UserInfo {
     }
     
     Plan highest_active_plan = 4;
+    string old_hid = 5;
+    string old_pid = 6;
 }
 
 message Plan {

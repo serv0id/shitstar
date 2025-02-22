@@ -8,6 +8,7 @@ import "feature/trackers/url_trackers.proto";
 import "feature/ad/display_image.proto";
 import "feature/image/screen_size_image.proto";
 import "feature/image/image.proto";
+import "feature/accessibility/accessibility.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -39,6 +40,14 @@ message CarouselDisplayAdWidget {
         
         feature.trackers.UrlTrackers tracker = 6;
         repeated Item item = 7;
+        string carousel_desc = 8;
+        
+        CarouselAdType carousel_ad_type = 9;
+        enum CarouselAdType {
+            UNKNOWN = 0;
+            STANDARD = 1;
+            ACCORDION = 2;
+        }
     }
     
     reserved 2 to 10;
@@ -48,5 +57,6 @@ message CarouselDisplayAdWidget {
         string label = 2;
         base.Actions action = 3;
         feature.trackers.UrlTrackers tracker = 4;
+        feature.accessibility.Accessibility alt = 5;
     }
 }

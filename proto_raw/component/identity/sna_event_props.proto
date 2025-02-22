@@ -13,4 +13,5 @@ message SnaEventProps {
     string response = 2;
     float response_time = 3;
     string country_prefix = 4;
+    bool force_mobile_data_usage = 5;
 }

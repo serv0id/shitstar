@@ -2,10 +2,17 @@ syntax = "proto3";
 
 package action;
 
+import "feature/request/http_token_request.proto";
+import "feature/color/color.proto";
+
 option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
 option java_multiple_files = true;
 option java_package = "com.hotstar.ui.model.action";
 
 message WebViewNavigationAction {
     string web_view_url = 2;
+    bool replace = 3;
+    feature.request.HttpTokenRequest jit = 4;
+    feature.color.Color background_color = 5;
+    bool disable_zoom = 6;
 }

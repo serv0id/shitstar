@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package client.usersignals.properties;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/usersignals/properties";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.usersignals.properties";
+
+message RatingNudgeProperties {
+    string current_rating = 1;
+    bool is_user_triggered = 2;
+    string rating_nudge_ingress_type = 3;
+}

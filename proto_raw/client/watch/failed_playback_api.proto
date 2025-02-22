@@ -5,7 +5,11 @@ package client.watch;
 import "client/player/model/client_capabilities.proto";
 import "client/player/model/playback_mode_info.proto";
 import "client/player/model/playback_pip_mode.proto";
+import "client/player/model/playback_session_info.proto";
 import "client/player/model/stream_mode.proto";
+import "client/player/model/video_initiation_type.proto";
+import "client/preload/preload_journey.proto";
+import "client/preload/preload_models.proto";
 import "client/watch/preload_playback_properties.proto";
 
 option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
@@ -23,7 +27,7 @@ message FailedPlaybackApi {
     player.model.PlayerOrientation player_orientation = 8;
     player.model.PlaybackPIPMode playback_pip_mode = 9 [deprecated = true];
     bool is_preload = 10;
-    PreloadPlaybackProperties.PreloadStatus preload_status = 11;
+    PreloadPlaybackProperties.PreloadStatus preload_status = 11 [deprecated = true];
     string player_version = 12;
     string exception_message = 13;
     player.model.StreamMode mode = 14;
@@ -31,4 +35,12 @@ message FailedPlaybackApi {
     player.model.ClientCapabilities client_capabilities = 16;
     bool is_retry_attempt = 17;
     uint32 total_time_to_failure_ms = 18;
+    string watch_session_id = 19;
+    preload.PreloadModels.DataSourceTypeDetail bff_source_type = 20;
+    preload.PreloadStatus preload_bff_status = 21;
+    player.model.PlayerOrientation previous_page_orientation = 22;
+    player.model.VideoInitiationSource initiation_source = 23;
+    player.model.VideoInitiationType initiation_type = 24;
+    string client_playback_session_id = 25;
+    player.model.PlaybackSessionInfo.StreamType stream_type = 26;
 }

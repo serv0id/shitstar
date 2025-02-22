@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package client.download.properties;
+
+import "client/download/model/download_queue_info.proto";
+import "client/download/model/download_request_info.proto";
+import "client/download/model/download_session_info.proto";
+import "client/download/model/download_size_info.proto";
+import "client/download/model/download_stat_info.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/download/properties";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.download.properties";
+
+message QueuedDownloadProperties {
+    model.DownloadSessionInfo download_session_info = 1;
+    model.DownloadStatInfo download_stat_info = 2;
+    model.DownloadSizeInfo download_size_info = 3;
+    model.DownloadRequestInfo download_request_info = 4;
+    model.DownloadQueueInfo download_queue_info = 5;
+}

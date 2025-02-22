@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/widget_commons.proto";
+import "widget/polling.proto";
+import "widget/button_stack.proto";
+import "feature/sports/game.proto";
+import "feature/refresh/refresh_info.proto";
+import "feature/sports/cricket_team.proto";
+import "feature/remind_me/remind_me_info.proto";
+import "feature/accessibility/accessibility.proto";
+import "feature/live/live_info.proto";
+import "feature/atom/button.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message MatchCardWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.live.LiveInfo live_info = 1;
+        Team team_1 = 2;
+        Team team_2 = 3;
+        string leading_info = 4;
+        string trailing_info = 5;
+        Callout match_summary = 6;
+        int64 start_time = 7;
+        ScoreCardType card_type = 8;
+        bool is_focused = 9;
+        ButtonStackWidget ctas = 10;
+        base.Actions actions = 11;
+        feature.accessibility.Accessibility alt = 12;
+        uint64 live_score_timestamp = 13;
+    }
+    
+    reserved 2 to 10;
+    
+    message Team {
+        feature.image.Image image = 1;
+        string name = 2;
+        string score_label = 3;
+        bool is_inactive = 4;
+        string id = 5;
+    }
+    
+    message Callout {
+        string title = 1;
+        bool is_highlighted = 2;
+    }
+    
+    enum ScoreCardType {
+        UNKNOWN = 0;
+        SCORES = 1;
+        DATE_TIME = 2;
+    }
+}

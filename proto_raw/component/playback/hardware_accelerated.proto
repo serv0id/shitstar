@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package component.playback;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/playback";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component.playback";
+
+enum HardwareAccelerated {
+    HARDWARE_ACCELERATED_UNSPECIFIED = 0;
+    HARDWARE_ACCELERATED_SUPPORTED = 1;
+    HARDWARE_ACCELERATED_NOT_SUPPORTED = 2;
+}

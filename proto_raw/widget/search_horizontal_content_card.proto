@@ -8,6 +8,7 @@ import "base/actions.proto";
 import "feature/image/image.proto";
 import "feature/search/badge.proto";
 import "feature/watchlist/watchlist_info.proto";
+import "feature/image/illustration.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -26,6 +27,7 @@ message SearchHorizontalContentCardWidget {
         base.Actions actions = 6;
         ExpandedContentPoster expanded_content_poster = 7;
         feature.search.Badge badge = 8;
+        feature.image.Illustration play = 9;
     }
     
     reserved 1, 3 to 10;

@@ -11,4 +11,5 @@ option java_package = "com.hotstar.ui.model.feature.error";
 message ErrorInfo {
     string title = 1;
     string message = 2;
+    string error_code = 3;
 }

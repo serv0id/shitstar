@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package action;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message ShowStickyMenuToastAction {
+    oneof toast_config {
+        InfiniteConfig infinite_config = 1;
+        TimerConfig timer_config = 2;
+    }
+    
+    message InfiniteConfig {
+        UIConfig ui_config = 1;
+    }
+    
+    message TimerConfig {
+        uint64 time_interval_ms = 1;
+        UIConfig start_timer_ui_config = 2;
+        
+        oneof end_timer_toast_config {
+            InfiniteConfig infinite_config = 3;
+            TimerConfig timer_config = 4;
+        }
+    }
+    
+    message UIConfig {
+        string message = 1;
+        string bg_color = 2;
+        string text_color = 4;
+        
+        oneof toast_drawable {
+            string icon = 3;
+        }
+    }
+}

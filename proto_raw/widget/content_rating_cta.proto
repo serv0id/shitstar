@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "widget/tooltip_action_menu.proto";
+import "feature/image/lottie.proto";
+import "feature/image/image.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ContentRatingCtaWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        string content_id = 1;
+        string rate_label = 2;
+        string rated_label = 3;
+        bool is_rated = 4;
+        base.Actions actions = 5;
+        feature.image.Lottie lottie = 6;
+        feature.image.Image image = 7;
+        TooltipActionMenuWidget tooltip_action_menu_widget = 8;
+        CTAType cta_type = 9;
+    }
+    
+    reserved 1, 3 to 10;
+    
+    enum CTAType {
+        DEFAULT = 0;
+        CENTER_VERTICAL = 1;
+        CENTER_HORIZONTAL = 2;
+    }
+}

@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package composable;
+
+import "composable/elements/text.proto";
+import "feature/accessibility/accessibility.proto";
+import "base/actions.proto";
+import "composable/elements/image.proto";
+import "composable/elements/icon.proto";
+import "composable/elements/media.proto";
+import "composable/base/commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message ButtonTileView {
+    Content content = 1;
+    message Content {
+        oneof content {
+            Icon icon = 1;
+            Image image = 2;
+            Media media = 3;
+        }
+    }
+    
+    Text label = 2;
+    feature.accessibility.Accessibility accessibility = 4;
+}
+
+message ButtonTile {
+    ButtonTileView view = 1;
+    ComposableCommons composable_commons = 2;
+    .base.Actions actions = 3;
+}

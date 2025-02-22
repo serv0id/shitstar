@@ -23,6 +23,7 @@ message DisplayAdContainerWidget {
     message Data {
         feature.refresh.RefreshInfo refresh_info = 1;
         bool auto_invoke = 8;
+        bool poll_limit_reached = 10;
         
         oneof display_ad {
             ImageDisplayAdWidget image_ad = 2;

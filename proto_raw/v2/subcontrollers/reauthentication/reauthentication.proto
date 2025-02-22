@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package feature.reauthentication;
 
+import "v2/commons/user_id_type.proto";
+
 option go_package = "github.com/hotstar/hs-core-api-go/v2/subcontrollers/reauthentication";
 option java_multiple_files = true;
 option java_package = "com.hotstar.ui.model.feature.reauthentication";
@@ -10,4 +12,21 @@ message SendVerificationCodeRequest {
     string purpose = 1;
     string channel = 2;
     string recaptcha_token = 3;
+    v2.commons.user_id_type.UserIdType user_id_type = 6;
+    
+    oneof UpdateUserIdMethod {
+        string email_address = 4;
+        string phone_number = 5;
+    }
+}
+
+message VerifyVerificationCodeRequest {
+    string purpose = 1;
+    v2.commons.user_id_type.UserIdType user_id_type = 4;
+    string verification_code = 5;
+    
+    oneof UpdateUserIdMethod {
+        string email_address = 2;
+        string phone_number = 3;
+    }
 }

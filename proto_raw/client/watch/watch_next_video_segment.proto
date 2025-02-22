@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package client.watch;
+
+import "client/player/model/video_initiation_type.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message WatchNextVideoSegment {
+    player.model.VideoInitiationSource initiation_source = 1;
+}

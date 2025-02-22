@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package composable;
+
+import "composable/elements/button.proto";
+import "composable/elements/button_icon.proto";
+import "composable/base/commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message ButtonToggle {
+    ComposableCommons composable_commons = 1;
+    
+    ToggleView toggle_off_button = 2;
+    message ToggleView {
+        oneof toggle_button {
+            ButtonView button_view = 1;
+            ButtonIconView icon_view = 2;
+        }
+    }
+    
+    ToggleView toggle_on_button = 3;
+    bool is_toggled_on = 4;
+    ToggleEventType event_type = 5;
+    string identifier = 6;
+}
+
+enum ToggleEventType {
+    UNSPECIFIED = 0;
+    REMIND_ME = 1;
+}

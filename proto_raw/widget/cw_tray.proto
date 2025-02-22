@@ -24,7 +24,9 @@ message CWTrayWidget {
         RefreshInfo refresh_info = 5;
         HeaderWidget tray_header = 6;
         
-        reserved 2, "more_widgets_url";
+        reserved 2;
+        
+        reserved "more_widgets_url";
     }
     
     reserved 3 to 10;

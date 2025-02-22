@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/refresh/refresh_info.proto";
+import "widget/uat_vertical_content_poster.proto";
+import "widget/header.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message UnifiedAttentionTrayWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        string item_template_name = 1;
+        HeaderWidget tray_header = 2;
+        string next_tray_url = 3;
+        repeated Item items = 4;
+        bool should_fallback = 5;
+    }
+    
+    reserved 2 to 10;
+    
+    message Item {
+        oneof widget {
+            UatVerticalContentPosterWidget uat_vertical_content_poster = 1;
+        }
+    }
+}

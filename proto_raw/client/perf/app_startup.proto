@@ -51,4 +51,47 @@ message AppStart {
     int64 firebase_configuration_time_ms = 27;
     int64 config_lib_init_time_ms = 28;
     bool is_pre_warm_launch = 29;
+    int64 start_api_response_time_response_interceptor_ms = 30;
+    int64 processing_time_response_header_interceptor_ms = 31;
+    int64 runblocking_time_response_header_interceptor_ms = 32;
+    int64 ops_time_oncreate_main_activity_ms = 33;
+    int64 start_up_initialiser_initialise_method_time_ms = 35;
+    int64 start_api_connection_acquired_time_ms = 36;
+    int64 start_api_request_headers_time_ms = 37;
+    int64 start_api_request_body_time_ms = 38;
+    int64 start_api_response_headers_time_ms = 39;
+    int64 splash_setup_process_time_ms = 40;
+    int64 navigation_from_splash_time_ms = 41;
+    int64 send_splash_viewed_analytics_time_ms = 42;
+    int64 mandatory_task_in_splash_time_ms = 43;
+    int64 start_api_retry_count = 44;
+    int64 document_fetch_n_load_time_ms = 46;
+    string absolute_page_url = 47;
+    int64 start_up_initializer_injection_time_ms = 48;
+    int64 processing_time_before_bff_startup_repo_ms = 49;
+    int64 bff_start_up_repo_injection_time_ms = 50;
+    int64 context_switching_bff_start_up_repo_time_ms = 51;
+    int64 bff_startup_repo_end_to_initializer_end_time_ms = 52;
+    int64 analytics_lib_operation_time_ms = 53;
+    int64 app_suite_setup_operation_time_ms = 54;
+    int64 logging_lib_setup_operation_time_ms = 55;
+    int64 download_service_setup_operation_time_ms = 56;
+    
+    DnsResolverType dns_resolver_type = 57;
+    enum DnsResolverType {
+        DNS_RESOLVER_TYPE_UNSPECIFIED = 0;
+        DNS_RESOLVER_TYPE_SYSTEM = 1;
+        DNS_RESOLVER_TYPE_GOOGLE = 2;
+        DNS_RESOLVER_TYPE_CLOUDFLARE = 3;
+    }
+    
+    bool is_loaded_from_client_cache = 58;
+    
+    HttpProtocol http_protocol = 59;
+    enum HttpProtocol {
+        HTTP_PROTOCOL_UNSPECIFIED = 0;
+        HTTP_PROTOCOL_1_1 = 1;
+        HTTP_PROTOCOL_2 = 2;
+        HTTP_PROTOCOL_3 = 3;
+    }
 }

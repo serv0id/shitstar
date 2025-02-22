@@ -12,6 +12,7 @@ import "feature/live/live_info.proto";
 import "feature/content_language_preference/content_language_preference.proto";
 import "feature/callout_tag/callout_tag.proto";
 import "feature/animation/button_animation.proto";
+import "feature/accessibility/accessibility.proto";
 import "widget/timer.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
@@ -29,6 +30,7 @@ message GECMastheadWidget {
         ContentInfo content_info = 3;
         feature.autoplay.AutoplayInfo autoplay_info = 4;
         feature.image.Image animating_vertical_img = 5;
+        feature.accessibility.Accessibility alt = 6;
     }
     
     reserved 3 to 10;
@@ -63,10 +65,15 @@ message GECMastheadWidget {
         string label = 2;
         base.Actions actions = 3;
         feature.animation.ButtonAnimation animation = 4;
+        feature.accessibility.Accessibility alt = 5;
     }
     
     message WatchlistButton {
         feature.watchlist.WatchlistInfo info = 1;
+        feature.accessibility.Accessibility alt = 2 [deprecated = true];
+        feature.accessibility.Accessibility alt_add = 3 [deprecated = true];
+        feature.accessibility.Accessibility alt_remove = 4 [deprecated = true];
+        base.Actions actions = 5;
     }
     
     message Tag {

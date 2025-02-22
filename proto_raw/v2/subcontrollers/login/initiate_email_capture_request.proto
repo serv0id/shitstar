@@ -15,4 +15,7 @@ message InitiateEmailCaptureRequest {
         OPT_IN = 1;
         ALREADY_OPTED_IN = 2;
     }
+    
+    string password = 3;
+    string recaptcha_token = 4;
 }

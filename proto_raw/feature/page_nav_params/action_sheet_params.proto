@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package feature.page_nav_params;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/page_nav_params";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.page_nav_params";
+
+message ActionSheetParams {
+    BGOverlayType bg_overlay_type = 1;
+    enum BGOverlayType {
+        DEFAULT = 0;
+        CLEAR = 1;
+        WATCH_PAGE_CURTAIN = 2;
+    }
+    
+    AutoDismissalTimer auto_dismissal_timer = 2;
+    message AutoDismissalTimer {
+        int64 timer_duration_in_seconds = 1;
+    }
+}

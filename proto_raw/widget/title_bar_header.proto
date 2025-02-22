@@ -18,6 +18,8 @@ message TitleBarHeaderWidget {
     message Data {
         string title = 1;
         ImageButton image_btn = 2;
+        ImageButton trailing_image_button = 3;
+        bool header_parallax_disabled = 4;
     }
     
     reserved 1, 3 to 10;

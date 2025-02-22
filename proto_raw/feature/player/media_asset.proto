@@ -3,6 +3,7 @@ syntax = "proto3";
 package feature.player;
 
 import "feature/player/playback_params.proto";
+import "feature/player/playback_stream_params.proto";
 import "feature/content_language_preference/content_language_preference.proto";
 import "feature/player/subtitle_asset.proto";
 
@@ -19,4 +20,5 @@ message MediaAsset {
     string session_id = 6;
     content_language_preference.ContentLanguagePreference language_preference_info = 7;
     repeated SubtitleAsset subtitle_assets = 8;
+    PlaybackStreamParams primary_stream = 9;
 }

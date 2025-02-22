@@ -14,4 +14,5 @@ message WatchPageCacheMeta {
     ClientCapabilities client_capabilities = 3;
     repeated string ab_group_ids = 4;
     int32 cdn_distribution_key = 5;
+    string max_resolution = 6;
 }

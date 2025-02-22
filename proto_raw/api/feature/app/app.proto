@@ -21,4 +21,7 @@ message App {
     
     string app_id = 5;
     bool is_spoofing_enabled = 6;
+    repeated string active_app_themes = 7;
+    string shell_app_version = 8;
+    string installing_package_name = 9;
 }

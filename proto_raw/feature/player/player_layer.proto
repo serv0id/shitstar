@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package feature.player;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/player";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.player";
+
+enum PlayerLayer {
+    INVALID = 0;
+    CONTENT_HEADER = 1;
+    STICKY_HEADER = 2;
+    OVERLAY = 3;
+    SETTINGS = 4;
+}

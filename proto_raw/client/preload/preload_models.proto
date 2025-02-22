@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package client.preload;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/preload";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.preload";
+
+message PreloadModels {
+    message VideoSegmentApiDetail {
+        string api_url = 1;
+        int64 response_time_ms = 2;
+        DataSourceType video_segment_api_source_type = 3;
+    }
+    
+    message DataSourceTypeDetail {
+        oneof data_source {
+            DataSourceTypeDetailNetwork network = 1;
+            DataSourceTypeDetailCache cache = 2;
+        }
+    }
+    
+    message DataSourceTypeDetailNetwork {
+        bool network = 1;
+    }
+    
+    message DataSourceTypeDetailCache {
+        string cache_identifier = 1;
+    }
+    
+    enum BffApi {
+        BFF_API_UNSPECIFIED = 0;
+        BFF_API_PAGE_BFF = 1;
+        BFF_API_WIDGET_BFF = 2;
+    }
+    
+    enum DataSourceType {
+        DATA_SOURCE_TYPE_UNSPECIFIED = 0;
+        DATA_SOURCE_TYPE_NETWORK = 1;
+        DATA_SOURCE_TYPE_CACHE = 2;
+    }
+    
+    enum DataType {
+        DATA_TYPE_UNSPECIFIED = 0;
+        DATA_TYPE_ADS = 1;
+        DATA_TYPE_CONTENT = 2;
+        DATA_TYPE_NO_PRELOAD = 3;
+        DATA_TYPE_FALL_BACK_TO_CONTENT = 4;
+    }
+}
+
+message PlaybackMetricsPreloadInfo {
+    PreloadModels.DataSourceType bff_preload_source_type = 4;
+    PreloadModels.DataSourceType player_data_source_type = 5;
+    repeated PreloadModels.VideoSegmentApiDetail player_data_api_details = 7;
+    PreloadModels.DataType preload_player_data_type = 8;
+}

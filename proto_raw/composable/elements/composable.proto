@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package composable;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message Composable {
+    ElementType type = 1;
+    enum ElementType {
+        TEXT = 0;
+        BUTTON = 1;
+        IMAGE = 2;
+        COMPONENT = 3;
+        CONTAINER = 4;
+        BUTTON_TILE = 5;
+        BUTTON_TILE_WATCHLIST = 6;
+        BUTTON_TILE_DOWNLOAD = 7;
+        BUTTON_TILE_RATING = 8;
+        PLAYER_MINI = 9;
+        TAGS_FIXED = 10;
+        TAGS_SCROLLABLE = 11;
+        TIMER_MINI = 12;
+        MEDIA = 13;
+        BUTTON_TOGGLE = 14;
+        TEXT_EXPANDABLE = 15;
+        BUTTON_STACK = 16;
+        BUTTON_ICON = 17;
+    }
+    
+    bytes content = 2;
+}

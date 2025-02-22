@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package client.ads.sgai;
 
+import "client/ads/sgai/creative.proto";
 import "client/heartbeat/model/http_connection_stats.proto";
 
 option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/ads/sgai";
@@ -14,4 +15,6 @@ message AdBreak {
     uint64 stitch_latency = 3;
     bool is_ad_crashed = 4;
     heartbeat.model.HttpConnectionStats api_metrics = 5;
+    uint64 break_duration_ms = 6;
+    repeated Creative creatives = 7;
 }

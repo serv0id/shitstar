@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package v2.enrichment.cachemetadata;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/enrichment/cachemetadata";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.enrichment.cachemetadata";
+
+message PaywallPageCacheMeta {
+    bool is_logged_in = 1;
+    bool is_free = 2;
+    repeated string ab_group_ids = 3;
+    repeated string cohort_unique_names = 4;
+}

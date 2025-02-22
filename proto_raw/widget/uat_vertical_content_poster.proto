@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/actions.proto";
+import "feature/accessibility/accessibility.proto";
+import "feature/autoplay/autoplay_info.proto";
+import "feature/image/image.proto";
+import "widget/unified_attention_tray_content_info.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message UatVerticalContentPosterWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.image.Image default_image = 1;
+        UnifiedAttentionTrayContentInfoWidget content_info = 2;
+        feature.autoplay.AutoplayInfo autoplay_info = 3;
+        feature.accessibility.Accessibility alt = 4;
+    }
+    
+    ExpandedStateMetaData expanded_state_metadata = 12;
+    message ExpandedStateMetaData {
+        feature.image.Image expanded_image = 1;
+        feature.image.Image title_cutout_image = 2;
+        string title = 3;
+        uint32 expand_delay_in_ms = 4;
+        repeated base.Actions.Action on_expanded_actions = 5;
+    }
+    
+    reserved 2 to 10;
+}

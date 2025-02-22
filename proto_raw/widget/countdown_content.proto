@@ -2,9 +2,12 @@ syntax = "proto3";
 
 package widget;
 
-import "base/widget_commons.proto";
-import "feature/image/image.proto";
 import "base/actions.proto";
+import "base/widget_commons.proto";
+import "feature/cw/cw_info.proto";
+import "feature/image/illustration.proto";
+import "feature/image/image.proto";
+import "feature/color/color.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -19,6 +22,8 @@ message CountdownContentWidget {
         int32 countdown = 2;
         Footer footer = 3;
         base.Actions actions = 4;
+        feature.image.Illustration play = 5;
+        feature.cw.CwInfo cw_info = 6;
     }
     
     reserved 2 to 10;
@@ -26,5 +31,7 @@ message CountdownContentWidget {
     message Footer {
         string title = 1;
         string sub_title = 2;
+        feature.color.Color title_color = 3;
+        feature.color.Color sub_title_color = 4;
     }
 }

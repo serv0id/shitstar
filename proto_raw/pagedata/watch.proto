@@ -22,6 +22,12 @@ message WatchPageData {
     feature.watch.WatchConfig watch_config = 3;
     map<string, base.Actions.Action> page_event_actions = 4;
     
+    PlayerConfig player_config = 5;
+    message PlayerConfig {
+        string av1_decoder = 1;
+        int32 hsdav1d_thread_count_percentage = 2;
+    }
+    
     message PlayerReportMenuItem {
         string icon_name = 1;
         string title = 2;

@@ -4,6 +4,7 @@ package widget;
 
 import "base/actions.proto";
 import "base/widget_commons.proto";
+import "feature/commons/widget_wrapper.proto";
 import "widget/sports_cricket_summary_card.proto";
 import "widget/voting_button.proto";
 
@@ -21,9 +22,20 @@ message PlayerActionBarWidget {
         AuxiliaryAction auxiliary_action = 3;
         AuxiliaryWidget auxiliary_widget = 4;
         repeated string subtitle_tags = 5;
+        bool show_cta_in_landscape = 6 [deprecated = true];
+        CollapseMode collapseMode = 7;
+        WidgetComponent visible_on_collapse = 8;
+        TopAccessoryWidget top_accessory_widget = 9;
     }
     
     reserved 2 to 10;
+    
+    message TopAccessoryWidget {
+        oneof data {
+            feature.commons.WidgetWrapper widget_wrapper = 1;
+            string widget_url = 2;
+        }
+    }
     
     message AuxiliaryAction {
         oneof action {
@@ -50,5 +62,19 @@ message PlayerActionBarWidget {
             CricketPollingSummaryCardWidget summary_card = 1;
             VotingButtonWidget voting_button = 2;
         }
+    }
+    
+    enum CollapseMode {
+        NONE = 0;
+        LANDSCAPE = 1;
+        PORTRAIT_LANDSCAPE = 2;
+    }
+    
+    enum WidgetComponent {
+        UNSPECIFIED = 0;
+        TITLE = 1;
+        SUB_TITLE = 2;
+        AUXILIARY_ACTION = 3;
+        AUXILIARY_WIDGET = 4;
     }
 }

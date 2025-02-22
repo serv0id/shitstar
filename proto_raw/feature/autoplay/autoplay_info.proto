@@ -2,8 +2,11 @@ syntax = "proto3";
 
 package feature.autoplay;
 
-import "feature/player/media_asset.proto";
+import "base/actions.proto";
 import "feature/content_language_preference/content_language_preference.proto";
+import "feature/image/image.proto";
+import "feature/language/language.proto";
+import "feature/player/media_asset.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/autoplay";
 option java_multiple_files = true;
@@ -13,9 +16,19 @@ message AutoplayInfo {
     string widget_url = 1 [deprecated = true];
     int64 delay_in_ms = 4;
     content_language_preference.ContentLanguagePreference language_preference_info = 5;
+    repeated ContentLanguageItem optional_language = 6;
     
     oneof data {
         string autoplay_widget_url = 2 [deprecated = true];
         player.MediaAsset media_asset = 3;
+        image.Image cover_image = 7;
     }
+}
+
+message ContentLanguageItem {
+    language.Language language = 1;
+    string description = 2;
+    bool is_default = 3;
+    bool is_selected = 4;
+    base.Actions actions = 5;
 }

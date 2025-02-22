@@ -16,4 +16,13 @@ message LoginItemData {
     LoginMode login_mode = 4;
     PageReferrer page_referrer = 5;
     LoginTemplate login_template = 6;
+    
+    ResiliencyFlag resiliency_flag = 7 [deprecated = true];
+    enum ResiliencyFlag {
+        RESILIENCY_FLAG_UNSPECIFIED = 0;
+        RESILIENCY_FLAG_ENABLED = 1;
+        RESILIENCY_FLAG_DISABLED = 2;
+    }
+    
+    LoginResiliencyMode login_resiliency_mode = 8;
 }

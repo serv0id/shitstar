@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package component.content;
 
+import "component/content/tab_list.proto";
 import "component/content/tray_callout_tag.proto";
 
 option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/content";
@@ -19,6 +20,13 @@ message Widget {
     repeated TrayCalloutTag tray_callout_tags = 8;
     int64 time_remaining_in_hrs = 9 [deprecated = true];
     bool is_timer_visible = 10 [deprecated = true];
+    int32 rows_count = 11;
+    string ranking_logic = 12;
+    TabList tab_list = 13;
+    int64 load_time_ms = 14;
+    string initiation_source = 15;
+    string theme_details = 16;
+    string view_type = 17;
 }
 
 enum WidgetSource {

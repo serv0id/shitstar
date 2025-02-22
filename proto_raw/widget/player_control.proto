@@ -5,8 +5,12 @@ package widget;
 import "base/template.proto";
 import "base/widget_commons.proto";
 import "widget/player_control_menu.proto";
+import "feature/accessibility/accessibility.proto";
 import "feature/branding/brand.proto";
 import "feature/player/heatmap.proto";
+import "feature/atom/button.proto";
+import "feature/image/illustration.proto";
+import "base/actions.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -25,14 +29,47 @@ message PlayerControlWidget {
         string live_position_tag = 12;
         feature.branding.Brand live_logo = 13;
         feature.player.Heatmap heatmap = 14;
+        feature.atom.Button cast_button = 15;
+        repeated PlayerTopControlItems player_top_control_items = 16;
     }
     
     reserved 3 to 10;
+    
+    message PlayerTopControlItems {
+        oneof items {
+            ThreeSixtyControlItem vr360 = 1;
+        }
+    }
+    
+    message ThreeSixtyControlItem {
+        string icon = 1;
+        base.Actions actions = 2;
+        ThreeSixtyPageMetadata page_metadata = 3;
+    }
+    
+    message ThreeSixtyPageMetadata {
+        string page_title = 1;
+        string page_subtitle = 2;
+        string content_id = 3;
+        string motion_tracking_toggle_label = 4;
+        string watch_in_vr_cta_label = 5;
+        string vr_swipe_gesture_label = 6;
+        string live_label = 7;
+        string error_title = 8;
+        string error_subtitle = 9;
+        string error_retry_cta_label = 10;
+        bool watch_in_vr_headset_enabled = 11;
+        bool motion_tracking_enabled = 12;
+        feature.branding.Brand brand_icon = 13;
+        feature.image.Illustration live_badge = 14;
+        base.Actions dismiss_action = 15;
+    }
     
     message ContentName {
         string title = 1;
         string subtitle = 2;
         string season_episode = 3;
+        feature.accessibility.Accessibility alt = 4;
     }
     
     message LiveInfo {

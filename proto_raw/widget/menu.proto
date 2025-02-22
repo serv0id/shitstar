@@ -20,6 +20,8 @@ message MenuWidget {
         repeated Item items = 11;
         string refresh_url = 12;
         repeated feature.app_event.AppEvent invalidate_on = 3;
+        repeated base.Actions.Action on_expand = 4;
+        repeated base.Actions.Action on_collapse = 5;
     }
     
     reserved 3 to 10;
@@ -31,5 +33,11 @@ message MenuWidget {
         string title = 4;
         bool is_active = 5;
         base.Actions actions = 6;
+        ItemTheme theme = 7;
+    }
+    
+    enum ItemTheme {
+        DEFAULT = 0;
+        SUBS_DEFAULT = 1;
     }
 }

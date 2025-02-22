@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package v2.enrichment;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/enrichment";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.enrichment";
+
+message ClientCache {
+    repeated ClientCacheItem items = 1;
+    message ClientCacheItem {
+        CacheItemType item_type = 1;
+        uint64 unique_identifier = 2;
+        uint64 last_updated_at_in_epoch = 3;
+    }
+    
+    enum CacheItemType {
+        UNSPECIFIED = 0;
+        WIDGET = 1;
+        PAGE = 2;
+        SPACE = 3;
+    }
+}

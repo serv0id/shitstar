@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package client;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client";
+
+message TrayInteractionProperties {
+    TrayInteractionEffect tray_interaction_effect = 1;
+    enum TrayInteractionEffect {
+        TRAY_INTERACTION_EFFECT_UNSPECIFIED = 0;
+        TRAY_INTERACTION_EFFECT_COLLAPSED = 1;
+        TRAY_INTERACTION_EFFECT_UNCOLLAPSED = 2;
+    }
+    
+    TrayInteractionTriggerType tray_interaction_trigger_type = 2;
+    enum TrayInteractionTriggerType {
+        TRAY_INTERACTION_TRIGGER_TYPE_UNSPECIFIED = 0;
+        TRAY_INTERACTION_TRIGGER_TYPE_CLICK_CARET = 1;
+        TRAY_INTERACTION_TRIGGER_TYPE_TAP_OUTSIDE = 2;
+    }
+}

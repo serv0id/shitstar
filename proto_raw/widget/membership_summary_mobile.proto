@@ -33,9 +33,18 @@ message MembershipSummaryMobileWidget {
     }
     
     message Cta {
-        string value = 1;
+        string value = 1 [deprecated = true];
         base.Actions action = 2;
         string strikethrough_text = 3;
+        
+        oneof button_content {
+            string text = 4;
+            ButtonAnimation animation = 5;
+        }
+    }
+    
+    message ButtonAnimation {
+        repeated feature.quiz.TitleIconCombo slide_up = 1;
     }
     
     message Subtext {

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package action;
 
-import "feature/image/image.proto";
+import "feature/player/player_settings_type.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
 option java_multiple_files = true;
@@ -13,10 +13,32 @@ message PlayerControlAction {
     message Params {
         oneof params {
             ChangeVideoQualityParams change_video_quality_params = 1;
+            GeneralControlParams general_player_action = 2;
+            OpenPlayerSettingsParams open_player_settings = 3;
         }
     }
     
     message ChangeVideoQualityParams {
         string video_quality_code = 1;
+    }
+    
+    message GeneralControlParams {
+        ControlType type = 1;
+    }
+    
+    message OpenPlayerSettingsParams {
+        repeated feature.PlayerSettingsType types = 1;
+    }
+    
+    enum ControlType {
+        DEFAULT = 0;
+        MUTE = 1;
+        UN_MUTE = 2;
+        LANDSCAPE = 3;
+        PORTRAIT = 4;
+        LOCK_SCREEN = 5;
+        UNLOCK_SCREEN = 6;
+        PAUSE = 7;
+        RESUME = 8;
     }
 }

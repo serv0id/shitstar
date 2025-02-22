@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package composable;
+
+import "composable/base/reference.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/base";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message ComposableCommons {
+    Reference bffId = 1;
+    Reference styleId = 2;
+}
+
+message ComponentCommons {
+    Reference bffId = 1;
+    Reference parentStyleId = 2;
+}

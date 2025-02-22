@@ -28,4 +28,6 @@ message DownloadInitRequest {
     string content_language = 20;
     string custom_tags = 21;
     repeated string download_ids = 22;
+    repeated string preferred_audio_languages = 23;
+    string content_type = 24;
 }

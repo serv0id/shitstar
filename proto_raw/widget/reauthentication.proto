@@ -34,5 +34,6 @@ message ReAuthenticationWidget {
     message CTA {
         string label = 1;
         base.Actions action = 2;
+        string icon_name = 3;
     }
 }

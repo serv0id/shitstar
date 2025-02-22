@@ -21,6 +21,7 @@ message SquareContentPosterWidget {
         base.Actions actions = 2;
         ExpandedContentPoster expanded_content_poster = 3;
         LiveBadge live_badge = 4;
+        string content_id = 5;
     }
     
     reserved 3 to 10;

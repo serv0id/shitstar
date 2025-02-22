@@ -19,6 +19,7 @@ message KlotskiGridWidget {
         BlockType type = 1;
         uint32 parallel_unit_number = 2;
         repeated BlockWidget blocks = 3;
+        string klotski_title = 4;
     }
     
     reserved 2 to 10;

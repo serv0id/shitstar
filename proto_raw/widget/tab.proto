@@ -5,6 +5,7 @@ package widget.category_tray;
 import "base/template.proto";
 import "base/widget_commons.proto";
 import "base/actions.proto";
+import "feature/image/illustration.proto";
 import "feature/image/image.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
@@ -23,9 +24,11 @@ message TabWidget {
         string tray_widget_url = 4 [deprecated = true];
         string sub_title = 5;
         Url url = 6;
-        feature.image.Image icon = 7;
+        feature.image.Image icon = 7 [deprecated = true];
         repeated ScreenSize disabled_screen_size_list = 8;
         base.Actions actions = 10;
+        bool instant_load = 11;
+        feature.image.Illustration illustration = 12;
     }
     
     reserved 3 to 10;

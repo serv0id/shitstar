@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package composable;
+
+import "base/widget_commons.proto";
+import "google/protobuf/any.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message ComposableWidget {
+    base.WidgetCommons widget_commons = 1;
+    google.protobuf.Any data = 10;
+    
+    reserved 2 to 9;
+}

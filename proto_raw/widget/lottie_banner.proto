@@ -7,6 +7,8 @@ import "base/widget_commons.proto";
 import "feature/image/image.proto";
 import "feature/image/lottie.proto";
 import "feature/trackers/url_trackers.proto";
+import "feature/accessibility/accessibility.proto";
+import "feature/ad/badge.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -22,6 +24,8 @@ message LottieBannerWidget {
         feature.image.Lottie lottie = 3;
         feature.trackers.UrlTrackers tracker = 4;
         string desc = 5;
+        feature.accessibility.Accessibility alt = 6;
+        feature.ad.AdBadge badge = 7;
     }
     
     reserved 2 to 10;

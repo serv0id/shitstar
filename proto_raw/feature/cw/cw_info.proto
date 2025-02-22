@@ -14,6 +14,7 @@ message CwInfo {
     WatchState watch_state = 5 [deprecated = true];
     bool overwrite_client_info = 6;
     double watch_ratio = 7;
+    string parent_content_id = 8;
 }
 
 enum WatchState {

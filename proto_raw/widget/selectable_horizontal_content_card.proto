@@ -5,6 +5,7 @@ package widget;
 import "base/widget_commons.proto";
 import "feature/image/image.proto";
 import "base/actions.proto";
+import "feature/image/lottie.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -22,6 +23,10 @@ message SelectableHorizontalContentCardWidget {
         base.Actions actions = 5;
         bool show_selector = 6;
         bool show_gradient = 7;
+        feature.image.Lottie lottie = 8;
+        feature.image.Image image = 9;
+        bool is_stacked_card_ui = 10;
+        repeated string card_label = 11;
     }
     
     reserved 2 to 10;

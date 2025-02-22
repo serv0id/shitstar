@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+package client.preload;
+
+import "client/preload/preload_journey.proto";
+import "client/preload/preload_models.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/preload";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.preload";
+
+message PreloadAdditionV2 {
+    PreloadSourceV2 preload_source_v2 = 1;
+    PreloadStatus preload_status_v2 = 2;
+}
+
+message PreloadSourceV2 {
+    PreloadSourceType preload_source_type_v2 = 3 [deprecated = true];
+    enum PreloadSourceType {
+        PRELOAD_SOURCE_TYPE_UNSPECIFIED = 0;
+        PRELOAD_SOURCE_TYPE_NETWORK = 1;
+        PRELOAD_SOURCE_TYPE_CACHE = 2;
+    }
+    
+    PreloadSourceType bff_source_type_v2 = 4 [deprecated = true];
+    PreloadModels.DataSourceTypeDetail bff_source_type_v3 = 5;
+    
+    oneof data_source_v2 {
+        Network network = 1;
+        Cache cache = 2;
+    }
+    
+    message Network {
+        
+    }
+    
+    message Cache {
+        string cache_identifier_v2 = 3;
+    }
+}
+
+message PreloadJourneyPropertiesV2 {
+    Stage preload_journey_stage = 1;
+    enum Stage {
+        STAGE_UNSPECIFIED = 0;
+        STAGE_RECEIVED = 1;
+        STAGE_START = 2;
+        STAGE_FINISH = 3;
+        STAGE_CONSUME = 4;
+        STAGE_FAILED = 5;
+    }
+    
+    ApiType preload_journey_api_type = 2;
+    enum ApiType {
+        API_TYPE_UNSPECIFIED = 0;
+        API_TYPE_PAGE_BFF = 1;
+        API_TYPE_WIDGET_BFF = 2;
+    }
+    
+    Status preload_journey_status = 3;
+    enum Status {
+        STATUS_UNSPECIFIED = 0;
+        STATUS_TRIGGERED = 1;
+        STATUS_SUCCESS = 2;
+        STATUS_FAILURE = 3;
+        STATUS_SUCCESSFUL = 4;
+        STATUS_FAILED = 5;
+        STATUS_NOT_APPLICABLE_DUE_TO_NETWORK = 6;
+        STATUS_NOT_APPLICABLE_DUE_TO_BUFFERED_DURATION = 7;
+        STATUS_NOT_APPLICABLE_DUE_TO_LPD = 8;
+        STATUS_NOT_APPLICABLE_DUE_TO_UNSUPPORTED_MASTER_MANIFEST = 9 [deprecated = true];
+        STATUS_RECEIVED = 10;
+        STATUS_CONSUMED = 11;
+        STATUS_PARTIALLY_CONSUMED = 12;
+        STATUS_NOT_APPLICABLE_DUE_TO_UNSUPPORTED_CDN = 13;
+        STATUS_NOT_APPLICABLE_DUE_TO_UNSUPPORTED_DOMAIN = 14;
+        STATUS_NOT_APPLICABLE_DUE_TO_THIRD_PARTY_AD = 15;
+        STATUS_NOT_APPLICABLE_DUE_TO_FALLBACK_AD = 16;
+        STATUS_NOT_APPLICABLE_DUE_TO_WRAPPER_RESULUTION_FAILURE = 17;
+        STATUS_NOT_APPLICABLE_DUE_TO_VAST_PARSING_FAILURE = 18;
+        STATUS_NOT_APPLICABLE_DUE_TO_UNSUPPORTED_VIDEO_FORMATE = 19;
+    }
+    
+    FailureReason preload_journey_failure_reason = 4;
+    enum FailureReason {
+        FAILURE_REASON_UNSPECIFIED = 0;
+        FAILURE_REASON_API_FAILED = 1;
+        FAILURE_REASON_NONE = 2;
+    }
+    
+    string preload_journey_url = 5;
+    string preload_journey_session_id = 6;
+    Status bff_preload = 7;
+    repeated PreloadModels.BffApi bff_preload_apis = 8;
+    Status player_data_preload = 9;
+    repeated string player_data_preload_apis = 10;
+    bool bff_preload_consumed = 11 [deprecated = true];
+    bool player_data_preload_consumed = 12 [deprecated = true];
+    PreloadModels.DataType preload_player_data_type = 13;
+}

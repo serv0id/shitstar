@@ -26,6 +26,11 @@ message EmailCaptureWidget {
         string consent_text = 12;
         ConsentStatus consent_status = 13;
         string email_address = 14;
+        string password_input_label = 15;
+        string password_placeholder = 16;
+        string password_regex = 17;
+        string password_error_message = 18;
+        string password_regex_error_message = 19;
     }
     
     reserved 2 to 10;

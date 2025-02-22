@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package client.player.properties;
+
+import "client/player/model/player_additional_info.proto";
+import "client/player/model/watch_session_properties.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/properties";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.player.properties";
+
+message BufferProperties {
+    uint32 total_buffering_time_ms = 1;
+    uint32 remaining_buffer_video_ms = 2;
+    uint32 remaining_buffer_audio_ms = 3;
+    uint32 remaining_buffer_total_ms = 4;
+    model.PlayerAdditionalInfo additional_info = 5;
+    model.WatchSessionProperties watch_session_properties = 6;
+}

@@ -8,6 +8,7 @@ import "base/actions.proto";
 import "feature/image/image.proto";
 import "feature/image/screen_size_image.proto";
 import "feature/trackers/url_trackers.proto";
+import "feature/image/illustration.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -27,10 +28,18 @@ message BaseFeedHeaderWidget {
     message Data {
         string title = 1;
         string description = 2;
+        HeaderType type = 3;
+        feature.image.Illustration icon = 4;
         base.Actions actions = 11;
     }
     
     reserved 2 to 10;
+    
+    enum HeaderType {
+        BASE = 0;
+        HIGHLIGHT_BLUE = 1;
+        HIGHLIGHT_GOLD = 2;
+    }
 }
 
 message AdsFeedHeaderWidget {

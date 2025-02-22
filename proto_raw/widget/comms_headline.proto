@@ -16,13 +16,14 @@ message CommsHeadlineWidget {
     Data data = 11;
     message Data {
         UrlSourceType url_source_type = 1 [deprecated = true];
-        string title = 4;
+        string title = 4 [deprecated = true];
         SubTitleInfo sub_title_info = 5;
         PrimaryCTA primary_cta = 6;
         DismissIcon dismiss_icon = 7;
         feature.trackers.CommunicationBannerTrackers trackers = 8;
         RefreshInfo refresh_info = 9;
         PrimaryCTA secondary_cta = 10;
+        TitleInfo title_info = 11;
         
         oneof UrlSource {
             feature.image.Image img_info = 2;
@@ -31,6 +32,11 @@ message CommsHeadlineWidget {
     }
     
     message SubTitleInfo {
+        string text = 1;
+        TextType text_type = 2;
+    }
+    
+    message TitleInfo {
         string text = 1;
         TextType text_type = 2;
     }
@@ -61,5 +67,6 @@ message CommsHeadlineWidget {
     enum TextType {
         DEFAULT = 0;
         ALERT = 1;
+        BRAND = 2;
     }
 }

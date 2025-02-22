@@ -5,6 +5,7 @@ package widget;
 import "base/widget_commons.proto";
 import "feature/image/image.proto";
 import "widget/vertical_content_poster.proto";
+import "feature/accessibility/accessibility.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -18,6 +19,7 @@ message ImageOverlayVerticalContentPosterWidget {
         feature.image.Image overlay_image = 1;
         Pivot pivot = 2;
         VerticalContentPosterWidget vertical_content_poster = 3;
+        feature.accessibility.Accessibility alt = 4;
     }
     
     reserved 2 to 10;

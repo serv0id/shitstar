@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package component.core;
+
+option deprecated = true;
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/core";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message StartApiPrefetchProperties {
+    StartApiPrefetchState start_api_prefetch_state = 1;
+    uint64 start_api_prefetch_time_ms = 2;
+    string start_api_prefetch_id = 3;
+}
+
+enum StartApiPrefetchState {
+    START_API_PREFETCH_STATE_UNSPECIFIED = 0;
+    START_API_PREFETCH_STATE_SCHEDULED = 1;
+    START_API_PREFETCH_STATE_TRIGGERED = 2;
+}

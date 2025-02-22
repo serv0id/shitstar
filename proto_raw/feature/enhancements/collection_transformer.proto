@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package feature.enhancements;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/enhancements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.enhancements";
+
+message CollectionTransformer {
+    repeated Transformer configs = 1;
+    message Transformer {
+        oneof type {
+            Deranking derank = 1;
+            Discounting discount = 2;
+        }
+    }
+    
+    message Deranking {
+        repeated Service services = 1;
+    }
+    
+    message Discounting {
+        repeated Service services = 1;
+    }
+    
+    enum Service {
+        UNSPECIFIED = 0;
+        WATCHLIST = 1;
+        CW = 2;
+    }
+}

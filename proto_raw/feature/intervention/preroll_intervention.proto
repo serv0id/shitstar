@@ -9,6 +9,7 @@ option java_package = "com.hotstar.ui.model.feature.intervention";
 message PrerollIntervention {
     bytes payload = 1 [deprecated = true];
     string vast_payload = 2 [deprecated = true];
+    bool has_third_party_wrapper = 5;
     
     oneof data {
         string vast = 3;

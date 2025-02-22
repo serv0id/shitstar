@@ -18,6 +18,9 @@ message UnifiedCacheMetadata {
     string maturity_level = 9;
     bool is_profile_kids = 10;
     bool is_upgradable = 11;
+    map<int32, ListOfCohortUniqueNames> cohort_unique_names = 12;
+    string ssai_tag = 13;
+    string max_resolution = 14;
 }
 
 message ClientCapabilities {
@@ -25,10 +28,15 @@ message ClientCapabilities {
     repeated string resolution = 2;
     repeated string ads = 3;
     repeated string container = 4;
+    repeated string orientation = 5;
 }
 
 message ListOfCohortIDs {
     repeated string cohortIDs = 1;
+}
+
+message ListOfCohortUniqueNames {
+    repeated string cohortUniqueNames = 1;
 }
 
 enum CohortGroup {

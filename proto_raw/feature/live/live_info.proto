@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package feature.live;
 
+import "feature/image/illustration.proto";
+
 option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/live";
 option java_multiple_files = true;
 option java_package = "com.hotstar.ui.model.feature.live";
@@ -16,4 +18,9 @@ message LiveInfo {
         string widget_url = 2 [deprecated = true];
         string refresh_url = 3;
     }
+    
+    string views_display_text = 4;
+    string concurrency_pattern = 5;
+    string views_pattern = 6;
+    image.Illustration status_badge = 7;
 }

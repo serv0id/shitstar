@@ -7,6 +7,7 @@ import "base/actions.proto";
 import "feature/image/image.proto";
 import "feature/image/screen_size_image.proto";
 import "feature/trackers/url_trackers.proto";
+import "feature/ad/badge.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -21,6 +22,7 @@ message ImageBannerWidget {
         base.Actions actions = 2;
         feature.image.ScreenSizeImage image = 3;
         feature.trackers.UrlTrackers tracker = 4;
+        feature.ad.AdBadge badge = 5;
     }
     
     reserved 3 to 10;

@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package client.watch;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message NudgeViewed {
+    NudgeType nudge_type = 1;
+    
+    Meta meta = 2;
+    message Meta {
+        oneof meta {
+            NetworkProblem network_problem = 1;
+        }
+    }
+}
+
+message NetworkProblem {
+    float bitrate_kbps = 1;
+    float indicated_bitrate_kbps = 2;
+}
+
+enum NudgeType {
+    NUDGE_TYPE_UNSPECIFIED = 0;
+    NUDGE_TYPE_NETWORK_PROBLEM = 1;
+}

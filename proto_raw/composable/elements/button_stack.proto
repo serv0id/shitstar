@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package composable;
+
+import "composable/elements/button.proto";
+import "composable/elements/button_icon.proto";
+import "composable/elements/button_toggle.proto";
+import "composable/base/commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message ButtonStack {
+    ComposableCommons composable_commons = 1;
+    ButtonStackView view = 2;
+}
+
+message ButtonStackView {
+    StackAlignment alignment = 1;
+    enum StackAlignment {
+        VERTICAL = 0;
+        HORIZONTAL = 1;
+    }
+    
+    ButtonPadding padding = 2;
+    enum ButtonPadding {
+        REGULAR = 0;
+        LARGE = 1;
+        NONE = 2;
+    }
+    
+    bool shows_loading = 3;
+    
+    CTA primary = 4;
+    message CTA {
+        oneof cta {
+            Button button = 1;
+            ButtonToggle button_toggle = 2;
+            ButtonIcon button_icon = 3;
+        }
+    }
+    
+    CTA secondary = 5;
+    double secondaryButtonRatio = 6;
+    
+    enum HorizontalAlignmentRatio {
+        STANDARD = 0;
+        RIGHT_CONSTRAINED = 1;
+        LEFT_CONSTRAINED = 2;
+    }
+}

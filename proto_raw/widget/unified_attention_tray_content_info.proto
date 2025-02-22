@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/tag/tag.proto";
+import "widget/spotlight_info.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message UnifiedAttentionTrayContentInfoWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        repeated feature.tag.Tag tags = 1;
+        string description = 2;
+        SpotlightInfoWidget wrapped_spotlight_info = 3;
+    }
+    
+    reserved 2 to 10;
+}

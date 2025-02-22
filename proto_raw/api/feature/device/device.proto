@@ -4,6 +4,7 @@ package api.feature.device;
 
 import "api/feature/device/network.proto";
 import "api/feature/device/ospermission.proto";
+import "api/feature/device/partner_family.proto";
 import "api/feature/device/pip.proto";
 import "api/feature/device/platform.proto";
 import "api/feature/device/push_notification.proto";
@@ -20,6 +21,7 @@ message Device {
     message DeviceIdentifier {
         string device_id = 1;
         string advertising_id = 2;
+        string device_fingerprint_id = 3;
     }
     
     Platform platform = 2;
@@ -40,6 +42,13 @@ message Device {
         uint32 max_fps = 13;
         string processor_family_name = 14;
         uint32 total_processor_count = 15;
+        PartnerFamily partner_family = 16;
+        string brand = 17;
+        string device_product_name = 18;
+        string device_board = 19;
+        string soc_manufacturer = 20;
+        string soc_model = 21;
+        uint32 max_cpu_frequency_mhz = 22;
     }
     
     PushNotification push_notification = 4;

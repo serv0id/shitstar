@@ -19,12 +19,15 @@ message PlayerAndDeviceInfo {
         PLAYER_NAME_HSPLAYER_EXOPLAYER = 1;
         PLAYER_NAME_HSPLAYER_AVPLAYER = 2;
         PLAYER_NAME_HSPLAYER_SHAKA = 3;
+        PLAYER_NAME_HSPLAYER_TILEDMEDIA = 4;
+        PLAYER_NAME_MULTICAST_LIVE_TV = 5;
     }
     
     string player_version = 4;
     string widevine_system_id = 5;
     WidevineLevel widevine_security_level = 6;
     repeated string decoders = 7;
+    PlayreadyLevel playready_security_level = 8;
 }
 
 enum WidevineLevel {
@@ -32,4 +35,11 @@ enum WidevineLevel {
     WIDEVINE_LEVEL_L1 = 1;
     WIDEVINE_LEVEL_L2 = 2;
     WIDEVINE_LEVEL_L3 = 3;
+}
+
+enum PlayreadyLevel {
+    PLAYREADY_LEVEL_UNSPECIFIED = 0;
+    PLAYREADY_LEVEL_SL150 = 1;
+    PLAYREADY_LEVEL_SL2000 = 2;
+    PLAYREADY_LEVEL_SL3000 = 3;
 }

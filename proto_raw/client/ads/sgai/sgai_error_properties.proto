@@ -12,4 +12,5 @@ option java_package = "com.hotstar.event.model.client.ads.sgai";
 message SgaiErrorProperties {
     ContentMeta content_meta = 1;
     Error error = 2;
+    string break_id = 3;
 }

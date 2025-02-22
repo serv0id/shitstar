@@ -8,12 +8,18 @@ option java_package = "com.hotstar.bff.api.v2.enrichment";
 
 message UserCohort {
     map<int32, CohortData> cohort_data = 1;
+    map<int32, CohortDataMap> cohort_data_v2 = 2;
     
     message CohortData {
         DataStatus status = 1;
         CohortIDType id_type = 2;
         repeated string cohort_ids = 3;
         repeated string cohort_names = 4;
+        repeated string unique_names = 5;
+    }
+    
+    message CohortDataMap {
+        map<int32, CohortData> cohort_data_map = 1;
     }
     
     enum DataStatus {
@@ -37,5 +43,6 @@ message UserCohort {
         IDTYPE_PID = 1;
         IDTYPE_ADID = 2;
         IDTYPE_HID = 3;
+        IDTYPE_DWDID = 4;
     }
 }

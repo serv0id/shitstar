@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package base;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/base";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.base";
+
+message CacheControl {
+    bool is_cacheable = 2;
+    int64 ttl_sec = 3;
+}

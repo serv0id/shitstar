@@ -28,8 +28,11 @@ message PaymentGateway {
         string stringified_app_click_action = 9;
         string stringified_app_on_load_action = 10;
         bool use_async_init = 11;
+        bool auto_trigger_payment_init = 12;
+        bool unavailable = 13;
         
         reserved 8;
+        
         reserved "actions";
     }
 }

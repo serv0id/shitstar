@@ -11,4 +11,12 @@ option java_package = "com.hotstar.ui.model.action";
 message HSTrackAction {
     string name = 1;
     feature.instrumentation.InstrumentationContext override_context = 2;
+    
+    HSTrackActionPriority priority = 3;
+    enum HSTrackActionPriority {
+        DEFAULT = 0;
+        NORMAL = 1;
+        HIGH = 2;
+        HIGH_WITH_CALLBACK = 3;
+    }
 }

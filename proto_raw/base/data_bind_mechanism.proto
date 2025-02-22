@@ -15,9 +15,28 @@ message DataBindMechanism {
     message SubscribeToCentralStore {
         string url = 1 [deprecated = true];
         NameSpace namespace = 2;
-        int64 polling_frequency_millisec = 3;
+        int64 polling_frequency_millisec = 3 [deprecated = true];
         int32 max_retry_count = 4;
         feature.request.HttpRequestCommons http_request_commons = 5;
+        PollConfiguration poll_config = 6;
+        int64 delay_ms = 7 [deprecated = true];
+        PollConfiguration initial_poll_config = 8;
+    }
+    
+    message PollConfiguration {
+        oneof strategy {
+            FixedIntervalPoll fixed_interval = 1;
+            JitteredIntervalPoll jittered_interval = 2;
+        }
+    }
+    
+    message FixedIntervalPoll {
+        int64 interval_ms = 1;
+    }
+    
+    message JitteredIntervalPoll {
+        int64 min_interval_ms = 1;
+        int64 max_interval_ms = 2;
     }
     
     enum NameSpace {
@@ -25,5 +44,6 @@ message DataBindMechanism {
         CRICKET_SCORE_CARD = 1;
         TV_CHANNEL = 2;
         LOGIN_WITH_QR = 3;
+        FENCE_AD = 4;
     }
 }

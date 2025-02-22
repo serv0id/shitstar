@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package feature.atom;
+
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/atom";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.atom";
+
+message Link {
+    Data data = 3;
+    message Data {
+        base.Actions actions = 2;
+        
+        oneof decorator {
+            string text = 1;
+        }
+    }
+    
+    reserved 1 to 2;
+}

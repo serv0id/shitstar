@@ -6,6 +6,7 @@ import "base/widget_commons.proto";
 import "base/actions.proto";
 import "feature/image/image.proto";
 import "widget/spotlight_info.proto";
+import "feature/accessibility/accessibility.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -20,6 +21,8 @@ message HorizontalContentPosterWidget {
         base.Actions actions = 2;
         SpotlightInfoWidget spotlight_info = 3;
         LiveBadge live_badge = 4;
+        feature.accessibility.Accessibility alt = 5;
+        string content_id = 6;
     }
     
     reserved 1, 3 to 10;

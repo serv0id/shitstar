@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package composable;
+
+import "composable/base/commons.proto";
+import "composable/elements/composable.proto";
+import "feature/autoplay/autoplay_info.proto";
+import "composable/base/corner_radius.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message PlayerMini {
+    ComposableCommons composable_commons = 1;
+    feature.autoplay.AutoplayInfo autoplay_info = 2;
+    Composable placeholder = 3;
+    CornerRadius corner_radius = 6;
+}

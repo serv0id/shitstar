@@ -46,5 +46,6 @@ message ShortHeadlineWidget {
     enum TextType {
         DEFAULT = 0;
         ALERT = 1;
+        BRAND = 2;
     }
 }

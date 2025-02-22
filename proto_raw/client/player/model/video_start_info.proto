@@ -22,4 +22,5 @@ message VideoStartInfo {
     uint32 first_subtitle_file_load_time_ms = 13;
     uint32 drm_certificate_load_time_ms = 14;
     uint32 bff_load_time_ms = 15;
+    uint32 preroll_resolution_failure_wait_time_ms = 16;
 }

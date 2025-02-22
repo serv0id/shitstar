@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package composable;
+
+import "base/actions.proto";
+import "composable/elements/button_tile.proto";
+import "google/protobuf/any.proto";
+import "composable/base/commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message ButtonTileRating {
+    RatingButtonStates states = 1;
+    message RatingButtonStates {
+        ButtonTileView default = 1;
+        ButtonTileView rated = 2;
+    }
+    
+    google.protobuf.Any tooltip_action_menu_widget = 2;
+    string content_id = 3;
+    ComposableCommons composable_commons = 4;
+    .base.Actions actions = 6;
+    bool is_rated = 7;
+}

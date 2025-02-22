@@ -24,6 +24,8 @@ message RefreshableStatusWidget {
         bool is_closable = 8;
         repeated base.Actions.Action on_load_actions = 9;
         bool use_force_refresh = 10;
+        bool is_plan_active = 11;
+        int64 polling_timeout_in_ms = 12;
         
         oneof media_item {
             feature.image.Image img = 2;

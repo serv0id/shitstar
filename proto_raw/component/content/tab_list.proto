@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package component.content;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/content";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message TabList {
+    string selected_tab_name = 1;
+    int64 selected_tab_index = 2;
+    int64 count = 3 [deprecated = true];
+    int64 tab_count = 4;
+}

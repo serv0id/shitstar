@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package feature.tag;
+
+import "feature/callout_tag/callout_tag.proto";
+import "feature/image/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/tag";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.tag";
+
+message Tag {
+    oneof tag {
+        TextTag text_tag = 1;
+        BadgeTag badge_tag = 2;
+        ImageTag image_tag = 3;
+        callout_tag.CalloutTag callout_tag = 4;
+    }
+    
+    message TextTag {
+        string value = 1;
+    }
+    
+    message BadgeTag {
+        string value = 1;
+    }
+    
+    message ImageTag {
+        image.Image value = 1;
+    }
+}

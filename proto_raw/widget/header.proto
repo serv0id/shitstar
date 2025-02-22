@@ -6,7 +6,10 @@ import "base/actions.proto";
 import "feature/image/image.proto";
 import "base/widget_commons.proto";
 import "feature/atom/button.proto";
+import "feature/text/text.proto";
 import "feature/callout_tag/callout_tag.proto";
+import "feature/accessibility/accessibility.proto";
+import "widget/button_stack.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -29,6 +32,8 @@ message HeaderWidget {
             AnchoredTrayHeader anchored_tray_header = 2;
             BrandedTrayHeader branded_tray_header = 3;
             DecoratedTrayHeader decorated_tray_header = 4;
+            FilterTrayHeader filter_tray_header = 5;
+            SurfaceTrayHeader surface_tray_header = 6;
         }
     }
     
@@ -36,6 +41,7 @@ message HeaderWidget {
         string title = 1;
         base.Actions actions = 2;
         feature.atom.Button cta = 3;
+        feature.accessibility.Accessibility alt = 4;
     }
     
     message AnchoredTrayHeader {
@@ -44,12 +50,14 @@ message HeaderWidget {
         feature.image.Image image = 3;
         base.Actions actions = 4;
         feature.atom.Button cta = 5;
+        feature.accessibility.Accessibility alt = 6;
     }
     
     message BrandedTrayHeader {
         feature.image.Image image = 1;
         base.Actions actions = 2;
         feature.atom.Button cta = 3;
+        feature.accessibility.Accessibility alt = 4;
     }
     
     message DecoratedTrayHeader {
@@ -57,6 +65,28 @@ message HeaderWidget {
         string sub_title = 2;
         base.Actions actions = 3;
         feature.atom.Button cta = 4;
+        feature.accessibility.Accessibility alt = 5;
+    }
+    
+    message SurfaceTrayHeader {
+        feature.text.Text title_text = 1;
+        feature.text.Text sub_title_text = 2;
+        base.Actions actions = 3;
+        feature.atom.Button cta = 4;
+        feature.accessibility.Accessibility alt = 5;
+    }
+    
+    message FilterTrayHeader {
+        Header header = 1;
+        
+        repeated Item items = 2;
+        message Item {
+            bool is_selected = 2;
+            
+            oneof widget {
+                ButtonStackWidget button_stack = 1;
+            }
+        }
     }
     
     enum WidgetAlignment {

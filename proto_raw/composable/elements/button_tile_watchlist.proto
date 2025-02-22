@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package composable;
+
+import "base/actions.proto";
+import "composable/elements/button_tile.proto";
+import "composable/elements/image.proto";
+import "composable/base/commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message ButtonTileWatchlist {
+    WatchlistButtonStates states = 1;
+    message WatchlistButtonStates {
+        ButtonTileView default = 1;
+        ButtonTileView added = 2;
+    }
+    
+    WatchlistInfo info = 2;
+    message WatchlistInfo {
+        string content_id = 1;
+        bool is_watchlisted = 2;
+        int64 timestamp = 3;
+        string content_title = 4;
+    }
+    
+    .base.Actions actions = 3;
+    Image.Source thumbnail = 4;
+    ComposableCommons composable_commons = 5;
+}

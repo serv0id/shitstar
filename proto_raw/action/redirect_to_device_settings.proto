@@ -10,4 +10,5 @@ option java_package = "com.hotstar.ui.model.action";
 
 message RedirectToDeviceSettingsAction {
     feature.model.AppPermission app_permission = 1;
+    string trigger_source = 2;
 }

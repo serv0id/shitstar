@@ -9,7 +9,14 @@ option java_package = "com.hotstar.event.model.client.perf";
 message FrozenFrame {
     string page_name = 1;
     int32 duration_ms = 2;
-    repeated MoreInfo more_infos = 3;
+    repeated MoreInfo more_infos = 3 [deprecated = true];
+    bool is_scrolling_vertically = 4;
+    string last_action = 5;
+    string last_interacted_element = 6;
+    string web_sub_type = 7;
+    string web_load_state = 8;
+    double heap_memory_used_bytes = 9;
+    double heap_memory_available_bytes = 10;
 }
 
 message MoreInfo {

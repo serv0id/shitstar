@@ -30,7 +30,9 @@ message LogoWidget {
         string nudge_text = 2;
         base.Actions actions = 3;
         
-        reserved 1, "type";
+        reserved 1;
+        
+        reserved "type";
     }
 }
 

@@ -18,6 +18,9 @@ import "feature/content_language_preference/content_language_preference.proto";
 import "feature/language/language.proto";
 import "feature/callout_tag/callout_tag.proto";
 import "widget/lottie_banner.proto";
+import "widget/content_rating_cta.proto";
+import "feature/accessibility/accessibility.proto";
+import "widget/timer.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -42,6 +45,7 @@ message HeroGECWidget {
         ContentCTAButton secondary_button = 11;
         feature.image.Image animating_vertical_img = 12;
         LottieBannerWidget lottie_banner = 13;
+        HeroGECUiType hero_gec_ui_type = 14;
     }
     
     reserved 3 to 10;
@@ -57,6 +61,7 @@ message HeroGECWidget {
             string type = 1 [deprecated = true];
             string value = 2 [deprecated = true];
             base.Actions actions = 3 [deprecated = true];
+            feature.accessibility.Accessibility alt = 8 [deprecated = true];
             
             oneof tag {
                 TextTag text_tag = 4;
@@ -75,6 +80,11 @@ message HeroGECWidget {
         ContentLanguageSelector content_language_selector = 12;
         repeated Tag callout_meta_tags = 13;
         repeated Tag secondary_meta_tags = 14;
+        feature.accessibility.Accessibility alt = 15;
+        feature.accessibility.Accessibility core_meta_tags_alt = 16;
+        feature.accessibility.Accessibility enriched_meta_tags_alt = 17;
+        feature.accessibility.Accessibility callout_meta_tags_alt = 18;
+        TimerWidget timer = 19;
         
         message TextTag {
             string value = 1;
@@ -104,6 +114,7 @@ message HeroGECWidget {
                 WatchlistContentActionButton watchlist_content_action_button = 2;
                 DownloadContentActionButton download_content_action_button = 3;
                 CommunityJoinActionButton community_content_action_button = 4;
+                ContentRatingCtaWidget content_rating_cta_widget = 5;
             }
         }
     }
@@ -113,17 +124,20 @@ message HeroGECWidget {
         string sublabel = 2;
         base.Actions actions = 3;
         string icon_name = 4;
+        feature.accessibility.Accessibility alt = 5;
     }
     
     message IconLabelContentActionButton {
         string icon_name = 1;
         string label = 2;
         base.Actions actions = 3;
+        feature.accessibility.Accessibility alt = 4;
     }
     
     message WatchlistContentActionButton {
         feature.watchlist.WatchlistInfo info = 1;
         base.Actions actions = 2;
+        feature.accessibility.Accessibility alt = 3 [deprecated = true];
     }
     
     message CommunityJoinActionButton {
@@ -131,16 +145,19 @@ message HeroGECWidget {
         bool is_enabled = 2;
         string callback_url = 3;
         base.Actions actions = 4;
+        feature.accessibility.Accessibility alt = 5;
     }
     
     message DownloadContentActionButton {
         string label = 1;
         feature.download.DownloadInfo download_info = 2;
         base.Actions actions = 3;
+        feature.accessibility.Accessibility alt = 4;
     }
     
     message ContentLanguageSelector {
         repeated ContentLanguageItem languages = 1;
+        feature.accessibility.Accessibility alt = 2;
     }
     
     message ContentLanguageItem {
@@ -160,5 +177,13 @@ message HeroGECWidget {
     
     message RemindMeCTAButton {
         feature.remind_me.ReminderInfo remind_me_info = 1;
+        feature.accessibility.Accessibility alt = 2 [deprecated = true];
+    }
+    
+    enum HeroGECUiType {
+        DEFAULT = 0;
+        BROWSE_SHEET = 1;
+        FEED_CARD = 2;
+        ACTION_SHEET = 3;
     }
 }

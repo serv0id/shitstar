@@ -3,6 +3,7 @@ syntax = "proto3";
 package client.watch;
 
 import "client/player/model/playback_mode_info.proto";
+import "client/player/model/stream_mode.proto";
 
 option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
 option java_multiple_files = true;
@@ -26,4 +27,5 @@ message WatchTabInteracted {
     string current_title = 7;
     string stream_state = 8;
     player.model.PlayerOrientation player_orientation = 9;
+    player.model.StreamMode mode = 10;
 }

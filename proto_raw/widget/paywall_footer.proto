@@ -8,6 +8,7 @@ import "action/web_view_navigation.proto";
 import "action/page_navigation.proto";
 import "action/external_navigation.proto";
 import "action/mail_to.proto";
+import "feature/accessibility/accessibility.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -27,6 +28,7 @@ message PaywallFooterWidget {
     
     message Link {
         string label = 1;
+        feature.accessibility.Accessibility alt = 6;
         
         oneof linkAction {
             action.ExternalNavigationAction external_url = 2;

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package feature.intervention;
+
+import "feature/intervention/interventions.proto";
+import "feature/intervention/intervention_source.proto";
+import "feature/intervention/event_interventions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/intervention";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.intervention";
+
+message PlayerIntervention {
+    repeated Intervention relative_interventions = 1;
+    repeated InterventionSource sources = 2;
+    repeated Intervention absolute_interventions = 3;
+    repeated EventIntervention event_interventions = 4;
+}

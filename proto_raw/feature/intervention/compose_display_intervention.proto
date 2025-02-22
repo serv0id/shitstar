@@ -4,6 +4,9 @@ package feature.intervention;
 
 import "base/actions.proto";
 import "feature/commons/widget_wrapper.proto";
+import "base/orientation.proto";
+import "feature/commons/alignment.proto";
+import "feature/player/player_layer.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/intervention";
 option java_multiple_files = true;
@@ -23,6 +26,7 @@ message ComposeDisplayIntervention {
     message AddWidget {
         Widget widget = 1;
         FetchSource fetch_source = 2;
+        Modifier modifier = 3;
     }
     
     message RemoveWidget {
@@ -34,6 +38,12 @@ message ComposeDisplayIntervention {
             string widget_url = 1;
             commons.WidgetWrapper widget_data = 2;
         }
+    }
+    
+    message Modifier {
+        player.PlayerLayer player_layer = 1;
+        base.Orientation orientation = 2;
+        commons.Alignment alignment = 3;
     }
     
     enum FetchSource {

@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package feature.atom;
 
+import "feature/atom/button.proto";
 import "feature/atom/toggle_button.proto";
 import "feature/atom/toggle_lottie_button.proto";
 
@@ -24,15 +25,26 @@ message CTA {
     oneof cta {
         ToggleButton toggle_button = 1;
         ToggleLottieButton toggle_lottie_button = 2;
+        Button button = 3;
     }
 }
 
 message EventData {
     oneof event_data {
         ToggleEventData toggle_event_data = 1;
+        PlayerFreePreviewNudgeData player_subs_nudge_data = 2;
     }
 }
 
 message ToggleEventData {
     bool is_selected = 1;
+}
+
+message PlayerFreePreviewNudgeData {
+    int64 total_duration_s = 1;
+    int64 start_shown_duration_s = 2;
+    int64 end_shown_duration_s = 3;
+    string timer_placeholder = 4;
+    int64 current_time_stamp_s = 5;
+    string seek_thumbnail_subs_info = 6;
 }

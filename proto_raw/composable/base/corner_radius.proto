@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package composable;
+
+import "composable/tokens/dls_tokens.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/base";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message CornerRadius {
+    tokens.DLSRadius topStart = 1;
+    tokens.DLSRadius topEnd = 2;
+    tokens.DLSRadius bottomStart = 3;
+    tokens.DLSRadius bottomEnd = 4;
+}

@@ -112,6 +112,11 @@ message QosEventMetadata {
         DATA_TYPE_CERTIFICATE = 8;
         DATA_TYPE_BFF = 9;
         DATA_TYPE_PC = 10;
+        DATA_TYPE_CHECK_DOWNLOAD = 11;
+        DATA_TYPE_START_DOWNLOAD = 12;
+        DATA_TYPE_CLIENT_CAPABILITIES = 13;
+        DATA_TYPE_PROTO_PARSING = 14;
+        DATA_TYPE_PLAYER_INITIALIZATION = 15;
     }
     
     PlayingAd playing_ad = 68;
@@ -170,6 +175,19 @@ message QosEventMetadata {
     repeated SpeedTestInfo speed_test_infos = 102;
     repeated Buffered buffereds = 103;
     bool is_resume_from_seek = 104;
+    string cdn_name = 105;
+    string url_host = 106;
+    int64 timestamp_difference_ms = 107;
+    bool is_buffering = 108;
+    int64 video_stuck_duration_ms = 109;
+    string connection_speed = 110;
+    int64 stream_bandwidth_kbps = 111;
+    int64 manifest_period_count = 112;
+    int64 audio_buffer_length = 113;
+    int64 gaps_jumped = 114;
+    int64 buffered_start_time_ms = 115;
+    int64 buffered_end_time_ms = 116;
+    bool is_retrying_with_last_playback_asset = 117;
 }
 
 message Tracks {

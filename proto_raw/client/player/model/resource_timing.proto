@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package client.player.model;
+
+import "client/player/model/http_protocol.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.player.model";
+
+message ResourceTiming {
+    int64 response_time_ms = 1;
+    uint32 http_status = 2;
+    HTTPProtocol http_protocol = 3;
+    uint32 dns_lookup_time_ms = 4;
+    uint32 tcp_handshake_time_ms = 5;
+    uint32 ttfb_ms = 6;
+    uint32 fetch_until_response_time_ms = 7;
+    uint32 tls_negotiation_time_ms = 8;
+    uint32 transfer_size = 9;
+    uint32 decoded_body_size = 10;
+    string render_blocking_status = 11;
+    bool is_cache_hit = 12;
+    string url = 13;
+}

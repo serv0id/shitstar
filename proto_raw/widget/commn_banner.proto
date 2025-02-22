@@ -6,6 +6,8 @@ import "base/widget_commons.proto";
 import "base/actions.proto";
 import "feature/image/image.proto";
 import "feature/trackers/communication_banner_trackers.proto";
+import "feature/atom/button.proto";
+import "feature/text/text.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -19,12 +21,14 @@ message CommnBannerWidget {
         feature.image.Image bg_image = 1;
         feature.image.Image hero_image = 2;
         string title = 3;
-        CTA cta = 4;
+        CTA cta = 4 [deprecated = true];
         base.Actions actions = 5;
         string title_color = 6 [deprecated = true];
         BackgroundColor background_color = 7 [deprecated = true];
         feature.trackers.CommunicationBannerTrackers communication_banner_trackers = 8;
         RefreshInfo refresh_info = 9;
+        SubtitleInfo subtitle_info = 10;
+        feature.atom.Button primary_button = 11;
     }
     
     reserved 3 to 10;
@@ -43,5 +47,18 @@ message CommnBannerWidget {
         string text = 1;
         string color = 2 [deprecated = true];
         string icon_name = 3;
+    }
+    
+    message SubtitleInfo {
+        string sub_title = 1 [deprecated = true];
+        string icon_name = 2;
+        
+        Alignment alignment = 3;
+        enum Alignment {
+            DEFAULT = 0;
+            ABOVE_TITLE = 1;
+        }
+        
+        feature.text.Text sub_title_text = 4;
     }
 }

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package v2.enrichment.cachemetadata;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/enrichment/cachemetadata";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.enrichment.cachemetadata";
+
+message SpaceCacheMeta {
+    string user_primary_language = 1;
+    bool is_logged_in = 2;
+    bool is_free = 3;
+    repeated string cohort_ids = 4;
+    string maturity_level = 5;
+    repeated string ab_group_ids = 6;
+}

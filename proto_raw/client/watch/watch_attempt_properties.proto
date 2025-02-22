@@ -2,7 +2,10 @@ syntax = "proto3";
 
 package client.watch;
 
+import "client/player/model/playback_mode_info.proto";
+import "client/player/model/playback_session_info.proto";
 import "client/player/model/stream_mode.proto";
+import "client/player/model/video_initiation_type.proto";
 import "client/watch/preload_playback_properties.proto";
 import "component/content/content.proto";
 
@@ -20,8 +23,14 @@ message WatchAttemptProperties {
     string client_page_id = 7;
     string play_type = 8;
     bool is_preload = 9;
-    PreloadPlaybackProperties.PreloadStatus preload_status = 10;
+    PreloadPlaybackProperties.PreloadStatus preload_status = 10 [deprecated = true];
     string player_version = 11;
     player.model.StreamMode mode = 12;
     bool is_other_content_in_pip = 13;
+    string watch_session_id = 14;
+    player.model.PlayerOrientation previous_page_orientation = 15;
+    player.model.VideoInitiationSource initiation_source = 16;
+    player.model.VideoInitiationType initiation_type = 17;
+    string client_playback_session_id = 18;
+    player.model.PlaybackSessionInfo.StreamType stream_type = 19;
 }

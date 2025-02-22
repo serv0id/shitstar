@@ -20,6 +20,9 @@ message CappingRules {
         Rule per_n_month = 4;
         Rule per_n_year = 5;
         Rule per_lifetime = 6;
+        Rule per_n_minute = 7;
+        Rule per_n_second = 8;
+        Rule after_n_app_launch = 9;
     }
 }
 

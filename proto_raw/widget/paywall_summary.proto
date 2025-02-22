@@ -28,7 +28,9 @@ message PaywallSummaryWidget {
         repeated PlanCallouts plan_callouts = 8;
         OfferWidget offer = 9;
         
-        reserved 5, "info";
+        reserved 5;
+        
+        reserved "info";
     }
     
     reserved 3 to 10;

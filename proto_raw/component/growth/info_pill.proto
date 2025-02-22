@@ -11,8 +11,10 @@ message InfoPillProperties {
     enum PillType {
         PILL_TYPE_UNSPECIFIED = 0;
         PILL_TYPE_CRICKET = 1;
+        PILL_TYPE_TIMER_RUNNING = 2;
     }
     
     string content_id = 2 [deprecated = true];
     string match_content_id = 3;
+    string cta_display_text = 4;
 }

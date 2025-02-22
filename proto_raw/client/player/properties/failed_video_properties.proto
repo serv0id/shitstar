@@ -9,6 +9,8 @@ import "client/player/model/playback_pip_mode.proto";
 import "client/player/model/playback_session_info.proto";
 import "client/player/model/playback_state_info.proto";
 import "client/player/model/player_and_device_info.proto";
+import "client/preload/preload_journey.proto";
+import "client/preload/preload_models.proto";
 import "client/watch/preload_playback_properties.proto";
 
 option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/properties";
@@ -25,6 +27,10 @@ message FailedVideoProperties {
     bool is_casting = 7;
     model.PlaybackPIPMode playback_pip_mode = 8 [deprecated = true];
     bool is_preload = 9;
-    watch.PreloadPlaybackProperties.PreloadStatus preload_status = 10;
+    watch.PreloadPlaybackProperties.PreloadStatus preload_status = 10 [deprecated = true];
     model.PlaybackPipMode playback_pip_mode_v2 = 11;
+    preload.PreloadAddition preload_info = 12;
+    preload.PlaybackMetricsPreloadInfo preload_video_content_info = 13;
+    int64 free_timer_consumed_time_ms = 14 [deprecated = true];
+    int32 free_timer_accumulated_consumed_time_ms = 15;
 }

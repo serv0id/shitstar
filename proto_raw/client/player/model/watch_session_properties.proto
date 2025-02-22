@@ -29,4 +29,13 @@ message WatchSessionProperties {
     uint32 video_down_shift_count = 20;
     uint32 induced_buffer_time_ms = 21;
     uint32 induced_buffer_count = 22;
+    uint32 msq_error_count_audio = 23;
+    uint32 missing_discontinuity_tag_count_audio = 24;
+    uint32 stale_manifest_count = 25;
+    uint32 stale_manifest_count_audio = 26;
+    uint32 video_sink_timestamp_jump_seek_count = 27;
+    uint32 video_playback_stuck_count = 28;
+    uint32 video_playback_unstuck_count = 29;
+    uint32 battery_used_mah = 30;
+    bool is_battery_drain_reliable = 31;
 }

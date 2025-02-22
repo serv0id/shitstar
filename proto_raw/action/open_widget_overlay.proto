@@ -20,6 +20,7 @@ message OpenWidgetOverlayAction {
         int32 dismiss_time_in_sec = 1;
     }
     
+    bool is_non_cancelable = 6;
     string url = 1 [deprecated = true];
     
     oneof data {

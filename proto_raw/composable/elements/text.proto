@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package composable;
+
+import "feature/accessibility/accessibility.proto";
+import "feature/color/color.proto";
+import "composable/tokens/dls_tokens.proto";
+import "base/actions.proto";
+import "composable/base/commons.proto";
+import "composable/base/layout_traits.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message Text {
+    string label = 1;
+    tokens.DLSTypography typography = 2;
+    feature.color.Color color = 3;
+    feature.accessibility.Accessibility accessibility = 4;
+    
+    Alignment alignment = 5;
+    enum Alignment {
+        LEFT = 0;
+        CENTER = 1;
+        RIGHT = 2;
+        JUSTIFIED = 3;
+    }
+    
+    ComposableCommons composable_commons = 6;
+    .base.Actions actions = 7;
+    LayoutHugFill width = 8;
+}

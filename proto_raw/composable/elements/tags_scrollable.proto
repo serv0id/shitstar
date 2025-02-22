@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package composable;
+
+import "composable/elements/tags_fixed.proto";
+import "composable/base/commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message TagsScrollable {
+    ComposableCommons composable_commons = 1;
+    TagsView view = 2;
+}

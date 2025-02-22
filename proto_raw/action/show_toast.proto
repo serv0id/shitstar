@@ -10,11 +10,19 @@ message ShowToastAction {
     string message = 1;
     DurationType duration_type = 2;
     string cta_label = 5;
+    SupportedOrientation supported_orientation = 7;
     
     oneof toast_drawable {
         string icon = 3;
         ToastType toast_type = 4;
+        string local_image = 6;
     }
+}
+
+enum SupportedOrientation {
+    ALL = 0;
+    PORTRAIT = 1;
+    LANDSCAPE = 2;
 }
 
 enum DurationType {

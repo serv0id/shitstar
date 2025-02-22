@@ -26,4 +26,5 @@ message Session {
     uint64 ts_session_start_ms = 3;
     string appsuite_id = 4;
     string appsuite_type = 5;
+    string seo_referrer = 6;
 }

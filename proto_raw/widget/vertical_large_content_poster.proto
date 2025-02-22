@@ -6,6 +6,7 @@ import "base/template.proto";
 import "base/widget_commons.proto";
 import "base/actions.proto";
 import "feature/image/image.proto";
+import "feature/accessibility/accessibility.proto";
 import "feature/autoplay/autoplay_info.proto";
 import "feature/content_language_preference/content_language_preference.proto";
 import "feature/language/language.proto";
@@ -27,6 +28,8 @@ message VerticalLargeContentPosterWidget {
         base.Actions actions = 2;
         ExpandedContentPosterWidget expanded_content_poster = 3;
         LiveBadge live_badge = 4;
+        feature.accessibility.Accessibility alt = 5;
+        string content_id = 6;
     }
     
     reserved 3 to 10;

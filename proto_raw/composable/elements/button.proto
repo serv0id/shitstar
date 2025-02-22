@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package composable;
+
+import "base/actions.proto";
+import "feature/accessibility/accessibility.proto";
+import "composable/elements/icon.proto";
+import "feature/cw/cw_info.proto";
+import "composable/elements/text.proto";
+import "feature/color/color.proto";
+import "composable/base/commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message Button {
+    ComposableCommons composable_commons = 1;
+    ButtonView view = 2;
+}
+
+message ProgressInfo {
+    oneof info {
+        feature.cw.CwInfo cw_info = 1;
+        Progress progress = 2;
+    }
+}
+
+message Progress {
+    double ratio = 1;
+}
+
+message ButtonView {
+    Text label = 1;
+    Text sub_label = 2;
+    Icon leading_icon = 3;
+    Icon trailing_icon = 4;
+    ButtonType type = 5;
+    feature.accessibility.Accessibility accessibility = 6;
+    feature.color.Color seekbarColor = 7;
+    .base.Actions actions = 8;
+    ProgressInfo progress = 9;
+}
+
+enum ButtonType {
+    BRAND = 0;
+    INVERSE = 1;
+    SUBTLE = 2;
+    TRANSLUCENT = 3;
+    TRANSPARENT = 4;
+}

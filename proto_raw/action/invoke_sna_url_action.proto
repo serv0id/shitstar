@@ -10,4 +10,5 @@ option java_package = "com.hotstar.ui.model.action";
 
 message InvokeSnaUrlAction {
     feature.request.HttpRequestCommons request_commons = 1;
+    bool force_mobile_data_usage = 2;
 }

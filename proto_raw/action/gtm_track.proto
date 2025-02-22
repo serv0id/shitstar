@@ -3,6 +3,8 @@ syntax = "proto3";
 package action;
 
 import "feature/payment/payment_status_track_meta.proto";
+import "feature/gtm_event/login_success_track_meta.proto";
+import "feature/gtm_event/ecommerce_events_track_meta.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
 option java_multiple_files = true;
@@ -13,5 +15,7 @@ message GTMTrackAction {
     
     oneof payload {
         feature.payment.PaymentStatusTrackMeta payment_status_gtm_meta = 2;
+        feature.gtm_event.LoginSuccessTrackMeta login_success_gtm_meta = 3;
+        feature.gtm_event.EcommerceEventsTrackMeta ecommerce_events_gtm_meta = 4;
     }
 }

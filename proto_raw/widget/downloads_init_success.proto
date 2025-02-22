@@ -3,6 +3,7 @@ syntax = "proto3";
 package widget;
 
 import "base/widget_commons.proto";
+import "base/actions.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -16,6 +17,7 @@ message DownloadsInitSuccessWidget {
         string downloads_id = 1;
         string storage_expiration_duration_in_seconds = 2;
         string playback_expiration_duration_in_seconds = 3;
+        repeated base.Actions.Action download_queued_actions = 4;
     }
     
     reserved 2 to 10;

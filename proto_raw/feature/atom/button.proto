@@ -3,6 +3,7 @@ syntax = "proto3";
 package feature.atom;
 
 import "base/actions.proto";
+import "feature/accessibility/accessibility.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/atom";
 option java_multiple_files = true;
@@ -17,6 +18,8 @@ message Button {
         GHOST = 3;
         ICON = 4;
         CHIP = 5;
+        TRANSLUCENT = 6;
+        ICON_SUBTLE = 7;
     }
     
     Data data = 2;
@@ -25,6 +28,7 @@ message Button {
         string sub_text = 2;
         string leading_icon = 3;
         string trailing_icon = 4;
+        accessibility.Accessibility alt = 5;
     }
     
     base.Actions actions = 3;

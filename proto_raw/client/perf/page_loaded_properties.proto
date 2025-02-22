@@ -3,6 +3,8 @@ syntax = "proto3";
 package client.perf;
 
 import "client/perf/page_loaded_commons.proto";
+import "client/perf/watch_page_loaded_properties_v2.proto";
+import "client/preload/preload_journey.proto";
 import "google/protobuf/any.proto";
 
 option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/perf";
@@ -12,4 +14,9 @@ option java_package = "com.hotstar.event.model.client.perf";
 message PageLoadedProperties {
     PageLoadedCommons common_properties = 1;
     google.protobuf.Any custom_page_properties = 2;
+    preload.PreloadSource preload_source = 3;
+    
+    oneof custom_page_properties_v2 {
+        WatchPageLoadedPropertiesV2 watch_page_loaded_properties = 4;
+    }
 }

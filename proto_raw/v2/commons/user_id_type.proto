@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package v2.commons.user_id_type;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/commons";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.commons";
+
+enum UserIdType {
+    DEFAULT = 0;
+    EMAIL = 1;
+}

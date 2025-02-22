@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package composable;
+
+import "feature/accessibility/accessibility.proto";
+import "composable/base/commons.proto";
+import "composable/elements/text.proto";
+import "composable/elements/icon.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message TextExpandable {
+    ComposableCommons composable_commons = 1;
+    Text text = 2;
+    int32 noOfLines = 3;
+    
+    Truncation truncation = 4;
+    message Truncation {
+        oneof value {
+            Text label = 1;
+            Icon icon = 2;
+        }
+    }
+    
+    feature.accessibility.Accessibility accessibility = 5;
+    .base.Actions actions = 6;
+}

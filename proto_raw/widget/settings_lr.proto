@@ -6,6 +6,7 @@ import "base/widget_commons.proto";
 import "widget/cancel_subscription.proto";
 import "base/actions.proto";
 import "widget/dialog.proto";
+import "feature/atom/button.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -18,6 +19,7 @@ message SettingsLRWidget {
     message Data {
         repeated Item items = 1;
         LogoutButton logout_button = 2;
+        feature.atom.Button debug_playback_button = 3;
     }
     
     reserved 2 to 10;

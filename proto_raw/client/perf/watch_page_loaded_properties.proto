@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package client.perf;
 
+import "client/preload/preload_journey.proto";
 import "client/watch/player_manager_properties.proto";
 import "client/watch/preload_playback_properties.proto";
 
@@ -19,8 +20,17 @@ message WatchPageLoadedProperties {
     int64 player_load_content_time_ms = 7;
     int64 player_after_load_content_time_ms = 8;
     watch.PlayerManagerProperties player_manager_properties = 9;
-    watch.PreloadPlaybackProperties.PreloadStatus preload_status = 10;
+    watch.PreloadPlaybackProperties.PreloadStatus preload_status = 10 [deprecated = true];
     bool triggered_by_up_next_ios_only = 11;
     bool preload_in_watch = 12;
     string player_version = 13;
+    int64 player_manifest_parse_manifest_ms = 14;
+    int64 player_manifest_init_drm_ms = 15;
+    int64 player_manifest_load_ms = 16;
+    int64 player_manifest_combine_periods_ms = 17;
+    int64 player_manifest_media_capabilities_ms = 18;
+    int64 player_manifest_license_ms = 19;
+    string watch_session_id = 20;
+    preload.PreloadAddition preload_info = 21;
+    int64 watch_player_client_capability_time_ms = 22;
 }

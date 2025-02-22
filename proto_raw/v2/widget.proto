@@ -17,10 +17,12 @@ message WidgetWrapper {
     RefreshWidgetRequest dynamic_widget_request = 5 [deprecated = true];
     DeferredWidgetRequest deferred_widget_request = 6;
     string defer_id = 7;
+    uint64 unique_identifier = 8;
 }
 
 enum WidgetDeliveryType {
     STATIC = 0;
     DYNAMIC = 1 [deprecated = true];
     DEFERRED = 2;
+    SHORT_CIRCUITED = 3;
 }

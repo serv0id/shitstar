@@ -8,10 +8,12 @@ option java_package = "com.hotstar.ui.model.action";
 
 message RemindMeAction {
     RemindMeInfo info = 1;
+    bool is_toast_disabled = 2;
 }
 
 message RemindMeInfo {
     string content_id = 1;
     bool is_reminder_set = 2;
     string content_title = 3;
+    bool is_client_assisted = 4;
 }

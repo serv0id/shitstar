@@ -9,6 +9,7 @@ import "widget/logo.proto";
 import "widget/subscription_logo.proto";
 import "widget/help_settings_button.proto";
 import "widget/subscription_nudge.proto";
+import "feature/atom/button.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -23,6 +24,7 @@ message BrandedLogoHeaderWidget {
         LogoWidget logo = 1 [deprecated = true];
         repeated Widget widgets = 2;
         SubscriptionLogoWidget subscription_logo = 3;
+        feature.atom.Button cast_button = 4;
     }
     
     reserved 3 to 10;

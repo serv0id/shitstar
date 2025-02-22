@@ -28,5 +28,14 @@ message DrmParameters {
         HDCP_VERSION_HDCP_V2_1 = 4;
         HDCP_VERSION_HDCP_V2_2 = 5;
         HDCP_VERSION_HDCP_NO_DIGITAL_OUTPUT = 6;
+        HDCP_VERSION_HDCP_V2_3 = 7;
+    }
+    
+    repeated PlayreadySecurityLevel playready_security_levels = 3;
+    enum PlayreadySecurityLevel {
+        PLAYREADY_SECURITY_LEVEL_UNSPECIFIED = 0;
+        PLAYREADY_SECURITY_LEVEL_SL3000 = 1;
+        PLAYREADY_SECURITY_LEVEL_SL2000 = 2;
+        PLAYREADY_SECURITY_LEVEL_SL150 = 3;
     }
 }

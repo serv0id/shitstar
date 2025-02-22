@@ -30,6 +30,7 @@ message ClientCapabilities {
         ADS_UNSPECIFIED = 0;
         ADS_SSAI = 1;
         ADS_NON_SSAI = 2;
+        ADS_SGAI = 3;
     }
     
     repeated AudioChannel audio_channels = 4;
@@ -55,6 +56,7 @@ message ClientCapabilities {
         VIDEO_CODEC_H264 = 1;
         VIDEO_CODEC_H265 = 2;
         VIDEO_CODEC_DV_H265 = 3;
+        VIDEO_CODEC_AV1 = 4;
     }
     
     repeated Ladder ladders = 7;
@@ -94,4 +96,10 @@ message ClientCapabilities {
     }
     
     repeated VideoCodec video_codecs_non_secure = 12;
+    
+    repeated Orientation orientations = 13;
+    enum Orientation {
+        ORIENTATION_UNSPECIFIED = 0;
+        ORIENTATION_VR = 1;
+    }
 }

@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package action;
+
+import "feature/commons/widget_wrapper.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message UpdateWidgetStateAction {
+    Operation operation = 1;
+    enum Operation {
+        UNSPECIFIED = 0;
+        ADD = 1;
+        REMOVE = 2;
+        RESET = 3;
+        UPDATE = 4;
+    }
+    
+    Payload payload = 2;
+    message Payload {
+        oneof data {
+            feature.commons.WidgetWrapper widget_wrapper = 1;
+        }
+    }
+    
+    uint64 unique_identifier = 3;
+}

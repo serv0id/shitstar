@@ -8,6 +8,8 @@ import "client/heartbeat/model/qos_event.proto";
 import "client/heartbeat/model/viewport.proto";
 import "client/player/model/playback_session_info.proto";
 import "client/player/model/playback_state_info.proto";
+import "component/playback/hardware_accelerated.proto";
+import "component/playback/play_type.proto";
 
 option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/heartbeat/model";
 option java_multiple_files = true;
@@ -51,4 +53,22 @@ message Payload {
     string audio_lang_code = 27;
     string audio_language = 28;
     string client_playback_session_id = 29;
+    
+    SessionType session_type = 30;
+    enum SessionType {
+        SESSION_TYPE_UNSPECIFIED = 0;
+        SESSION_TYPE_PLAYBACK = 1;
+        SESSION_TYPE_OFFLINE_DOWNLOAD = 2;
+    }
+    
+    component.playback.PlayType play_type = 31;
+    component.playback.HardwareAccelerated video_decoder_hardware_accelerated = 32;
+    string client_content_id = 33;
+    string client_download_session_id = 34;
+    uint32 battery_strength_percent = 35;
+    uint32 battery_capacity_mah_current = 36;
+    bool is_lpd = 37;
+    uint32 battery_used_mah = 38;
+    bool is_battery_drain_reliable = 39;
+    string channel_id = 40;
 }

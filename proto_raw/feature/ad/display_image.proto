@@ -6,6 +6,7 @@ import "feature/image/image.proto";
 import "feature/image/lottie.proto";
 import "feature/image/screen_size_image.proto";
 import "feature/trackers/url_trackers.proto";
+import "feature/accessibility/accessibility.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/ad";
 option java_multiple_files = true;
@@ -43,7 +44,20 @@ message DisplayImage {
         BILLBOARD = 2;
         TALL_VERTICAL = 3;
         SHORT_SQUARE = 4;
+        EXPANDED_CONTENT = 5;
+        EMPTY = 6;
     }
     
     image.Lottie lottie = 12;
+    accessibility.Accessibility alt = 13;
+    
+    Footer footer = 14;
+    message Footer {
+        string text = 1;
+        string placeholder = 2;
+        string link = 3;
+    }
+    
+    bool auto_expand_cta_collapse = 15;
+    bool hide_cta_on_collapse = 16;
 }

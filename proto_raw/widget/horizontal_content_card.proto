@@ -9,6 +9,10 @@ import "feature/download/download_info.proto";
 import "base/actions.proto";
 import "feature/watchlist/watchlist_info.proto";
 import "widget/spotlight_info.proto";
+import "feature/accessibility/accessibility.proto";
+import "feature/image/illustration.proto";
+import "feature/remind_me/remind_me_info.proto";
+import "feature/tag/tag.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -27,6 +31,10 @@ message HorizontalContentCardWidget {
         ExpandedContentPoster expanded_content_poster = 5;
         SpotlightInfoWidget spotlight_info = 6;
         LiveBadge live_badge = 7;
+        feature.accessibility.Accessibility alt = 8;
+        feature.image.Illustration play = 9;
+        WatchlistButton watchlist_button = 10;
+        string content_id = 11;
     }
     
     reserved 3 to 10;
@@ -35,6 +43,7 @@ message HorizontalContentCardWidget {
         string title = 1;
         string sub_title = 2;
         KebabMenu kebab_menu = 3;
+        repeated feature.tag.Tag tags = 4;
     }
     
     message ExpandedContentPoster {
@@ -52,6 +61,18 @@ message HorizontalContentCardWidget {
         IconLabelButton primary_cta = 7;
         WatchlistButton watchlist_cta = 8;
         IconLabelButton see_more_cta = 9;
+        ContentCTAButton primary_button = 10;
+    }
+    
+    message ContentCTAButton {
+        oneof cta {
+            IconLabelButton cta_button = 1;
+            RemindMeCTAButton remind_me_cta_button = 2;
+        }
+    }
+    
+    message RemindMeCTAButton {
+        feature.remind_me.ReminderInfo remind_me_info = 1;
     }
     
     message IconLabelButton {
@@ -86,6 +107,8 @@ message HorizontalContentCardWidget {
                 WatchlistKebabMenuOption watchlist_kebab_menu_option = 3;
             }
         }
+        
+        feature.accessibility.Accessibility alt = 3;
     }
     
     message KebabMenuOption {

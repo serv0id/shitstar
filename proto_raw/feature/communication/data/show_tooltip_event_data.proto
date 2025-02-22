@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package feature.communication.data;
+
+import "google/protobuf/any.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/communication/data";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.communication.data";
+
+message ShowTooltipEventData {
+    google.protobuf.Any wrapper_action = 1;
+}

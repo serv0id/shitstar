@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package feature.text;
+
+import "feature/color/color.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/text";
+
+message Text {
+    repeated TextSegment segments = 1;
+    message TextSegment {
+        string text = 1;
+        TextAttributes attributes = 2;
+    }
+    
+    message TextAttributes {
+        color.Color color = 1;
+        FontStyle font_style = 2;
+        repeated Format format = 3;
+    }
+    
+    enum FontStyle {
+        DEFAULT = 0;
+        BODY_MEDIUM_2 = 1;
+        CAPTION_MEDIUM_1 = 2;
+        CAPTION_SEMIBOLD_1 = 3;
+        CAPTION_SEMIBOLD_2 = 4;
+        CAPTION_SEMIBOLD_3 = 5;
+    }
+    
+    enum Format {
+        DEFAULT_FORMAT = 0;
+        STRIKETHROUGH = 1;
+    }
+}

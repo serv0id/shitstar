@@ -23,7 +23,9 @@ message CategoryTrayItemsWidget {
         string next_tray_url = 6;
         string prev_tray_url = 7;
         
-        reserved 4, "more_widgets_url";
+        reserved 4;
+        
+        reserved "more_widgets_url";
     }
     
     reserved 3 to 10;

@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package client.player.model;
 
+import "component/playback/hardware_accelerated.proto";
+
 option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/model";
 option java_multiple_files = true;
 option java_package = "com.hotstar.event.model.client.player.model";
@@ -20,6 +22,7 @@ message PlaybackStateInfo {
     string audio_decoder = 11;
     string video_decoder = 12;
     VideoQuality selected_video_quality = 13;
+    component.playback.HardwareAccelerated video_decoder_hardware_accelerated = 14;
 }
 
 enum VideoQuality {

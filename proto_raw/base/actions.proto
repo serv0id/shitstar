@@ -62,6 +62,20 @@ import "action/initiate_payment.proto";
 import "action/form_submit.proto";
 import "action/remind_me.proto";
 import "action/preload.proto";
+import "action/toggle_visibility.proto";
+import "action/update_cache.proto";
+import "action/poll_get_charge_action.proto";
+import "action/search_chrome_cast_device.proto";
+import "action/update_widget_state.proto";
+import "action/check_cast_status.proto";
+import "action/in_app_update.proto";
+import "action/accessibility_announce.proto";
+import "action/preload_webview.proto";
+import "action/show_sticky_menu_toast.proto";
+import "action/repeated_frequency_capped_status.proto";
+import "action/repeated_frequency_capped_update.proto";
+import "action/tracker.proto";
+import "action/update_dialog_widget_free_timer_from_cps.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/base";
 option java_multiple_files = true;
@@ -132,6 +146,21 @@ message Actions {
             action.FormSubmitAction form_submit_action = 69;
             action.RemindMeAction remind_me_action = 70;
             action.PreloadAction preload_action = 71;
+            action.ToggleVisibilityAction toggle_visibility_action = 72;
+            action.UpdateCacheAction update_cache_action = 73;
+            action.PollGetChargeAction poll_get_charge_action = 74;
+            action.SearchChromeCastDeviceAction search_chrome_cast_device = 75;
+            action.UpdateWidgetStateAction update_widget_state_action = 76;
+            action.CheckChromeCastStatusAction check_chrome_cast_status = 77;
+            action.InAppUpdate in_app_update = 78;
+            action.AccessibilityAnnounceAction accessibility_announce_action = 79;
+            action.PreloadWebviewAction preload_webview_action = 80;
+            action.ShowStickyMenuToastAction show_sticky_menu_toast_action = 81;
+            action.RepeatedFrequencyCappedStatusAction repeated_frequency_capped_status_action = 82;
+            action.RepeatedFrequencyCappedUpdateAction repeated_frequency_capped_update_action = 83;
+            action.TrackerAction tracker_action = 84;
+            UpdateWidgetFreeTimerStateFromCPSAction update_widget_free_timer_state_from_cps_action = 85;
+            action.UpdateDialogWidgetFreeTimerFromCPSAction update_dialog_widget_free_timer_from_cps_action = 86;
         }
     }
     
@@ -147,4 +176,27 @@ message WrapperAction {
     Actions.Action action = 1;
     repeated Actions.Action on_success = 2;
     repeated Actions.Action on_failure = 3;
+}
+
+message AccessibilityAction {
+    string action_name = 1;
+    repeated Actions.Action actions = 2;
+}
+
+message UpdateWidgetFreeTimerStateFromCPSAction {
+    map<int64, UIConfig> ui_configs = 1;
+    
+    message UIConfig {
+        string title = 1;
+        TextType text_type = 2;
+        string sub_title = 3;
+        string cta_title = 4;
+        repeated Actions.Action cta_actions = 5;
+    }
+    
+    enum TextType {
+        DEFAULT = 0;
+        ALERT = 1;
+        BRAND = 2;
+    }
 }

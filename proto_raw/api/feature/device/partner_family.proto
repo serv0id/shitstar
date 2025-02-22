@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package api.feature.device;
+
+import "google/protobuf/descriptor.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/api/feature/device";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.api.feature.device";
+
+enum PartnerFamily {
+    PARTNER_FAMILY_UNSPECIFIED = 0;
+    PARTNER_FAMILY_MCA = 1;
+    PARTNER_FAMILY_VIDAA = 2;
+    PARTNER_FAMILY_ASTRO = 3;
+    PARTNER_FAMILY_COOLITA = 4;
+}

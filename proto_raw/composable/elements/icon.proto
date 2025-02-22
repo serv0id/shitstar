@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package composable;
+
+import "feature/color/color.proto";
+import "composable/tokens/dls_tokens.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message Icon {
+    string name = 1;
+    feature.color.Color color = 2;
+    
+    oneof size {
+        int32 fixed = 3;
+        tokens.DLSSize dls_size = 4;
+    }
+}

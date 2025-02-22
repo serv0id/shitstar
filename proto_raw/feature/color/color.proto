@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package feature.color;
+
+import "composable/tokens/dls_tokens.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/color";
+
+message Color {
+    oneof data {
+        string hex_code = 1;
+        composable.tokens.DLSColors dls_color = 2;
+    }
+}

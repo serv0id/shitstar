@@ -16,4 +16,12 @@ message Location {
     float long = 5;
     string ip_address = 6;
     uint32 asn_number = 7;
+    string pincode = 8;
+    
+    LocationSource location_source = 9;
+    enum LocationSource {
+        LOCATION_SOURCE_UNSPECIFIED = 0;
+        LOCATION_SOURCE_NETACUITY = 1;
+        LOCATION_SOURCE_AKAMAI = 2;
+    }
 }

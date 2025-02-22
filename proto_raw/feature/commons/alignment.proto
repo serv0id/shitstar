@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package feature.commons;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/commons";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.commons";
+
+enum Alignment {
+    START = 0;
+    END = 1;
+}

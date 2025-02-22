@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "composable/elements/button_tile.proto";
+import "composable/elements/button_tile_download.proto";
+import "composable/elements/button_tile_rating.proto";
+import "composable/elements/button_tile_watchlist.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message ActionStackWidget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        repeated Tile tiles = 1;
+    }
+    
+    message Tile {
+        oneof tile {
+            composable.ButtonTile tile_button = 1;
+            composable.ButtonTileDownload download_button = 2;
+            composable.ButtonTileWatchlist watchlist_button = 3;
+            composable.ButtonTileRating rating_button = 4;
+        }
+    }
+}

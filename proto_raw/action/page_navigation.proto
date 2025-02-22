@@ -3,6 +3,7 @@ syntax = "proto3";
 package action;
 
 import "feature/image/image.proto";
+import "feature/page_nav_params/action_sheet_params.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
 option java_multiple_files = true;
@@ -17,6 +18,7 @@ message PageNavigationAction {
     message Params {
         oneof params {
             WatchParams watch_params = 1;
+            feature.page_nav_params.ActionSheetParams action_sheet_params = 2;
         }
     }
     

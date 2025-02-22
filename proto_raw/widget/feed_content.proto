@@ -10,6 +10,7 @@ import "widget/sports_cricket_team.proto";
 import "feature/sports/cricket_team.proto";
 import "widget/autoplay.proto";
 import "widget/media_container.proto";
+import "feature/tag/tag.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -63,9 +64,14 @@ message KeyMomentContentWidget {
         string content_id = 6;
         bool is_focused = 7;
         base.Actions actions = 11;
+        Badge badge = 12;
     }
     
     reserved 2 to 10;
+    
+    message Badge {
+        feature.tag.Tag tag = 1;
+    }
 }
 
 message CricketOverSummaryWidget {

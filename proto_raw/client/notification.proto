@@ -9,4 +9,17 @@ option java_package = "com.hotstar.event.model.client";
 message Notification {
     string uri = 1;
     string campaign_id = 2;
+    NotificationRenderState notification_render_state = 3;
+    uint64 ts_pt_timer_end_ms = 4;
+    bool is_staggered = 5;
+}
+
+enum NotificationRenderState {
+    NOTIFICATION_RENDER_STATE_UNSPECIFIED = 0;
+    NOTIFICATION_RENDER_STATE_SUCCESS = 1;
+    NOTIFICATION_RENDER_STATE_DISCARD_DUPLICATE_PN_SENT_TIME = 2;
+    NOTIFICATION_RENDER_STATE_DISCARD_PID_MIS_MATCH = 3;
+    NOTIFICATION_RENDER_STATE_DISCARD_SAME_CONTENT_IS_PLAYING = 4;
+    NOTIFICATION_RENDER_STATE_DISCARD_APP_PN_PERMISSION_DENIED = 5;
+    NOTIFICATION_RENDER_STATE_DISCARD_PN_CHANNEL_PERMISSION_DENIED = 6;
 }

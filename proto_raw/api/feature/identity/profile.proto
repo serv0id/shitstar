@@ -12,6 +12,7 @@ message Profile {
     ProfileIdentifier p_id = 1;
     message ProfileIdentifier {
         string id = 1;
+        string dw_id = 2;
     }
     
     ProfileType type = 2;

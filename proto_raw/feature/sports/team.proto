@@ -11,4 +11,5 @@ option java_package = "com.hotstar.ui.model.feature.sports";
 message Team {
     string name = 1;
     image.Image icon = 2;
+    string id = 3;
 }

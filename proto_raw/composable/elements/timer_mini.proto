@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package composable;
+
+import "feature/accessibility/accessibility.proto";
+import "composable/elements/composable.proto";
+import "composable/elements/text.proto";
+import "composable/base/commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message TimerMini {
+    ComposableCommons composable_commons = 1;
+    
+    TimerData data = 2;
+    message TimerData {
+        int64 timer_end_timestamp = 1;
+        
+        TimerFormat format = 2;
+        enum TimerFormat {
+            DAYS = 0;
+            HOURS_MINUTES_SECONDS = 1;
+            MINUTES_SECONDS = 2;
+            SECONDS = 3;
+        }
+    }
+    
+    TimerView view = 3;
+    message TimerView {
+        Composable prefix = 1;
+        Text days = 2;
+        Text hours = 3;
+        Text minutes = 4;
+        Text seconds = 5;
+    }
+    
+    feature.accessibility.Accessibility accessibility = 4;
+}

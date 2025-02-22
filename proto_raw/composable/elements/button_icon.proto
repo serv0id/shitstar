@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package composable;
+
+import "base/actions.proto";
+import "feature/accessibility/accessibility.proto";
+import "composable/elements/icon.proto";
+import "composable/elements/button.proto";
+import "composable/base/corner_radius.proto";
+import "composable/base/commons.proto";
+import "composable/base/edges.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message ButtonIcon {
+    ComposableCommons composable_commons = 1;
+    ButtonIconView view = 2;
+}
+
+message ButtonIconView {
+    Icon icon = 1;
+    ButtonType type = 2;
+    CornerRadius corner_radius = 3;
+    Edges padding = 4;
+    feature.accessibility.Accessibility accessibility = 5;
+    .base.Actions actions = 6;
+}

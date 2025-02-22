@@ -28,4 +28,5 @@ enum Platform {
     PLATFORM_XBOX = 11;
     PLATFORM_MWEB = 12;
     PLATFORM_CHROMECAST = 13;
+    PLATFORM_KEPLER = 14;
 }

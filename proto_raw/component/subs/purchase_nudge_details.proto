@@ -16,6 +16,9 @@ message PurchaseNudgeDetails {
         NUDGE_TYPE_DR = 4;
         NUDGE_TYPE_PLAYER = 5;
         NUDGE_TYPE_FREE_TRIAL = 6;
+        NUDGE_TYPE_PLAYER_VOD = 7;
+        NUDGE_TYPE_PARTNER_OFFER = 8;
+        NUDGE_TYPE_MIGRATION_SUBS_CALLOUT = 9;
     }
     
     NudgeLayout nudge_layout = 2;
@@ -26,4 +29,10 @@ message PurchaseNudgeDetails {
     }
     
     int32 device_count = 3;
+    
+    FeatureType feature_type = 4;
+    enum FeatureType {
+        FEATURE_TYPE_UNSPECIFIED = 0;
+        FEATURE_TYPE_FREE_PREVIEW = 1;
+    }
 }

@@ -26,6 +26,8 @@ message PaymentMethodCommonsWidget {
     SelectedMethodMeta selected_method_meta = 8;
     message SelectedMethodMeta {
         string title = 1;
+        string method_warning_text = 2;
+        string method_item_warning_text = 3;
     }
     
     RefreshableStatusWidget payment_method_loading_state = 9;

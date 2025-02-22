@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package feature.gtm_event;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/gtm_event";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.gtm_event";
+
+message LoginSuccessTrackMeta {
+    string mobile_number = 1;
+    string email = 2;
+}

@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package composable;
+
+import "composable/elements/composable.proto";
+import "feature/color/color.proto";
+import "composable/base/commons.proto";
+import "composable/tokens/dls_tokens.proto";
+import "base/actions.proto";
+import "composable/base/corner_radius.proto";
+import "composable/base/layout_traits.proto";
+import "composable/base/dimension_constraint.proto";
+import "composable/base/edges.proto";
+import "composable/base/border.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message Container {
+    ComposableCommons composable_commons = 1;
+    
+    Layout layout = 2;
+    enum Layout {
+        HORIZONTAL = 0;
+        VERTICAL = 1;
+    }
+    
+    Layout layout_sizing_horizontal = 3;
+    Layout layout_sizing_vertical = 4;
+    DimensionConstraint width_constraint = 5;
+    DimensionConstraint height_constraint = 6;
+    
+    PrimaryAxisAlignment primary_axis_alignment = 7;
+    message PrimaryAxisAlignment {
+        Alignment alignment = 1;
+        enum Alignment {
+            MIN = 0;
+            MAX = 1;
+            CENTER = 2;
+            SPACE_BETWEEN = 3;
+        }
+    }
+    
+    CounterAxisAlignment counter_axis_alignment = 8;
+    message CounterAxisAlignment {
+        Alignment alignment = 1;
+        enum Alignment {
+            MIN = 0;
+            MAX = 1;
+            CENTER = 2;
+        }
+    }
+    
+    tokens.DLSSpacings gap = 9;
+    Edges padding = 10;
+    feature.color.Color background_color = 11;
+    Border border = 12;
+    CornerRadius corner_radius = 13;
+    repeated Composable children = 14;
+    .base.Actions actions = 15;
+    
+    reserved 16 to 31;
+}

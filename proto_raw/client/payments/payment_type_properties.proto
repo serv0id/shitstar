@@ -19,5 +19,6 @@ message PaymentTypeProperties {
         PAYMENT_TYPE_ITUNES = 2;
         PAYMENT_TYPE_WEB = 3;
         PAYMENT_TYPE_D2C = 4;
+        PAYMENT_TYPE_NO_MANDATE = 5;
     }
 }

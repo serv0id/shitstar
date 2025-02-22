@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package client.search;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/search";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.search";
+
+message SubmittedSurveyProperties {
+    string survey_question = 1;
+    ResponseList response_list = 2;
+    uint32 selected_response_count = 3;
+    string user_written_review = 4;
+    string query_text = 5;
+    string page_type = 6;
+}
+
+message ResponseList {
+    repeated string responses = 1;
+}

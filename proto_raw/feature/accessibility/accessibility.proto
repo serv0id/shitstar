@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package feature.accessibility;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/accessibility";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.accessibility";
+
+message Accessibility {
+    string label = 1;
+    string action_label = 2;
+    string test_tag = 3;
+}

@@ -12,6 +12,7 @@ message Account {
     AccountIdentifier account_id = 2;
     message AccountIdentifier {
         string id = 1;
+        string dw_id = 2;
     }
     
     AccountType type = 3;

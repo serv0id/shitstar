@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package composable;
+
+import "feature/accessibility/accessibility.proto";
+import "composable/base/commons.proto";
+import "composable/elements/composable.proto";
+import "base/actions.proto";
+import "composable/base/layout_traits.proto";
+import "composable/base/corner_radius.proto";
+import "composable/elements/image.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message Media {
+    Source src = 1;
+    message Source {
+        string fallbackImageUrl = 3;
+        
+        oneof data {
+            string url = 1;
+            string name = 2;
+        }
+    }
+    
+    feature.accessibility.Accessibility accessibility = 2;
+    AspectRatio aspect_ratio = 3;
+    Layout media_height = 4;
+    LayoutFillFixed media_width = 5;
+    Height height = 6 [deprecated = true];
+    Width width = 7 [deprecated = true];
+    Composable placeholder = 8;
+    CornerRadius corner_radius = 9;
+    ComposableCommons composable_commons = 10;
+    .base.Actions actions = 11;
+}

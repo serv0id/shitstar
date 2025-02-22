@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package v2.enrichment;
+
+option go_package = "github.com/hotstar/hs-core-api-go/v2/enrichment";
+option java_multiple_files = true;
+option java_package = "com.hotstar.bff.api.v2.enrichment";
+
+message FreeTimerConfig {
+    int64 consumed_time_ms = 1;
+    int64 total_time_ms = 2;
+}

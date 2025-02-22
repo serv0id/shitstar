@@ -5,8 +5,10 @@ package widget;
 import "base/template.proto";
 import "base/widget_commons.proto";
 import "feature/player/player_settings_type.proto";
+import "feature/language/language.proto";
 import "base/actions.proto";
 import "feature/image/image.proto";
+import "widget/text_list.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -21,6 +23,7 @@ message PlayerSettingsWidgetV2 {
         map<string, PlayerSettingsList> option_list_map = 2;
         repeated PlayerSettingsOptionListGroup landscape_option_list_groups = 11;
         repeated PlayerSettingsOptionListGroup portrait_option_list_groups = 12;
+        TextListWidget text_list = 17;
     }
     
     reserved 3 to 10;
@@ -40,11 +43,14 @@ message PlayerSettingsWidgetV2 {
         string title = 1;
         feature.PlayerSettingsType type = 2;
         map<string, SettingsOptionAccessory> audio_nudge = 3;
+        repeated feature.language.Language audio_filer = 4;
+        map<string, base.Actions> audio_language_action = 5;
     }
     
     message PlayerSettingsSubtitleList {
         string title = 1;
         feature.PlayerSettingsType type = 2;
+        repeated feature.language.Language subtitle_filer = 3;
     }
     
     message PlayerSettingsPlaybackSpeedList {

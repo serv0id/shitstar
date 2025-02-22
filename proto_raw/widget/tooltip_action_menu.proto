@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/image/lottie.proto";
+import "feature/image/image.proto";
+import "base/actions.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message TooltipActionMenuWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    repeated ActionableOption actionable_options = 11;
+    message ActionableOption {
+        oneof actionable_option {
+            ReactionItem reaction_item = 1;
+        }
+    }
+    
+    reserved 1, 3 to 10;
+    
+    message ReactionItem {
+        ReactionId reaction_id = 1;
+        enum ReactionId {
+            DEFAULT = 0;
+            LOVE = 1;
+            LIKE = 2;
+            NOT_FOR_ME = 3;
+            DISLIKE = 4;
+        }
+        
+        string label = 2;
+        bool is_selected = 3;
+        feature.image.Lottie subtle_lottie = 4;
+        feature.image.Image subtle_image = 5;
+        feature.image.Lottie on_select_lottie = 6;
+        feature.image.Image on_select_image = 7;
+        base.Actions on_select_actions = 8;
+        base.Actions on_deselect_actions = 9;
+    }
+}

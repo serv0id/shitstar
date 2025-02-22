@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package component.content;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/content";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message LanguagePreference {
+    Lpv lpv = 1;
+    message Lpv {
+        repeated LanguageWeight weights = 1;
+        bool is_cold_start = 2;
+    }
+    
+    Odp odp = 2;
+    message Odp {
+        repeated OdpPreference odp_preferences = 1;
+        bool is_cold_start_odp = 2;
+    }
+    
+    message LanguageWeight {
+        string lang_code = 1;
+        float weight = 2;
+    }
+    
+    message OdpPreference {
+        string original_lang_code = 1;
+        repeated LanguageWeight dubbed_preferences = 2;
+    }
+}

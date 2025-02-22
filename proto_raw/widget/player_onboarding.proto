@@ -43,6 +43,8 @@ message PlayerOnboardingWidget {
         string iso2code = 6;
         string iso3code = 7;
         
-        reserved 3, "code";
+        reserved 3;
+        
+        reserved "code";
     }
 }

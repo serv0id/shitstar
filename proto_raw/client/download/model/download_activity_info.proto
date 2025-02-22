@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package client.download.model;
+
+import "client/download/model/download_activity_name.proto";
+import "client/download/model/journey_type.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/download/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.download.model";
+
+message DownloadActivityInfo {
+    DownloadActivityName download_activity_name = 1;
+    JourneyType requested_journey_type = 2;
+}

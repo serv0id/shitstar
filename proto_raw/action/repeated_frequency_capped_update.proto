@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package action;
+
+import "action/frequency_capped_update.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message RepeatedFrequencyCappedUpdateAction {
+    repeated FrequencyCappedUpdateAction frequencyCappedUpdateAction = 1;
+}

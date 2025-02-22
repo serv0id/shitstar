@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package client;
 
+import "client/orientation.proto";
+
 option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client";
 option java_multiple_files = true;
 option java_package = "com.hotstar.event.model.client";
@@ -20,4 +22,11 @@ message AppState {
         START_TYPE_WARM = 2;
         START_TYPE_HOT = 3;
     }
+    
+    string app_state_when_app_closed = 8 [deprecated = true];
+    string referral = 9 [deprecated = true];
+    int64 time = 10;
+    double heap_memory_used_bytes = 11;
+    double heap_memory_available_bytes = 12;
+    Orientation app_orientation = 13;
 }

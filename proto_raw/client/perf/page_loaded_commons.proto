@@ -17,4 +17,28 @@ message PageLoadedCommons {
         RENDERING_MODE_CSR = 1;
         RENDERING_MODE_DW = 2;
     }
+    
+    string absolute_page_url = 5;
+    int64 dns_connection_time_ms = 6;
+    int64 connection_acquired_time_ms = 7;
+    int64 request_headers_time_ms = 8;
+    int64 request_body_time_ms = 9;
+    int64 response_headers_time_ms = 10;
+    int64 response_body_time_ms = 11;
+    int64 data_transfer_time_ms = 12;
+    int64 response_body_size_in_byte = 13;
+    int64 proto_parse_time_ms = 14;
+    int64 secure_connection_time_ms = 15;
+    int64 network_waiting_time_ms = 16;
+    bool is_loaded_from_client_cache = 17;
+    
+    HttpProtocol http_protocol = 18;
+    enum HttpProtocol {
+        HTTP_PROTOCOL_UNSPECIFIED = 0;
+        HTTP_PROTOCOL_1_1 = 1;
+        HTTP_PROTOCOL_2 = 2;
+        HTTP_PROTOCOL_3 = 3;
+    }
+    
+    bool is_retry = 19;
 }

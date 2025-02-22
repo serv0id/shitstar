@@ -15,6 +15,7 @@ message Tray {
     TraySource source = 5;
     string logic = 6;
     string display_language = 7;
+    string initiation_source = 8;
 }
 
 enum TraySource {

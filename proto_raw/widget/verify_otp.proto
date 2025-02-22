@@ -44,6 +44,7 @@ message VerifyOtpWidget {
         string resend_otp_info_pre_text = 24;
         string resend_otp_info_post_text = 25;
         string resent_toast_text = 26;
+        feature.atom.Button help_rich_button = 27;
     }
     
     reserved 3 to 10;

@@ -4,6 +4,7 @@ package client.download.properties;
 
 import "client/download/model/download_session_info.proto";
 import "client/download/model/download_stat_info.proto";
+import "client/download/model/download_state.proto";
 
 option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/download/properties";
 option java_multiple_files = true;
@@ -13,6 +14,7 @@ message ActiveDownloadProperties {
     model.DownloadSessionInfo download_session_info = 1;
     model.DownloadStatInfo download_stat_info = 2;
     DeletedContentInfo deleted_content_info = 3;
+    model.DownloadState previous_download_state = 4;
 }
 
 message DeletedContentInfo {

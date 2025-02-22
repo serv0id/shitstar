@@ -9,7 +9,10 @@ import "client/player/model/playback_session_info.proto";
 import "client/player/model/playback_state_info.proto";
 import "client/player/model/player_and_device_info.proto";
 import "client/player/model/video_start_info.proto";
+import "client/preload/preload_journey.proto";
+import "client/preload/preload_models.proto";
 import "client/watch/preload_playback_properties.proto";
+import "component/freetimer/free_timer.proto";
 
 option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/properties";
 option java_multiple_files = true;
@@ -24,9 +27,19 @@ message StartedVideoProperties {
     bool is_casting = 6;
     model.PlaybackPIPMode playback_pip_mode = 7 [deprecated = true];
     bool is_preload = 8;
-    watch.PreloadPlaybackProperties.PreloadStatus preload_status = 9;
+    watch.PreloadPlaybackProperties.PreloadStatus preload_status = 9 [deprecated = true];
     model.PlaybackPipMode playback_pip_mode_v2 = 10;
     uint32 watch_page_load_time_ms = 11;
     model.PlaybackFeedInfo playback_feed_info = 12;
     bool is_first_frame_after_watch_attempt = 13;
+    preload.PreloadAddition preload_addition = 14 [deprecated = true];
+    preload.PreloadAddition preload_info = 15;
+    preload.PlaybackMetricsPreloadInfo preload_video_content_info = 16;
+    int32 player_load_time_ms = 17;
+    int32 player_setup_time_ms = 18;
+    int32 player_load_content_time_ms = 19;
+    int32 player_after_load_content_time_ms = 20;
+    int64 free_timer_consumed_time_ms = 21 [deprecated = true];
+    int32 free_timer_accumulated_consumed_time_ms = 22;
+    component.freetimer.FreeTimerRealSource free_timer_real_source = 23;
 }

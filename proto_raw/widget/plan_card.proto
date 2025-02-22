@@ -5,6 +5,7 @@ package widget;
 import "base/widget_commons.proto";
 import "base/actions.proto";
 import "feature/image/image.proto";
+import "feature/accessibility/accessibility.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -21,6 +22,9 @@ message PlanCardWidget {
         Header header = 4;
         Body body = 5;
         Color color = 6;
+        string price_details = 7 [deprecated = true];
+        Theme theme = 8;
+        feature.accessibility.Accessibility alt = 9;
     }
     
     message Header {
@@ -32,6 +36,8 @@ message PlanCardWidget {
     message Body {
         repeated USP usps = 1;
         repeated Selector selectors = 2;
+        feature.accessibility.Accessibility alt_usps = 3;
+        repeated base.AccessibilityAction alt_actions_usps = 4;
     }
     
     message InfoText {
@@ -55,6 +61,10 @@ message PlanCardWidget {
         InfoText subtitle = 5;
         Subtext sub_text = 6;
         repeated base.Actions.Action actions = 7;
+        string price_details = 8;
+        feature.accessibility.Accessibility alt_selected = 9;
+        feature.accessibility.Accessibility alt_unselected = 10;
+        repeated base.AccessibilityAction alt_actions = 11;
     }
     
     message Subtext {
@@ -65,6 +75,12 @@ message PlanCardWidget {
     message Color {
         string primary_color = 1;
         string secondary_color = 2;
+    }
+    
+    enum Theme {
+        DEFAULT_THEME = 0;
+        PRIMARY = 1;
+        SECONDARY = 2;
     }
     
     enum SubtextType {

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package composable;
+
+import "composable/tokens/dls_tokens.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/base";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message Edges {
+    tokens.DLSSpacings start = 1;
+    tokens.DLSSpacings end = 2;
+    tokens.DLSSpacings top = 3;
+    tokens.DLSSpacings bottom = 4;
+}

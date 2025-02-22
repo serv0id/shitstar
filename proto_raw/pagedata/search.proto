@@ -28,4 +28,10 @@ message SearchPageData {
     }
     
     string result_one_liner = 7;
+    
+    SearchSurveyInfo search_survey_info = 8;
+    message SearchSurveyInfo {
+        string widget_url = 1;
+        string survey_index = 2;
+    }
 }

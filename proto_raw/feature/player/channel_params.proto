@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package feature.player;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/player";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.player";
+
+message ChannelParams {
+    string channel_id = 1;
+    string playback_tags = 2;
+}

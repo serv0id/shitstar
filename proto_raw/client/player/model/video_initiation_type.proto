@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package client.player.model;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/model";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.player.model";
+
+enum VideoInitiationSource {
+    VIDEO_INITIATION_SOURCE_UNSPECIFIED = 0;
+    VIDEO_INITIATION_SOURCE_END_CREDITS = 1;
+    VIDEO_INITIATION_SOURCE_VIDEO_END = 2;
+    VIDEO_INITIATION_SOURCE_ACTIVE_WATCH = 3;
+}
+
+enum VideoInitiationType {
+    VIDEO_INITIATION_TYPE_UNSPECIFIED = 0;
+    VIDEO_INITIATION_TYPE_AUTO_COUNTDOWN = 1;
+    VIDEO_INITIATION_TYPE_MANUAL_CLICK = 2;
+}

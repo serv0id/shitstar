@@ -30,8 +30,11 @@ message WatchedVideoProperties {
     ActionType action_type = 11;
     model.PlaybackPipMode playback_pip_mode_v2 = 12;
     bool is_preload = 13;
-    watch.PreloadPlaybackProperties.PreloadStatus preload_status = 14;
+    watch.PreloadPlaybackProperties.PreloadStatus preload_status = 14 [deprecated = true];
     model.PlaybackFeedInfo playback_feed_info = 15;
+    string preload_journey_session_id = 16;
+    int64 free_timer_consumed_time_ms = 17 [deprecated = true];
+    int32 free_timer_accumulated_consumed_time_ms = 18;
 }
 
 enum TriggerType {
@@ -51,6 +54,10 @@ enum TriggerType {
     TRIGGER_TYPE_IN_PIP_ENTERED = 13;
     TRIGGER_TYPE_IN_PIP_EXIT = 14;
     TRIGGER_TYPE_PLAYBACK_SPEED_CHANGE = 15;
+    TRIGGER_TYPE_VIDEO_PAUSED_AUTO = 16;
+    TRIGGER_TYPE_VIDEO_PAUSED_MANUAL = 17;
+    TRIGGER_TYPE_VR_ENTERED = 18;
+    TRIGGER_TYPE_VR_EXIT = 19;
 }
 
 enum ActionType {

@@ -31,4 +31,12 @@ message PaymentProperties {
         OFFER_STATUS_APPLIED = 1;
         OFFER_STATUS_INVALID = 2;
     }
+    
+    Source source = 9;
+    enum Source {
+        SOURCE_UNSPECIFIED = 0;
+        SOURCE_SKIP_PSP = 1;
+    }
+    
+    string cohorts = 10;
 }

@@ -21,6 +21,7 @@ message SpotlightInfoWidget {
         feature.image.Image hero_img = 1;
         feature.animation.VideoAnimation hero_video = 3;
         feature.autoplay.AutoplayInfo autoplay_info = 4;
+        feature.image.Image tray_bg_img = 6;
         
         oneof spotlight_info {
             SpotlightInfoGecWidget spotlight_info_gec = 2;

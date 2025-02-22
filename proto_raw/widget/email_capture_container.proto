@@ -6,6 +6,7 @@ import "base/widget_commons.proto";
 import "widget/email_capture.proto";
 import "widget/verify_otp.proto";
 import "base/actions.proto";
+import "feature/image/image.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -20,6 +21,8 @@ message EmailCaptureContainerWidget {
         string help_rich_text = 2;
         SkipCTA skip_cta = 3;
         bool is_back_enabled = 4;
+        feature.image.Image hero_image = 5;
+        Source source = 6;
     }
     
     reserved 2 to 10;
@@ -35,5 +38,12 @@ message EmailCaptureContainerWidget {
             EmailCaptureWidget email_capture = 1;
             VerifyOtpWidget verify_otp = 2;
         }
+    }
+    
+    enum Source {
+        DEFAULT = 0;
+        EMAIL_CAPTURE = 1;
+        EMAIL_UPDATE = 2;
+        EMAIL_NEW = 3;
     }
 }

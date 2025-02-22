@@ -11,4 +11,5 @@ option java_package = "com.hotstar.ui.model.feature.profile";
 message ProfileInfo {
     string profile_id = 1;
     image.Image avatar = 2;
+    bool is_celebrity = 3;
 }

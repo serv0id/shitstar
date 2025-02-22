@@ -12,4 +12,6 @@ message BatchMetadata {
     uint32 common_size_bytes = 3;
     uint32 event_size_bytes = 4;
     uint32 batch_num_events = 5;
+    uint32 request_payload_size_bytes = 6;
+    bool is_request_payload_compressed = 7;
 }

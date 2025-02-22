@@ -3,7 +3,10 @@ syntax = "proto3";
 package widget;
 
 import "base/widget_commons.proto";
+import "feature/image/image.proto";
 import "feature/trackers/url_trackers.proto";
+import "feature/request/http_token_request.proto";
+import "widget/header.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -16,6 +19,15 @@ message WebviewWidget {
     message Data {
         Content content = 1;
         message Content {
+            Meta meta = 2 [deprecated = true];
+            message Meta {
+                option deprecated = true;
+                feature.image.Image webpage_logo = 1;
+                string webpage_title = 2;
+            }
+            
+            HeaderWidget header = 3;
+            
             oneof data {
                 string webview_url = 1;
             }
@@ -32,9 +44,14 @@ message WebviewWidget {
             FORM_SUBMIT = 4;
             EXTERNAL_NAV = 5;
             AD_ERROR = 6;
+            CITY = 8;
+            STATE = 9;
         }
         
         bool enable_javascript = 4;
+        map<string, string> widget_additional_properties = 5;
+        feature.request.HttpTokenRequest jit = 6;
+        bool disable_zoom = 7;
     }
     
     reserved 3 to 10;

@@ -14,6 +14,7 @@ import "feature/cw/cw_info.proto";
 import "feature/player/media_asset.proto";
 import "feature/player/stream_type.proto";
 import "feature/image/image.proto";
+import "feature/image/illustration.proto";
 import "feature/content_language_preference/content_language_preference.proto";
 import "feature/live/live_info.proto";
 import "feature/intervention/interventions.proto";
@@ -51,6 +52,7 @@ message PlayerWidget {
         AdsFreeButton ads_free_button = 17;
         feature.player.PreloadConfig preload_config = 18;
         InfoPillWidget info_pill = 19;
+        EntitlementErrorWidget entitlement_error_widget = 20;
     }
     
     reserved 3 to 10;
@@ -79,6 +81,9 @@ message PlayerWidget {
         feature.player.MediaAsset media_asset_v2 = 3;
         feature.image.Image cast_image = 4;
         HighBufferingRateConfig high_buffering_rate_config = 5;
+        feature.image.Image background_image = 6;
+        Av1Config av1_config = 7 [deprecated = true];
+        repeated Av1ConfigV2 av1_config_v2 = 8;
     }
     
     message ContentMetadata {
@@ -97,6 +102,8 @@ message PlayerWidget {
         feature.player.StreamType stream_type = 13;
         int64 content_start_point_seconds = 14;
         map<string, base.Actions> audio_language_action = 15;
+        feature.image.Image title_cutout = 16;
+        string identifier = 17;
     }
     
     message MediaAsset {
@@ -126,6 +133,8 @@ message PlayerWidget {
         string description = 4;
         bool is_selected = 5;
         string tag = 6;
+        feature.image.Illustration accessory_icon = 7;
+        bool disable_remembrance = 8;
     }
     
     message TrackLanguage {
@@ -200,6 +209,7 @@ message PlayerWidget {
     }
     
     message FreeTimer {
+        base.WidgetCommons widget_commons = 1;
         int64 timer_duration_ms = 2;
         string timer_label = 3;
         string timer_desc = 4;
@@ -207,6 +217,9 @@ message PlayerWidget {
         base.Actions actions = 6;
         map<int64, FreeTimerEvents> timedEvents = 7;
         base.Orientation supported_orientation = 8 [deprecated = true];
+        TimerSource timer_source = 9;
+        int64 min_visibility_threshold_ms = 10;
+        string timer_extension_desc = 11;
     }
     
     message FreeTimerEvents {
@@ -230,6 +243,16 @@ message PlayerWidget {
         string title = 1;
         Subtitle sub_title = 2;
         ConfigurableAction cta = 3;
+    }
+    
+    message EntitlementErrorWidget {
+        string title = 1 [deprecated = true];
+        Subtitle sub_title = 2 [deprecated = true];
+        ConfigurableAction cta = 3 [deprecated = true];
+        ErrorHandleButton secondaryCta = 4;
+        ErrorInfo errorInfo = 5;
+        ErrorHandleButton primaryCta = 6;
+        base.WidgetCommons widget_commons = 7;
     }
     
     message Subtitle {
@@ -259,12 +282,23 @@ message PlayerWidget {
             UNKNOWN = 0;
             GO_LIVE = 1;
             GO_BACK = 2;
+            GO_DEFAULT = 3;
         }
     }
     
     message HighBufferingRateConfig {
         int64 buffer_threshold_seconds = 1;
         int64 buffer_window_seconds = 2;
+    }
+    
+    message Av1Config {
+        string av1_decoder = 1;
+        int32 hsdav1d_thread_count_percentage = 2;
+    }
+    
+    message Av1ConfigV2 {
+        string key = 1;
+        string value = 2;
     }
     
     enum AudioSource {
@@ -277,7 +311,14 @@ message PlayerWidget {
         VOD = 1;
     }
     
+    enum TimerSource {
+        TIMER_SOURCE_SELF = 0;
+        TIMER_SOURCE_EXTERNAL = 1;
+        TIMER_SOURCE_PREF_EXTERNAL = 2;
+    }
+    
     enum ContentType {
         KEY_MOMENT = 0;
+        SPORT_LIVE = 1;
     }
 }

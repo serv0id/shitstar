@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "base/orientation.proto";
+import "feature/commons/alignment.proto";
+import "feature/atom/button.proto";
+import "feature/atom/toggle_button.proto";
+import "feature/atom/toggle_lottie_button.proto";
+import "feature/atom/event_observer_button.proto";
+import "feature/text/text.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PlayerControlV2Widget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        ContentHeader content_header = 1;
+        Settings settings = 2;
+        ContentHeader sticky_header = 3;
+    }
+    
+    reserved 2 to 10;
+    
+    message ContentHeader {
+        repeated HeaderItem items = 1;
+    }
+    
+    message Settings {
+        repeated SettingItem items = 1;
+    }
+    
+    message TextHeaderItem {
+        feature.text.Text title = 1;
+        feature.text.Text subtitle = 2;
+    }
+    
+    message HeaderItem {
+        base.Orientation orientation = 10;
+        feature.commons.Alignment alignment = 11;
+        
+        oneof item {
+            feature.atom.Button button = 1;
+            feature.atom.ToggleButton toggle_button = 2;
+            feature.atom.ToggleLottieButton toggle_lottie_button = 3;
+            feature.atom.EventObserverButton event_observer_button = 4;
+            TextHeaderItem text_header_item = 5;
+        }
+    }
+    
+    message SettingItem {
+        base.Orientation orientation = 10;
+        
+        oneof item {
+            feature.atom.Button button = 1;
+            feature.atom.ToggleButton toggle_button = 2;
+            feature.atom.ToggleLottieButton toggle_lottie_button = 3;
+            feature.atom.EventObserverButton event_observer_button = 4;
+        }
+    }
+}

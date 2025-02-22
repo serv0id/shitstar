@@ -15,4 +15,6 @@ message TabbedFeedSpaceData {
     message TabbedName {
         string name = 1;
     }
+    
+    bool hide_tabbed_headers = 3;
 }

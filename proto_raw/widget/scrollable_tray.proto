@@ -15,9 +15,11 @@ import "widget/horizontal_medium_content_poster.proto";
 import "widget/countdown_content.proto";
 import "widget/image_overlay_vertical_content_poster.proto";
 import "widget/image_overlay_vertical_large_content_poster.proto";
+import "widget/match_card.proto";
 import "widget/button_stack.proto";
 import "widget/header.proto";
 import "feature/image/image.proto";
+import "feature/image/screen_size_image.proto";
 import "feature/refresh/refresh_info.proto";
 import "feature/callout_tag/callout_tag.proto";
 
@@ -38,8 +40,13 @@ message ScrollableTrayWidget {
         string next_tray_url = 6;
         feature.refresh.RefreshInfo refresh_info = 7;
         HeaderWidget tray_header = 8;
+        TrayBackground tray_background = 9;
+        TrayType tray_type = 10;
+        int32 land_num_rows = 11;
         
-        reserved 4, "more_widgets_url";
+        reserved 4;
+        
+        reserved "more_widgets_url";
     }
     
     reserved 3 to 10;
@@ -92,6 +99,7 @@ message ScrollableTrayWidget {
             ImageOverlayVerticalContentPosterWidget image_overlay_vertical_content_poster = 9;
             ImageOverlayVerticalLargeContentPosterWidget image_overlay_vertical_large_content_poster = 10;
             ButtonStackWidget button_stack = 11;
+            MatchCardWidget match_card = 12;
         }
     }
     
@@ -99,5 +107,15 @@ message ScrollableTrayWidget {
         string label = 1;
         string icon_name = 2;
         base.Actions actions = 3;
+    }
+    
+    message TrayBackground {
+        feature.image.Image background_image = 1 [deprecated = true];
+        feature.image.ScreenSizeImage background_screen_size_image = 2;
+    }
+    
+    enum TrayType {
+        UNSPECIFIED = 0;
+        THEMED = 1;
     }
 }

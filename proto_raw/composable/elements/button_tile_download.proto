@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package composable;
+
+import "base/actions.proto";
+import "feature/download/download_info.proto";
+import "composable/elements/button_tile.proto";
+import "composable/elements/image.proto";
+import "composable/base/commons.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message ButtonTileDownload {
+    DownloadButtonStates states = 1;
+    message DownloadButtonStates {
+        ButtonTileView initial = 1;
+        ButtonTileView completed = 2;
+        ButtonTileView inProgress = 3;
+        ButtonTileView paused = 4;
+        ButtonTileView failed = 5;
+        ButtonTileView fetchWidget = 6;
+        ButtonTileView waitingForWifi = 7;
+        ButtonTileView expired = 8;
+        ButtonTileView queued = 9;
+        ButtonTileView fetchWidgetCompleted = 10;
+        ButtonTileView initialToInProgress = 11;
+        ButtonTileView initialToQueued = 12;
+        ButtonTileView queuedToInProgress = 13;
+        ButtonTileView deleting = 14;
+    }
+    
+    feature.download.DownloadInfo info = 2;
+    .base.Actions actions = 3;
+    string poster_title = 4;
+    Image.Source poster_image = 5;
+    ComposableCommons composable_commons = 6;
+}

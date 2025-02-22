@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package action;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.action";
+
+message PollGetChargeAction {
+    string url = 1;
+    int64 polling_interval_in_MS = 2;
+    int64 timeoutInMS = 3;
+    int64 noOfFailureRetries = 5;
+}

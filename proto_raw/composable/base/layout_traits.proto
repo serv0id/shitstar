@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package composable;
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/base";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message Layout {
+    oneof value {
+        LayoutHugFill trait = 1;
+        int32 fixed = 2;
+    }
+}
+
+message LayoutFillFixed {
+    oneof value {
+        LayoutFill trait = 1;
+        int32 fixed = 2;
+    }
+}
+
+message LayoutHugFixed {
+    oneof value {
+        LayoutHug trait = 1;
+        int32 fixed = 2;
+    }
+}
+
+enum LayoutFill {
+    FILL = 0;
+}
+
+enum LayoutHug {
+    HUG = 0;
+}
+
+enum LayoutHugFill {
+    Hug = 0;
+    Fill = 1;
+}

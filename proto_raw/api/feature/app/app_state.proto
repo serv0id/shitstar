@@ -6,6 +6,7 @@ import "api/feature/device/battery.proto";
 import "api/feature/device/display.proto";
 import "api/feature/device/memory.proto";
 import "api/feature/device/network.proto";
+import "api/feature/device/orientation.proto";
 import "api/feature/device/ospermission.proto";
 import "api/feature/device/pip.proto";
 import "api/feature/device/processor.proto";
@@ -23,4 +24,5 @@ message AppState {
     device.ProcessorInfo processor_state = 6;
     device.OsPermission os_permission_state = 7;
     device.PipInfoV2 pip_info = 8;
+    device.Orientation orientation = 9;
 }

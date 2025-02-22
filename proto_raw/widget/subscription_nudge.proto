@@ -4,6 +4,7 @@ package widget;
 
 import "base/actions.proto";
 import "base/widget_commons.proto";
+import "feature/quiz/title_icon_combo.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -14,9 +15,18 @@ message SubscriptionNudgeWidget {
     
     Data data = 11;
     message Data {
-        string nudge_text = 1;
+        string nudge_text = 1 [deprecated = true];
         base.Actions actions = 2;
+        
+        oneof nudge_content {
+            string text = 3;
+            NudgeAnimation animation = 4;
+        }
     }
     
     reserved 2 to 10;
+    
+    message NudgeAnimation {
+        repeated feature.quiz.TitleIconCombo slide_up = 1;
+    }
 }

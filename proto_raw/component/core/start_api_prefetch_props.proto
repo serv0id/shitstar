@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package component.core;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/core";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component.core";
+
+message StartApiPrefetchProps {
+    StartPrefetchState start_prefetch_state = 1;
+    uint64 start_prefetch_time_ms = 2;
+    string start_prefetch_id = 3;
+    EventCategory event_category = 4;
+    string staggered_campaign_id = 5;
+    uint64 staggered_delay_mins = 6;
+    uint64 staggered_enqueued_time_ms = 7;
+    uint64 staggered_executed_time_ms = 8;
+}
+
+enum StartPrefetchState {
+    START_PREFETCH_STATE_UNSPECIFIED = 0;
+    START_PREFETCH_STATE_SCHEDULED = 1;
+    START_PREFETCH_STATE_TRIGGERED = 2;
+}
+
+enum EventCategory {
+    EVENT_CATEGORY_UNSPECIFIED = 0;
+    EVENT_CATEGORY_NON_STAGGERED = 1;
+    EVENT_CATEGORY_STAGGERED_TOKEN_CHANGED = 2;
+    EVENT_CATEGORY_STAGGERED_WORK_EXECUTED = 3;
+}

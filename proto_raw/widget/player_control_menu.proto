@@ -5,8 +5,12 @@ package widget;
 import "base/template.proto";
 import "base/widget_commons.proto";
 import "base/actions.proto";
+import "feature/accessibility/accessibility.proto";
 import "feature/player/player_settings_type.proto";
 import "widget/playable_content.proto";
+import "widget/content_rating_cta.proto";
+import "feature/branding/brand.proto";
+import "feature/image/illustration.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -31,6 +35,7 @@ message PlayerControlMenuWidget {
         string icon = 3;
         repeated feature.PlayerSettingsType types = 4;
         base.Actions actions = 5;
+        feature.accessibility.Accessibility alt = 6;
     }
     
     message GeneralActionItem {
@@ -55,12 +60,35 @@ message PlayerControlMenuWidget {
         int32 overlay_duration_in_seconds = 4;
     }
     
+    message PlayInThreeSixtyModeActionItem {
+        string icon = 1;
+        string title = 2;
+        string subtitle = 3;
+        string page_title = 4;
+        string page_subtitle = 5;
+        string content_id = 6;
+        bool watch_in_vr_headset_enabled = 7;
+        bool motion_tracking_enabled = 8;
+        base.Actions actions = 9;
+        string motion_tracking_toggle_label = 10;
+        string watch_in_vr_cta_label = 11;
+        string vr_swipe_gesture_label = 13;
+        string error_title = 14;
+        string error_subtitle = 15;
+        string error_retry_cta_label = 16;
+        feature.branding.Brand brand_icon = 17;
+        string live_label = 18;
+        feature.image.Illustration live_badge = 19;
+    }
+    
     message PlayerControlMenuItem {
         oneof item {
             OpenPlayerSettingsActionItem open_settings_item = 1;
             GeneralActionItem general_action_item = 2;
             FanModeActionItem fan_mode_action_item = 3;
             OpenPlaybackSpeedActionItem playback_speed_item = 4;
+            ContentRatingCtaWidget content_rating_cta_widget = 5;
+            PlayInThreeSixtyModeActionItem play_three_sixty_mode_action_item = 6;
         }
     }
 }

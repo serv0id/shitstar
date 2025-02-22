@@ -5,6 +5,7 @@ package widget;
 import "base/template.proto";
 import "base/widget_commons.proto";
 import "feature/image/image.proto";
+import "feature/accessibility/accessibility.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -25,6 +26,7 @@ message AutoScrollGalleryWidget {
         WidgetType widget_type = 7;
         ImageOrientation image_orientation = 8;
         AutoScrollDirection auto_scroll_direction = 9;
+        feature.accessibility.Accessibility alt = 10;
     }
     
     reserved 3 to 10;

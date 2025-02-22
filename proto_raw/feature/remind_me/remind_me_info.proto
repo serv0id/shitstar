@@ -3,6 +3,7 @@ syntax = "proto3";
 package feature.remind_me;
 
 import "base/actions.proto";
+import "feature/accessibility/accessibility.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/remind_me";
 option java_multiple_files = true;
@@ -13,4 +14,6 @@ message ReminderInfo {
     bool is_reminder_set = 2;
     string release_meta = 3;
     base.Actions actions = 4;
+    accessibility.Accessibility alt_add = 5;
+    accessibility.Accessibility alt_remove = 6;
 }

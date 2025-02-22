@@ -4,6 +4,7 @@ package widget;
 
 import "base/widget_commons.proto";
 import "feature/image/image.proto";
+import "feature/text/text.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -41,10 +42,11 @@ message TimerWidget {
     }
     
     message HorizontalTimer {
-        feature.image.Image image = 1;
+        feature.image.Image image = 1 [deprecated = true];
         string hour_placeholder_text = 2;
         string min_placeholder_text = 3;
         string sec_placeholder_text = 4;
+        feature.text.Text prefix_text = 5;
     }
     
     enum TimerEndBehaviour {

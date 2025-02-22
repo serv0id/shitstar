@@ -7,6 +7,8 @@ import "base/widget_commons.proto";
 import "base/actions.proto";
 import "feature/image/image.proto";
 import "widget/text_list.proto";
+import "feature/text/text.proto";
+import "feature/image/illustration.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -28,11 +30,13 @@ message DialogWidget {
         bool hide_close_icon = 12;
         Align widget_alignment = 13;
         TextListWidget text_list = 14;
+        feature.text.Text timer_text = 15;
+        feature.image.Illustration illustration = 16;
         
         oneof center_drawable {
-            feature.image.Image image = 9;
-            string icon = 10;
-            string lottie = 11;
+            feature.image.Image image = 9 [deprecated = true];
+            string icon = 10 [deprecated = true];
+            string lottie = 11 [deprecated = true];
         }
     }
     

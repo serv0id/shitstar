@@ -15,4 +15,6 @@ message DownloadInfo {
     string studio_name = 6;
     string title_name = 7;
     bool is_download_available = 8;
+    string user_language_preference_id = 9;
+    string content_type = 10;
 }

@@ -72,7 +72,9 @@ message PlayerSettingsWidget {
         string language_tag = 7;
         int32 channel_count = 8;
         
-        reserved 2, "code";
+        reserved 2;
+        
+        reserved "code";
     }
     
     message PlayerSettingsSubtitleOption {
@@ -83,6 +85,8 @@ message PlayerSettingsWidget {
         string name_in_english = 6;
         string language_tag = 7;
         
-        reserved 2, "code";
+        reserved 2;
+        
+        reserved "code";
     }
 }

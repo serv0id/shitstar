@@ -3,6 +3,7 @@ syntax = "proto3";
 package client.player.model;
 
 import "client/player/model/stream_mode.proto";
+import "client/player/model/video_initiation_type.proto";
 
 option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/player/model";
 option java_multiple_files = true;
@@ -23,6 +24,9 @@ message PlaybackModeInfo {
     string appsuite_base = 12;
     int64 retry_count = 13;
     StreamMode mode = 14;
+    PlayerOrientation previous_page_orientation = 15;
+    VideoInitiationSource initiation_source = 16;
+    VideoInitiationType initiation_type = 17;
 }
 
 enum PlayerOrientation {

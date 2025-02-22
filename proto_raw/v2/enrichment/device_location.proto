@@ -20,9 +20,17 @@ message LocationData {
     string state = 2;
     string country = 3;
     string pincode = 4;
+    string country_code = 5;
+    string lat = 6;
+    string long = 7;
+    string city_std = 8;
+    string state_std = 9;
 }
 
 enum LocationSource {
     UNKNOWN_SOURCE = 0;
     NETACUITY = 1;
+    AKAMAI = 2;
+    LOCATION_VIEW_CURRENT_LOC = 3;
+    LOCATION_VIEW_EXTERNAL_TRACKER = 4;
 }

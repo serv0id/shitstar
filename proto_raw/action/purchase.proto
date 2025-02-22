@@ -12,6 +12,15 @@ message PurchaseAction {
     string payment_url = 3;
     string payment_success_widget_url = 4;
     bool replace_page = 5;
+    
+    WebViewMeta web_view_meta = 6;
+    message WebViewMeta {
+        map<string, string> headers = 1;
+        repeated string cookies = 2 [deprecated = true];
+        map<string, string> override_cookies = 3;
+    }
+    
+    string promo_code = 7;
 }
 
 enum PurchaseType {

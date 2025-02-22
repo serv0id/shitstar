@@ -6,6 +6,7 @@ import "base/actions.proto";
 import "base/widget_commons.proto";
 import "feature/branding/brand.proto";
 import "widget/logo.proto";
+import "feature/quiz/title_icon_combo.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -28,8 +29,19 @@ message SubscriptionLogoWidget {
     message SubsNudge {
         string label = 2 [deprecated = true];
         base.Actions actions = 3 [deprecated = true];
-        string nudge_text = 4;
+        string nudge_text = 4 [deprecated = true];
         
-        reserved 1, "type";
+        oneof nudge_content {
+            string text = 5;
+            NudgeAnimation animation = 6;
+        }
+        
+        reserved 1;
+        
+        reserved "type";
+    }
+    
+    message NudgeAnimation {
+        repeated feature.quiz.TitleIconCombo slide_up = 1;
     }
 }

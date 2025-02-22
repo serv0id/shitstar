@@ -6,6 +6,7 @@ import "feature/image/image.proto";
 import "base/widget_commons.proto";
 import "base/actions.proto";
 import "widget/languages_selection.proto";
+import "widget/logo.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -19,6 +20,7 @@ message PromoLandingHeaderWidget {
         Button login_btn = 1;
         LanguagesSelectionWidget language_selection = 2 [deprecated = true];
         LanguageSelector language_selector = 3;
+        LogoWidget brand_logo = 4;
     }
     
     reserved 3 to 10;

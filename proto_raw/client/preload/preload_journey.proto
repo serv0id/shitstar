@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package client.preload;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/preload";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.preload";
+
+message PreloadAddition {
+    PreloadSource preload_source = 1;
+    PreloadStatus status = 2;
+}
+
+message PreloadSource {
+    PreloadSourceType preload_source_type = 3 [deprecated = true];
+    enum PreloadSourceType {
+        PRELOAD_SOURCE_TYPE_UNSPECIFIED = 0;
+        PRELOAD_SOURCE_TYPE_NETWORK = 1;
+        PRELOAD_SOURCE_TYPE_CACHE = 2;
+    }
+    
+    PreloadSourceType bff_source_type = 4;
+    
+    oneof data_source {
+        Network network = 1;
+        Cache cache = 2;
+    }
+    
+    message Network {
+        
+    }
+    
+    message Cache {
+        string identifier = 1 [deprecated = true];
+        string target = 2 [deprecated = true];
+        string cache_identifier = 3;
+    }
+}
+
+message PreloadJourneyProperties {
+    option deprecated = false;
+    
+    Stage stage = 1;
+    enum Stage {
+        STAGE_UNSPECIFIED = 0;
+        STAGE_RECEIVED = 1;
+        STAGE_START = 2;
+        STAGE_FINISH = 3;
+        STAGE_CONSUME = 4;
+        STAGE_FAILED = 5;
+    }
+    
+    ApiType api_type = 2;
+    enum ApiType {
+        API_TYPE_UNSPECIFIED = 0;
+        API_TYPE_PAGE_BFF = 1;
+        API_TYPE_WIDGET_BFF = 2;
+    }
+    
+    Status status = 3;
+    enum Status {
+        STATUS_UNSPECIFIED = 0;
+        STATUS_TRIGGERED = 1;
+        STATUS_SUCCESS = 2;
+        STATUS_FAILURE = 3;
+    }
+    
+    FailureReason failure_reason = 4;
+    enum FailureReason {
+        FAILURE_REASON_UNSPECIFIED = 0;
+        FAILURE_REASON_API_FAILED = 1;
+        FAILURE_REASON_NONE = 2;
+    }
+    
+    string preload_session_id = 5;
+    string url = 6;
+}
+
+enum PreloadStatus {
+    PRELOAD_STATUS_UNSPECIFIED = 0;
+    PRELOAD_STATUS_NO_PRELOAD = 1;
+    PRELOAD_STATUS_BFF = 2;
+    PRELOAD_STATUS_MANIFEST = 3;
+    PRELOAD_STATUS_VIDEO_SEGMENT = 4;
+    PRELOAD_STATUS_NOT_APPLICABLE = 5;
+}

@@ -18,4 +18,5 @@ message DownloadSessionInfo {
     string playback_url = 6;
     string playback_url_host = 7;
     string download_manager_version = 8;
+    string download_uuid = 9;
 }

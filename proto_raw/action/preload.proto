@@ -3,6 +3,7 @@ syntax = "proto3";
 package action;
 
 import "feature/image/image.proto";
+import "feature/request/http_request_commons.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/action";
 option java_multiple_files = true;
@@ -11,19 +12,47 @@ option java_package = "com.hotstar.ui.model.action";
 message PreloadFlow {
     oneof flow {
         ApiCall bff = 1;
+        ApiAndPlaybackCall bffAndPlayback = 2;
     }
     
     message ApiCall {
-        string url = 1;
+        string url = 1 [deprecated = true];
         
-        FetchType fetch_type = 2;
+        FetchType fetch_type = 2 [deprecated = true];
         enum FetchType {
             FETCH_PAGE = 0;
             FETCH_WIDGET = 1;
         }
+        
+        feature.request.HttpRequestCommons params = 3;
+        ClientParamsAdition client_params = 4;
+    }
+    
+    message ApiAndPlaybackCall {
+        ApiCall bff = 1;
+        
+        StopStage stop_stage = 2;
+        enum StopStage {
+            NONE = 0;
+            BFF = 1;
+            MANIFEST = 2;
+            VIDEO_SEGMENT = 3;
+        }
+    }
+    
+    message ClientParamsAdition {
+        bool attach_playback_params = 1;
     }
 }
 
 message PreloadAction {
     PreloadFlow flow = 1;
+    string identifier = 2;
+    PreloadSource source = 3;
+}
+
+enum PreloadSource {
+    SOURCE_UNSPECIFIED = 0;
+    SOURCE_NEXT_EPISODE_CTA = 1;
+    SOURCE_WATCH_NEXT = 2;
 }

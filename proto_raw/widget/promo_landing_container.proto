@@ -10,6 +10,7 @@ import "widget/usp_details.proto";
 import "widget/divider.proto";
 import "widget/promo_landing_header.proto";
 import "widget/faq.proto";
+import "widget/prelaunch_hero.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -33,6 +34,7 @@ message PromoLandingContainerWidget {
             GridWidget grid = 4;
             DividerWidget divider = 5;
             FAQWidget faq = 6;
+            PrelaunchHeroWidget prelaunch_hero = 7;
         }
     }
 }

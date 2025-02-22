@@ -8,6 +8,7 @@ import "feature/image/image.proto";
 import "base/actions.proto";
 import "feature/animation/video_animation.proto";
 import "widget/spotlight_info.proto";
+import "feature/accessibility/accessibility.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -24,6 +25,7 @@ message RectangleStudioCardWidget {
         feature.animation.VideoAnimation video_animation = 3;
         ExpandedContentPoster expanded_content_poster = 4;
         SpotlightInfoWidget spotlight_info = 5;
+        feature.accessibility.Accessibility alt = 6;
     }
     
     reserved 3 to 10;

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package client.usersignals.properties;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/usersignals/properties";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.usersignals.properties";
+
+message SelectedRatingProperties {
+    string prev_rating = 1;
+    string new_content_rating = 2;
+    repeated string displayed_rating_options = 3;
+    string rating_nudge_ingress_type = 4;
+}

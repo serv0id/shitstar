@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package client.usersignals.properties;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/usersignals/properties";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.usersignals.properties";
+
+message EvictingContentRatingCardProperties {
+    int64 threshold = 1;
+    EvictionReason reason = 2;
+}
+
+enum EvictionReason {
+    EVICTION_REASON_UNSPECIFIED = 0;
+    EVICTION_REASON_THRESHOLD_CROSSED = 1;
+    EVICTION_REASON_ALREADY_RATED = 2;
+}

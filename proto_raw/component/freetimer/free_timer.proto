@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package component.freetimer;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/freetimer";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message FreeTimer {
+    FreeTimerSource free_timer_source = 1;
+}
+
+enum FreeTimerSource {
+    FREE_TIMER_SOURCE_UNSPECIFIED = 0;
+    FREE_TIMER_SOURCE_SELF = 1;
+    FREE_TIMER_SOURCE_EXTERNAL = 2;
+    FREE_TIMER_SOURCE_PREF_EXTERNAL = 3;
+}
+
+enum FreeTimerRealSource {
+    FREE_TIMER_REAL_SOURCE_UNSPECIFIED = 0;
+    FREE_TIMER_REAL_SOURCE_BFF = 1;
+    FREE_TIMER_REAL_SOURCE_REFRESH = 2;
+    FREE_TIMER_REAL_SOURCE_MASTER_MANIFEST = 3;
+}

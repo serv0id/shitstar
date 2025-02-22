@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package feature.player;
+
+import "feature/player/content_meta_data.proto";
+import "feature/player/media_asset.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/player";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.feature.player";
+
+message PlayerConfig {
+    ContentMetadata content_metadata = 1;
+    MediaAsset media_asset = 2;
+}

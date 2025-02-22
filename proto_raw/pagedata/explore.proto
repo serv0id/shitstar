@@ -29,4 +29,16 @@ message ExplorePageData {
     uint32 history_show_limit = 9;
     bool tap_to_history = 10;
     base.Actions searchbar_actions = 11;
+    
+    Experiment experiment = 12;
+    message Experiment {
+        bool show_legacy_history_in_zero = 1;
+        bool is_dynamic_hint_clickable = 2;
+    }
+    
+    repeated DynamicHint dynamic_hints = 13;
+    message DynamicHint {
+        string display_text = 1;
+        string query = 2;
+    }
 }

@@ -46,6 +46,7 @@ message ErrorInfo {
     string title = 1;
     string message = 2;
     feature.image.Image image = 3;
+    string description = 4;
 }
 
 message GeneralActionButton {

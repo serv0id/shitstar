@@ -19,6 +19,7 @@ message NotificationSettingsWidget {
         ToggleSetting sms_notification = 2;
         ToggleSetting whatsapp_notification = 3;
         ToggleSetting email_notification = 4;
+        ToggleSetting commercial_notification = 5;
     }
     
     reserved 2 to 10;

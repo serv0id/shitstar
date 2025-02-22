@@ -11,4 +11,5 @@ enum Brand {
     NONE = 0;
     DISNEY_PLUS_HOTSTAR = 1;
     DISNEY_PLUS = 2;
+    HOTSTAR = 3;
 }

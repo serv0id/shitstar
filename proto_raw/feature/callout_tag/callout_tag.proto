@@ -3,6 +3,7 @@ syntax = "proto3";
 package feature.callout_tag;
 
 import "feature/image/image.proto";
+import "feature/text/text.proto";
 import "base/actions.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/feature/callout_tag";
@@ -27,29 +28,40 @@ message CalloutTag {
     message TextTag {
         string text = 1;
         base.Actions actions = 2;
+        text.Text text_v2 = 3;
+        
+        TextTagType text_tag_type = 4;
+        enum TextTagType {
+            DEFAULT = 0;
+            BADGE = 1;
+        }
     }
     
     message ImageTextVerticalTag {
         image.Image image = 1;
         string text = 2;
         base.Actions actions = 3;
+        text.Text text_v2 = 4;
     }
     
     message TextImageVerticalTag {
         image.Image image = 1;
         string text = 2;
         base.Actions actions = 3;
+        text.Text text_v2 = 4;
     }
     
     message ImageTextHorizontalTag {
         image.Image image = 1;
         string text = 2;
         base.Actions actions = 3;
+        text.Text text_v2 = 4;
     }
     
     message TextImageHorizontalTag {
         image.Image image = 1;
         string text = 2;
         base.Actions actions = 3;
+        text.Text text_v2 = 4;
     }
 }

@@ -42,7 +42,7 @@ message PreloadPlaybackProperties {
     }
     
     enum PreloadEligibility {
-        option deprecated = false;
+        option deprecated = true;
         PRELOAD_ELIGIBILITY_UNSPECIFIED = 0;
         PRELOAD_ELIGIBILITY_NOT_ELIGIBLE = 1;
         PRELOAD_ELIGIBILITY_ONLY_BFF = 2;
@@ -105,6 +105,7 @@ message PreloadPlaybackProperties {
 }
 
 message WatchPreloadProperties {
+    option deprecated = true;
     PreloadPlaybackProperties.PreloadPhaseChange preload_phase_change = 1;
     string cid = 2;
 }

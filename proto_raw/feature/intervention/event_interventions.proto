@@ -21,6 +21,7 @@ message EventIntervention {
         oneof meta {
             ActionHandlerIntervention action_handler = 11;
             ComposeDisplayIntervention compose_display = 12;
+            PlaybackRefreshIntervention refresh = 13;
         }
     }
     

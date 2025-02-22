@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/actions.proto";
+import "base/template.proto";
+import "base/widget_commons.proto";
+import "widget/media_container.proto";
+import "widget/tooltip_action_menu.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message RatingCardWidget {
+    base.WidgetCommons widget_commons = 2;
+    
+    Data data = 11;
+    message Data {
+        string content_id = 1;
+        string label = 2;
+        string title = 3;
+        MediaContainerWidget media = 4;
+        TooltipActionMenuWidget tooltip_action_menu_widget = 5;
+        LayoutVariant layout_variant = 6;
+    }
+    
+    reserved 1, 3 to 10;
+    
+    enum LayoutVariant {
+        DEFAULT = 0;
+        REGULAR_HORIZONTAL = 1;
+        REGULAR_VERTICAL = 2;
+    }
+}

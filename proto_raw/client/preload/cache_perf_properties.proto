@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package client.preload;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/preload";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.preload";
+
+message CacheWriteProperties {
+    CacheCommonModel common = 1;
+    int32 deleted_entries = 2;
+    int64 deleted_size_in_bytes = 3;
+    bool is_discarded = 4;
+}
+
+message CacheHitProperties {
+    CacheCommonModel common = 1;
+}
+
+message CacheDeleteProperties {
+    CacheCommonModel common = 1;
+    CacheDeleteReason reason = 2;
+}
+
+message CacheClearProperties {
+    repeated CacheCommonModel items = 1;
+}
+
+message CacheCommonModel {
+    string identifier = 1;
+    CacheExpiryPolicy expiry_policy = 2;
+    int64 max_age = 3;
+    int64 size_in_bytes = 4;
+    string cache_key = 5;
+}
+
+enum CacheExpiryPolicy {
+    CACHE_EXPIRY_POLICY_UNSPECIFIED = 0;
+    CACHE_EXPIRY_POLICY_ACCESS = 1;
+    CACHE_EXPIRY_POLICY_SESSION = 2;
+    CACHE_EXPIRY_POLICY_CROSS_SESSION = 3;
+}
+
+enum CacheDeleteReason {
+    CACHE_DELETE_REASON_UNSPECIFIED = 0;
+    CACHE_DELETE_REASON_EXPIRED = 1;
+    CACHE_DELETE_REASON_VACATED = 2;
+    CACHE_DELETE_REASON_INVALIDATED = 3;
+}

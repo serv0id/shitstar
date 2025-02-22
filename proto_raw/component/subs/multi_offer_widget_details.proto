@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package component.subs;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/component/subs";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.component";
+
+message MultiOfferWidgetDetails {
+    repeated string offer_types = 1;
+    repeated string offer_titles = 2;
+}

@@ -9,4 +9,5 @@ option java_package = "com.hotstar.event.model.api.feature.device";
 message BatteryInfo {
     uint32 battery_strength_percent = 1;
     bool is_battery_charging = 2;
+    uint32 battery_capacity_mah_current = 3;
 }

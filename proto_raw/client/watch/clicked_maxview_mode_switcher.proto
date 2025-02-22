@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package client.watch;
+
+import "client/player/model/playback_mode_info.proto";
+import "client/player/model/stream_mode.proto";
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message ClickedMaxviewModeSwitcherProperties {
+    player.model.StreamMode mode = 1;
+    player.model.PlayerOrientation player_orientation = 2;
+    string stream_state = 3;
+    MaxviewModeSwitcherTrigger trigger = 4;
+}
+
+enum MaxviewModeSwitcherTrigger {
+    MAXVIEW_MODE_SWITCHER_TRIGGER_UNSPECIFIED = 0;
+    MAXVIEW_MODE_SWITCHER_TRIGGER_TOGGLE_CTA = 1;
+    MAXVIEW_MODE_SWITCHER_TRIGGER_HORIZONTAL_EXPAND = 2;
+}

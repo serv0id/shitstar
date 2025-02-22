@@ -10,4 +10,5 @@ message InitiatePaymentAction {
     string base_init_payload = 1;
     string url = 4;
     bool use_async = 5;
+    bool use_capture_charge = 6;
 }

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package composable;
+
+import "feature/accessibility/accessibility.proto";
+import "composable/base/commons.proto";
+import "composable/elements/composable.proto";
+import "composable/elements/icon.proto";
+import "composable/tokens/dls_tokens.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/composable/elements";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.composable";
+
+message TagsFixed {
+    ComposableCommons composable_commons = 1;
+    TagsView view = 2;
+    Composable prefix = 3;
+}
+
+message TagsView {
+    repeated Composable items = 1;
+    Icon separator = 2;
+    tokens.DLSSpacings spacing = 3;
+    feature.accessibility.Accessibility accessibility = 4;
+}

@@ -61,6 +61,7 @@ message ButtonStackWidget {
     enum ButtonPadding {
         REGULAR = 0;
         LARGE = 1;
+        NONE = 2;
     }
     
     enum HorizontalAlignmentRatio {

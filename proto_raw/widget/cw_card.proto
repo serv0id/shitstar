@@ -8,7 +8,9 @@ import "base/actions.proto";
 import "feature/image/image.proto";
 import "feature/cw/cw_info.proto";
 import "feature/download/download_info.proto";
+import "feature/accessibility/accessibility.proto";
 import "widget/spotlight_info.proto";
+import "feature/image/illustration.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -27,6 +29,8 @@ message CWCardWidget {
         ExpandedContentPoster expanded_content_poster = 5;
         SpotlightInfoWidget spotlight_info = 6;
         MetaInfo meta_info = 7;
+        feature.accessibility.Accessibility alt = 8;
+        feature.image.Illustration play = 9;
     }
     
     reserved 3 to 10;
@@ -56,6 +60,9 @@ message CWCardWidget {
                 CWRemovefromRowKebabMenuOption cw_remove_from_row_kebab_menu_option = 3;
             }
         }
+        
+        feature.accessibility.Accessibility alt = 3;
+        base.Actions actions = 4;
     }
     
     message KebabMenuOption {
@@ -74,6 +81,7 @@ message CWCardWidget {
         string content_id = 1;
         string icon_name = 2;
         string label = 3;
+        base.Actions actions = 4;
     }
     
     message IconLabelButton {
@@ -86,6 +94,7 @@ message CWCardWidget {
         string icon_name = 1;
         string label = 2;
         string sublabel = 3;
+        base.Actions actions = 4;
     }
     
     message Tag {
@@ -98,6 +107,10 @@ message CWCardWidget {
         ContinueWatchingType continue_watching_type = 2;
         uint32 episode_number = 3;
         uint32 season_number = 4;
+        string content_key = 5;
+        int32 release_year = 6 [deprecated = true];
+        string age_rating = 7;
+        uint32 content_release_year = 8;
     }
     
     enum ContentType {

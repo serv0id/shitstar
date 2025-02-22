@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package v2.enrichment;
 
+import "v2/langcommons/language_codes.proto";
+
 option go_package = "github.com/hotstar/hs-core-api-go/v2/enrichment";
 option java_multiple_files = true;
 option java_package = "com.hotstar.bff.api.v2.enrichment";
@@ -31,6 +33,7 @@ message UserLanguagePreferencesV2 {
                 ONBOARDED_LANG = 2;
                 PRIMARY_LANG = 3;
                 SPORTS_LANG = 4;
+                ODP = 5;
             }
             
             float version = 2;
@@ -61,5 +64,15 @@ message UserLanguagePreferencesV2 {
         }
         
         float weight = 4;
+        
+        repeated DubbedPreference dubbedPrefList = 5;
+        message DubbedPreference {
+            lang_commons.LanguageCodes audio_lang = 1;
+            uint32 weight = 3;
+            
+            reserved 2;
+        }
+        
+        lang_commons.LanguageCodes audio_lang_v2 = 6;
     }
 }

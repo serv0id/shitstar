@@ -14,6 +14,14 @@ message ActionContextRequest {
     SubscribeActionContextRequest subscribe_action_context = 1;
     WatchActionContextRequest watch_action_context = 2;
     OnboardingActionContextRequest onboarding_action_context = 3;
+    AdActionContextRequest ad_action_context = 4;
+}
+
+message AdActionContextRequest {
+    repeated string cte_trackers = 1;
+    string url = 2;
+    string error_message = 3;
+    string success_message = 4;
 }
 
 message SubscribeActionContextRequest {

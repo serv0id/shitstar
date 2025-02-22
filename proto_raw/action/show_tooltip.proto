@@ -11,8 +11,20 @@ option java_multiple_files = true;
 option java_package = "com.hotstar.ui.model.action";
 
 message ShowTooltipAction {
-    string message = 1;
+    string message = 1 [deprecated = true];
     feature.tooltip.ArrowAlignment preferred_arrow_alignment = 2;
     feature.tooltip.ContentSpread content_spread = 3;
     feature.tooltip.ArrowPosition arrow_position = 4;
+    
+    Data data = 5;
+    message Data {
+        string message = 2;
+    }
+    
+    TooltipType tooltip_type = 6;
+    enum TooltipType {
+        DEFAULT = 0;
+        TEXT = 1;
+        USER_REACTIONS = 2;
+    }
 }

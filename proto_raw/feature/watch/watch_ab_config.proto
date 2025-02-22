@@ -22,4 +22,31 @@ message WatchConfig {
     bool retry_pc_delay_player_enabled = 11;
     bool automatic_speed_test_enabled = 12;
     bool mux_integration_enabled = 13;
+    bool mweb_watch_page_enabled = 14;
+    bool maxview_improvement_enabled = 15;
+    bool bottom_shoulder_loaded_after_playback = 16;
+    bool preload_certificate_enabled = 17;
+    
+    NetworkNudgeConfig network_nudge_config = 18;
+    message NetworkNudgeConfig {
+        int32 max_count_in_cycle = 1;
+        int32 days_count_cycle = 2;
+        int32 buffer_time_seconds = 3;
+        int32 max_count_per_day = 4;
+        int32 max_count_total = 5;
+    }
+    
+    PlayerControlUiType player_control_ui_type = 19;
+    enum PlayerControlUiType {
+        PLAYER_CONTROL_UI_DEFAULT = 0;
+        PLAYER_CONTROL_UI_GEAR_ICON = 1;
+        PLAYER_CONTROL_UI_WITH_CONTENT_RATING = 2;
+        PLAYER_CONTROL_UI_OVERLAY_TAB = 3;
+        PLAYER_CONTROL_UI_PARTIAL_OVERLAY = 4;
+    }
+    
+    bool parallel_loading_enabled = 20;
+    bool dns_prefetch_enabled = 21;
+    bool show_wn_orientation_transition = 22;
+    bool webos_watch_time_fix = 23;
 }

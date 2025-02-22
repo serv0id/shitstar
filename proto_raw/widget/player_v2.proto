@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package widget;
+
+import "base/widget_commons.proto";
+import "feature/intervention/player_intervention.proto";
+import "feature/player/player_config.proto";
+import "widget/player_control_v2.proto";
+import "widget/player_error.proto";
+
+option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
+option java_multiple_files = true;
+option java_package = "com.hotstar.ui.model.widget";
+
+message PlayerV2Widget {
+    base.WidgetCommons widget_commons = 1;
+    
+    Data data = 11;
+    message Data {
+        feature.player.PlayerConfig player_config = 1;
+        feature.intervention.PlayerIntervention player_interventions = 2;
+        PlayerControl player_control = 3;
+        PlayerErrorWidget player_error_widget = 4;
+    }
+    
+    reserved 2 to 10;
+    
+    message PlayerControl {
+        oneof Control {
+            PlayerControlV2Widget player_control_v2 = 1;
+            string player_control_widget_url = 2;
+        }
+    }
+}

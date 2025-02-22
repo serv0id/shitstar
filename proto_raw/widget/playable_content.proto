@@ -8,6 +8,7 @@ import "base/actions.proto";
 import "feature/download/download_info.proto";
 import "feature/image/image.proto";
 import "feature/cw/cw_info.proto";
+import "feature/image/illustration.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/widget";
 option java_multiple_files = true;
@@ -29,6 +30,10 @@ message PlayableContentWidget {
         string content_id = 8;
         base.Actions actions = 11;
         bool is_focused = 12;
+        feature.image.Illustration play = 13;
+        string static_badge = 14;
+        string play_badge = 15;
+        string identifier = 16;
     }
     
     reserved 3 to 10;

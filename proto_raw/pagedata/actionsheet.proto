@@ -3,6 +3,7 @@ syntax = "proto3";
 package pagedata;
 
 import "base/page_data_commons.proto";
+import "base/actions.proto";
 
 option go_package = "github.com/hotstar/hs-core-ui-models-go/pagedata";
 option java_multiple_files = true;
@@ -11,8 +12,27 @@ option java_package = "com.hotstar.ui.model.pagedata";
 message ActionsheetData {
     base.PageDataCommons page_data_commons = 1;
     ActionsheetConfig actionsheet_config = 2;
+    map<string, base.Actions.Action> page_event_actions = 3;
 }
 
 message ActionsheetConfig {
     double max_height_ratio = 1;
+    bool is_closeable = 2 [deprecated = true];
+    bool not_skippable = 3;
+    BGOverlayType bg_overlay_type = 4 [deprecated = true];
+    
+    ActionSheetPadding action_sheet_top_padding = 5;
+    enum ActionSheetPadding {
+        DEFAULT = 0;
+        ZERO = 1;
+        HEAVY = 2;
+    }
+    
+    ActionSheetPadding action_sheet_bottom_padding = 6;
+}
+
+enum BGOverlayType {
+    option deprecated = true;
+    DEFAULT = 0;
+    CLEAR = 1;
 }

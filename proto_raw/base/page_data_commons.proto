@@ -4,6 +4,7 @@ package base;
 
 import "base/analytics.proto";
 import "base/actions.proto";
+import "base/cache_control.proto";
 import "feature/app_event/app_event.proto";
 import "feature/refresh/refresh_info.proto";
 
@@ -18,4 +19,11 @@ message PageDataCommons {
     string refresh_api_url = 4;
     Actions actions = 5;
     feature.refresh.RefreshInfo refresh_info = 6;
+    PageCacheConfig cache_config = 7 [deprecated = true];
+    CacheControl cache_control = 8;
+}
+
+message PageCacheConfig {
+    bool is_cacheable = 2;
+    int64 ttl_sec = 3;
 }

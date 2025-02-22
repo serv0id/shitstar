@@ -20,4 +20,11 @@ message MembershipSummaryDetails {
     }
     
     PurchaseNudgeDetails.NudgeType nudge_type = 4;
+    
+    OfferAnimation offer_animation = 5;
+    enum OfferAnimation {
+        OFFER_ANIMATION_UNSPECIFIED = 0;
+        OFFER_ANIMATION_ELIGIBLE_HIDDEN = 1;
+        OFFER_ANIMATION_ELIGIBLE_VISIBLE = 2;
+    }
 }

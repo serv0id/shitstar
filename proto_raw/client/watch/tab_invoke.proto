@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package client.watch;
+
+option go_package = "github.com/hotstar/data-event-schemas-go/hsanalytics/client/watch";
+option java_multiple_files = true;
+option java_package = "com.hotstar.event.model.client.watch";
+
+message TabInvokeProperties {
+    TabInvokeSource tab_invoke_source = 1;
+    enum TabInvokeSource {
+        TAB_INVOKE_SOURCE_UNSPECIFIED = 0;
+        TAB_INVOKE_SOURCE_BUTTON = 1;
+        TAB_INVOKE_SOURCE_PEEK_TRAY = 2;
+        TAB_INVOKE_SOURCE_SWIPE_UP = 3;
+        TAB_INVOKE_SOURCE_SWITCH_TABS = 4;
+    }
+}
