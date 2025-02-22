@@ -66,7 +66,7 @@ def get_guest_token(session: requests.Session, device_id: str) -> str:
         "login": "UNKNOWN"
     }, headers={
         "X-HS-FP-Info": config.FP_SAMPLE_VALUE,
-        'hotstarauth': get_hs_auth()
+        "hotstarauth": get_hs_auth()
     }, data=ProtoHelper.get_freshstart(device_id))
 
     return resp.headers["x-hs-updatedusertoken"]
