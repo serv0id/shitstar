@@ -144,18 +144,21 @@ class ShitStar(object):
         print(tabulate(results))
 
     def get_manifest(self) -> None:
+        logger.info(f"Retrieving manifest for title {self.title_id}!")
+        
         s = self.session.get(url=config.WATCH_URL, params={
             "content_id": self.title_id,
             "filters": "content_type=movie",
             "client_capabilities": config.CLIENT_CAPABILITIES,
-            "drm_parameters": config.DRM_CAPABILITIES_WV
+            "drm_parameters": config.DRM_CAPABILITIES_PR
          }, headers={
             "app_name": "android",
             "hotstarauth": utils.get_hs_auth()
         })
 
-        print(s.text)
+        manifest_res = json.loads(ProtoHelper.parse_manifest(s.content))
 
+        print(manifest_res)
 
 @click.command()
 @click.option('-r', '--refresh', is_flag=True, help='Refresh access token')

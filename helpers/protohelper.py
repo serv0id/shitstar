@@ -8,6 +8,7 @@ import protos.v2.page_pb2 as page_proto
 import protos.v2.space_pb2 as space_proto
 import protos.v2.widget_pb2 as widget_proto
 import protos.widget.grid_pb2 as grid_proto
+import protos.widget.player_pb2 as player_proto
 import google.protobuf.json_format as json_format
 
 
@@ -101,6 +102,19 @@ class ProtoHelper(object):
 
         return json_format.MessageToJson(grid_wrapper)
 
+
+    @staticmethod
+    def parse_manifest(content: bytes) -> dict:
+        page_response = page_response_proto.PageResponse()
+        page_response.ParseFromString(content)
+
+        page_wrapper = page_proto.Page()
+        page_wrapper.CopyFrom(page_response.success.page)
+
+        player_wrapper = player_proto.PlayerWidget()
+        player_wrapper.ParseFromString(page_wrapper.spaces["player"].widget_wrappers[0].widget.value)
+
+        return json_format.MessageToJson(player_wrapper)
 
 if __name__ == "__main__":
     logger.error("Please import the module rather than running it!")
