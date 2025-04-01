@@ -3,13 +3,15 @@ import protos.login_pb2 as login_proto
 import protos.v2.request.start_request_pb2 as start_proto
 import protos.widget.login_success_pb2 as success_proto
 import protos.v2.response.widget_response_pb2 as widget_response_proto
-import protos.v2.widget_pb2 as widget_proto
 import protos.v2.response.page_response_pb2 as page_response_proto
 import protos.v2.page_pb2 as page_proto
+import protos.v2.space_pb2 as space_proto
+import protos.v2.widget_pb2 as widget_proto
+import protos.widget.grid_pb2 as grid_proto
+import google.protobuf.json_format as json_format
 
 
 class ProtoHelper(object):
-
     @staticmethod
     def get_otp(phone: str) -> bytes:
         otp_body = login_proto.send_otp()
@@ -88,7 +90,16 @@ class ProtoHelper(object):
         page_wrapper = page_proto.Page()
         page_wrapper.CopyFrom(page_response.success.page)
 
-        #logger.info(page_wrapper.)
+        space_wrapper = space_proto.Space()
+        space_wrapper.CopyFrom(page_wrapper.spaces["results"])
+
+        widget_wrapper = widget_proto.WidgetWrapper()
+        widget_wrapper.CopyFrom(space_wrapper.widget_wrappers[0])
+
+        grid_wrapper = grid_proto.GridWidget()
+        grid_wrapper.ParseFromString(widget_wrapper.widget.value)
+
+        return json_format.MessageToJson(grid_wrapper)
 
 
 if __name__ == "__main__":

@@ -1,24 +1,26 @@
 from google.protobuf import any_pb2 as _any_pb2
 from v2.ctx import context_pb2 as _context_pb2
+from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from typing import ClassVar as _ClassVar, Mapping as _Mapping, Optional as _Optional, Union as _Union
+from collections.abc import Iterable as _Iterable, Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class StartRequest(_message.Message):
-    __slots__ = ["deeplink_url", "body", "mode", "is_upgrade_shown", "context", "app_launch_count", "device_info", "client_capabilities"]
+    __slots__ = ("deeplink_url", "body", "mode", "is_upgrade_shown", "context", "app_launch_count", "device_info", "client_capabilities")
     class StartMode(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-        __slots__ = []
+        __slots__ = ()
         HARD: _ClassVar[StartRequest.StartMode]
         SOFT: _ClassVar[StartRequest.StartMode]
     HARD: StartRequest.StartMode
     SOFT: StartRequest.StartMode
     class DeviceInfo(_message.Message):
-        __slots__ = ["device_ids", "device_meta"]
+        __slots__ = ("device_ids", "device_meta")
         class DeviceIdType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-            __slots__ = []
+            __slots__ = ()
             AD_ID: _ClassVar[StartRequest.DeviceInfo.DeviceIdType]
             ANDROID_ID: _ClassVar[StartRequest.DeviceInfo.DeviceIdType]
             UUID: _ClassVar[StartRequest.DeviceInfo.DeviceIdType]
@@ -28,14 +30,14 @@ class StartRequest(_message.Message):
         UUID: StartRequest.DeviceInfo.DeviceIdType
         DEVICE_ID: StartRequest.DeviceInfo.DeviceIdType
         class DeviceId(_message.Message):
-            __slots__ = ["id", "type"]
+            __slots__ = ("id", "type")
             ID_FIELD_NUMBER: _ClassVar[int]
             TYPE_FIELD_NUMBER: _ClassVar[int]
             id: str
             type: StartRequest.DeviceInfo.DeviceIdType
             def __init__(self, id: _Optional[str] = ..., type: _Optional[_Union[StartRequest.DeviceInfo.DeviceIdType, str]] = ...) -> None: ...
         class DeviceMeta(_message.Message):
-            __slots__ = ["network_operator", "os_name", "os_version"]
+            __slots__ = ("network_operator", "os_name", "os_version")
             NETWORK_OPERATOR_FIELD_NUMBER: _ClassVar[int]
             OS_NAME_FIELD_NUMBER: _ClassVar[int]
             OS_VERSION_FIELD_NUMBER: _ClassVar[int]
@@ -45,9 +47,9 @@ class StartRequest(_message.Message):
             def __init__(self, network_operator: _Optional[str] = ..., os_name: _Optional[str] = ..., os_version: _Optional[str] = ...) -> None: ...
         DEVICE_IDS_FIELD_NUMBER: _ClassVar[int]
         DEVICE_META_FIELD_NUMBER: _ClassVar[int]
-        device_ids: StartRequest.DeviceInfo.DeviceId
+        device_ids: _containers.RepeatedCompositeFieldContainer[StartRequest.DeviceInfo.DeviceId]
         device_meta: StartRequest.DeviceInfo.DeviceMeta
-        def __init__(self, device_ids: _Optional[_Union[StartRequest.DeviceInfo.DeviceId, _Mapping]] = ..., device_meta: _Optional[_Union[StartRequest.DeviceInfo.DeviceMeta, _Mapping]] = ...) -> None: ...
+        def __init__(self, device_ids: _Optional[_Iterable[_Union[StartRequest.DeviceInfo.DeviceId, _Mapping]]] = ..., device_meta: _Optional[_Union[StartRequest.DeviceInfo.DeviceMeta, _Mapping]] = ...) -> None: ...
     DEEPLINK_URL_FIELD_NUMBER: _ClassVar[int]
     BODY_FIELD_NUMBER: _ClassVar[int]
     MODE_FIELD_NUMBER: _ClassVar[int]

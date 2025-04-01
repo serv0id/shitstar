@@ -5,7 +5,7 @@ from typing import ClassVar as _ClassVar, Optional as _Optional
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class RefreshInfo(_message.Message):
-    __slots__ = ["max_age_ms", "refresh_url"]
+    __slots__ = ("max_age_ms", "refresh_url")
     MAX_AGE_MS_FIELD_NUMBER: _ClassVar[int]
     REFRESH_URL_FIELD_NUMBER: _ClassVar[int]
     max_age_ms: int

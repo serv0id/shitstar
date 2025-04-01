@@ -5,7 +5,7 @@ from typing import ClassVar as _ClassVar
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class ArrowAlignment(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     UNDEFINED: _ClassVar[ArrowAlignment]
     START: _ClassVar[ArrowAlignment]
     END: _ClassVar[ArrowAlignment]

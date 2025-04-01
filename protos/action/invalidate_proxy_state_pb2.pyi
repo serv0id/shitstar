@@ -5,7 +5,7 @@ from typing import ClassVar as _ClassVar, Optional as _Optional
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class UpdateProxyStateTTLAction(_message.Message):
-    __slots__ = ["key", "ttl"]
+    __slots__ = ("key", "ttl")
     KEY_FIELD_NUMBER: _ClassVar[int]
     TTL_FIELD_NUMBER: _ClassVar[int]
     key: str

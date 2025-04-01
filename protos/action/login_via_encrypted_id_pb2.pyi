@@ -5,7 +5,7 @@ from typing import ClassVar as _ClassVar, Optional as _Optional
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class LoginViaEncryptedIdAction(_message.Message):
-    __slots__ = ["url", "encrypted_id"]
+    __slots__ = ("url", "encrypted_id")
     URL_FIELD_NUMBER: _ClassVar[int]
     ENCRYPTED_ID_FIELD_NUMBER: _ClassVar[int]
     url: str

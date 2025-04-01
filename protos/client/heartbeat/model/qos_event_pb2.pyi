@@ -1,0 +1,159 @@
+from client.heartbeat.model import qos_event_metadata_pb2 as _qos_event_metadata_pb2
+from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
+from google.protobuf import descriptor as _descriptor
+from google.protobuf import message as _message
+from collections.abc import Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
+
+DESCRIPTOR: _descriptor.FileDescriptor
+
+class QosEventType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    QOS_EVENT_TYPE_UNSPECIFIED: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_BYTES_DOWNLOADED: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_SEGMENTS_DOWNLOADED: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_BITRATE: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_DOWNLOAD_BITRATE: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_RENDER_BITRATE: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_UP_SHIFT: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_DOWN_SHIFT: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_START_BUFFER: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_BUFFER_LENGTH: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_PLAY: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_PAUSE: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_STOP: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_ROTOR: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_SEEK: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_REBUFFER_START: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_REBUFFER_END: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_SEEK_START: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_SEEK_END: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_DOWNLOAD_MANIFEST_BITRATE: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_RENDER_MANIFEST_BITRATE: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_STARTUP_TIME: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_STARTUP_MANIFEST_BITRATE: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_CURRENT_BANDWIDTH: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_CURRENT_RESOLUTION: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_PLAYBACK_ERROR: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_PLAYED_BYTES: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_PLAYED_DURATION: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_PLAY_ATTEMPT: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_STARTED_PLAY: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_ENDED_PLAY: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_FAILURE: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_EXIT: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_DROPPED_FRAMES: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_VIDEO_QUALITY_LEVEL_CHANGE: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_LIVE_LATENCY: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_DOWNLOAD_FAILURE: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_VIEWPORT_CHANGE: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_UP_SHIFT_DOWNLOAD: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_DOWN_SHIFT_DOWNLOAD: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_WARN: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_APP_LIFECYCLE: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_ADS_START: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_ADS_END: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_USER_ACTION: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_DECODER_PERF: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_DISCONTINUITY: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_STALE_MANIFEST: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_MEMORY_INFO: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_PLAYER_LOAD: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_DOWNLOAD_START: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_DOWNLOAD_END: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_ABR_CONFIG: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_ABR_DECISION: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_SPEED_TEST: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_STALL_START: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_STALL_END: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_OFFLINE_DOWNLOAD_ATTEMPT: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_OFFLINE_DOWNLOAD_CANCELLED: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_OFFLINE_DOWNLOAD_PAUSED: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_OFFLINE_DOWNLOAD_RESUMED: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_OFFLINE_DOWNLOAD_COMPLETED: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_OFFLINE_DOWNLOAD_QUALITIES_AVAILABLE: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_OFFLINE_DOWNLOAD_OPTION_SELECTED: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_LOCAL_OPERATION_START: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_LOCAL_OPERATION_END: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_TEST: _ClassVar[QosEventType]
+    QOS_EVENT_TYPE_VIDEO_STUCK: _ClassVar[QosEventType]
+QOS_EVENT_TYPE_UNSPECIFIED: QosEventType
+QOS_EVENT_TYPE_BYTES_DOWNLOADED: QosEventType
+QOS_EVENT_TYPE_SEGMENTS_DOWNLOADED: QosEventType
+QOS_EVENT_TYPE_BITRATE: QosEventType
+QOS_EVENT_TYPE_DOWNLOAD_BITRATE: QosEventType
+QOS_EVENT_TYPE_RENDER_BITRATE: QosEventType
+QOS_EVENT_TYPE_UP_SHIFT: QosEventType
+QOS_EVENT_TYPE_DOWN_SHIFT: QosEventType
+QOS_EVENT_TYPE_START_BUFFER: QosEventType
+QOS_EVENT_TYPE_BUFFER_LENGTH: QosEventType
+QOS_EVENT_TYPE_PLAY: QosEventType
+QOS_EVENT_TYPE_PAUSE: QosEventType
+QOS_EVENT_TYPE_STOP: QosEventType
+QOS_EVENT_TYPE_ROTOR: QosEventType
+QOS_EVENT_TYPE_SEEK: QosEventType
+QOS_EVENT_TYPE_REBUFFER_START: QosEventType
+QOS_EVENT_TYPE_REBUFFER_END: QosEventType
+QOS_EVENT_TYPE_SEEK_START: QosEventType
+QOS_EVENT_TYPE_SEEK_END: QosEventType
+QOS_EVENT_TYPE_DOWNLOAD_MANIFEST_BITRATE: QosEventType
+QOS_EVENT_TYPE_RENDER_MANIFEST_BITRATE: QosEventType
+QOS_EVENT_TYPE_STARTUP_TIME: QosEventType
+QOS_EVENT_TYPE_STARTUP_MANIFEST_BITRATE: QosEventType
+QOS_EVENT_TYPE_CURRENT_BANDWIDTH: QosEventType
+QOS_EVENT_TYPE_CURRENT_RESOLUTION: QosEventType
+QOS_EVENT_TYPE_PLAYBACK_ERROR: QosEventType
+QOS_EVENT_TYPE_PLAYED_BYTES: QosEventType
+QOS_EVENT_TYPE_PLAYED_DURATION: QosEventType
+QOS_EVENT_TYPE_PLAY_ATTEMPT: QosEventType
+QOS_EVENT_TYPE_STARTED_PLAY: QosEventType
+QOS_EVENT_TYPE_ENDED_PLAY: QosEventType
+QOS_EVENT_TYPE_FAILURE: QosEventType
+QOS_EVENT_TYPE_EXIT: QosEventType
+QOS_EVENT_TYPE_DROPPED_FRAMES: QosEventType
+QOS_EVENT_TYPE_VIDEO_QUALITY_LEVEL_CHANGE: QosEventType
+QOS_EVENT_TYPE_LIVE_LATENCY: QosEventType
+QOS_EVENT_TYPE_DOWNLOAD_FAILURE: QosEventType
+QOS_EVENT_TYPE_VIEWPORT_CHANGE: QosEventType
+QOS_EVENT_TYPE_UP_SHIFT_DOWNLOAD: QosEventType
+QOS_EVENT_TYPE_DOWN_SHIFT_DOWNLOAD: QosEventType
+QOS_EVENT_TYPE_WARN: QosEventType
+QOS_EVENT_TYPE_APP_LIFECYCLE: QosEventType
+QOS_EVENT_TYPE_ADS_START: QosEventType
+QOS_EVENT_TYPE_ADS_END: QosEventType
+QOS_EVENT_TYPE_USER_ACTION: QosEventType
+QOS_EVENT_TYPE_DECODER_PERF: QosEventType
+QOS_EVENT_TYPE_DISCONTINUITY: QosEventType
+QOS_EVENT_TYPE_STALE_MANIFEST: QosEventType
+QOS_EVENT_TYPE_MEMORY_INFO: QosEventType
+QOS_EVENT_TYPE_PLAYER_LOAD: QosEventType
+QOS_EVENT_TYPE_DOWNLOAD_START: QosEventType
+QOS_EVENT_TYPE_DOWNLOAD_END: QosEventType
+QOS_EVENT_TYPE_ABR_CONFIG: QosEventType
+QOS_EVENT_TYPE_ABR_DECISION: QosEventType
+QOS_EVENT_TYPE_SPEED_TEST: QosEventType
+QOS_EVENT_TYPE_STALL_START: QosEventType
+QOS_EVENT_TYPE_STALL_END: QosEventType
+QOS_EVENT_TYPE_OFFLINE_DOWNLOAD_ATTEMPT: QosEventType
+QOS_EVENT_TYPE_OFFLINE_DOWNLOAD_CANCELLED: QosEventType
+QOS_EVENT_TYPE_OFFLINE_DOWNLOAD_PAUSED: QosEventType
+QOS_EVENT_TYPE_OFFLINE_DOWNLOAD_RESUMED: QosEventType
+QOS_EVENT_TYPE_OFFLINE_DOWNLOAD_COMPLETED: QosEventType
+QOS_EVENT_TYPE_OFFLINE_DOWNLOAD_QUALITIES_AVAILABLE: QosEventType
+QOS_EVENT_TYPE_OFFLINE_DOWNLOAD_OPTION_SELECTED: QosEventType
+QOS_EVENT_TYPE_LOCAL_OPERATION_START: QosEventType
+QOS_EVENT_TYPE_LOCAL_OPERATION_END: QosEventType
+QOS_EVENT_TYPE_TEST: QosEventType
+QOS_EVENT_TYPE_VIDEO_STUCK: QosEventType
+
+class QosEvent(_message.Message):
+    __slots__ = ("event_type", "value", "ts_occurred_ms", "metadata")
+    EVENT_TYPE_FIELD_NUMBER: _ClassVar[int]
+    VALUE_FIELD_NUMBER: _ClassVar[int]
+    TS_OCCURRED_MS_FIELD_NUMBER: _ClassVar[int]
+    METADATA_FIELD_NUMBER: _ClassVar[int]
+    event_type: QosEventType
+    value: str
+    ts_occurred_ms: int
+    metadata: _qos_event_metadata_pb2.QosEventMetadata
+    def __init__(self, event_type: _Optional[_Union[QosEventType, str]] = ..., value: _Optional[str] = ..., ts_occurred_ms: _Optional[int] = ..., metadata: _Optional[_Union[_qos_event_metadata_pb2.QosEventMetadata, _Mapping]] = ...) -> None: ...

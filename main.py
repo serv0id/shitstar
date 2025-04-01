@@ -1,11 +1,14 @@
 import sys
 import time
 import uuid
+import re
+import json
 
 import requests
 from loguru import logger
 import click
 from typing import Any
+from tabulate import tabulate
 
 import config
 import creds
@@ -72,15 +75,15 @@ class ShitStar(object):
         :return: None
         """
         if self.refresh:
-            logger.debug("Refreshing token..")
+            logger.debug("Refreshing token")
             utils.dump_creds(self.login())
 
-        logger.info("Attempting to load credentials..")
+        logger.info("Attempting to load credentials")
 
         credict = utils.get_creds()
 
         if not credict.get("user_token"):
-            logger.error("Invalid credentials! Attempting to log in..")
+            logger.error("Invalid credentials! Attempting to log in")
             utils.dump_creds(self.login())
             logger.info(f"Saved token to {config.CREDFILE}")
 
@@ -120,13 +123,25 @@ class ShitStar(object):
 
         return cred_dict
 
-    def search_title(self) -> dict:
+    def search_title(self) -> None:
+        logger.info(f"Searching for the keyword {self.search}!")
+
         s = self.session.get(url=config.SEARCH_URL, params={
             "search_query": self.search,
         })
 
-        # print(s.content.hex())
-        return {}
+        search_res = json.loads(ProtoHelper.parse_search_page(s.content))
+
+        results: list = []
+
+        for item in search_res["data"]["items"]:
+            results.append({
+                "title": item["searchHorizontalContentCard"]["data"]["title"],
+                "duration": item["searchHorizontalContentCard"]["data"].get("duration"),
+                "title_id": item["searchHorizontalContentCard"]["data"]["actions"]["onClick"][1]["pageNavigation"]["pageSlug"]
+            })
+
+        print(tabulate(results))
 
     def get_manifest(self) -> None:
         s = self.session.get(url=config.WATCH_URL, params={
@@ -139,7 +154,7 @@ class ShitStar(object):
             "hotstarauth": utils.get_hs_auth()
         })
 
-        # print(s.content)
+        print(s.text)
 
 
 @click.command()

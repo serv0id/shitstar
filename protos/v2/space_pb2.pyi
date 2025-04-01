@@ -1,18 +1,19 @@
-from protos.v2 import widget_pb2 as _widget_pb2
-from protos.v2 import refresh_space_pb2 as _refresh_space_pb2
+from v2 import widget_pb2 as _widget_pb2
+from v2 import refresh_space_pb2 as _refresh_space_pb2
 from google.protobuf import any_pb2 as _any_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from typing import ClassVar as _ClassVar, Iterable as _Iterable, Mapping as _Mapping, Optional as _Optional, Union as _Union
+from collections.abc import Iterable as _Iterable, Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class Space(_message.Message):
-    __slots__ = ["id", "template", "version", "widget_wrappers", "data", "delivery_type", "dynamic_space_request", "deferred_space_request"]
+    __slots__ = ("id", "template", "version", "widget_wrappers", "data", "delivery_type", "dynamic_space_request", "deferred_space_request")
     class SpaceDeliveryType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-        __slots__ = []
+        __slots__ = ()
         STATIC: _ClassVar[Space.SpaceDeliveryType]
         DYNAMIC: _ClassVar[Space.SpaceDeliveryType]
     STATIC: Space.SpaceDeliveryType

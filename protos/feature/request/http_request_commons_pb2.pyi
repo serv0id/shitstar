@@ -2,14 +2,15 @@ from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from typing import ClassVar as _ClassVar, Iterable as _Iterable, Mapping as _Mapping, Optional as _Optional, Union as _Union
+from collections.abc import Iterable as _Iterable, Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class HttpRequestCommons(_message.Message):
-    __slots__ = ["url", "request_type", "headers", "body", "attach_default_headers"]
+    __slots__ = ("url", "request_type", "headers", "body", "attach_default_headers")
     class HttpRequestType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-        __slots__ = []
+        __slots__ = ()
         GET: _ClassVar[HttpRequestCommons.HttpRequestType]
         POST: _ClassVar[HttpRequestCommons.HttpRequestType]
         PUT: _ClassVar[HttpRequestCommons.HttpRequestType]
@@ -17,7 +18,7 @@ class HttpRequestCommons(_message.Message):
     POST: HttpRequestCommons.HttpRequestType
     PUT: HttpRequestCommons.HttpRequestType
     class HttpHeader(_message.Message):
-        __slots__ = ["key", "value"]
+        __slots__ = ("key", "value")
         KEY_FIELD_NUMBER: _ClassVar[int]
         VALUE_FIELD_NUMBER: _ClassVar[int]
         key: str

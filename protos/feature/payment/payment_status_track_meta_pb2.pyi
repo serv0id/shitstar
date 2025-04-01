@@ -5,7 +5,7 @@ from typing import ClassVar as _ClassVar, Optional as _Optional
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class PaymentStatusTrackMeta(_message.Message):
-    __slots__ = ["transaction_id", "pack_id", "order_id"]
+    __slots__ = ("transaction_id", "pack_id", "order_id")
     TRANSACTION_ID_FIELD_NUMBER: _ClassVar[int]
     PACK_ID_FIELD_NUMBER: _ClassVar[int]
     ORDER_ID_FIELD_NUMBER: _ClassVar[int]

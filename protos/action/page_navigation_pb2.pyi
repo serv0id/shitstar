@@ -1,23 +1,27 @@
 from feature.image import image_pb2 as _image_pb2
+from feature.page_nav_params import action_sheet_params_pb2 as _action_sheet_params_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from typing import ClassVar as _ClassVar, Iterable as _Iterable, Mapping as _Mapping, Optional as _Optional, Union as _Union
+from collections.abc import Iterable as _Iterable, Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class PageNavigationAction(_message.Message):
-    __slots__ = ["page_type", "page_url", "page_slug", "params", "replace"]
+    __slots__ = ("page_type", "page_url", "page_slug", "params", "replace")
     class Params(_message.Message):
-        __slots__ = ["watch_params"]
+        __slots__ = ("watch_params", "action_sheet_params")
         WATCH_PARAMS_FIELD_NUMBER: _ClassVar[int]
+        ACTION_SHEET_PARAMS_FIELD_NUMBER: _ClassVar[int]
         watch_params: PageNavigationAction.WatchParams
-        def __init__(self, watch_params: _Optional[_Union[PageNavigationAction.WatchParams, _Mapping]] = ...) -> None: ...
+        action_sheet_params: _action_sheet_params_pb2.ActionSheetParams
+        def __init__(self, watch_params: _Optional[_Union[PageNavigationAction.WatchParams, _Mapping]] = ..., action_sheet_params: _Optional[_Union[_action_sheet_params_pb2.ActionSheetParams, _Mapping]] = ...) -> None: ...
     class WatchParams(_message.Message):
-        __slots__ = ["loading_image", "is_fullscreen_by_default", "refresh_spaces"]
+        __slots__ = ("loading_image", "is_fullscreen_by_default", "refresh_spaces")
         class SpaceType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-            __slots__ = []
+            __slots__ = ()
             UNKNOWN: _ClassVar[PageNavigationAction.WatchParams.SpaceType]
             PLAYER: _ClassVar[PageNavigationAction.WatchParams.SpaceType]
             WATCH_OVERLAY: _ClassVar[PageNavigationAction.WatchParams.SpaceType]

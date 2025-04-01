@@ -5,7 +5,7 @@ from typing import ClassVar as _ClassVar
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class ArrowPosition(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     POSITION_UNSPECIFIED: _ClassVar[ArrowPosition]
     POSITION_START: _ClassVar[ArrowPosition]
     POSITION_END: _ClassVar[ArrowPosition]

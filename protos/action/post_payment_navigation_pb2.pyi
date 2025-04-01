@@ -5,7 +5,7 @@ from typing import ClassVar as _ClassVar, Optional as _Optional
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class PostPaymentNavigationAction(_message.Message):
-    __slots__ = ["page_type", "page_url", "page_slug", "replace"]
+    __slots__ = ("page_type", "page_url", "page_slug", "replace")
     PAGE_TYPE_FIELD_NUMBER: _ClassVar[int]
     PAGE_URL_FIELD_NUMBER: _ClassVar[int]
     PAGE_SLUG_FIELD_NUMBER: _ClassVar[int]

@@ -1,18 +1,19 @@
-from protos.v2 import space_pb2 as _space_pb2
-from protos.v2 import refresh_page_pb2 as _refresh_page_pb2
+from v2 import space_pb2 as _space_pb2
+from v2 import refresh_page_pb2 as _refresh_page_pb2
 from google.protobuf import any_pb2 as _any_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from typing import ClassVar as _ClassVar, Mapping as _Mapping, Optional as _Optional, Union as _Union
+from collections.abc import Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class Page(_message.Message):
-    __slots__ = ["id", "template", "version", "spaces", "data", "delivery_type", "dynamic_page_request", "deferred_page_request", "page_url", "page_slug"]
+    __slots__ = ("id", "template", "version", "spaces", "data", "delivery_type", "dynamic_page_request", "deferred_page_request", "page_url", "page_slug")
     class PageDeliveryType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-        __slots__ = []
+        __slots__ = ()
         STATIC: _ClassVar[Page.PageDeliveryType]
         DYNAMIC: _ClassVar[Page.PageDeliveryType]
         DEFERRED: _ClassVar[Page.PageDeliveryType]
@@ -20,7 +21,7 @@ class Page(_message.Message):
     DYNAMIC: Page.PageDeliveryType
     DEFERRED: Page.PageDeliveryType
     class SpacesEntry(_message.Message):
-        __slots__ = ["key", "value"]
+        __slots__ = ("key", "value")
         KEY_FIELD_NUMBER: _ClassVar[int]
         VALUE_FIELD_NUMBER: _ClassVar[int]
         key: str

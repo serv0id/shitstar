@@ -1,0 +1,54 @@
+from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
+from google.protobuf import descriptor as _descriptor
+from typing import ClassVar as _ClassVar
+
+DESCRIPTOR: _descriptor.FileDescriptor
+
+class AdFormat(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    AD_FORMAT_UNSPECIFIED: _ClassVar[AdFormat]
+    AD_FORMAT_VIDEO_CTA: _ClassVar[AdFormat]
+    AD_FORMAT_VIDEO_TAKEOVER: _ClassVar[AdFormat]
+    AD_FORMAT_VIDEO_CAROUSAL: _ClassVar[AdFormat]
+    AD_FORMAT_VIDEO_WEBVIEW: _ClassVar[AdFormat]
+    AD_FORMAT_VIDEO_NO_COMPANION: _ClassVar[AdFormat]
+    AD_FORMAT_VIDEO_CLICK_TO_ENGAGE: _ClassVar[AdFormat]
+    AD_FORMAT_VIDEO_VERTICAL: _ClassVar[AdFormat]
+    AD_FORMAT_VIDEO_WATCHLIST_CTA: _ClassVar[AdFormat]
+    AD_FORMAT_SPORT_SCORECARD: _ClassVar[AdFormat]
+    AD_FORMAT_SPORT_BRAND_TAB: _ClassVar[AdFormat]
+    AD_FORMAT_DISPLAY_VIDEO_BB: _ClassVar[AdFormat]
+    AD_FORMAT_DISPLAY_IMAGE_BB: _ClassVar[AdFormat]
+    AD_FORMAT_DISPLAY_NATIVE_FRAME: _ClassVar[AdFormat]
+    AD_FORMAT_DISPLAY_SKINNY: _ClassVar[AdFormat]
+    AD_FORMAT_DISPLAY_NO_FILL: _ClassVar[AdFormat]
+    AD_FORMAT_DISPLAY_CAROUSAL: _ClassVar[AdFormat]
+    AD_FORMAT_COMMN_BANNER: _ClassVar[AdFormat]
+    AD_FORMAT_COMMS_HEADLINE: _ClassVar[AdFormat]
+    AD_FORMAT_SHORT_HEADLINE: _ClassVar[AdFormat]
+    AD_FORMAT_VIDEO_INSTREAM_DISPLAY: _ClassVar[AdFormat]
+    AD_FORMAT_GENERIC_LEADGEN: _ClassVar[AdFormat]
+    AD_FORMAT_INTERSTITIAL: _ClassVar[AdFormat]
+AD_FORMAT_UNSPECIFIED: AdFormat
+AD_FORMAT_VIDEO_CTA: AdFormat
+AD_FORMAT_VIDEO_TAKEOVER: AdFormat
+AD_FORMAT_VIDEO_CAROUSAL: AdFormat
+AD_FORMAT_VIDEO_WEBVIEW: AdFormat
+AD_FORMAT_VIDEO_NO_COMPANION: AdFormat
+AD_FORMAT_VIDEO_CLICK_TO_ENGAGE: AdFormat
+AD_FORMAT_VIDEO_VERTICAL: AdFormat
+AD_FORMAT_VIDEO_WATCHLIST_CTA: AdFormat
+AD_FORMAT_SPORT_SCORECARD: AdFormat
+AD_FORMAT_SPORT_BRAND_TAB: AdFormat
+AD_FORMAT_DISPLAY_VIDEO_BB: AdFormat
+AD_FORMAT_DISPLAY_IMAGE_BB: AdFormat
+AD_FORMAT_DISPLAY_NATIVE_FRAME: AdFormat
+AD_FORMAT_DISPLAY_SKINNY: AdFormat
+AD_FORMAT_DISPLAY_NO_FILL: AdFormat
+AD_FORMAT_DISPLAY_CAROUSAL: AdFormat
+AD_FORMAT_COMMN_BANNER: AdFormat
+AD_FORMAT_COMMS_HEADLINE: AdFormat
+AD_FORMAT_SHORT_HEADLINE: AdFormat
+AD_FORMAT_VIDEO_INSTREAM_DISPLAY: AdFormat
+AD_FORMAT_GENERIC_LEADGEN: AdFormat
+AD_FORMAT_INTERSTITIAL: AdFormat

@@ -2,12 +2,13 @@ from context import form_context_pb2 as _form_context_pb2
 from feature.form import form_input_pb2 as _form_input_pb2
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from typing import ClassVar as _ClassVar, Mapping as _Mapping, Optional as _Optional, Union as _Union
+from collections.abc import Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class FormInputAction(_message.Message):
-    __slots__ = ["form_context", "form_input"]
+    __slots__ = ("form_context", "form_input")
     FORM_CONTEXT_FIELD_NUMBER: _ClassVar[int]
     FORM_INPUT_FIELD_NUMBER: _ClassVar[int]
     form_context: _form_context_pb2.FormContext

@@ -1,0 +1,36 @@
+from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
+from google.protobuf import descriptor as _descriptor
+from typing import ClassVar as _ClassVar
+
+DESCRIPTOR: _descriptor.FileDescriptor
+
+class DownloadActivityName(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    DOWNLOAD_ACTIVITY_NAME_UNSPECIFIED: _ClassVar[DownloadActivityName]
+    DOWNLOAD_ACTIVITY_NAME_SAVED_TO_DB: _ClassVar[DownloadActivityName]
+    DOWNLOAD_ACTIVITY_NAME_CHECK_DOWNLOAD_BFF_CALL: _ClassVar[DownloadActivityName]
+    DOWNLOAD_ACTIVITY_NAME_START_DOWNLOAD_BFF_CALL: _ClassVar[DownloadActivityName]
+    DOWNLOAD_ACTIVITY_NAME_SIZE_CALCULATION: _ClassVar[DownloadActivityName]
+    DOWNLOAD_ACTIVITY_NAME_DRM_KEY_DOWNLOADED: _ClassVar[DownloadActivityName]
+    DOWNLOAD_ACTIVITY_NAME_STARTED_DOWNLOAD: _ClassVar[DownloadActivityName]
+    DOWNLOAD_ACTIVITY_NAME_PAUSED_DOWNLOAD: _ClassVar[DownloadActivityName]
+    DOWNLOAD_ACTIVITY_NAME_RESUMED_DOWNLOAD: _ClassVar[DownloadActivityName]
+    DOWNLOAD_ACTIVITY_NAME_STOPPED_DOWNLOAD: _ClassVar[DownloadActivityName]
+    DOWNLOAD_ACTIVITY_NAME_DELETED_DOWNLOAD: _ClassVar[DownloadActivityName]
+    DOWNLOAD_ACTIVITY_NAME_FAILED_DOWNLOAD: _ClassVar[DownloadActivityName]
+    DOWNLOAD_ACTIVITY_NAME_COMPLETED_DOWNLOAD: _ClassVar[DownloadActivityName]
+    DOWNLOAD_ACTIVITY_NAME_QUEUED_DOWNLOAD: _ClassVar[DownloadActivityName]
+DOWNLOAD_ACTIVITY_NAME_UNSPECIFIED: DownloadActivityName
+DOWNLOAD_ACTIVITY_NAME_SAVED_TO_DB: DownloadActivityName
+DOWNLOAD_ACTIVITY_NAME_CHECK_DOWNLOAD_BFF_CALL: DownloadActivityName
+DOWNLOAD_ACTIVITY_NAME_START_DOWNLOAD_BFF_CALL: DownloadActivityName
+DOWNLOAD_ACTIVITY_NAME_SIZE_CALCULATION: DownloadActivityName
+DOWNLOAD_ACTIVITY_NAME_DRM_KEY_DOWNLOADED: DownloadActivityName
+DOWNLOAD_ACTIVITY_NAME_STARTED_DOWNLOAD: DownloadActivityName
+DOWNLOAD_ACTIVITY_NAME_PAUSED_DOWNLOAD: DownloadActivityName
+DOWNLOAD_ACTIVITY_NAME_RESUMED_DOWNLOAD: DownloadActivityName
+DOWNLOAD_ACTIVITY_NAME_STOPPED_DOWNLOAD: DownloadActivityName
+DOWNLOAD_ACTIVITY_NAME_DELETED_DOWNLOAD: DownloadActivityName
+DOWNLOAD_ACTIVITY_NAME_FAILED_DOWNLOAD: DownloadActivityName
+DOWNLOAD_ACTIVITY_NAME_COMPLETED_DOWNLOAD: DownloadActivityName
+DOWNLOAD_ACTIVITY_NAME_QUEUED_DOWNLOAD: DownloadActivityName

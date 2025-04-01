@@ -1,0 +1,47 @@
+from base import page_data_commons_pb2 as _page_data_commons_pb2
+from action import page_navigation_pb2 as _page_navigation_pb2
+from action import purchase_pb2 as _purchase_pb2
+from action import external_navigation_pb2 as _external_navigation_pb2
+from base import actions_pb2 as _actions_pb2
+from google.protobuf.internal import containers as _containers
+from google.protobuf import descriptor as _descriptor
+from google.protobuf import message as _message
+from collections.abc import Iterable as _Iterable, Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
+
+DESCRIPTOR: _descriptor.FileDescriptor
+
+class PaymentRedirectPageData(_message.Message):
+    __slots__ = ("page_data_commons", "auto_trigger_action", "page_event_actions")
+    class AutoTriggerActions(_message.Message):
+        __slots__ = ("on_load", "purchase_action", "external_navigation")
+        ON_LOAD_FIELD_NUMBER: _ClassVar[int]
+        PURCHASE_ACTION_FIELD_NUMBER: _ClassVar[int]
+        EXTERNAL_NAVIGATION_FIELD_NUMBER: _ClassVar[int]
+        on_load: _containers.RepeatedCompositeFieldContainer[PaymentRedirectPageData.OnloadActions]
+        purchase_action: _purchase_pb2.PurchaseAction
+        external_navigation: _external_navigation_pb2.ExternalNavigationAction
+        def __init__(self, on_load: _Optional[_Iterable[_Union[PaymentRedirectPageData.OnloadActions, _Mapping]]] = ..., purchase_action: _Optional[_Union[_purchase_pb2.PurchaseAction, _Mapping]] = ..., external_navigation: _Optional[_Union[_external_navigation_pb2.ExternalNavigationAction, _Mapping]] = ...) -> None: ...
+    class PageEventActionsEntry(_message.Message):
+        __slots__ = ("key", "value")
+        KEY_FIELD_NUMBER: _ClassVar[int]
+        VALUE_FIELD_NUMBER: _ClassVar[int]
+        key: str
+        value: _actions_pb2.Actions.Action
+        def __init__(self, key: _Optional[str] = ..., value: _Optional[_Union[_actions_pb2.Actions.Action, _Mapping]] = ...) -> None: ...
+    class OnloadActions(_message.Message):
+        __slots__ = ("purchase_action", "external_navigation", "page_navigation")
+        PURCHASE_ACTION_FIELD_NUMBER: _ClassVar[int]
+        EXTERNAL_NAVIGATION_FIELD_NUMBER: _ClassVar[int]
+        PAGE_NAVIGATION_FIELD_NUMBER: _ClassVar[int]
+        purchase_action: _purchase_pb2.PurchaseAction
+        external_navigation: _external_navigation_pb2.ExternalNavigationAction
+        page_navigation: _page_navigation_pb2.PageNavigationAction
+        def __init__(self, purchase_action: _Optional[_Union[_purchase_pb2.PurchaseAction, _Mapping]] = ..., external_navigation: _Optional[_Union[_external_navigation_pb2.ExternalNavigationAction, _Mapping]] = ..., page_navigation: _Optional[_Union[_page_navigation_pb2.PageNavigationAction, _Mapping]] = ...) -> None: ...
+    PAGE_DATA_COMMONS_FIELD_NUMBER: _ClassVar[int]
+    AUTO_TRIGGER_ACTION_FIELD_NUMBER: _ClassVar[int]
+    PAGE_EVENT_ACTIONS_FIELD_NUMBER: _ClassVar[int]
+    page_data_commons: _page_data_commons_pb2.PageDataCommons
+    auto_trigger_action: PaymentRedirectPageData.AutoTriggerActions
+    page_event_actions: _containers.MessageMap[str, _actions_pb2.Actions.Action]
+    def __init__(self, page_data_commons: _Optional[_Union[_page_data_commons_pb2.PageDataCommons, _Mapping]] = ..., auto_trigger_action: _Optional[_Union[PaymentRedirectPageData.AutoTriggerActions, _Mapping]] = ..., page_event_actions: _Optional[_Mapping[str, _actions_pb2.Actions.Action]] = ...) -> None: ...

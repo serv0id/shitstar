@@ -1,14 +1,15 @@
 from feature.image import image_pb2 as _image_pb2
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from typing import ClassVar as _ClassVar, Mapping as _Mapping, Optional as _Optional, Union as _Union
+from collections.abc import Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class AddToSearchHistoryAction(_message.Message):
-    __slots__ = ["history_record_name", "page_url", "is_content", "image", "page_type", "instrumentation_url", "instrumentation_value", "expiry_config"]
+    __slots__ = ("history_record_name", "page_url", "is_content", "image", "page_type", "instrumentation_url", "instrumentation_value", "expiry_config")
     class ExpiryConfig(_message.Message):
-        __slots__ = ["duration", "unit"]
+        __slots__ = ("duration", "unit")
         DURATION_FIELD_NUMBER: _ClassVar[int]
         UNIT_FIELD_NUMBER: _ClassVar[int]
         duration: int

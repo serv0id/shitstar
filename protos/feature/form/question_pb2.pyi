@@ -5,7 +5,7 @@ from typing import ClassVar as _ClassVar, Optional as _Optional
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class FormQuestion(_message.Message):
-    __slots__ = ["id", "title", "subtitle", "error_message"]
+    __slots__ = ("id", "title", "subtitle", "error_message")
     ID_FIELD_NUMBER: _ClassVar[int]
     TITLE_FIELD_NUMBER: _ClassVar[int]
     SUBTITLE_FIELD_NUMBER: _ClassVar[int]

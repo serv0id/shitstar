@@ -5,7 +5,7 @@ from typing import ClassVar as _ClassVar, Optional as _Optional
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class InstrumentationContext(_message.Message):
-    __slots__ = ["url", "value"]
+    __slots__ = ("url", "value")
     URL_FIELD_NUMBER: _ClassVar[int]
     VALUE_FIELD_NUMBER: _ClassVar[int]
     url: str

@@ -5,7 +5,7 @@ from typing import ClassVar as _ClassVar, Optional as _Optional
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class Validation(_message.Message):
-    __slots__ = ["regex", "message"]
+    __slots__ = ("regex", "message")
     REGEX_FIELD_NUMBER: _ClassVar[int]
     MESSAGE_FIELD_NUMBER: _ClassVar[int]
     regex: str

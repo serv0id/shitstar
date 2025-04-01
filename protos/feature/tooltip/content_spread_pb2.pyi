@@ -5,7 +5,7 @@ from typing import ClassVar as _ClassVar
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class ContentSpread(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     SPREAD_UNSPECIFIED: _ClassVar[ContentSpread]
     SPREAD_START: _ClassVar[ContentSpread]
     SPREAD_END: _ClassVar[ContentSpread]

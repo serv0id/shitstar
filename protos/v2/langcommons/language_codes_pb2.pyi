@@ -1,0 +1,292 @@
+from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
+from google.protobuf import descriptor as _descriptor
+from typing import ClassVar as _ClassVar
+
+DESCRIPTOR: _descriptor.FileDescriptor
+
+class LanguageCodes(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    UNKNOWN: _ClassVar[LanguageCodes]
+    UNDEFINED: _ClassVar[LanguageCodes]
+    ben: _ClassVar[LanguageCodes]
+    BENGALI: _ClassVar[LanguageCodes]
+    eng: _ClassVar[LanguageCodes]
+    ENGLISH: _ClassVar[LanguageCodes]
+    mar: _ClassVar[LanguageCodes]
+    MARATHI: _ClassVar[LanguageCodes]
+    tam: _ClassVar[LanguageCodes]
+    TAMIL: _ClassVar[LanguageCodes]
+    guj: _ClassVar[LanguageCodes]
+    GUJARATI: _ClassVar[LanguageCodes]
+    kan: _ClassVar[LanguageCodes]
+    KANNADA: _ClassVar[LanguageCodes]
+    mal: _ClassVar[LanguageCodes]
+    MALAYALAM: _ClassVar[LanguageCodes]
+    hin: _ClassVar[LanguageCodes]
+    HINDI: _ClassVar[LanguageCodes]
+    tel: _ClassVar[LanguageCodes]
+    TELUGU: _ClassVar[LanguageCodes]
+    spa: _ClassVar[LanguageCodes]
+    SPANISH: _ClassVar[LanguageCodes]
+    fra: _ClassVar[LanguageCodes]
+    FRENCH: _ClassVar[LanguageCodes]
+    fas: _ClassVar[LanguageCodes]
+    PERSIAN: _ClassVar[LanguageCodes]
+    ori: _ClassVar[LanguageCodes]
+    ORIYA: _ClassVar[LanguageCodes]
+    pan: _ClassVar[LanguageCodes]
+    PUNJABI: _ClassVar[LanguageCodes]
+    bho: _ClassVar[LanguageCodes]
+    BHOJPURI: _ClassVar[LanguageCodes]
+    san: _ClassVar[LanguageCodes]
+    SANSKRIT: _ClassVar[LanguageCodes]
+    tur: _ClassVar[LanguageCodes]
+    TURKISH: _ClassVar[LanguageCodes]
+    mni: _ClassVar[LanguageCodes]
+    MANIPURI: _ClassVar[LanguageCodes]
+    kok: _ClassVar[LanguageCodes]
+    KONKANI: _ClassVar[LanguageCodes]
+    raj: _ClassVar[LanguageCodes]
+    RAJASTHANI: _ClassVar[LanguageCodes]
+    kat: _ClassVar[LanguageCodes]
+    GEORGIAN: _ClassVar[LanguageCodes]
+    dug: _ClassVar[LanguageCodes]
+    DUGOUT: _ClassVar[LanguageCodes]
+    ara: _ClassVar[LanguageCodes]
+    ARABIC: _ClassVar[LanguageCodes]
+    cmn: _ClassVar[LanguageCodes]
+    MANDARIN: _ClassVar[LanguageCodes]
+    tha: _ClassVar[LanguageCodes]
+    THAI: _ClassVar[LanguageCodes]
+    zho: _ClassVar[LanguageCodes]
+    CHINESE: _ClassVar[LanguageCodes]
+    ind: _ClassVar[LanguageCodes]
+    INDONESIAN: _ClassVar[LanguageCodes]
+    msa: _ClassVar[LanguageCodes]
+    MALAY: _ClassVar[LanguageCodes]
+    kor: _ClassVar[LanguageCodes]
+    KOREAN: _ClassVar[LanguageCodes]
+    vie: _ClassVar[LanguageCodes]
+    VIETNAMESE: _ClassVar[LanguageCodes]
+    yue: _ClassVar[LanguageCodes]
+    CANTONESE: _ClassVar[LanguageCodes]
+    jpn: _ClassVar[LanguageCodes]
+    JAPANESE: _ClassVar[LanguageCodes]
+    nld: _ClassVar[LanguageCodes]
+    DUTCH: _ClassVar[LanguageCodes]
+    eng_GB: _ClassVar[LanguageCodes]
+    ENGLISH_UK: _ClassVar[LanguageCodes]
+    eng_AU: _ClassVar[LanguageCodes]
+    ENGLISH_AUSTRALIA: _ClassVar[LanguageCodes]
+    heb: _ClassVar[LanguageCodes]
+    HEBREW: _ClassVar[LanguageCodes]
+    arb: _ClassVar[LanguageCodes]
+    ARABIC_MODERN_STANDARD: _ClassVar[LanguageCodes]
+    arz: _ClassVar[LanguageCodes]
+    ARABIC_CLASSIC_EGYPTIAN: _ClassVar[LanguageCodes]
+    arb_EG: _ClassVar[LanguageCodes]
+    EGYPTIAN_ARABIC: _ClassVar[LanguageCodes]
+    fra_FR: _ClassVar[LanguageCodes]
+    FRENCH_PARISIAN: _ClassVar[LanguageCodes]
+    fra_CA: _ClassVar[LanguageCodes]
+    FRENCH_CANADIAN: _ClassVar[LanguageCodes]
+    spa_419: _ClassVar[LanguageCodes]
+    SPANISH_LATIN_AMERICA: _ClassVar[LanguageCodes]
+    spa_ES: _ClassVar[LanguageCodes]
+    SPANISH_CASTILIAN_EUROPEAN: _ClassVar[LanguageCodes]
+    deu: _ClassVar[LanguageCodes]
+    GERMAN: _ClassVar[LanguageCodes]
+    deu_AT: _ClassVar[LanguageCodes]
+    GERMAN_AUSTRIAN: _ClassVar[LanguageCodes]
+    ita: _ClassVar[LanguageCodes]
+    ITALIAN: _ClassVar[LanguageCodes]
+    por: _ClassVar[LanguageCodes]
+    PORTUGUESE: _ClassVar[LanguageCodes]
+    por_BR: _ClassVar[LanguageCodes]
+    PORTUGUESE_BRAZIL: _ClassVar[LanguageCodes]
+    por_PT: _ClassVar[LanguageCodes]
+    PORTUGUESE_EUROPEAN: _ClassVar[LanguageCodes]
+    rus: _ClassVar[LanguageCodes]
+    RUSSIAN: _ClassVar[LanguageCodes]
+    cmn_TW: _ClassVar[LanguageCodes]
+    MANDARIN_TAIWAN: _ClassVar[LanguageCodes]
+    ell: _ClassVar[LanguageCodes]
+    GREEK: _ClassVar[LanguageCodes]
+    nor: _ClassVar[LanguageCodes]
+    NORWEGIAN: _ClassVar[LanguageCodes]
+    dan: _ClassVar[LanguageCodes]
+    DANISH: _ClassVar[LanguageCodes]
+    fin: _ClassVar[LanguageCodes]
+    FINNISH: _ClassVar[LanguageCodes]
+    swe: _ClassVar[LanguageCodes]
+    SWEDISH: _ClassVar[LanguageCodes]
+    pol: _ClassVar[LanguageCodes]
+    POLISH: _ClassVar[LanguageCodes]
+    ron: _ClassVar[LanguageCodes]
+    ROMANIAN: _ClassVar[LanguageCodes]
+    ces: _ClassVar[LanguageCodes]
+    CZECH: _ClassVar[LanguageCodes]
+    slk: _ClassVar[LanguageCodes]
+    SLOVAK: _ClassVar[LanguageCodes]
+    hun: _ClassVar[LanguageCodes]
+    HUNGARIAN: _ClassVar[LanguageCodes]
+    nld_BE: _ClassVar[LanguageCodes]
+    FLEMISH: _ClassVar[LanguageCodes]
+    zho_Hans: _ClassVar[LanguageCodes]
+    CHINESE_SIMPLIFIED: _ClassVar[LanguageCodes]
+    zho_Hant: _ClassVar[LanguageCodes]
+    CHINESE_TRADITIONAL: _ClassVar[LanguageCodes]
+    tts: _ClassVar[LanguageCodes]
+    THAI_ISARN: _ClassVar[LanguageCodes]
+    cat: _ClassVar[LanguageCodes]
+    CATALAN: _ClassVar[LanguageCodes]
+    isl: _ClassVar[LanguageCodes]
+    ICELANDIC: _ClassVar[LanguageCodes]
+    mri: _ClassVar[LanguageCodes]
+    MAORI: _ClassVar[LanguageCodes]
+    tgl: _ClassVar[LanguageCodes]
+    TAGALOG: _ClassVar[LanguageCodes]
+    ar_SY: _ClassVar[LanguageCodes]
+    ARABIC_SYRIAN: _ClassVar[LanguageCodes]
+UNKNOWN: LanguageCodes
+UNDEFINED: LanguageCodes
+ben: LanguageCodes
+BENGALI: LanguageCodes
+eng: LanguageCodes
+ENGLISH: LanguageCodes
+mar: LanguageCodes
+MARATHI: LanguageCodes
+tam: LanguageCodes
+TAMIL: LanguageCodes
+guj: LanguageCodes
+GUJARATI: LanguageCodes
+kan: LanguageCodes
+KANNADA: LanguageCodes
+mal: LanguageCodes
+MALAYALAM: LanguageCodes
+hin: LanguageCodes
+HINDI: LanguageCodes
+tel: LanguageCodes
+TELUGU: LanguageCodes
+spa: LanguageCodes
+SPANISH: LanguageCodes
+fra: LanguageCodes
+FRENCH: LanguageCodes
+fas: LanguageCodes
+PERSIAN: LanguageCodes
+ori: LanguageCodes
+ORIYA: LanguageCodes
+pan: LanguageCodes
+PUNJABI: LanguageCodes
+bho: LanguageCodes
+BHOJPURI: LanguageCodes
+san: LanguageCodes
+SANSKRIT: LanguageCodes
+tur: LanguageCodes
+TURKISH: LanguageCodes
+mni: LanguageCodes
+MANIPURI: LanguageCodes
+kok: LanguageCodes
+KONKANI: LanguageCodes
+raj: LanguageCodes
+RAJASTHANI: LanguageCodes
+kat: LanguageCodes
+GEORGIAN: LanguageCodes
+dug: LanguageCodes
+DUGOUT: LanguageCodes
+ara: LanguageCodes
+ARABIC: LanguageCodes
+cmn: LanguageCodes
+MANDARIN: LanguageCodes
+tha: LanguageCodes
+THAI: LanguageCodes
+zho: LanguageCodes
+CHINESE: LanguageCodes
+ind: LanguageCodes
+INDONESIAN: LanguageCodes
+msa: LanguageCodes
+MALAY: LanguageCodes
+kor: LanguageCodes
+KOREAN: LanguageCodes
+vie: LanguageCodes
+VIETNAMESE: LanguageCodes
+yue: LanguageCodes
+CANTONESE: LanguageCodes
+jpn: LanguageCodes
+JAPANESE: LanguageCodes
+nld: LanguageCodes
+DUTCH: LanguageCodes
+eng_GB: LanguageCodes
+ENGLISH_UK: LanguageCodes
+eng_AU: LanguageCodes
+ENGLISH_AUSTRALIA: LanguageCodes
+heb: LanguageCodes
+HEBREW: LanguageCodes
+arb: LanguageCodes
+ARABIC_MODERN_STANDARD: LanguageCodes
+arz: LanguageCodes
+ARABIC_CLASSIC_EGYPTIAN: LanguageCodes
+arb_EG: LanguageCodes
+EGYPTIAN_ARABIC: LanguageCodes
+fra_FR: LanguageCodes
+FRENCH_PARISIAN: LanguageCodes
+fra_CA: LanguageCodes
+FRENCH_CANADIAN: LanguageCodes
+spa_419: LanguageCodes
+SPANISH_LATIN_AMERICA: LanguageCodes
+spa_ES: LanguageCodes
+SPANISH_CASTILIAN_EUROPEAN: LanguageCodes
+deu: LanguageCodes
+GERMAN: LanguageCodes
+deu_AT: LanguageCodes
+GERMAN_AUSTRIAN: LanguageCodes
+ita: LanguageCodes
+ITALIAN: LanguageCodes
+por: LanguageCodes
+PORTUGUESE: LanguageCodes
+por_BR: LanguageCodes
+PORTUGUESE_BRAZIL: LanguageCodes
+por_PT: LanguageCodes
+PORTUGUESE_EUROPEAN: LanguageCodes
+rus: LanguageCodes
+RUSSIAN: LanguageCodes
+cmn_TW: LanguageCodes
+MANDARIN_TAIWAN: LanguageCodes
+ell: LanguageCodes
+GREEK: LanguageCodes
+nor: LanguageCodes
+NORWEGIAN: LanguageCodes
+dan: LanguageCodes
+DANISH: LanguageCodes
+fin: LanguageCodes
+FINNISH: LanguageCodes
+swe: LanguageCodes
+SWEDISH: LanguageCodes
+pol: LanguageCodes
+POLISH: LanguageCodes
+ron: LanguageCodes
+ROMANIAN: LanguageCodes
+ces: LanguageCodes
+CZECH: LanguageCodes
+slk: LanguageCodes
+SLOVAK: LanguageCodes
+hun: LanguageCodes
+HUNGARIAN: LanguageCodes
+nld_BE: LanguageCodes
+FLEMISH: LanguageCodes
+zho_Hans: LanguageCodes
+CHINESE_SIMPLIFIED: LanguageCodes
+zho_Hant: LanguageCodes
+CHINESE_TRADITIONAL: LanguageCodes
+tts: LanguageCodes
+THAI_ISARN: LanguageCodes
+cat: LanguageCodes
+CATALAN: LanguageCodes
+isl: LanguageCodes
+ICELANDIC: LanguageCodes
+mri: LanguageCodes
+MAORI: LanguageCodes
+tgl: LanguageCodes
+TAGALOG: LanguageCodes
+ar_SY: LanguageCodes
+ARABIC_SYRIAN: LanguageCodes

@@ -5,7 +5,7 @@ from typing import ClassVar as _ClassVar, Optional as _Optional
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class ExternalNavigationAction(_message.Message):
-    __slots__ = ["external_url", "open_in_same_tab"]
+    __slots__ = ("external_url", "open_in_same_tab")
     EXTERNAL_URL_FIELD_NUMBER: _ClassVar[int]
     OPEN_IN_SAME_TAB_FIELD_NUMBER: _ClassVar[int]
     external_url: str

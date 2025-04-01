@@ -5,7 +5,7 @@ from typing import ClassVar as _ClassVar
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class DynamicVisualAssetName(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     UNSPECIFIED_NAME: _ClassVar[DynamicVisualAssetName]
     SUBSSCRIBE_BUTTON_ANIMATION: _ClassVar[DynamicVisualAssetName]
     SKINNY_ANIMATION: _ClassVar[DynamicVisualAssetName]

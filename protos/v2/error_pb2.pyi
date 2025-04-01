@@ -1,13 +1,14 @@
 from google.protobuf import any_pb2 as _any_pb2
-from protos.v2 import widget_pb2 as _widget_pb2
+from v2 import widget_pb2 as _widget_pb2
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from typing import ClassVar as _ClassVar, Mapping as _Mapping, Optional as _Optional, Union as _Union
+from collections.abc import Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class Error(_message.Message):
-    __slots__ = ["error_code", "error_message", "data", "widget_wrapper"]
+    __slots__ = ("error_code", "error_message", "data", "widget_wrapper")
     ERROR_CODE_FIELD_NUMBER: _ClassVar[int]
     ERROR_MESSAGE_FIELD_NUMBER: _ClassVar[int]
     DATA_FIELD_NUMBER: _ClassVar[int]

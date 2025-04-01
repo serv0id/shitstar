@@ -5,7 +5,7 @@ from typing import ClassVar as _ClassVar, Optional as _Optional
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class SearchZeroFilterData(_message.Message):
-    __slots__ = ["filter_id", "widget_url"]
+    __slots__ = ("filter_id", "widget_url")
     FILTER_ID_FIELD_NUMBER: _ClassVar[int]
     WIDGET_URL_FIELD_NUMBER: _ClassVar[int]
     filter_id: str

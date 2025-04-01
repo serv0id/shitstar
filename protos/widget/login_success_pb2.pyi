@@ -1,17 +1,18 @@
-from protos.base import template_pb2 as _template_pb2
-from protos.base import widget_commons_pb2 as _widget_commons_pb2
-from protos.base import actions_pb2 as _actions_pb2
+from base import template_pb2 as _template_pb2
+from base import widget_commons_pb2 as _widget_commons_pb2
+from base import actions_pb2 as _actions_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from typing import ClassVar as _ClassVar, Iterable as _Iterable, Mapping as _Mapping, Optional as _Optional, Union as _Union
+from collections.abc import Iterable as _Iterable, Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class LoginSuccessWidget(_message.Message):
-    __slots__ = ["template", "widget_commons", "data"]
+    __slots__ = ("template", "widget_commons", "data")
     class Data(_message.Message):
-        __slots__ = ["text", "user_identity", "on_complete_actions", "mobile_number", "email_address"]
+        __slots__ = ("text", "user_identity", "on_complete_actions", "mobile_number", "email_address")
         TEXT_FIELD_NUMBER: _ClassVar[int]
         USER_IDENTITY_FIELD_NUMBER: _ClassVar[int]
         ON_COMPLETE_ACTIONS_FIELD_NUMBER: _ClassVar[int]

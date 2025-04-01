@@ -7,9 +7,9 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class DynamicVisualAssetConfig(_message.Message):
-    __slots__ = ["name", "is_immediate", "remove_when_paused", "is_infinite", "priority_order", "category"]
+    __slots__ = ("name", "is_immediate", "remove_when_paused", "is_infinite", "priority_order", "category")
     class DynamicVisaualAssetPriorityOrder(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-        __slots__ = []
+        __slots__ = ()
         UNSPECIFIED_PRIORITY_ORDER: _ClassVar[DynamicVisualAssetConfig.DynamicVisaualAssetPriorityOrder]
         P_ONE: _ClassVar[DynamicVisualAssetConfig.DynamicVisaualAssetPriorityOrder]
         P_TWO: _ClassVar[DynamicVisualAssetConfig.DynamicVisaualAssetPriorityOrder]
@@ -23,7 +23,7 @@ class DynamicVisualAssetConfig(_message.Message):
     P_FOUR: DynamicVisualAssetConfig.DynamicVisaualAssetPriorityOrder
     P_FIVE: DynamicVisualAssetConfig.DynamicVisaualAssetPriorityOrder
     class DynamicVisualAssetCategory(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-        __slots__ = []
+        __slots__ = ()
         UNSPECIFIED_CATEGORY: _ClassVar[DynamicVisualAssetConfig.DynamicVisualAssetCategory]
         HEAVY: _ClassVar[DynamicVisualAssetConfig.DynamicVisualAssetCategory]
         MEDIUM: _ClassVar[DynamicVisualAssetConfig.DynamicVisualAssetCategory]
