@@ -21,11 +21,12 @@ python main.py
 
 ## Usage
 Once your account access token has been saved successfully, you are good to go ahead and start using ShitStar for title manifest retrieval.
+The printed manifest is a JSON object containing everything contained in the response object. The code can be modified to suit specific use cases for the manifest information.
 
 ## Development
 Most of the .proto schemas for the Android application can be found in the `proto_raw` dir. PRs that implement additional functionality are welcome.
 
 ## ToDo
-* Parse search response
-* Parse manifest response
+* ~Parse search response~
+* ~Parse manifest response~
 * Tidy code
